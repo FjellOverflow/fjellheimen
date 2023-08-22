@@ -38,8 +38,8 @@ services:
       - /mediadrive:/mediadrive
     networks:
       - proxy-network
-    env_file:
-      - /homeserver/environment/general.env
+    environment:
+      - TZ=Europe/Tallinn
 
   glances:
     image: nicolargo/glances:latest
