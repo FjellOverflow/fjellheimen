@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  kavita:
+    image: lscr.io/linuxserver/kavita:latest
+    container_name: kavita
+    volumes:
+      - /homeserver/data/kavita/config:/config
+      - /mediadrive/Books:/data
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+networks:
+  proxy-network:
+    external: true
