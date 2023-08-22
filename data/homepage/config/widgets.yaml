@@ -1,0 +1,20 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+- resources:
+    label: Server
+    cpu: true
+    memory: true
+    uptime: true
+    disk: /
+
+- resources:
+    label: Mediadrive
+    disk: /mediadrive
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+      hourCycle: h23

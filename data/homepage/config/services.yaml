@@ -1,0 +1,127 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+
+- Media:
+    - Plex:
+        icon: plex.png
+        href: https://app.plex.tv
+        description: Movies, TV Shows & Music
+        server: docker
+        container: plex
+        showStats: true
+        widget:
+          type: plex
+          url: {{HOMEPAGE_VAR_PLEX_URL}}
+          key: {{HOMEPAGE_VAR_PLEX_KEY}}
+    - Overseerr:
+        icon: overseerr.png
+        href: {{HOMEPAGE_VAR_OVERSEERR_URL}}
+        description: Request Movies & TV shows
+        server: docker
+        container: overseerr
+        showStats: true
+        widget:
+          type: overseerr
+          url: {{HOMEPAGE_VAR_OVERSEERR_URL}}
+          key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
+    - Kavita:
+        icon: kavita.png
+        href: {{HOMEPAGE_VAR_KAVITA_URL}}
+        description: Books
+        server: docker
+        container: kavita
+        showStats: true
+        widget:
+          type: kavita
+          url: {{HOMEPAGE_VAR_KAVITA_URL}}
+          username: {{HOMEPAGE_VAR_KAVITA_USERNAME}}
+          password: {{HOMEPAGE_VAR_KAVITA_PASSWORD}}
+
+- Media Management:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
+        description: Torrents
+        server: docker
+        container: torrents-qbittorrent
+        showStats: true
+        widget:
+          type: qbittorrent
+          url: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
+          username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
+          password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+    - Sonarr:
+        icon: sonarr.png
+        href: {{HOMEPAGE_VAR_SONARR_URL}}
+        description: TV Show management
+        server: docker
+        container: sonarr
+        showStats: true
+        widget:
+          type: sonarr
+          url: {{HOMEPAGE_VAR_SONARR_URL}}
+          key: {{HOMEPAGE_VAR_SONARR_KEY}}
+    - Radarr:
+        icon: radarr.png
+        href: {{HOMEPAGE_VAR_RADARR_URL}}
+        description: Movie management
+        server: docker
+        container: radarr
+        showStats: true
+        widget:
+          type: radarr
+          url: {{HOMEPAGE_VAR_RADARR_URL}}
+          key: {{HOMEPAGE_VAR_RADARR_KEY}}
+
+
+- Administration:
+    - Nginx Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: {{HOMEPAGE_VAR_NPM_URL}}
+        description: Manage Reverse Proxy & SSL
+        server: docker
+        container: server-nginx-proxy-manager
+        showStats: true
+        widget:
+          type: npm
+          url: {{HOMEPAGE_VAR_NPM_URL}}
+          username: {{HOMEPAGE_VAR_NPM_USERNAME}}
+          password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
+    - Portainer:
+        icon: portainer.png
+        href: {{HOMEPAGE_VAR_PORTAINER_URL}}
+        description: Manage Docker containers
+        server: docker
+        container: server-portainer
+        showStats: true
+        widget:
+          type: portainer
+          url: {{HOMEPAGE_VAR_PORTAINER_URL}}
+          env: 2
+          key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+
+- Metrics:
+    - Glances:
+        icon: glances.png
+        href: {{HOMEPAGE_VAR_GLANCES_URL}}
+        description: Server Metrics
+        server: docker
+        container: server-glances
+        showStats: true
+    - Processes:
+        widget:
+          type: glances
+          url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          metric: process
+    - Server Disk Usage:
+        widget:
+          type: glances
+          url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          metric: disk:sda2
+    - Mediadrive Usage:
+        widget:
+          type: glances
+          url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          metric: disk:sdb
+

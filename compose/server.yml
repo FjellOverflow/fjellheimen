@@ -38,6 +38,8 @@ services:
       - /mediadrive:/mediadrive
     networks:
       - proxy-network
+    env_file:
+      - /homeserver/environment/homepage.env
     environment:
       - TZ=Europe/Tallinn
 
