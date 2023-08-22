@@ -36,6 +36,7 @@ services:
       - /homeserver/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mediadrive:/mediadrive
+      - /homeserver:/homeserver
     networks:
       - proxy-network
     env_file:

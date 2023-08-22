@@ -114,11 +114,11 @@
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
           metric: process
-    - Server Disk Usage:
+    - Homserver Disk Usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
-          metric: disk:sda2
+          metric: disk:sdc
     - Mediadrive Usage:
         widget:
           type: glances
