@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    volumes:
+      - /homeserver/data/overseerr/config:/config
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+networks:
+  proxy-network:
+    external: true
