@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: server-nginx-proxy-manager
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - /homeserver/data/nginx-proxy-manager/data:/data
+      - /homeserver/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+  portainer:
+    image: portainer/portainer:latest
+    container_name: server-portainer
+    volumes:
+      - /homeserver/data/portainer/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+    privileged: true
+
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: server-homepage
+    volumes:
+      - /homeserver/data/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mediadrive:/mediadrive
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+  glances:
+    image: nicolargo/glances:latest
+    container_name: server-glances
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+    environment:
+      - GLANCES_OPT=-w
+    privileged: true
+    pid: host
+
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: server-duckdns
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+      - /homeserver/environment/duckdns.env
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: server-watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+networks:
+  proxy-network:
+    name: proxy-network
