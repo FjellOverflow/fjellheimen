@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    volumes:
+      - /homeserver/data/plex/config:/config
+      - /mediadrive/Movies:/movies
+      - /mediadrive/TV:/tv
+      - /mediadrive/Music:/music
+    network_mode: host
+    env_file:
+      - /homeserver/environment/general.env
+    environment:
+      - VERSION=latest
+
