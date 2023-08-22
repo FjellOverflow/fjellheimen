@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: torrents-qbittorrent
+    volumes:
+      - /homeserver/data/qbittorrent/config:/config
+      - /mediadrive/Downloads:/downloads
+    network_mode: "service:gluetun"
+    env_file:
+      - /homeserver/environment/general.env
+    environment:
+      - WEBUI_PORT=9090
+      - DOCKER_MODS=marzzzello/linuxserver-io-mod-qbit-matui
+
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: torrents-gluetun
+    cap_add:
+      - NET_ADMIN
+    expose:
+      - '9090'
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+      - /homeserver/environment/gluetun.env
+    environment:
+      - VPN_TYPE=openvpn
+
+networks:
+  proxy-network:
+    external: true
