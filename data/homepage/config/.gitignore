@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!bookmarks.yaml
+!docker.yaml
+!kubernetes.yaml
+!services.yaml
+!settings.yaml
+!widgets.yaml
