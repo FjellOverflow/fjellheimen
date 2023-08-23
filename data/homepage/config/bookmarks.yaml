@@ -1,3 +1,17 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/bookmarks
+- Homeserver repository:
+  - FjellOverflow/homeserver:
+    - icon: github.png
+      href: https://github.com/FjellOverflow/homeserver
+
+- Todos:
+  - Memos:
+    - icon: memos.png
+      href: {{HOMEPAGE_VAR_MEMOS_URL}}
+
+- Dashboard configuration:
+  - Homepage docs:
+    - icon: homepage
+      href: https://gethomepage.dev/en/configs/services/
