@@ -18,6 +18,10 @@ services:
       - proxy-network
     env_file:
       - /homeserver/environment/general.env
+    healthcheck:
+      test: ["CMD", "/bin/check-health"]
+      interval: 10s
+      timeout: 3s
 
   portainer:
     image: portainer/portainer:latest
@@ -59,6 +63,12 @@ services:
       - GLANCES_OPT=-w
     privileged: true
     pid: host
+    healthcheck:
+      test: curl --fail -s http://localhost:61208 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
 
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest

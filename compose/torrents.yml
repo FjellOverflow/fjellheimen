@@ -16,6 +16,12 @@ services:
     environment:
       - WEBUI_PORT=9090
       - DOCKER_MODS=marzzzello/linuxserver-io-mod-qbit-matui
+    healthcheck:
+      test: curl --fail http://localhost:9090 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
 
   gluetun:
     image: qmcgaw/gluetun:latest
