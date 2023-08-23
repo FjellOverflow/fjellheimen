@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  
+  memos:
+    image: neosmemo/memos:latest
+    container_name: memos
+    volumes:
+      - /homeserver/data/memos/config:/var/opt/memos
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env
+
+networks:
+  proxy-network:
+    external: true
