@@ -5,6 +5,7 @@ A docker-based setup and configuration of my home server.
 ## Table of contents
 <!-- TOC -->
 
+- [Table of contents](#table-of-contents)
 - [Project structure](#project-structure)
 - [Docker Compose files](#docker-compose-files)
 - [Usage](#usage)
@@ -224,9 +225,18 @@ Now the new service should be up and running and accessible under *myservice.exa
 ## FAQ
 
 ### Why is the `environment` folder empty (except for `general.env`)?
+<details>
+<summary>Click to show</summary>
 Locally, this folder is not empy, but contains the `ENV` variables for the various services. That means usernames, passwords, urls, API-keys and more. So it needs to be adjusted per-case basis, is private and does not belong into a git repository.
+</details>
 
 ### Why is the `data` folder (basically) empty?
+<details>
+
+<summary>Click to show</summary>
 It is not empy, but contains the empty skeleton of my local directory structure. All of the directories `data/myservice` are mapped as docker volumes to some containers, which means they need to exists, for the container to run. They are (mostly) empty, as they contain the data of the running services, which does not belong (and does not fit) into a git repository.
 
 (An exception is `data/homepage`), as it contains the (not private) configuration for the home server dashboard.
+</details>
+
+
