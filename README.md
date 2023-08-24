@@ -2,10 +2,10 @@
 
 A docker-based setup and configuration of my home server.
 
+<!-- TOC ignore:true -->
 ## Table of contents
 <!-- TOC -->
 
-- [Table of contents](#table-of-contents)
 - [Project structure](#project-structure)
 - [Docker Compose files](#docker-compose-files)
 - [Usage](#usage)
@@ -24,8 +24,13 @@ A docker-based setup and configuration of my home server.
     - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
 
 <!-- /TOC -->
+<!-- /TOC -->
 
 ## Project structure
+<details>
+
+<summary>Click to show</summary>
+
 
 - `compose` contains docker-compose files for various services.
 - `data` contains the data for the services.
@@ -46,7 +51,12 @@ services:
 
 It usually has a directory `data/myservice` that is mapped as a docker volume and an environment file `environment/myservice.env` that is given into the container.
 
+</details>
+
 ## Docker Compose files
+<details>
+
+<summary>Click to show</summary>
 
 A full-fledged docker compose file can look like this:
 
@@ -90,6 +100,7 @@ networks:
 - Almost all containers receive environment variables via the `general.env` file. This sets, amongst others, the appropriate timezone **TZ** and **UID** and **GID** for containers to be run as the user (and not **root**), which is universal for most containers. Containers that need specific **ENV** variables set (such as passwords, API-keys, ...), get, in addition, the file `environment/myservice.env` as input.
 
 - `healthcheck` is set up with most containers as well; it monitors that the container is well (that the application running inside the container is responding to requests). Thus containers will show `Up 2 hours (healthy)` as status.
+</details>
 
 ## Usage
 
@@ -174,6 +185,9 @@ Automatically updates docker images.
 See [containrrr.dev/watchtower/](https://containrrr.dev/watchtower/).
 
 ### Adding a new service
+<details>
+<summary>Click to show</summary>
+
 To add a new service to the setup, you create a new docker compose file `compose/myservice.yml`.
 
 - Add `name: homeserver` for the service to be part of the stack
@@ -220,13 +234,14 @@ Now that the container is running, we want to access it. Lets say, the server ru
 - Under *SSL* add a SSL Certificate, if wanted
 
 Now the new service should be up and running and accessible under *myservice.example.com*.
-
+</details>
 
 ## FAQ
 
 ### Why is the `environment` folder empty (except for `general.env`)?
 <details>
 <summary>Click to show</summary>
+
 Locally, this folder is not empy, but contains the `ENV` variables for the various services. That means usernames, passwords, urls, API-keys and more. So it needs to be adjusted per-case basis, is private and does not belong into a git repository.
 </details>
 
@@ -234,6 +249,7 @@ Locally, this folder is not empy, but contains the `ENV` variables for the vario
 <details>
 
 <summary>Click to show</summary>
+
 It is not empy, but contains the empty skeleton of my local directory structure. All of the directories `data/myservice` are mapped as docker volumes to some containers, which means they need to exists, for the container to run. They are (mostly) empty, as they contain the data of the running services, which does not belong (and does not fit) into a git repository.
 
 (An exception is `data/homepage`), as it contains the (not private) configuration for the home server dashboard.
