@@ -75,7 +75,7 @@ networks:
 For this setup to work, you need:
 
 - Ports `80` and `443` forwarded on your router.
-- A domain pointed to your **public ip adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
+- A domain pointed to your **public IP adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
 
 ### Getting started
 
@@ -105,13 +105,50 @@ For this setup to work, you need:
 
     - Other services that are running on the ***proxy-network*** can be added similarly, by pointing `myservice.yourdomain.duckdns.org` to `http://containername:portnumber`.
 
-    - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers ***private ip***, similarly to ***nginx-proxy-manager***.
+    - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers ***local IP***, similarly to ***nginx-proxy-manager***.
 
 - **Optional**:
     To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
 
 ### Services in detail
 
+#### Server services
+
+##### nginx-proxy-manager
+The most central service. He exposes ports `80` (HTTP) and `443` (HTTPS) to the host network and is part of the ***proxy-network***. He takes all incoming requests and forwards them to the the right **IP** and **port**. Without it, the server infrastructure breaks.
+
+We might for instance have ***myservice*** running on port **8080**. To secure the service, it is only on the ***proxy-network*** and thus not directly accessible from the host network.
+By adding a proxy host in ***nginx-proxy-manager*** that forwards `https://myservice.yourdomain.com` to `http://myservice:8080`, we make the service accessible with HTTPS.
+
+***nginx-proxy-manager*** hence acts as reverse proxy that seperates the host network from the applications running and securely hands incoming requests to the proper service.
+
+See [nginx-proxy-manager.com](https://nginxproxymanager.com/).
+
+##### homepage
+A selfhosted dashboard. Out of the box it is configured to show all the running services, including more detailed information and CPU and memory usage and container health. It also shows server metrics, bookmarks and more. It is configured by editing the files in `data/homepage/config` and adding **ENV** variables to `environment/homepage.env`.
+
+See [gethomepage.dev](https://gethomepage.dev/).
+
+#### duckdns
+[DuckDNS](https://duckdns.org) is a **DDNS** provider, providing a subdomain `mysubdomain.duckdns.org` and pointing it to my **public IP**. As this **IP** might change, the ***duckdns*** container regularly updates the register with the latest **IP**.
+
+See [linuxserver/duckdns](https://hub.docker.com/r/linuxserver/duckdns).
+
+#### glances
+Glances collects server metrics (CPU, memory, disk usage, ...) to be displayed on the server dashboard.
+
+See [nicolargo/glances](https://github.com/nicolargo/glances).
+
+
+#### portainer
+Portainer is a web UI to manager docker.
+
+See [portainer.io](https://www.portainer.io/).
+
+#### watchtower
+Automatically updates docker images.
+
+See [containrrr.dev/watchtower/](https://containrrr.dev/watchtower/).
 
 ### Adding a new service
 To add a new service to the setup, you create a new docker compose file `compose/myservice.yml`.
