@@ -8,7 +8,7 @@ Set up and configurations of my home server.
 - `data` contains the data for the services.
 - `environment` contains `.env` files for the services.
 
-A service `myService` is defined in its docker-compose file `compose/myservice.yml`:
+A service ***myService*** is defined in its docker-compose file `compose/myservice.yml`:
 
 ```yml
 version: '3'
@@ -56,17 +56,17 @@ networks:
     proxy-network:
         external: true
 ```
-- `name: homeserver` is set as the services, even if defined in different docker compose files, should belong to the same stack. Depending on how, when and from where the container is first started, compose might assign them to different stacks. `name: homeserver` overrides that behaviour and assigns all services to the `homeserver` stack
+- `name: homeserver` is set as the services, even if defined in different docker compose files, should belong to the same stack. Depending on how, when and from where the container is first started, compose might assign them to different stacks. `name: homeserver` overrides that behaviour and assigns all services to the ***homeserver*** stack
 
-- `container_name: myservice`: for a more independent service, the container name will be `myservice`; for containers that belong or are intended to be run together, they will be named `purpose-service1`, `purpose-service2` and so on.
+- `container_name: myservice`: for a more independent service, the container name will be ***myservice***; for containers that belong or are intended to be run together, they will be named ***purpose-service1***, ***purpose-service2*** and so on.
 
 - While some services do not make use of any volumes, many need at least one volume to store their data or configuration, which will be stored in `data/myservice/config` and hence the volume mapping `./data/myservice/config:/config`. Some might have additional volumes, for instance some media directory `/some/other/directory/media:/media`. The idea is that all data that is needed for the home server setup to run is stored in `data`, while other data, for instance a directory with media, does not strictly belong to the home server setup, but are an independent data source.
 
-- Many, if not almost all, containers are explicitly set to belong to the externally defined `proxy-network`. This is due to the reverse-proxy setup of the home server and is explained in detail in section TODO.
+- Many, if not almost all, containers are explicitly set to belong to the externally defined ***proxy-network***. This is due to the reverse-proxy setup of the home server and is explained in detail in section TODO.
 
-- Almost all containers receive environment variables via the `general.env` file. This sets, amongst others, the appropriate timezone `TZ` and `UID` and `GID` for containers to be run as the user (and not `root`), which is universal for most containers. Containers that need specific `ENV` variables set (such as passwords, API-keys, ...), get, in addition, the file `environment/myservice.env` as input.
+- Almost all containers receive environment variables via the `general.env` file. This sets, amongst others, the appropriate timezone **TZ** and **UID** and **GID** for containers to be run as the user (and not **root**), which is universal for most containers. Containers that need specific **ENV** variables set (such as passwords, API-keys, ...), get, in addition, the file `environment/myservice.env` as input.
 
-- A `healthcheck` is set up with most containers as well; it monitors that the container is well (that the application running inside the container is responding to requests). Thus containers will show `Up 2 hours (healthy)` as status.
+- `healthcheck` is set up with most containers as well; it monitors that the container is well (that the application running inside the container is responding to requests). Thus containers will show `Up 2 hours (healthy)` as status.
 
 ## Usage
 
@@ -75,7 +75,7 @@ networks:
 For this setup to work, you need:
 
 - Ports `80` and `443` forwarded on your router.
-- A domain pointed to your `public ip adress`. I am using [DuckDNS](https://duckdns.org) to handle DDNS.
+- A domain pointed to your **public ip adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
 
 ### Getting started
 
@@ -92,27 +92,26 @@ For this setup to work, you need:
 - **Optional**:
     If you are using (a subdomain of) [DuckDNS](https://duckdns.org), enter *subdomain* and *token* into `environment/duckdns.env`.
 
-- Start essential `server` services.
+- Start essential ***server*** services.
     ```bash
     docker compose -f /homeserver/compose/server.yml up -d
     ```
-    This should start, amongst others, `nginx-proxy-manager`.
+    This should start, amongst others, ***nginx-proxy-manager***.
 
-- You should now be able to access `nginx-proxy-manager` on [http://localhost:81](http://localhost:81). Create an account and login.
+- You should now be able to access ***nginx-proxy-manager*** on [http://localhost:81](http://localhost:81). Create an account and login.
 
-- There, you want to create a SSL-certificate for your subdomain(s) and point subdomains to the different services.
-    - For `nginx-proxy-manager` itself, create a new proxy host and point the domain `proxy.yourdomain.duckdns.org` to `http://your-local-ip:81` and enable the SSL-certificate. Now you should be able to access the `nginx-proxy-manager` at `proxy.yourdomain.duckdns.org`.
+- There, you want to create a **SSL**-certificate for your subdomain(s) and point subdomains to the different services.
+    - For ***nginx-proxy-manager*** itself, create a new proxy host and point the domain `proxy.yourdomain.duckdns.org` to `http://your-local-ip:81` and enable the SSL-certificate. Now you should be able to access the ***nginx-proxy-manager*** at `proxy.yourdomain.duckdns.org`.
 
-    - Other services that are running on the `proxy-network` can be added similarly, by pointing `myservice.yourdomain.duckdns.org` to `http://containername:portnumber`.
+    - Other services that are running on the ***proxy-network*** can be added similarly, by pointing `myservice.yourdomain.duckdns.org` to `http://containername:portnumber`.
 
-    - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers `public ip`, similarly to `nginx-proxy-manager`
+    - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers ***private ip***, similarly to ***nginx-proxy-manager***.
 
 - **Optional**:
-    To use the convient dashboard, provided by `homepage`, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There `ENV` variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the `server-homepage` container. If you point the `homepage` container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
+    To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
 
-### Common tasks
+### Services in detail
 
-- 
 
 ### Adding a new service
 To add a new service to the setup, you create a new docker compose file `compose/myservice.yml`.
@@ -121,7 +120,7 @@ To add a new service to the setup, you create a new docker compose file `compose
 
 - Add `container_name: myservice` to easily identify the container
 
-- Make sure to add the container to the `proxy-network` by adding
+- Make sure to add the container to the ***proxy-network*** by adding
     ```yml
     networks:
         proxy-network:
