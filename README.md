@@ -70,6 +70,50 @@ networks:
 
 ## Usage
 
+### Prerequisites
+
+For this setup to work, you need:
+
+- Ports `80` and `443` forwarded on your router.
+- A domain pointed to your `public ip adress`. I am using [DuckDNS](https://duckdns.org) to handle DDNS.
+
+### Getting started
+
+- **Optional**:
+    For the setup to work out of the box, the directory must be located at `\homeserver`.
+    ```bash
+    sudo cp -r homeserver /homeserver
+    ```
+    Feel free to skip this and adjust the filepaths throughout this project.
+
+- **Optional**:
+    Adjust `environment/general.env` to your UID/GID and timezone.
+
+- **Optional**:
+    If you are using (a subdomain of) [DuckDNS](https://duckdns.org), enter *subdomain* and *token* into `environment/duckdns.env`.
+
+- Start essential `server` services.
+    ```bash
+    docker compose -f /homeserver/compose/server.yml up -d
+    ```
+    This should start, amongst others, `nginx-proxy-manager`.
+
+- You should now be able to access `nginx-proxy-manager` on [http://localhost:81](http://localhost:81). Create an account and login.
+
+- There, you want to create a SSL-certificate for your subdomain(s) and point subdomains to the different services.
+    - For `nginx-proxy-manager` itself, create a new proxy host and point the domain `proxy.yourdomain.duckdns.org` to `http://your-local-ip:81` and enable the SSL-certificate. Now you should be able to access the `nginx-proxy-manager` at `proxy.yourdomain.duckdns.org`.
+
+    - Other services that are running on the `proxy-network` can be added similarly, by pointing `myservice.yourdomain.duckdns.org` to `http://containername:portnumber`.
+
+    - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers `public ip`, similarly to `nginx-proxy-manager`
+
+- **Optional**:
+    To use the convient dashboard, provided by `homepage`, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There `ENV` variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the `server-homepage` container. If you point the `homepage` container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
+
+### Common tasks
+
+- 
+
 ### Adding a new service
 To add a new service to the setup, you create a new docker compose file `compose/myservice.yml`.
 
