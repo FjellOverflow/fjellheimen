@@ -24,7 +24,6 @@ A docker-based setup and configuration of my home server.
     - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
 
 <!-- /TOC -->
-<!-- /TOC -->
 
 ## Project structure
 <details>
@@ -112,6 +111,9 @@ For this setup to work, you need:
 - A domain pointed to your **public IP adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
 
 ### Getting started
+<details>
+
+<summary>Click to show</summary>
 
 - **Optional**:
     For the setup to work out of the box, the directory must be located at `\homeserver`.
@@ -143,6 +145,8 @@ For this setup to work, you need:
 
 - **Optional**:
     To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
+
+</details>
 
 ### Services
 
