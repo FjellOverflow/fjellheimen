@@ -1,6 +1,28 @@
 # Homeserver
 
-Set up and configurations of my home server.
+A docker-based setup and configuration of my home server.
+
+## Table of contents
+<!-- TOC -->
+
+- [Project structure](#project-structure)
+- [Docker Compose files](#docker-compose-files)
+- [Usage](#usage)
+    - [Prerequisites](#prerequisites)
+    - [Getting started](#getting-started)
+    - [Services](#services)
+        - [nginx-proxy-manager](#nginx-proxy-manager)
+        - [homepage](#homepage)
+        - [duckdns](#duckdns)
+        - [glances](#glances)
+        - [portainer](#portainer)
+        - [watchtower](#watchtower)
+    - [Adding a new service](#adding-a-new-service)
+- [FAQ](#faq)
+    - [Why is the environment folder empty except for general.env?](#why-is-the-environment-folder-empty-except-for-generalenv)
+    - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
+
+<!-- /TOC -->
 
 ## Project structure
 
@@ -110,11 +132,11 @@ For this setup to work, you need:
 - **Optional**:
     To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
 
-### Services in detail
+### Services
 
-#### Server services
+A short summary of the **server**-services. Of course there is plenty of additional services, which are irrelevant to the homeserver infrastructure.
 
-##### nginx-proxy-manager
+#### nginx-proxy-manager
 The most central service. He exposes ports `80` (HTTP) and `443` (HTTPS) to the host network and is part of the ***proxy-network***. He takes all incoming requests and forwards them to the the right **IP** and **port**. Without it, the server infrastructure breaks.
 
 We might for instance have ***myservice*** running on port **8080**. To secure the service, it is only on the ***proxy-network*** and thus not directly accessible from the host network.
@@ -124,7 +146,7 @@ By adding a proxy host in ***nginx-proxy-manager*** that forwards `https://myser
 
 See [nginx-proxy-manager.com](https://nginxproxymanager.com/).
 
-##### homepage
+#### homepage
 A selfhosted dashboard. Out of the box it is configured to show all the running services, including more detailed information and CPU and memory usage and container health. It also shows server metrics, bookmarks and more. It is configured by editing the files in `data/homepage/config` and adding **ENV** variables to `environment/homepage.env`.
 
 See [gethomepage.dev](https://gethomepage.dev/).
