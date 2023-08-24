@@ -19,6 +19,11 @@ A docker-based setup and configuration of my home server.
         - [portainer](#portainer)
         - [watchtower](#watchtower)
     - [Adding a new service](#adding-a-new-service)
+- [Diagrammatic setup](#diagrammatic-setup)
+    - [Server stacks](#server-stacks)
+    - [Container interactions](#container-interactions)
+    - [How a request gets resolved](#how-a-request-gets-resolved)
+    - [How a request gets resolved](#how-a-request-gets-resolved)
 - [FAQ](#faq)
     - [Why is the environment folder empty except for general.env?](#why-is-the-environment-folder-empty-except-for-generalenv)
     - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
@@ -238,6 +243,36 @@ Now that the container is running, we want to access it. Lets say, the server ru
 - Under *SSL* add a SSL Certificate, if wanted
 
 Now the new service should be up and running and accessible under *myservice.example.com*.
+</details>
+
+## Diagrammatic setup
+
+### Application stacks
+<details>
+<summary>Click to show</summary>
+
+![Application stacks](/.diagrams/stack.png)
+</details>
+
+### Container interactions
+<details>
+<summary>Click to show</summary>
+
+![Container interactions](/.diagrams/docker.png)
+</details>
+
+### Container in the network
+<details>
+<summary>Click to show</summary>
+
+![Container in network](/.diagrams/network.png)
+</details>
+
+### Request resolve
+<details>
+<summary>Click to show</summary>
+
+![Network request resolves](/.diagrams/resolve.png)
 </details>
 
 ## FAQ
