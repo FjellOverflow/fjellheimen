@@ -61,7 +61,7 @@ function setup_zsh() {
     # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &&
 
-    sed -i -E s/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/ ~/.zshrc &&
+    sed -i s/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/ ~/.zshrc &&
     echo "[ -f /homeserver/setup/.aliases ] && source /homeserver/setup/.aliases" >> ~/.zshrc
 }
 
