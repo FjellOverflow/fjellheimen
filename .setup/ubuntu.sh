@@ -30,12 +30,14 @@ function passwordless_sudo() {
     echo "$USERACCOUNT  ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERACCOUNT
 }
 
+# unchecked
 function setup_ufw() {
-    sudo ufw allow Samba &&
+    sudo ufw allow samba &&
     sudo ufw allow ssh &&
     sudo ufw enable
 }
 
+# unchecked
 function disable_ssh_psswd_auth() {
     prompt_user "You will not be able to login with password after that.
 Make sure you have copied your ssh-key with ssh-copy-id onto the machine before proceeding.
@@ -46,6 +48,7 @@ Continue?" || return 1
     sudo systemctl restart sshd
 }
 
+# unchecked
 function setup_zsh() {
     # https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
     sudo apt install -y zsh && 
@@ -64,11 +67,13 @@ function setup_zsh() {
     echo "[ -f /homeserver/setup/.aliases ] && source /homeserver/setup/.aliases" >> ~/.zshrc
 }
 
+# unchecked
 function automatic_login() {
     sudo sed -i -E 's/#? AutomaticLoginEnable = true/AutomaticLoginEnable = true/' /etc/gdm3/custom.conf &&
     sudo sed -i -E s/#? AutomaticLogin = user1/AutomaticLogin = $USERACCOUNT/ /etc/gdm3/custom.conf
 }
 
+# unchecked
 function setup_samba() {
     sudo echo "
 [mediadrive]
@@ -88,6 +93,7 @@ write list = $USERACCOUNT" >> /etc/samba/smb.conf
     sudo systemctl restart smbd
 }
 
+# unchecked
 function hdd_mountpoints() {
     sudo echo /dev/disk/by-id/$MEDIADRIVE-0:0 /mediadrive auto nosuid,nodev,nofail,x-gvfs-show 0 0 >> /etc/fstab &&
     sudo echo /dev/disk/by-id/$HOMESERVER-0:0 /homeserver auto nosuid,nodev,nofail,x-gvfs-show 0 0 >> /etc/fstab
