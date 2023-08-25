@@ -27,7 +27,7 @@ function setup_ssh() {
 function passwordless_sudo() {
     # https://linuxize.com/post/how-to-run-sudo-command-without-password/
     sudo touch /etc/sudoers.d/$USERACCOUNT &&
-    sudo echo "$USERACCOUNT  ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERACCOUNT
+    echo "$USERACCOUNT  ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERACCOUNT
 }
 
 function setup_ufw() {
