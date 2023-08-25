@@ -76,7 +76,7 @@ function automatic_login() {
 # unchecked
 function setup_samba() {
     sudo apt install -y samba
-    sudo echo "
+    echo "
 [mediadrive]
 comment = mediadrive
 path = /mediadrive
@@ -90,14 +90,14 @@ comment = homeserver
 path = /homeserver
 read only = yes
 browsable = yes
-write list = $USERACCOUNT" >> /etc/samba/smb.conf
+write list = $USERACCOUNT" | sudo tee -a /etc/samba/smb.conf
     sudo systemctl restart smbd
 }
 
 # unchecked
 function hdd_mountpoints() {
-    sudo echo /dev/disk/by-id/$MEDIADRIVE-0:0 /mediadrive auto nosuid,nodev,nofail,x-gvfs-show 0 0 >> /etc/fstab &&
-    sudo echo /dev/disk/by-id/$HOMESERVER-0:0 /homeserver auto nosuid,nodev,nofail,x-gvfs-show 0 0 >> /etc/fstab
+    echo /dev/disk/by-id/$MEDIADRIVE-0:0 /mediadrive auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab &&
+    echo /dev/disk/by-id/$HOMESERVER-0:0 /homeserver auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab
 }
 
 prompt_user "Enable sudo without password?" && passwordless_sudo || echo "Skipping..."
