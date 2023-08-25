@@ -75,6 +75,7 @@ function automatic_login() {
 
 # unchecked
 function setup_samba() {
+    sudo apt install -y samba
     sudo echo "
 [mediadrive]
 comment = mediadrive
@@ -103,8 +104,6 @@ prompt_user "Enable sudo without password?" && passwordless_sudo || echo "Skippi
 
 prompt_user "Install ssh?" && setup_ssh || echo "Skipping..."
 
-prompt_user "Enable ufw and allow ssh and samba?" && setup_ufw || echo "Skipping..."
-
 prompt_user "Install zsh as default shell (incl. oh-my-zsh, hightlighting, aliases)?" && setup_zsh|| echo "Skipping..."
 
 prompt_user "Disable ssh password authentication?" && disable_ssh_psswd_auth || echo "Skipping..."
@@ -112,5 +111,7 @@ prompt_user "Disable ssh password authentication?" && disable_ssh_psswd_auth || 
 prompt_user "Set static mount points for mediadrive and homeserver?" && hdd_mountpoints || echo "Skipping..."
 
 prompt_user "Enable /mediadrive and /homeserver samba shares?" && setup_samba || echo "Skipping..."
+
+prompt_user "Enable ufw and allow ssh and samba?" && setup_ufw || echo "Skipping..."
 
 prompt_user "Enable automatic login?" && automatic_login || echo "Skipping..."
