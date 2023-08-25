@@ -111,11 +111,15 @@ networks:
 ## Usage
 
 ### Prerequisites
+<details>
+<summary>Click to show</summary>
 
 For this setup to work, you need:
 
 - Ports `80` and `443` forwarded on your router.
 - A domain pointed to your **public IP adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
+
+</details>
 
 ### Getting started
 <details>
@@ -156,6 +160,8 @@ For this setup to work, you need:
 </details>
 
 ### Services
+<details>
+<summary>Click to show</summary>
 
 A short summary of the **server**-services. Of course there is plenty of additional services, which are irrelevant to the homeserver infrastructure.
 
@@ -194,6 +200,8 @@ See [portainer.io](https://www.portainer.io/).
 Automatically updates docker images.
 
 See [containrrr.dev/watchtower/](https://containrrr.dev/watchtower/).
+
+</details>
 
 ### Adding a new service
 <details>
