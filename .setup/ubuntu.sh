@@ -30,14 +30,12 @@ function passwordless_sudo() {
     echo "$USERACCOUNT  ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERACCOUNT
 }
 
-# unchecked
 function setup_ufw() {
     sudo ufw allow samba &&
     sudo ufw allow ssh &&
     sudo ufw enable
 }
 
-# unchecked
 function disable_ssh_psswd_auth() {
     prompt_user "You will not be able to login with password after that.
 Make sure you have copied your ssh-key with ssh-copy-id onto the machine before proceeding.
@@ -55,7 +53,7 @@ function setup_zsh() {
     chsh -s $(which zsh) &&
 
     # https://github.com/ohmyzsh/ohmyzsh/wiki
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
+    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
 
     # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting &&
@@ -73,7 +71,6 @@ function automatic_login() {
     sudo sed -i -E s/#? AutomaticLogin = user1/AutomaticLogin = $USERACCOUNT/ /etc/gdm3/custom.conf
 }
 
-# unchecked
 function setup_samba() {
     sudo apt install -y samba
     echo "
@@ -94,7 +91,6 @@ write list = $USERACCOUNT" | sudo tee -a /etc/samba/smb.conf
     sudo systemctl restart smbd
 }
 
-# unchecked
 function hdd_mountpoints() {
     echo /dev/disk/by-id/$MEDIADRIVE-0:0 /mediadrive auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab &&
     echo /dev/disk/by-id/$HOMESERVER-0:0 /homeserver auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab
