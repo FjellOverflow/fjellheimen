@@ -19,11 +19,12 @@ A docker-based setup and configuration of my home server.
         - [portainer](#portainer)
         - [watchtower](#watchtower)
     - [Adding a new service](#adding-a-new-service)
+- [The host machine](#the-host-machine)
 - [Diagrammatic setup](#diagrammatic-setup)
-    - [Server stacks](#server-stacks)
+    - [Application stacks](#application-stacks)
     - [Container interactions](#container-interactions)
-    - [How a request gets resolved](#how-a-request-gets-resolved)
-    - [How a request gets resolved](#how-a-request-gets-resolved)
+    - [Container in the network](#container-in-the-network)
+    - [Request resolve](#request-resolve)
 - [FAQ](#faq)
     - [Why is the environment folder empty except for general.env?](#why-is-the-environment-folder-empty-except-for-generalenv)
     - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
@@ -39,6 +40,7 @@ A docker-based setup and configuration of my home server.
 - `compose` contains docker-compose files for various services.
 - `data` contains the data for the services.
 - `environment` contains `.env` files for the services.
+- `.setup` contains the setup scripts for the host machine
 
 A service ***myService*** is defined in its docker-compose file `compose/myservice.yml`:
 
@@ -243,6 +245,49 @@ Now that the container is running, we want to access it. Lets say, the server ru
 - Under *SSL* add a SSL Certificate, if wanted
 
 Now the new service should be up and running and accessible under *myservice.example.com*.
+</details>
+
+## The host machine
+<details>
+<summary>Click to show</summary>
+This homeserver setup is supposed to run on a Ubuntu Desktop machine.
+It has been tested and tweaked for Ubuntu Desktop 22.04.3.
+To simplify and speed up the process of setting up a host machine,
+there is a setup script located in `.setup`.
+
+- Install [Ubuntu Desktop](https://ubuntu.com/download/desktop)
+    - **Optional**: Check "Log in automatically" on installation
+- Install [Git](https://git-scm.com/download/linux)
+
+At this point we are ready to clone this repository and execute the setup script. Note that, if you have not installed and enabled ssh-server yet, you will need to do this on the machine itself. Feel free to install ssh-server yourself, then ssh into the server machine from your own machine and run the script remotely.
+
+The script will install some essentials and perform some useful and necesary tweaks, bringing the system into a state where its perfectly ready to run the homeserver. The script expects a `ubuntu.env` file next to it, containing **ENV** variables:
+
+|VAR | Description
+---|---
+USERACCOUNT | name of the default user on machine
+MEDIADRIVE_DIR | where the mediadrive should be mounted (e.g. /mediadrive)
+MEDIADRIVE_ID | the device uid of the mediadrive
+HOMESERVER_DIR | where the homeserver drive should be mounted (e.g. /homeserver)
+HOMESERVER_ID | the device uid of the homeserver drive
+
+The script is simply called with
+```bash
+./homeserver/.setup/ubuntu.sh
+```
+It will prompt with *[y/n]* before each task and, if succesfully completing it, will set the **ENV** variable ***RAN_TASK_[task-id]=true*** in `ubuntu.env` to avoid running it again the next time. Feel free to set or unset those variables yourself.
+
+***WARNING:*** Make sure to check the script yourself before executing and make sure that **a)** you understand what it is doing and why and **b)** that is necesary and applicable in your use case/system.
+Never blindly execute scripts from the web.
+
+Other than that, for my personal setup, I like to:
+
+- switch the default shell from bash to [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
+- install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
+- install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+- enable them by adding `plugins=(zsh-autosuggestions zsh-syntax-hightlighting)` to my `.zshrc`
+- Add `[ -f /homeserver/.setup/.aliases ] && source /homeserver/.setup/.aliases` to my `.zshrc` to get my personal aliases
+
 </details>
 
 ## Diagrammatic setup
