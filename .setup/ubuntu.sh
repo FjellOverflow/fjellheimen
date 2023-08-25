@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TASK_NUMBER=9
+TASK_NUMBER=8
 
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -80,7 +80,7 @@ TASK_PROMPT_5="Install docker and docker compose?"
 function TASK_5() {
     # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
     sudo apt-get update
-    sudo apt-get install ca-certificates curl gnupg
+    sudo apt-get install -y ca-certificates curl gnupg
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
@@ -89,13 +89,13 @@ function TASK_5() {
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     sudo docker run hello-world
 }
 
 TASK_PROMPT_6="Share $MEDIADRIVE_DIR and $HOMESERVER_DIR with samba?"
 function TASK_6() {
-    echo " \
+    echo "
 [mediadrive]
 comment = mediadrive
 path = $MEDIADRIVE_DIR
@@ -109,7 +109,7 @@ comment = homeserver
 path = $HOMESERVER_DIR
 read only = yes
 browsable = yes
-write list = $USERACCOUNT" | sudo tee -a ~/Downloads/test #/etc/samba/smb.conf &&
+write list = $USERACCOUNT" | sudo tee -a /etc/samba/smb.conf &&
     sudo service smbd restart
 }
 
@@ -124,30 +124,8 @@ Continue?" || return 1
     sudo systemctl restart sshd
 }
 
-# unchecked
-TASK_PROMPT_8="Install zsh as default shell, incl. oh-my-zsh, hightlighting & aliases?"
+TASK_PROMPT_8="Set static mount points $MEDIADRIVE_DIR and $HOMESERVER_DIR?"
 function TASK_8() {
-    # https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
-    sudo apt install -y zsh && 
-    chsh -s $(which zsh) &&
-
-    # https://github.com/ohmyzsh/ohmyzsh/wiki
-    sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
-
-    # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting &&
-
-    # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &&
-
-    sed -i 's/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc &&
-    echo "[ -f /homeserver/setup/.aliases ] && source /homeserver/setup/.aliases" >> ~/.zshrc
-}
-
-
-
-TASK_PROMPT_9="Set static mount points $MEDIADRIVE_DIR and $HOMESERVER_DIR?"
-function TASK_9() {
     echo /dev/disk/by-id/$MEDIADRIVE_ID-0:0 $MEDIADRIVE_DIR auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab &&
     echo /dev/disk/by-id/$HOMESERVER_ID-0:0 $HOMESERVER_DIR auto nosuid,nodev,nofail,x-gvfs-show 0 0 | sudo tee -a /etc/fstab
 }
