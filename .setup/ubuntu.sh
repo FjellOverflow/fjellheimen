@@ -61,15 +61,10 @@ function setup_zsh() {
     # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &&
 
-    sed -i -E 's/#?plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc &&
+    sed -i -E s/plugins=(git)/plugins=(git zsh-syntax-highlighting zsh-autosuggestions)/ ~/.zshrc &&
     echo "[ -f /homeserver/setup/.aliases ] && source /homeserver/setup/.aliases" >> ~/.zshrc
 }
 
-# unchecked
-function automatic_login() {
-    sudo sed -i -E 's/#? AutomaticLoginEnable = true/AutomaticLoginEnable = true/' /etc/gdm3/custom.conf &&
-    sudo sed -i -E s/#? AutomaticLogin = user1/AutomaticLogin = $USERACCOUNT/ /etc/gdm3/custom.conf
-}
 
 function setup_samba() {
     sudo apt install -y samba
@@ -109,5 +104,3 @@ prompt_user "Set static mount points for mediadrive and homeserver?" && hdd_moun
 prompt_user "Enable /mediadrive and /homeserver samba shares?" && setup_samba || echo "Skipping..."
 
 prompt_user "Enable ufw and allow ssh and samba?" && setup_ufw || echo "Skipping..."
-
-prompt_user "Enable automatic login?" && automatic_login || echo "Skipping..."
