@@ -1,0 +1,23 @@
+# IP
+alias publicip='wget -O - -q https://checkip.amazonaws.com'
+alias localip="hostname -I | cut -f1 -d' '"
+
+# DRIVES
+alias server='cd /homeserver'
+alias media='cd /mediadrive'
+
+# DOCKER
+alias dps='sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}"'
+
+alias dstart='sudo docker start $1'
+alias dstop='sudo docker stop $1'
+alias dstopall='sudo docker stop $(sudo docker ps -q)'
+alias drm='sudo docker rm $1'
+alias drestart='sudo docker restart $1'
+
+dcup() {
+  sudo docker compose -f /homeserver/compose/"$1".yml up -d
+}
+dcdown() {
+  sudo docker compose -f /homeserver/compose/"$1".yml down
+}
