@@ -5,7 +5,7 @@
 - Media:
     - Plex:
         icon: plex.png
-        href: https://app.plex.tv
+        href: {{HOMEPAGE_VAR_PLEX_URL}}
         description: Movies, TV Shows & Music
         server: docker
         container: plex
