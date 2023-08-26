@@ -1,10 +1,16 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/bookmarks
-- Homeserver repository:
-  - FjellOverflow/homeserver:
+- Homeserver:
+  - Git repository:
     - icon: github.png
       href: https://github.com/FjellOverflow/homeserver
+  - r/selfhosted:
+    - icon: reddit.png
+      href: https://reddit.com/r/selfhosted
+  - Awesome selfhosted:
+    - icon: selfhosted-light.png
+      href: https://awesome-selfhosted.net/
 
 - Todos:
   - Memos:
