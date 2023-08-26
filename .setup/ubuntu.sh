@@ -97,20 +97,21 @@ TASK_PROMPT_6="Share $MEDIADRIVE_DIR and $HOMESERVER_DIR with samba?"
 function TASK_6() {
     echo "
 [mediadrive]
-comment = mediadrive
-path = $MEDIADRIVE_DIR
-read only = yes
-browsable = yes
-guest ok = yes
-write list = $USERACCOUNT
+    comment = mediadrive
+    path = $MEDIADRIVE_DIR
+    read only = yes
+    browsable = yes
+    guest ok = yes
+    write list = $USERACCOUNT
 
 [homeserver]
-comment = homeserver
-path = $HOMESERVER_DIR
-read only = yes
-browsable = yes
-write list = $USERACCOUNT" | sudo tee -a /etc/samba/smb.conf &&
+    comment = homeserver
+    path = $HOMESERVER_DIR
+    read only = yes
+    browsable = yes
+    write list = $USERACCOUNT" | sudo tee -a /etc/samba/smb.conf &&
     sudo service smbd restart
+    sudo smbpasswd -a $USERACCOUNT
 }
 
 TASK_PROMPT_7="Disable ssh password authentication?"
