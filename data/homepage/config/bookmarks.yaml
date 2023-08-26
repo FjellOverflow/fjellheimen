@@ -1,21 +1,27 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/bookmarks
-- Homeserver:
-  - Git repository:
-    - icon: github.png
-      href: https://github.com/FjellOverflow/homeserver
-  - r/selfhosted:
-    - icon: reddit.png
-      href: https://reddit.com/r/selfhosted
+- Resources:
   - Awesome selfhosted:
     - icon: selfhosted-light.png
       href: https://awesome-selfhosted.net/
+  - r/selfhosted:
+    - icon: reddit.png
+      href: https://reddit.com/r/selfhosted
+  - r/homelab:
+    - icon: reddit.png
+      href: https://reddit.com/r/homelab
 
-- Todos:
+- Utilities:
+  - Notifications:
+    - icon: ntfy-light.png
+      href: {{HOMEPAGE_VAR_NOTIFICATIONS_URL}}
   - Memos:
     - icon: memos.png
       href: {{HOMEPAGE_VAR_MEMOS_URL}}
+  - Git repository:
+    - icon: github.png
+      href: https://github.com/FjellOverflow/homeserver
 
 - Dashboard configuration:
   - Homepage docs:
