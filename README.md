@@ -295,6 +295,7 @@ Other than that, for my personal setup, I like to:
 - install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 - enable them by adding `plugins=(zsh-autosuggestions zsh-syntax-hightlighting)` to my `.zshrc`
 - Add `[ -f /homeserver/.setup/.aliases ] && source /homeserver/.setup/.aliases` to my `.zshrc` to get my personal aliases
+- Open the ports for nginx-proxy-manager and Plex in UFW with `sudo ufw allow port/tcp`
 
 </details>
 
