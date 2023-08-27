@@ -1,0 +1,37 @@
+version: '3'
+
+name: homeserver
+
+services:
+
+  mealie:
+    image: hkotel/mealie:frontend-v1.0.0beta-5
+    container_name: mealie
+    volumes:
+      - /homeserver/data/mealie/config:/app/data/
+    networks:
+      - proxy-network
+      - mealie-network
+    env_file:
+      - /homeserver/environment/general.env
+    environment:
+      - API_URL=http://mealie-api:9000
+  
+  mealie-api:
+    image: hkotel/mealie:api-v1.0.0beta-5
+    container_name: mealie-api
+    volumes:
+      - /homeserver/data/mealie/config:/app/data/
+    networks:
+      - mealie-network
+    env_file:
+      - /homeserver/environment/general.env
+    environment:
+      - ALLOW_SIGNUP=true
+      - MAX_WORKERS=1
+      - WEB_CONCURRENCY=1
+
+networks:
+  mealie-network:
+  proxy-network:
+    external: true
