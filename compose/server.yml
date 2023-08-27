@@ -46,7 +46,7 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/homepage.env
+      - /homeserver/environment/homepage_dedyn.env
     environment:
       - TZ=Europe/Tallinn
 
