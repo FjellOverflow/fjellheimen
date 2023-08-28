@@ -48,7 +48,7 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/homepage_dedyn.env
+      - /homeserver/environment/homepage.env
     environment:
       - TZ=Europe/Tallinn
     restart: unless-stopped
@@ -74,16 +74,6 @@ services:
       retries: 3
     restart: unless-stopped
 
-  duckdns:
-    image: lscr.io/linuxserver/duckdns:latest
-    container_name: server-duckdns
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/environment/general.env
-      - /homeserver/environment/duckdns.env
-    restart: unless-stopped
-
   watchtower:
     image: containrrr/watchtower:latest
     container_name: server-watchtower
@@ -93,6 +83,9 @@ services:
       - proxy-network
     env_file:
       - /homeserver/environment/general.env
+    environment:
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://ntfy.sh/watchtower?title=Watchtower
     restart: unless-stopped
 
 networks:
