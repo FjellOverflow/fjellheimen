@@ -22,6 +22,7 @@ services:
       test: ["CMD", "/bin/check-health"]
       interval: 10s
       timeout: 3s
+    restart: unless-stopped
 
   portainer:
     image: portainer/portainer:latest
@@ -34,6 +35,7 @@ services:
     env_file:
       - /homeserver/environment/general.env
     privileged: true
+    restart: unless-stopped
 
   homepage:
     image: ghcr.io/benphelps/homepage:latest
@@ -49,6 +51,7 @@ services:
       - /homeserver/environment/homepage_dedyn.env
     environment:
       - TZ=Europe/Tallinn
+    restart: unless-stopped
 
   glances:
     image: nicolargo/glances:latest
@@ -69,6 +72,7 @@ services:
       start_period: 20s
       timeout: 10s
       retries: 3
+    restart: unless-stopped
 
   duckdns:
     image: lscr.io/linuxserver/duckdns:latest
@@ -78,6 +82,7 @@ services:
     env_file:
       - /homeserver/environment/general.env
       - /homeserver/environment/duckdns.env
+    restart: unless-stopped
 
   watchtower:
     image: containrrr/watchtower:latest
@@ -88,6 +93,7 @@ services:
       - proxy-network
     env_file:
       - /homeserver/environment/general.env
+    restart: unless-stopped
 
 networks:
   proxy-network:
