@@ -86,6 +86,7 @@ services:
     environment:
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
       - WATCHTOWER_NOTIFICATION_URL=ntfy://ntfy.sh/watchtower?title=Watchtower
+      - WATCHTOWER_SCHEDULE="0 0 3 * * *"
     restart: unless-stopped
 
 networks:
