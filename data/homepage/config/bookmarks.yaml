@@ -1,16 +1,6 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/bookmarks
-- Utilities:
-  - Memos:
-    - icon: memos.png
-      href: {{HOMEPAGE_VAR_MEMOS_HREF}}
-  - Meals:
-    - icon: mealie.png
-      href: {{HOMEPAGE_VAR_MEALIE_HREF}}
-  - Notifications:
-    - icon: ntfy-light.png
-      href: {{HOMEPAGE_VAR_NOTIFICATIONS_HREF}}
 
 - Manage Server:
   - Git repository:
@@ -33,8 +23,5 @@
   - r/selfhosted:
     - icon: reddit.png
       href: https://reddit.com/r/selfhosted
-  - r/homelab:
-    - icon: reddit.png
-      href: https://reddit.com/r/homelab
 
 

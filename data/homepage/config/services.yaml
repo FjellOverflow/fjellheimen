@@ -9,7 +9,7 @@
         description: Movies, TV Shows & Music
         server: docker
         container: plex
-        showStats: true
+        showStats: false
         widget:
           type: plex
           url: {{HOMEPAGE_VAR_PLEX_URL}}
@@ -20,7 +20,7 @@
         description: Request Movies & TV shows
         server: docker
         container: overseerr
-        showStats: true
+        showStats: false
         widget:
           type: overseerr
           url: {{HOMEPAGE_VAR_OVERSEERR_URL}}
@@ -31,7 +31,7 @@
         description: Books
         server: docker
         container: kavita
-        showStats: true
+        showStats: false
         widget:
           type: kavita
           url: {{HOMEPAGE_VAR_KAVITA_URL}}
@@ -45,7 +45,7 @@
         description: Torrents
         server: docker
         container: torrents-qbittorrent
-        showStats: true
+        showStats: false
         widget:
           type: qbittorrent
           url: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
@@ -57,7 +57,7 @@
         description: TV Show management
         server: docker
         container: sonarr
-        showStats: true
+        showStats: false
         widget:
           type: sonarr
           url: {{HOMEPAGE_VAR_SONARR_URL}}
@@ -68,12 +68,43 @@
         description: Movie management
         server: docker
         container: radarr
-        showStats: true
+        showStats: false
         widget:
           type: radarr
           url: {{HOMEPAGE_VAR_RADARR_URL}}
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
 
+- Utilities:
+    - Memos:
+        icon: memos.png
+        href: {{HOMEPAGE_VAR_MEMOS_HREF}}
+        description: Notes and todos
+        server: docker
+        container: util-memos
+        showStats: false
+    - Mealie:
+        icon: mealie.png
+        href: {{HOMEPAGE_VAR_MEALIE_HREF}}
+        description: Plan meals
+        server: docker
+        container: mealie-api
+        showStats: false
+        widget:
+          type: mealie
+          url: {{HOMEPAGE_VAR_MEALIE_URL}}
+          key: {{HOMEPAGE_VAR_MEALIE_KEY}}
+    - ntfy:
+        icon: ntfy-light.png
+        href: {{HOMEPAGE_VAR_NOTIFICATIONS_HREF}}
+        description: Send notifications
+        server: docker
+        container: util-ntfy
+        showStats: false
+    - Hompage:
+        icon: homepage.png
+        href: {{HOMEPAGE_VAR_HOMEPAGE_HREF}}
+        description: {{HOMEPAGE_VAR_HOMEPAGE_TITLE}}
+        container: server-homepage-remote
 
 - Administration:
     - Nginx Proxy Manager:
@@ -82,7 +113,7 @@
         description: Manage Reverse Proxy & SSL
         server: docker
         container: server-nginx-proxy-manager
-        showStats: true
+        showStats: false
         widget:
           type: npm
           url: {{HOMEPAGE_VAR_NPM_URL}}
@@ -94,34 +125,49 @@
         description: Manage Docker containers
         server: docker
         container: server-portainer
-        showStats: true
+        showStats: false
         widget:
           type: portainer
           url: {{HOMEPAGE_VAR_PORTAINER_URL}}
           env: 2
           key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
-
-- Metrics:
+    - Tailscale:
+        icon: tailscale-light.png
+        href: https://login.tailscale.com/admin
+        description: Remote access
+        server: docker
+        container: tailscale
+        showStats: false
+        widget:
+          type: tailscale
+          deviceid: nmyCTg3CNTRL
+          key: tskey-api-kj5WV75CNTRL-vnE3bTGHgBdrC6NauavQBdZve1otrRPM
     - Glances:
         icon: glances.png
         href: {{HOMEPAGE_VAR_GLANCES_HREF}}
-        description: Server Metrics
+        description: Server metrics
         server: docker
         container: server-glances
-        showStats: true
+        showStats: false
+
+- Metrics:
     - Processes:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
           metric: process
-    - Homserver Disk Usage:
+    - CPU:
+        widget:
+          type: glances
+          url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          metric: cpu
+    - Homserver disk usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
           metric: disk:sdc
-    - Mediadrive Usage:
+    - Mediadrive usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
           metric: disk:sdb
-

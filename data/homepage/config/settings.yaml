@@ -4,3 +4,11 @@
 title: {{HOMEPAGE_VAR_TITLE}}
 headerStyle: boxedWidgets
 hideErrors: true
+layout:
+  Metrics:
+    style: row
+    columns: 4
+  Media:
+  Media Management:
+  Utilities:
+  Administration:
