@@ -19,5 +19,6 @@ fi
 if [ ! "$LAST_IP" == "$CURRENT_IP" ]; then
     echo $CURRENT_IP > $FILENAME
     $NOTIFY "IP change detected." "Old IP: $LAST_IP
-New IP: $CURRENT_IP"
+New IP: $CURRENT_IP
+Update IP: https://desec.io/domains"
 fi
