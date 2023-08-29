@@ -5,7 +5,7 @@
 - Media:
     - Plex:
         icon: plex.png
-        href: {{HOMEPAGE_VAR_PLEX_URL}}
+        href: {{HOMEPAGE_VAR_PLEX_HREF}}
         description: Movies, TV Shows & Music
         server: docker
         container: plex
@@ -16,7 +16,7 @@
           key: {{HOMEPAGE_VAR_PLEX_KEY}}
     - Overseerr:
         icon: overseerr.png
-        href: {{HOMEPAGE_VAR_OVERSEERR_URL}}
+        href: {{HOMEPAGE_VAR_OVERSEERR_HREF}}
         description: Request Movies & TV shows
         server: docker
         container: overseerr
@@ -27,7 +27,7 @@
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
     - Kavita:
         icon: kavita.png
-        href: {{HOMEPAGE_VAR_KAVITA_URL}}
+        href: {{HOMEPAGE_VAR_KAVITA_HREF}}
         description: Books
         server: docker
         container: kavita
@@ -41,7 +41,7 @@
 - Media Management:
     - qBittorrent:
         icon: qbittorrent.png
-        href: {{HOMEPAGE_VAR_QBITTORRENT_URL}}
+        href: {{HOMEPAGE_VAR_QBITTORRENT_HREF}}
         description: Torrents
         server: docker
         container: torrents-qbittorrent
@@ -53,7 +53,7 @@
           password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
     - Sonarr:
         icon: sonarr.png
-        href: {{HOMEPAGE_VAR_SONARR_URL}}
+        href: {{HOMEPAGE_VAR_SONARR_HREF}}
         description: TV Show management
         server: docker
         container: sonarr
@@ -64,7 +64,7 @@
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
     - Radarr:
         icon: radarr.png
-        href: {{HOMEPAGE_VAR_RADARR_URL}}
+        href: {{HOMEPAGE_VAR_RADARR_HREF}}
         description: Movie management
         server: docker
         container: radarr
@@ -78,7 +78,7 @@
 - Administration:
     - Nginx Proxy Manager:
         icon: nginx-proxy-manager.png
-        href: {{HOMEPAGE_VAR_NPM_URL}}
+        href: {{HOMEPAGE_VAR_NPM_HREF}}
         description: Manage Reverse Proxy & SSL
         server: docker
         container: server-nginx-proxy-manager
@@ -90,7 +90,7 @@
           password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
     - Portainer:
         icon: portainer.png
-        href: {{HOMEPAGE_VAR_PORTAINER_URL}}
+        href: {{HOMEPAGE_VAR_PORTAINER_HREF}}
         description: Manage Docker containers
         server: docker
         container: server-portainer
@@ -104,7 +104,7 @@
 - Metrics:
     - Glances:
         icon: glances.png
-        href: {{HOMEPAGE_VAR_GLANCES_URL}}
+        href: {{HOMEPAGE_VAR_GLANCES_HREF}}
         description: Server Metrics
         server: docker
         container: server-glances

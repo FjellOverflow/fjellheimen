@@ -53,6 +53,22 @@ services:
       - TZ=Europe/Tallinn
     restart: unless-stopped
 
+  homepage-remote:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: server-homepage-remote
+    volumes:
+      - /homeserver/data/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mediadrive:/mediadrive
+      - /homeserver:/homeserver
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/homepage_remote.env
+    environment:
+      - TZ=Europe/Tallinn
+    restart: unless-stopped
+
   glances:
     image: nicolargo/glances:latest
     container_name: server-glances

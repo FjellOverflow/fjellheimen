@@ -1,0 +1,25 @@
+version: "3"
+
+name: homeserver
+
+services:
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - /homeserver/data/tailscale/config:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    network_mode: host
+    env_file:
+      - /homeserver/environment/general.env
+      - /homeserver/environment/tailscale.env
+    environment:
+      - TS_AUTH_ONCE=true
+      - TS_HOSTNAME=homeserver
+      - TS_STATE_DIR=/var/lib/tailscale
+    restart: unless-stopped
+

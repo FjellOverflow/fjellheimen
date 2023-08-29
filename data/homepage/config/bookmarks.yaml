@@ -4,13 +4,13 @@
 - Utilities:
   - Memos:
     - icon: memos.png
-      href: {{HOMEPAGE_VAR_MEMOS_URL}}
+      href: {{HOMEPAGE_VAR_MEMOS_HREF}}
   - Meals:
     - icon: mealie.png
-      href: {{HOMEPAGE_VAR_MEALIE_URL}}
+      href: {{HOMEPAGE_VAR_MEALIE_HREF}}
   - Notifications:
     - icon: ntfy-light.png
-      href: {{HOMEPAGE_VAR_NOTIFICATIONS_URL}}
+      href: {{HOMEPAGE_VAR_NOTIFICATIONS_HREF}}
 
 - Manage Server:
   - Git repository:
