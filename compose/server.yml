@@ -101,8 +101,8 @@ services:
       - /homeserver/environment/general.env
     environment:
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=ntfy://ntfy.sh/watchtower?title=Watchtower
-      - WATCHTOWER_SCHEDULE="0 0 3 * * *"
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://notifications.userlab.dedyn.io/homeserver?title=Watchtower
+      - WATCHTOWER_SCHEDULE=0 0 3 * * *
     restart: unless-stopped
 
 networks:
