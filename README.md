@@ -14,11 +14,11 @@ A docker-based setup and configuration of my home server.
     - [Services](#services)
         - [nginx-proxy-manager](#nginx-proxy-manager)
         - [homepage](#homepage)
-        - [duckdns](#duckdns)
         - [glances](#glances)
         - [portainer](#portainer)
         - [watchtower](#watchtower)
     - [Adding a new service](#adding-a-new-service)
+- [Scripts & cronjobs](#scripts--cronjobs)
 - [The host machine](#the-host-machine)
 - [Diagrammatic setup](#diagrammatic-setup)
     - [Application stacks](#application-stacks)
@@ -30,7 +30,6 @@ A docker-based setup and configuration of my home server.
     - [Why is the data folder basically empty?](#why-is-the-data-folder-basically-empty)
 
 <!-- /TOC -->
-
 ## Project structure
 <details>
 
@@ -41,6 +40,7 @@ A docker-based setup and configuration of my home server.
 - `data` contains the data for the services.
 - `environment` contains `.env` files for the services.
 - `.setup` contains the setup scripts for the host machine
+- `.scripts` contains useful, related shell-scripts
 
 A service ***myService*** is defined in its docker-compose file `compose/myservice.yml`:
 
@@ -117,8 +117,7 @@ networks:
 For this setup to work, you need:
 
 - Ports `80` and `443` forwarded on your router.
-- A domain pointed to your **public IP adress**. I am using [DuckDNS](https://duckdns.org) to handle **DDNS**.
-
+- A domain pointed to your **public IP adress**.
 </details>
 
 ### Getting started
@@ -136,9 +135,6 @@ For this setup to work, you need:
 - **Optional**:
     Adjust `environment/general.env` to your UID/GID and timezone.
 
-- **Optional**:
-    If you are using (a subdomain of) [DuckDNS](https://duckdns.org), enter *subdomain* and *token* into `environment/duckdns.env`.
-
 - Start essential ***server*** services.
     ```bash
     docker compose -f /homeserver/compose/server.yml up -d
@@ -148,14 +144,14 @@ For this setup to work, you need:
 - You should now be able to access ***nginx-proxy-manager*** on [http://localhost:81](http://localhost:81). Create an account and login.
 
 - There, you want to create a **SSL**-certificate for your subdomain(s) and point subdomains to the different services.
-    - For ***nginx-proxy-manager*** itself, create a new proxy host and point the domain `proxy.yourdomain.duckdns.org` to `http://your-local-ip:81` and enable the SSL-certificate. Now you should be able to access the ***nginx-proxy-manager*** at `proxy.yourdomain.duckdns.org`.
+    - For ***nginx-proxy-manager*** itself, create a new proxy host and point the domain `proxy.yourdomain.com` to `http://your-local-ip:81` and enable the SSL-certificate. Now you should be able to access the ***nginx-proxy-manager*** at `proxy.yourdomain.com`.
 
-    - Other services that are running on the ***proxy-network*** can be added similarly, by pointing `myservice.yourdomain.duckdns.org` to `http://containername:portnumber`.
+    - Other services that are running on the ***proxy-network*** can be added similarly, by pointing `myservice.yourdomain.com` to `http://containername:portnumber`.
 
     - Services that are running in `network_mode: host` (or not in a container but natively on the host) can be added by using the servers ***local IP***, similarly to ***nginx-proxy-manager***.
 
 - **Optional**:
-    To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.duckdns.org` you get a neat dashboard showing running services, docker stats and server metrics.
+    To use the convient dashboard, provided by ***homepage***, add the file `environment/homepage.env`. Take a look and adjust the configurations in `data/homepage/config`. There ***ENV*** variables, like `HOMEPAGE_VAR_NPM_URL`, are used. For them to resolve properly, add them in `environment/homepage.env` and rereate the ***server-homepage*** container. If you point the ***homepage*** container to an URL like `dashboard.yourdomain.com` you get a neat dashboard showing running services, docker stats and server metrics.
 
 </details>
 
@@ -179,11 +175,6 @@ See [nginx-proxy-manager.com](https://nginxproxymanager.com/).
 A selfhosted dashboard. Out of the box it is configured to show all the running services, including more detailed information and CPU and memory usage and container health. It also shows server metrics, bookmarks and more. It is configured by editing the files in `data/homepage/config` and adding **ENV** variables to `environment/homepage.env`.
 
 See [gethomepage.dev](https://gethomepage.dev/).
-
-#### duckdns
-[DuckDNS](https://duckdns.org) is a **DDNS** provider, providing a subdomain `mysubdomain.duckdns.org` and pointing it to my **public IP**. As this **IP** might change, the ***duckdns*** container regularly updates the register with the latest **IP**.
-
-See [linuxserver/duckdns](https://hub.docker.com/r/linuxserver/duckdns).
 
 #### glances
 Glances collects server metrics (CPU, memory, disk usage, ...) to be displayed on the server dashboard.
@@ -254,6 +245,20 @@ Now that the container is running, we want to access it. Lets say, the server ru
 
 Now the new service should be up and running and accessible under *myservice.example.com*.
 </details>
+
+## Scripts & cronjobs
+`.scripts` contains a collection of different useful scripts.
+- `notify.sh` is used in most other scripts; it pushes a message on the notification service I have set up to receive push-notifications on my phone
+- `backup.sh` creates a compressed backup of the entire homeserver directory
+- `on_startup.sh` sends a notification that the server is up and running and a list of running containers
+- `reboot.sh` reboots the server and informs about the containers running prior to shutting down
+ `check_public_ip.sh` keeps tabs on the public ip and sends a notification when it changed
+
+The scripts accomplish very mundane simple tasks and are not much use on their own; however I have set up my server to call them on a schedule with cronjobs, thus have added calls to them in `sudo crontab -e`.
+
+They are, for instance, to check the public IP at midnight, to backup every saturday night, to restart every sunday and so on.
+
+Note that for the scripts to work, a proper `.env` file must be in the directory.
 
 ## The host machine
 <details>
