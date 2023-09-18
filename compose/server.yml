@@ -100,8 +100,10 @@ services:
     env_file:
       - /homeserver/environment/general.env
     environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=ntfy://notifications.userlab.dedyn.io/homeserver?title=Watchtower
+      - WATCHTOWER_NOTIFICATION_URL=ntfy://notifications.userlab.dedyn.io/homeserver
       - WATCHTOWER_SCHEDULE=0 0 3 * * *
     restart: unless-stopped
 
