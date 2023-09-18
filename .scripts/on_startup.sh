@@ -7,6 +7,9 @@ source $CURRENT_DIR/.env
 # wait until docker started containers
 sleep 2m
 
+# restart watchtower to connect to ntfy
+sudo docker restart server-watchtower
+
 NOTIFY=$CURRENT_DIR/notify.sh
 
 RUNNING_CONTAINERS=$(docker ps --format "{{.Names}}")
