@@ -12,6 +12,11 @@ BACKUP_NAME="homeserver_backup_$(date +%Y%m%d%H%M).tar.gz"
 
 $NOTIFY "Backup started." "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
 
+cp /var/spool/cron/crontabs/root "$SOURCE_FOLDER/.backups/crontab"
+chown user:user "$SOURCE_FOLDER/.backups/crontab"
+
+cp ~/.ssh "$SOURCE_FOLDER/.backups/"
+
 rsync -az --delete "$SOURCE_FOLDER" "$BACKUP_FOLDER"
 
 tar -czf "$BACKUP_FOLDER/$BACKUP_NAME" -C "$BACKUP_FOLDER" "$(basename "$SOURCE_FOLDER")"
