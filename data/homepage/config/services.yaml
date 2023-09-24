@@ -73,6 +73,17 @@
           type: radarr
           url: {{HOMEPAGE_VAR_RADARR_URL}}
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
+    - Prowlarr:
+        icon: prowlarr.png
+        href: {{HOMEPAGE_VAR_PROWLARR_HREF}}
+        description: Indexer management
+        server: docker
+        container: prowlarr
+        showStats: false
+        widget:
+          type: prowlarr
+          url: {{HOMEPAGE_VAR_PROWLARR_URL}}
+          key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
 - Utilities:
     - Memos:
