@@ -1,0 +1,21 @@
+version: "3"
+
+name: homeserver
+
+services:
+
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    volumes:
+      - /homeserver/data/syncthing/config:/config
+      - /homeserver/data/syncthing/data:/data
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/environment/general.env    
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    external: true

@@ -122,6 +122,13 @@
         server: docker
         container: util-ntfy
         showStats: false
+    - syncthing:
+        icon: syncthing.png
+        href: {{HOMEPAGE_VAR_SYNCTHING_HREF}}
+        description: Sync files
+        server: docker
+        container: syncthing
+        showStats: false
     - Hompage:
         icon: homepage.png
         href: {{HOMEPAGE_VAR_HOMEPAGE_HREF}}
