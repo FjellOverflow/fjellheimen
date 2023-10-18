@@ -8,7 +8,9 @@ NOTIFY=$CURRENT_DIR/notify.sh
 
 RUNNING_CONTAINERS=$(docker ps --format "{{.Names}}")
 
-$NOTIFY "Rebooting server." "Running containers:
-$RUNNING_CONTAINERS"
+$NOTIFY "Rebooting server." "Running containers: $RUNNING_CONTAINERS"
+
+# wait for notification to go out
+sleep 20s
 
 systemctl reboot
