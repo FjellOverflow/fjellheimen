@@ -97,13 +97,6 @@
           key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
 - Utilities:
-    - Memos:
-        icon: memos.png
-        href: {{HOMEPAGE_VAR_MEMOS_HREF}}
-        description: Notes and todos
-        server: docker
-        container: util-memos
-        showStats: false
     - Mealie:
         icon: mealie.png
         href: {{HOMEPAGE_VAR_MEALIE_HREF}}
