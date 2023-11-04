@@ -15,7 +15,6 @@ services:
       - /homeserver/environment/general.env
     environment:
       - WEBUI_PORT=9090
-      - DOCKER_MODS=marzzzello/linuxserver-io-mod-qbit-matui
     depends_on:
       - gluetun
     healthcheck:
