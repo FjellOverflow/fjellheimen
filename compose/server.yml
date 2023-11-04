@@ -104,7 +104,7 @@ services:
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
       - WATCHTOWER_NOTIFICATION_URL=ntfy://notifications.userlab.dedyn.io/homeserver
-      - WATCHTOWER_SCHEDULE=0 0 3 * * SAT
+      - WATCHTOWER_SCHEDULE=0 0 4 * * SAT
     restart: unless-stopped
 
 networks:
