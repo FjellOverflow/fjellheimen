@@ -14,6 +14,7 @@ services:
       - mealie-network
     env_file:
       - /homeserver/.env
+      - /homeserver/mealie/.env
     environment:
       - API_URL=http://mealie-api:9000
     restart: unless-stopped
@@ -27,6 +28,7 @@ services:
       - mealie-network
     env_file:
       - /homeserver/.env
+      - /homeserver/mealie/.env
     environment:
       - ALLOW_SIGNUP=true
       - MAX_WORKERS=1
