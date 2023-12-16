@@ -8,12 +8,12 @@ services:
     image: hkotel/mealie:frontend-v1.0.0beta-5
     container_name: mealie
     volumes:
-      - /homeserver/data/mealie/config:/app/data/
+      - /homeserver/mealie/data/config:/app/data/
     networks:
       - proxy-network
       - mealie-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
     environment:
       - API_URL=http://mealie-api:9000
     restart: unless-stopped
@@ -22,11 +22,11 @@ services:
     image: hkotel/mealie:api-v1.0.0beta-5
     container_name: mealie-api
     volumes:
-      - /homeserver/data/mealie/config:/app/data/
+      - /homeserver/mealie/data/config:/app/data/
     networks:
       - mealie-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
     environment:
       - ALLOW_SIGNUP=true
       - MAX_WORKERS=1
