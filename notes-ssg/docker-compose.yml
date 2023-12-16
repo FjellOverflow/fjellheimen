@@ -13,10 +13,3 @@ services:
     volumes:
       - /homeserver/data/syncthing/data/Notes:/usr/src/app/content
       - /homeserver/notes-ssg/data:/usr/src/app/output
-    networks:
-      nonet: {}
-
-networks:
-  nonet:
-    external: true
-    name: none
