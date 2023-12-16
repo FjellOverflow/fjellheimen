@@ -8,11 +8,12 @@ services:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     volumes:
-      - /homeserver/data/overseerr/config:/config
+      - /homeserver/overseerr/data/config:/config
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/overseerr/.env
     healthcheck:
       test: curl --fail http://localhost:5055 || exit 1
       interval: 1m
