@@ -8,12 +8,13 @@ services:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
     volumes:
-      - /homeserver/data/syncthing/config:/config
-      - /homeserver/data/syncthing/data:/data
+      - /homeserver/syncthing/data/config:/config
+      - /homeserver/syncthing/data/data:/data
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env    
+      - /homeserver/.env
+      - /homeserver/syncthing/.env
     restart: unless-stopped
 
 networks:
