@@ -1,0 +1,22 @@
+version: '3'
+
+name: notes-ssg
+
+services:
+
+  notes-ssg:
+    image: ghcr.io/fjelloverflow/notes:v4
+    container_name: notes-ssg
+    env_file:
+      - /homeserver/.env
+      - /homeserver/notes-ssg/.env
+    volumes:
+      - /homeserver/data/syncthing/data/Notes:/usr/src/app/content
+      - /homeserver/notes-ssg/data:/usr/src/app/output
+    networks:
+      nonet: {}
+
+networks:
+  nonet:
+    external: true
+    name: none
