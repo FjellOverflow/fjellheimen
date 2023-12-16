@@ -8,12 +8,13 @@ services:
     image: lscr.io/linuxserver/kavita:latest
     container_name: kavita
     volumes:
-      - /homeserver/data/kavita/config:/config
+      - /homeserver/kavita/data/config:/config
       - /mediadrive/Books:/data
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/kavita/.env
     healthcheck:
       test: curl --fail http://localhost:5000 || exit 1
       interval: 1m
