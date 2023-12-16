@@ -8,13 +8,14 @@ services:
     image: ghcr.io/advplyr/audiobookshelf
     container_name: audiobookshelf
     volumes:
-      - /homeserver/data/audiobookshelf/config:/config
-      - /homeserver/data/audiobookshelf/metadata:/metadata
+      - /homeserver/audiobookshelf/data/config:/config
+      - /homeserver/audiobookshelf/data/metadata:/metadata
       - /mediadrive/Audiobooks:/audiobooks
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/audiobookshelf/.env
     healthcheck:
       test: curl --fail http://localhost:80 || exit 1
       interval: 1m
