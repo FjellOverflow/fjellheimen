@@ -113,7 +113,7 @@
         href: {{HOMEPAGE_VAR_NOTIFICATIONS_HREF}}
         description: Send notifications
         server: docker
-        container: util-ntfy
+        container: ntfy
         showStats: false
     - syncthing:
         icon: syncthing.png
