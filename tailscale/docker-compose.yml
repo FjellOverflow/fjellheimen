@@ -11,12 +11,12 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - /homeserver/data/tailscale/config:/var/lib/tailscale
+      - /homeserver/tailscale/data/config:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun
     network_mode: host
     env_file:
-      - /homeserver/environment/general.env
-      - /homeserver/environment/tailscale.env
+      - /homeserver/.env
+      - /homeserver/tailscale/.env
     environment:
       - TS_AUTH_ONCE=true
       - TS_HOSTNAME=homeserver
