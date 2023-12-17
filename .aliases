@@ -16,8 +16,8 @@ alias drm='sudo docker rm $1'
 alias drestart='sudo docker restart $1'
 
 dcup() {
-  sudo docker compose -f /homeserver/compose/"$1".yml up -d
+  sudo docker compose -f /homeserver/$1/docker-compose.yml up -d
 }
 dcdown() {
-  sudo docker compose -f /homeserver/compose/"$1".yml down
+  sudo docker compose -f /homeserver/$1/docker-compose.yml down
 }
