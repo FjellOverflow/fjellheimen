@@ -12,12 +12,14 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /homeserver/data/nginx-proxy-manager/data:/data
-      - /homeserver/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - /homeserver/server/data/nginx-proxy-manager/data:/data
+      - /homeserver/server/data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/server/.env
+      - /homeserver/server/nginx-proxy-manager.env
     healthcheck:
       test: ["CMD", "/bin/check-health"]
       interval: 10s
@@ -28,12 +30,14 @@ services:
     image: portainer/portainer:latest
     container_name: server-portainer
     volumes:
-      - /homeserver/data/portainer/data:/data
+      - /homeserver/server/data/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/server/.env
+      - /homeserver/server/portainer.env
     privileged: true
     restart: unless-stopped
 
@@ -41,14 +45,15 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: server-homepage
     volumes:
-      - /homeserver/data/homepage/config:/app/config
+      - /homeserver/server/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mediadrive:/mediadrive
       - /homeserver:/homeserver
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/homepage.env
+      - /homeserver/server/.env
+      - /homeserver/server/homepage.env
     environment:
       - TZ=Europe/Tallinn
     restart: unless-stopped
@@ -57,14 +62,15 @@ services:
     image: ghcr.io/benphelps/homepage:latest
     container_name: server-homepage-remote
     volumes:
-      - /homeserver/data/homepage/config:/app/config
+      - /homeserver/server/data/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mediadrive:/mediadrive
       - /homeserver:/homeserver
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/homepage_remote.env
+      - /homeserver/server/.env
+      - /homeserver/server/homepage-remote.env
     environment:
       - TZ=Europe/Tallinn
     restart: unless-stopped
@@ -77,7 +83,9 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/server/.env
+      - /homeserver/server/glances.env
     environment:
       - GLANCES_OPT=-w
     privileged: true
@@ -98,12 +106,13 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/server/.env
+      - /homeserver/server/watchtower.env
     environment:
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=ntfy://notifications.userlab.dedyn.io/homeserver
       - WATCHTOWER_SCHEDULE=0 0 4 * * SAT
     restart: unless-stopped
 
