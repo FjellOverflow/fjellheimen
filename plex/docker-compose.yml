@@ -8,13 +8,14 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     volumes:
-      - /homeserver/data/plex/config:/config
+      - /homeserver/plex/data/config:/config
       - /mediadrive/Movies:/movies
       - /mediadrive/TV:/tv
       - /mediadrive/Music:/music
     network_mode: host
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/plex/.env
     environment:
       - VERSION=latest
     healthcheck:
