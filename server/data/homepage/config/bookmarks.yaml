@@ -5,7 +5,7 @@
 - Manage Server:
   - Git repository:
     - icon: github-light.png
-      href: https://github.com/FjellOverflow/homeserver
+      href: {{HOMEPAGE_VAR_HOMESERVER_REPOSITORY}}
   - Tailscale:
     - icon: tailscale-light.png
       href: https://login.tailscale.com/admin
