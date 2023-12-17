@@ -51,6 +51,8 @@ Generally it should at all times be made sure that no credentials keys, public I
 ## Setup
 After cloning the repository it should be made sure the (physical) server (aka OS) is fully setup. For Ubuntu the script `.setup_ubuntu` can be used (at own risk) to install missing dependencies (eg. docker, ssh, samba, ...) and to do common setup tasks (enable firewall, disable ssh password auth, ...). Otherwise, consult the script to see what steps might be advisable or necessary and do them manually before running this particular server setup.
 
+Before starting up any docker containers, it should be made sure that all the directories that are mapped a docker volumes exist and that all missing `.env` files are created and filled with the necessary variables.
+
 ## Caveats
 - the entire setup assumes that it is located/mounted under `/homeserver`. If not, the path must be adjusted across all configuration files.
 - all files `server/data/homepage/config/*.yml` are tracked, as they contain the servers dashboard configuration (and all sensitive data is loaded from ENV)
