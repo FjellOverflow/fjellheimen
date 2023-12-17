@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# called every day, 0:00 AM
+# called Friday, 4:00 AM
 
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
