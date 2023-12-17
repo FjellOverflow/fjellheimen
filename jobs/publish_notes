@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# called every day, 0:00 AM
+
+# load ENV
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $CURRENT_DIR/.env
+
+NOTIFY=$CURRENT_DIR/notify
+
+NEW_DIR=new
+OLD_DIR=old
+
+# clone last version
+git clone -b gh-pages --single-branch $NOTES_REPOSITORY $NOTES_SSG_DATA/$OLD_DIR
+
+# build new version
+sudo docker start notes-ssg
+sudo docker exec notes-ssg npx quartz build -o output/$NEW_DIR
+sudo docker stop  notes-ssg
+
+# add permissions
+sudo chown -R $USER:$USER $NOTES_SSG_DATA/$NEW_DIR
+
+# add .git
+cp -r $NOTES_SSG_DATA/$OLD_DIR/.git $NOTES_SSG_DATA/$NEW_DIR/
+
+# add changes, commit, push
+cd $NOTES_SSG_DATA/$NEW_DIR
+git add -A .
+git commit -m "Generate"
+git push
+
+cd ..
+
+# cleanup
+sudo rm -r $OLD_DIR
+sudo rm -r $NEW_DIR

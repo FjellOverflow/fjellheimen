@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
+# called Sundays, 4:00 AM
+
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
-NOTIFY=$CURRENT_DIR/notify.sh
+NOTIFY=$CURRENT_DIR/notify
 
-RUNNING_CONTAINERS=$(docker ps --format "{{.Names}}")
-
-$NOTIFY "Rebooting server." "Running containers: $RUNNING_CONTAINERS"
+$NOTIFY "Rebooting server."
 
 # wait for notification to go out
 sleep 20s

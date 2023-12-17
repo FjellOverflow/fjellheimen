@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+# called at reboot
+
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
+
+NOTIFY=$CURRENT_DIR/notify
 
 # wait until docker started containers
 sleep 2m
@@ -10,23 +14,21 @@ sleep 2m
 # restart watchtower to connect to ntfy
 sudo docker restart server-watchtower
 
-NOTIFY=$CURRENT_DIR/notify.sh
 
-RUNNING_CONTAINERS=$(docker ps --format "{{.Names}}")
+RUNNING_CONTAINERS=$(sudo docker ps -a --filter "status=exited" --format "{{.Names}}")
 MEDIADRIVE_MOUNTED="/mediadrive is not mounted."
 HOMESERVER_MOUNTED="/homeserver is not mounted."
 
 if findmnt "/mediadrive" > /dev/null; then
-    MEDIADRIVE_MOUNTED="/mediadrive is mounted."
+    MEDIADRIVE_MOUNTED=""
 fi
 
 if findmnt "/homeserver" > /dev/null; then
-    HOMESERVER_MOUNTED="/homeserver is mounted."
+    HOMESERVER_MOUNTED=""
 fi
 
-$NOTIFY "Server started successfully." "Running containers:
+$NOTIFY "Server booted up." "Stopped containers:
 $RUNNING_CONTAINERS
-
 $MEDIADRIVE_MOUNTED
 $HOMESERVER_MOUNTED"
 

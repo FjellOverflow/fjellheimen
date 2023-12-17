@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+# called every day, 0:00 AM
+
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
-FILENAME=$CURRENT_DIR/.last_public_ip
-NOTIFY=$CURRENT_DIR/notify.sh
+NOTIFY=$CURRENT_DIR/notify
 
+FILENAME=$CURRENT_DIR/.last_public_ip
 LAST_IP="/"
 CURRENT_IP=$(wget -O - -q https://checkip.amazonaws.com)
 
@@ -20,5 +22,5 @@ if [ ! "$LAST_IP" == "$CURRENT_IP" ]; then
     echo $CURRENT_IP > $FILENAME
     $NOTIFY "IP change detected." "Old IP: $LAST_IP
 New IP: $CURRENT_IP
-Update IP: https://desec.io/domains"
+Update IP at $DNS_PROVIDER"
 fi
