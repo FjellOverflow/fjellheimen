@@ -8,11 +8,13 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: torrents-qbittorrent
     volumes:
-      - /homeserver/data/qbittorrent/config:/config
+      - /homeserver/torrents/data//qbittorrent/config:/config
       - /mediadrive/Downloads:/downloads
     network_mode: "service:gluetun"
     env_file:
-      - /homeserver/environment/general.env
+      - /homeserver/.env
+      - /homeserver/torrents/.env
+      - /homeserver/torrents/qbittorrent.env
     environment:
       - WEBUI_PORT=9090
     depends_on:
@@ -35,8 +37,9 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/environment/general.env
-      - /homeserver/environment/gluetun.env
+      - /homeserver/.env
+      - /homeserver/torrents/.env
+      - /homeserver/torrents/gluetun.env
     environment:
       - VPN_TYPE=openvpn
     restart: unless-stopped

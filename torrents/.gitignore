@@ -1,0 +1,3 @@
+*.env
+data/qbittorrent/*
+!data/qbittorrent/.gitkeep
