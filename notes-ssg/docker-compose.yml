@@ -11,5 +11,5 @@ services:
       - /homeserver/.env
       - /homeserver/notes-ssg/.env
     volumes:
-      - /homeserver/data/syncthing/data/Notes:/usr/src/app/content
+      - /homeserver/syncthing/data/data/Notes:/usr/src/app/content
       - /homeserver/notes-ssg/data:/usr/src/app/output
