@@ -11,7 +11,7 @@ NOTIFY=$CURRENT_DIR/notify
 SOURCE_FOLDER="/homeserver"
 BACKUP_NAME="homeserver_backup_$(date +%Y%m%d%H%M).tar.gz"
 
-$NOTIFY "Backup started." "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
+$NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
 
 mkdir "$SOURCE_FOLDER/.backups"
 
@@ -30,4 +30,4 @@ sudo rm -rf "$BACKUP_FOLDER/$(basename "$SOURCE_FOLDER")"
 
 sudo rm -r "$SOURCE_FOLDER/.backups"
 
-$NOTIFY "Backup finished." "Created $BACKUP_FOLDER/$BACKUP_NAME."
+$NOTIFY "Created $BACKUP_FOLDER/$BACKUP_NAME."

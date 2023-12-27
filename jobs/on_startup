@@ -27,7 +27,7 @@ if findmnt "/homeserver" > /dev/null; then
     HOMESERVER_MOUNTED=""
 fi
 
-$NOTIFY "Server booted up." "Stopped containers:
+$NOTIFY "Server booted up. Stopped containers:
 $RUNNING_CONTAINERS
 $MEDIADRIVE_MOUNTED
 $HOMESERVER_MOUNTED"
