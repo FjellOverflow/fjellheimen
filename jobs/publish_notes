@@ -28,11 +28,14 @@ cp -r $NOTES_SSG_DATA/$OLD_DIR/.git $NOTES_SSG_DATA/$NEW_DIR/
 # add changes, commit, push
 cd $NOTES_SSG_DATA/$NEW_DIR
 git add -A .
-git commit -m "Generate"
-git push
 
-cd ..
+if ! git diff-index --quiet HEAD --; then
+    git commit -m "Generate"
+    git push
+    $NOTIFY "Published notes"
+fi
 
 # cleanup
+cd ..
 sudo rm -r $OLD_DIR
 sudo rm -r $NEW_DIR
