@@ -11,9 +11,6 @@ NOTIFY=$CURRENT_DIR/notify
 # wait until docker started containers
 sleep 2m
 
-# restart watchtower to connect to ntfy
-sudo docker restart server-watchtower
-
 
 RUNNING_CONTAINERS=$(sudo docker ps -a --filter "status=exited" --format "{{.Names}}")
 MEDIADRIVE_MOUNTED="/mediadrive is not mounted."

@@ -108,13 +108,6 @@
           type: mealie
           url: {{HOMEPAGE_VAR_MEALIE_URL}}
           key: {{HOMEPAGE_VAR_MEALIE_KEY}}
-    - ntfy:
-        icon: ntfy-light.png
-        href: {{HOMEPAGE_VAR_NOTIFICATIONS_HREF}}
-        description: Send notifications
-        server: docker
-        container: ntfy
-        showStats: false
     - syncthing:
         icon: syncthing.png
         href: {{HOMEPAGE_VAR_SYNCTHING_HREF}}
