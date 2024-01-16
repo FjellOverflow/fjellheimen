@@ -42,7 +42,7 @@ Maintenance or other recurring tasks are defined by shell scripts in the `jobs` 
 ## .gitignores
 Plenty of `.gitignores` and `.gitkeeps` are scattered across the repository. They ensure that
 
-- `.env` files are kept out of git (as they contains sensitive data)
+- `.env` files are kept out of git (as they contain sensitive data)
 - data or configs, persisted by docker containers are kept out of git (sensitive/too big/irrelevant/...)
 - certain empty folders are tracked by git, providing a skeleton to set up the server
 
