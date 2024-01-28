@@ -11,6 +11,6 @@ NOTIFY=$CURRENT_DIR/notify
 $NOTIFY "Rebooting server."
 
 # wait for notification to go out
-sleep 20s
+sleep 10s
 
-systemctl reboot
+sudo systemctl reboot
