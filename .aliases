@@ -1,3 +1,6 @@
+# BASIC
+alias l="ls -lah"
+
 # IP
 alias publicip='wget -O - -q https://checkip.amazonaws.com'
 alias localip="hostname -I | cut -f1 -d' '"
