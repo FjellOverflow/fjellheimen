@@ -9,8 +9,8 @@ services:
     container_name: sonarr
     volumes:
       - /homeserver/arr/data/sonarr/config:/config
-      - /mediadrive/TV:/tv
-      - /mediadrive/Downloads:/downloads
+      - /xdrive/Media/TV:/tv
+      - /xdrive/Media/Downloads:/downloads
     networks:
       - proxy-network
     env_file:
@@ -30,8 +30,8 @@ services:
     container_name: radarr
     volumes:
       - /homeserver/arr/data/radarr/config:/config
-      - /mediadrive/Movies:/movies
-      - /mediadrive/Downloads:/downloads
+      - /xdrive/Media/Movies:/movies
+      - /xdrive/Media/Downloads:/downloads
     networks:
       - proxy-network
     env_file:

@@ -9,7 +9,7 @@ services:
     container_name: kavita
     volumes:
       - /homeserver/kavita/data/config:/config
-      - /mediadrive/Books:/data
+      - /xdrive/Media/Books:/data
     networks:
       - proxy-network
     env_file:

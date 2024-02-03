@@ -9,9 +9,9 @@ services:
     container_name: plex
     volumes:
       - /homeserver/plex/data/config:/config
-      - /mediadrive/Movies:/movies
-      - /mediadrive/TV:/tv
-      - /mediadrive/Music:/music
+      - /xdrive/Media/Movies:/movies
+      - /xdrive/Media/TV:/tv
+      - /xdrive/Media/Music:/music
     network_mode: host
     env_file:
       - /homeserver/.env

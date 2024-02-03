@@ -17,8 +17,8 @@
     disk: /
 
 - resources:
-    label: Mediadrive
-    disk: /mediadrive
+    label: External disk
+    disk: /xdrive
 
 - resources:
     label: Homeserver

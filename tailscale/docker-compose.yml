@@ -19,7 +19,7 @@ services:
       - /homeserver/tailscale/.env
     environment:
       - TS_AUTH_ONCE=true
-      - TS_HOSTNAME=homeserver
+      - TS_HOSTNAME=fjellheimen
       - TS_STATE_DIR=/var/lib/tailscale
     restart: unless-stopped
 

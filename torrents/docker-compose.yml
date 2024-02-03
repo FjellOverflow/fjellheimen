@@ -9,7 +9,7 @@ services:
     container_name: torrents-qbittorrent
     volumes:
       - /homeserver/torrents/data//qbittorrent/config:/config
-      - /mediadrive/Downloads:/downloads
+      - /xdrive/Media/Downloads:/downloads
     network_mode: "service:gluetun"
     env_file:
       - /homeserver/.env

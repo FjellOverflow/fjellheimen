@@ -10,7 +10,7 @@ services:
     volumes:
       - /homeserver/audiobookshelf/data/config:/config
       - /homeserver/audiobookshelf/data/metadata:/metadata
-      - /mediadrive/Audiobooks:/audiobooks
+      - /xdrive/Media/Audiobooks:/audiobooks
     networks:
       - proxy-network
     env_file:

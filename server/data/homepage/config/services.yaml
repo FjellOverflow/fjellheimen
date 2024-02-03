@@ -180,9 +180,9 @@
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
-          metric: disk:sdc
-    - Mediadrive usage:
+          metric: disk:sdb1
+    - External disk usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
-          metric: disk:sdb
+          metric: disk:sda

@@ -7,7 +7,7 @@ alias localip="hostname -I | cut -f1 -d' '"
 
 # DRIVES
 alias server='cd /homeserver'
-alias media='cd /mediadrive'
+alias xdrive='cd /xdrive'
 
 # DOCKER
 alias dps='sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}"'

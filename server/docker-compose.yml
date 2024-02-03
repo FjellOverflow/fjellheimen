@@ -48,7 +48,7 @@ services:
       - /homeserver/server/data/homepage/config:/app/config
       - /homeserver/server/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mediadrive:/mediadrive
+      - /xdrive:/xdrive
       - /homeserver:/homeserver
     networks:
       - proxy-network
@@ -66,7 +66,7 @@ services:
       - /homeserver/server/data/homepage/config:/app/config
       - /homeserver/server/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mediadrive:/mediadrive
+      - /xdrive:/xdrive
       - /homeserver:/homeserver
     networks:
       - proxy-network
