@@ -115,8 +115,8 @@
         server: docker
         container: syncthing
         showStats: false
-    - Hompage:
-        icon: homepage.png
+    - Homepage:
+        icon: /assets/logo.svg
         href: {{HOMEPAGE_VAR_HOMEPAGE_HREF}}
         description: {{HOMEPAGE_VAR_HOMEPAGE_TITLE}}
         container: server-homepage-remote

@@ -9,14 +9,14 @@
   - Tailscale:
     - icon: tailscale-light.png
       href: https://login.tailscale.com/admin
-  - deSec:
-    - icon: umbrel.png
-      href: https://desec.io/
+  - Porkbun:
+    - icon: https://porkbun.com/images/favicons/favicon-96x96.png
+      href: https://porkbun.com/
 
 - Resources:
   - Homepage docs:
     - icon: homepage
-      href: https://gethomepage.dev/en/configs/services/
+      href: https://gethomepage.dev/
   - Awesome selfhosted:
     - icon: selfhosted-light.png
       href: https://awesome-selfhosted.net/

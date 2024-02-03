@@ -2,6 +2,13 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/widgets
 
+- greeting:
+    text_size: 2xl
+    text: Fjellheimen
+
+- logo:
+    icon: /assets/logo.svg
+
 - resources:
     label: Server
     cpu: true
@@ -16,6 +23,8 @@
 - resources:
     label: Homeserver
     disk: /homeserver
+
+
 
 - datetime:
     text_size: xl

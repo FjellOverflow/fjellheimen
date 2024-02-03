@@ -7,6 +7,7 @@ data/homepage/config/*
 !data/homepage/config/services.yaml
 !data/homepage/config/settings.yaml
 !data/homepage/config/widgets.yaml
+!data/homepage/config/custom.css
 
 data/nginx-proxy-manager/*
 !data/nginx-proxy-manager/.gitkeep
