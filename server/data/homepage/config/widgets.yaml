@@ -12,19 +12,14 @@
 - resources:
     label: Server
     cpu: true
+    cputemp: true
     memory: true
     uptime: true
-    disk: /
+    disk: /homeserver
 
 - resources:
     label: External disk
     disk: /xdrive
-
-- resources:
-    label: Homeserver
-    disk: /homeserver
-
-
 
 - datetime:
     text_size: xl
