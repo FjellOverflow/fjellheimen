@@ -9,7 +9,7 @@ services:
     container_name: syncthing
     volumes:
       - /homeserver/syncthing/data/config:/config
-      - /homeserver/syncthing/data/data:/data
+      - /xdrive/Syncthing:/data
     networks:
       - proxy-network
     env_file:
