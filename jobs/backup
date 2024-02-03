@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# called Friday, 4:00 AM
+# called Saturday, 4:00 AM
 
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -15,14 +15,10 @@ $NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
 
 mkdir "$SOURCE_FOLDER/.backups"
 
-sudo cp /var/spool/cron/crontabs/root "$SOURCE_FOLDER/.backups/crontab_root"
-sudo cp /var/spool/cron/crontabs/$USER "$SOURCE_FOLDER/.backups/crontab_$USER"
 sudo cp -r ~/.ssh "$SOURCE_FOLDER/.backups/"
-sudo chown $USER:$USER "$SOURCE_FOLDER/.backups/crontab_root"
-sudo chown $USER:$USER "$SOURCE_FOLDER/.backups/crontab_$USER"
 sudo chown -R $USER:$USER "$SOURCE_FOLDER/.backups/.ssh"
 
-sudo rsync -az --delete "$SOURCE_FOLDER" "$BACKUP_FOLDER"
+sudo rsync -az --copy-links --delete "$SOURCE_FOLDER" "$BACKUP_FOLDER"
 
 sudo tar --numeric-owner -czf "$BACKUP_FOLDER/$BACKUP_NAME" -C "$BACKUP_FOLDER" "$(basename "$SOURCE_FOLDER")"
 
