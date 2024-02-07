@@ -41,65 +41,6 @@ services:
     privileged: true
     restart: unless-stopped
 
-  homepage:
-    image: ghcr.io/gethomepage/homepage:latest
-    container_name: server-homepage
-    volumes:
-      - /homeserver/server/data/homepage/config:/app/config
-      - /homeserver/server/data/homepage/assets:/app/public/assets
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /xdrive:/xdrive
-      - /homeserver:/homeserver
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/server/.env
-      - /homeserver/server/homepage.env
-    environment:
-      - TZ=Europe/Tallinn
-    restart: unless-stopped
-
-  homepage-remote:
-    image: ghcr.io/benphelps/homepage:latest
-    container_name: server-homepage-remote
-    volumes:
-      - /homeserver/server/data/homepage/config:/app/config
-      - /homeserver/server/data/homepage/assets:/app/public/assets
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /xdrive:/xdrive
-      - /homeserver:/homeserver
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/server/.env
-      - /homeserver/server/homepage-remote.env
-    environment:
-      - TZ=Europe/Tallinn
-    restart: unless-stopped
-
-  glances:
-    image: nicolargo/glances:latest
-    container_name: server-glances
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-      - /homeserver/server/.env
-      - /homeserver/server/glances.env
-    environment:
-      - GLANCES_OPT=-w
-    privileged: true
-    pid: host
-    healthcheck:
-      test: curl --fail -s http://localhost:61208 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
   watchtower:
     image: containrrr/watchtower:latest
     container_name: server-watchtower

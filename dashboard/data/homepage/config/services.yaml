@@ -19,7 +19,7 @@
         href: {{HOMEPAGE_VAR_OVERSEERR_HREF}}
         description: Request Movies & TV shows
         server: docker
-        container: overseerr
+        container: arr-overseerr
         showStats: false
         widget:
           type: overseerr
@@ -67,7 +67,7 @@
         href: {{HOMEPAGE_VAR_SONARR_HREF}}
         description: TV Show management
         server: docker
-        container: sonarr
+        container: arr-sonarr
         showStats: false
         widget:
           type: sonarr
@@ -78,7 +78,7 @@
         href: {{HOMEPAGE_VAR_RADARR_HREF}}
         description: Movie management
         server: docker
-        container: radarr
+        container: arr-radarr
         showStats: false
         widget:
           type: radarr
@@ -89,7 +89,7 @@
         href: {{HOMEPAGE_VAR_PROWLARR_HREF}}
         description: Indexer management
         server: docker
-        container: prowlarr
+        container: arr-prowlarr
         showStats: false
         widget:
           type: prowlarr
@@ -119,7 +119,7 @@
         icon: /assets/logo.svg
         href: {{HOMEPAGE_VAR_HOMEPAGE_HREF}}
         description: {{HOMEPAGE_VAR_HOMEPAGE_TITLE}}
-        container: server-homepage-remote
+        container: {{HOMEPAGE_VAR_HOMEPAGE_CONTAINERNAME}}
 
 - Administration:
     - Nginx Proxy Manager:
@@ -162,7 +162,7 @@
         href: {{HOMEPAGE_VAR_GLANCES_HREF}}
         description: Server metrics
         server: docker
-        container: server-glances
+        container: dashboard-glances
         showStats: false
 
 - Metrics:
@@ -180,9 +180,9 @@
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
-          metric: disk:sda
+          metric: disk:sdb
     - External disk usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
-          metric: disk:sdb
+          metric: disk:sda
