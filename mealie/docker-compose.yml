@@ -1,12 +1,12 @@
 version: '3'
 
-name: homeserver
+name: mealie
 
 services:
 
   mealie:
     image: hkotel/mealie:frontend-v1.0.0beta-5
-    container_name: mealie
+    container_name: mealie-frontend
     volumes:
       - /homeserver/mealie/data/config:/app/data/
     networks:
