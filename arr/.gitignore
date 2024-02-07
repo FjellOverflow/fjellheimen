@@ -5,3 +5,5 @@ data/prowlarr/*
 !data/prowlarr/.gitkeep
 data/radarr/*
 !data/radarr/.gitkeep
+data/overseerr/*
+!data/overseerr/.gitkeep
