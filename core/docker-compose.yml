@@ -5,7 +5,7 @@ name: core
 services:
 
   proxy:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:latest
     container_name: core-npm
     ports:
       - '80:80'

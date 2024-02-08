@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   homepage-remote:
-    image: ghcr.io/benphelps/homepage:latest
+    image: ghcr.io/gethomepage/homepage:latest
     container_name: dashboard-homepage-remote
     volumes:
       - /homeserver/dashboard/data/homepage/config:/app/config
