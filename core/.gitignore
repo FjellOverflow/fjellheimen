@@ -1,0 +1,7 @@
+*.env
+
+data/nginx-proxy-manager/*
+!data/nginx-proxy-manager/.gitkeep
+
+data/portainer/*
+!data/portainer/.gitkeep
