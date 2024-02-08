@@ -1,3 +1,2 @@
-.env
 data/*
-!data/.gitkeep
+!data/.gitignore
