@@ -48,7 +48,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/dashboard/glances.env
     environment:
       - GLANCES_OPT=-w
     privileged: true

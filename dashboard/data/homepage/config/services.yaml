@@ -127,7 +127,7 @@
         href: {{HOMEPAGE_VAR_NPM_HREF}}
         description: Manage Reverse Proxy & SSL
         server: docker
-        container: server-nginx-proxy-manager
+        container: core-npm
         showStats: false
         widget:
           type: npm
@@ -139,7 +139,7 @@
         href: {{HOMEPAGE_VAR_PORTAINER_HREF}}
         description: Manage Docker containers
         server: docker
-        container: server-portainer
+        container: core-portainer
         showStats: false
         widget:
           type: portainer
@@ -151,7 +151,7 @@
         href: https://login.tailscale.com/admin
         description: Remote access
         server: docker
-        container: tailscale
+        container: core-tailscale
         showStats: false
         widget:
           type: tailscale

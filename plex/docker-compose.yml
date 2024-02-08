@@ -1,6 +1,6 @@
 version: "3"
 
-name: homeserver
+name: other
 
 services:
 
@@ -15,7 +15,6 @@ services:
     network_mode: host
     env_file:
       - /homeserver/.env
-      - /homeserver/plex/.env
     environment:
       - VERSION=latest
     healthcheck:

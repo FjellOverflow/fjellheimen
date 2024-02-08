@@ -1,6 +1,6 @@
 version: '3'
 
-name: homeserver
+name: other
 
 services:
 
@@ -14,7 +14,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/kavita/.env
     healthcheck:
       test: curl --fail http://localhost:5000 || exit 1
       interval: 1m

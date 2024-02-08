@@ -15,8 +15,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/arr/.env
-      - /homeserver/arr/sonarr.env
     healthcheck:
       test: curl --fail http://localhost:8989 || exit 1
       interval: 1m
@@ -36,8 +34,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/arr/.env
-      - /homeserver/arr/radarr.env
     healthcheck:
       test: curl --fail http://localhost:7878 || exit 1
       interval: 1m
@@ -55,8 +51,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/arr/.env
-      - /homeserver/arr/prowlarr.env
     healthcheck:
       test: curl --fail http://localhost:9696 || exit 1
       interval: 1m
@@ -74,8 +68,6 @@ services:
       - proxy-network
     env_file:
       - /homeserver/.env
-      - /homeserver/arr/.env
-      - /homeserver/arr/overseerr.env
     healthcheck:
       test: curl --fail http://localhost:5055 || exit 1
       interval: 1m
