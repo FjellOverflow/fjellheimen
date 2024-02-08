@@ -1,36 +1,16 @@
 version: '3'
 
-name: mealie
+name: other
 
 services:
 
   mealie:
-    image: hkotel/mealie:frontend-v1.0.0beta-5
-    container_name: mealie-frontend
+    image: ghcr.io/mealie-recipes/mealie:latest
+    container_name: mealie
     volumes:
       - /homeserver/mealie/data/config:/app/data/
     networks:
       - proxy-network
-      - mealie-network
-    env_file:
-      - /homeserver/.env
-    environment:
-      - API_URL=http://mealie-api:9000
-    healthcheck:
-      test: wget --spider http://localhost:3000 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-  
-  mealie-api:
-    image: hkotel/mealie:api-v1.0.0beta-5
-    container_name: mealie-api
-    volumes:
-      - /homeserver/mealie/data/config:/app/data/
-    networks:
-      - mealie-network
     env_file:
       - /homeserver/.env
     environment:
@@ -40,6 +20,5 @@ services:
     restart: unless-stopped
 
 networks:
-  mealie-network:
   proxy-network:
     external: true
