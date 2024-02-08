@@ -24,8 +24,6 @@ services:
       timeout: 10s
       retries: 3
     restart: unless-stopped
-    labels:
-      io.portainer.accesscontrol.public: true
 
   gluetun:
     image: qmcgaw/gluetun:latest
@@ -42,8 +40,6 @@ services:
     environment:
       - VPN_TYPE=openvpn
     restart: unless-stopped
-    labels:
-      io.portainer.accesscontrol.public: true
 
 networks:
   proxy-network:
