@@ -1,4 +1,3 @@
-# BASIC
 alias l="ls -lah"
 
 # IP
@@ -9,18 +8,74 @@ alias localip="hostname -I | cut -f1 -d' '"
 alias server='cd /homeserver'
 alias xdrive='cd /xdrive'
 
-# DOCKER
-alias dps='sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}"'
-
-alias dstart='sudo docker start $1'
-alias dstop='sudo docker stop $1'
-alias dstopall='sudo docker stop $(sudo docker ps -q)'
-alias drm='sudo docker rm $1'
-alias drestart='sudo docker restart $1'
-
-dcup() {
-  sudo docker compose -f /homeserver/$1/docker-compose.yml up -d
+# DOCKER WRAPPER
+fjell() {
+  COMMAND="$1"
+  shift
+  case "$COMMAND" in
+    "ps")
+        fjell_ps "$@"
+        ;;
+    "start")
+        fjell_start "$@"
+        ;;
+    "stop")
+        fjell_stop "$@"
+        ;;
+    "rm")
+        fjell_rm "$@"
+        ;;
+    "restart")
+        fjell_restart "$@"
+        ;;
+    "up")
+        fjell_up "$@"
+        ;;
+    "down")
+        fjell_down "$@"
+        ;;
+    *)
+        echo "Invalid command"
+        ;;
+  esac
 }
-dcdown() {
-  sudo docker compose -f /homeserver/$1/docker-compose.yml down
+
+fjell_ps() {
+  sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}" "$@"
+}
+
+fjell_start() {
+  sudo docker start "$@"
+}
+
+fjell_stop() {
+  sudo docker stop "$@"
+}
+
+fjell_rm() {
+  sudo docker rm "$@"
+}
+
+fjell_restart() {
+  sudo docker restart "$@"
+}
+
+fjell_up() {
+  for file in "$@"; do
+    if [ -f "/homeserver/$file/docker-compose.yml" ]; then
+      sudo docker compose -f "/homeserver/$file/docker-compose.yml" up -d
+    else
+      echo "Stack '$file' does not exist."
+    fi
+  done
+}
+
+fjell_down() {
+  for file in "$@"; do
+    if [ -f "/homeserver/$file/docker-compose.yml" ]; then
+      sudo docker compose -f "/homeserver/$file/docker-compose.yml" down
+    else
+      echo "Stack '$file' does not exist."
+    fi
+  done
 }
