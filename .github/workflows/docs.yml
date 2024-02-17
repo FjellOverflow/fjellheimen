@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'docs'
+      - 'docs/**'
 
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: docs
+    working-directory: ./docs
 
 jobs:
   build:
