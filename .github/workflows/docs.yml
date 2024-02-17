@@ -38,18 +38,20 @@ jobs:
       
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./docs
 
       - name: Build with VitePress
         run: |
           pnpm build
           touch .vitepress/dist/.nojekyll
-        working-directory: ./docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: .vitepress/dist
+
+    defaults:
+      run:
+        working-directory: docs
 
   deploy:
     environment:
