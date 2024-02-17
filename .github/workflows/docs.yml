@@ -1,4 +1,4 @@
-name: Deploy docs site to Github Pages
+name: Deploy docs to Github Pages
 
 on:
   push:
@@ -32,7 +32,6 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-        working-directory: ./docs
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
