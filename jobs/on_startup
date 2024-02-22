@@ -13,13 +13,13 @@ sleep 2m
 
 
 RUNNING_CONTAINERS=$(sudo docker ps -a --filter "status=exited" --format "{{.Names}}")
-XDRIVE_MOUNTED="/xdrive is not mounted."
+DRIVE_MOUNTED=""
 
-if findmnt "/xdrive" > /dev/null; then
-    XDRIVE_MOUNTED=""
+if ! findmnt "$DRIVE_PATH" > /dev/null; then
+    DRIVE_MOUNTED="$DRIVE_PATH is not mounted."
 fi
 
 $NOTIFY "Server booted up. Stopped containers:
 $RUNNING_CONTAINERS
-$XDRIVE_MOUNTED"
+$DRIVE_MOUNTED"
 
