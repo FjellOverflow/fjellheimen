@@ -102,7 +102,7 @@
         href: {{HOMEPAGE_VAR_MEALIE_HREF}}
         description: Plan meals
         server: docker
-        container: mealie-api
+        container: mealie
         showStats: false
         widget:
           type: mealie
