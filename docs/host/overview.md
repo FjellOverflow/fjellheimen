@@ -13,7 +13,7 @@ Lastly, enable [Maintenance](/host/maintenance) tasks such as regular backups an
 
 ## Operating system
 
-### Distribution Selection
+### Distribution selection
 The setup is tailored for Linux. Factors like stability, security, ease of use, and documentation are crucial. Opting for [Debian](https://en.wikipedia.org/wiki/Debian), renowned for reliability in server environments, is recommended.
 
 ### OS installation

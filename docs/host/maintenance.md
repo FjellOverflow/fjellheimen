@@ -19,7 +19,7 @@ Copies and compresses the `/homeserver` directory, saving it to `$BACKUP_FOLDER`
 ### Reboot
 Sends notification and shuts down the server. *Recommended to run: after `backup`.*
 
-### Check Public IP
+### Check public IP
 Verifies if the server's public IP has changed and notifies if so. *Recommended frequency: daily.*
 
 ### Startup
@@ -33,7 +33,7 @@ To enable this feature, you need to create a Telegram bot and obtain its token. 
 This script serves as a notification dispatcher that is called from other scripts (and is generally callable). Currently, it dispatches a Telegram message to a designated `$TELEGRAM_CHAT_ID` but can be adjusted to use another notification provider.
 
 ## Cronjobs
-To schedule jobs efficiently, use [cron](https://en.wikipedia.org/wiki/Cron) with its [intuitive syntax](https://cron.help/). It's best to schedule jobs using `crontab -e` and execute them as a user rather than as root (avoiding permission issues). However, you can still use `sudo` within the scripts if needed. The crontab might resemble
+To schedule jobs efficiently, use [cron](https://en.wikipedia.org/wiki/Cron) with its [intuitive syntax](https://cron.help/). It's best to schedule jobs using `crontab -e` and execute them as a user rather than as root (avoiding permission issues). However, you can still use `sudo` within the scripts if needed. The crontab might contain:
 
 ```
 # On startup
@@ -47,7 +47,7 @@ To schedule jobs efficiently, use [cron](https://en.wikipedia.org/wiki/Cron) wit
 ```
 
 ## Updates
-### System Updates
+### System updates
 Regularly update the host OS for stability and security. Manual review and application of updates is recommended to avoid system issues. On Debian:
 ```bash
 sudo apt update
@@ -57,5 +57,5 @@ apt list --upgradable
 sudo apt upgrade -y
 ```
 
-### Docker Image Updates
+### Docker image updates
 Keeping Docker images updated is crucial. While manual updates are an option, an automated solution like [Watchtower](/stacks/other#watchtower) is more convenient. Critical or experimental images should be updated manually to avoid potential issues.

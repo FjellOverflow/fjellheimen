@@ -42,9 +42,9 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Overview', link: '/usage/overview' },
+          { text: 'Adding applications', link: '/usage/add-new-app' },
           { text: 'Set up ENV', link: '/usage/set-up-env' },
           { text: 'Manage containers', link: '/usage/manage-containers' },
-          { text: 'Add new app', link: '/usage/add-new-app' },
         ]
       },
       {

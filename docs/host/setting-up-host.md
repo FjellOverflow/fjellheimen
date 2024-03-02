@@ -55,6 +55,7 @@ echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERNAME
 ```
 
 ### Git
+Install `git`.
 ```bash
 sudo apt install -y git
 ```
