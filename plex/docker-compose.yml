@@ -15,8 +15,6 @@ services:
     network_mode: host
     env_file:
       - /homeserver/.env
-    environment:
-      - VERSION=latest
     healthcheck:
       test: curl --fail http://localhost:32400/web || exit 1
       interval: 1m
