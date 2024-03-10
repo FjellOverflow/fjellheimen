@@ -12,10 +12,10 @@ The *Dashboard* stack, which includes the `dashboard-homepage`, `dashboard-homep
 *"Glances is a tool that lets you monitor your system's CPU, memory, load, process list, network interface, disk I/O, IRQ, sensors and more."*
 
 ## Two homepage instances
-As explained in the [Core](/stacks/core)  section, the home server is accessible both locally and remotely, with application URLs varying based on the access point. Consequently, two instances of homepage are necessary, each featuring different shortcuts. This is achieved by deploying nearly identical containers with distinct environments.
+As explained in the [Core](/stacks/core)  section, the home server is accessible both locally and remotely, with sever IP address and thus application URL varying based on the access point. Consequently, two instances of homepage are necessary, each featuring different shortcuts. This is achieved by deploying nearly identical containers with distinct environments.
 
 ## Configuration
-The content, layout, and appearance of homepage are configured using various YAML files. These files are tracked by Git, with all sensitive data outsourced into environment variables. Since both instances of homepage are configured identically apart from URLs, they share the same configuration files.
+The content, layout, and appearance of homepage are configured using various YAML files. These files, located in `dashboard/data/homepage/config`, are tracked by Git, with all sensitive data outsourced into environment variables. Since both instances of homepage are configured identically apart from URLs, they share the same configuration files.
 
 ## ENV
 Homepage features numerous shortcuts to various home server applications, necessitating a significant number of environment variables to define the corresponding URLs. These variables are located within tracked configuration files. It's important to note that certain variables apply to both instances of homepage, while others are specific to either the main or remote instance.

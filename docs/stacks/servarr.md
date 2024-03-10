@@ -25,8 +25,8 @@ Starting the application containers is straightforward. The primary task involve
 3. Radarr contacts Prowlarr-managed indexers for missing media.
 4. Radarr, upon finding the media, initiates a download on qBittorrent.
 5. After downloading, Radarr renames and copies the appropriate files into the library.
-R
-efer to the ample available documentation for guidance on completing the described setup.
+
+[TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
 ## docker-compose.yml
 ```yml

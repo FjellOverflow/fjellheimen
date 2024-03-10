@@ -3,7 +3,7 @@ Maintenance is essential for server reliability. Several tasks should be perform
 
 ## Jobs
 ### Overview
-Predefined jobs are available in the `jobs` directory. Some require ENV variables to be configured in `jobs/.env`.
+Predefined jobs are available in the `jobs` directory. Some require [ENV](https://wiki.archlinux.org/title/Environment_variables) variables to be configured in `jobs/.env`.
 
 | Script                 | Action                        | ENV                                        |
 |------------------------|-------------------------------|--------------------------------------------|
@@ -27,7 +27,7 @@ Notifies upon server startup regarding running Docker containers and mounted dri
 
 ### Notify
 ::: warning Telegram Bot
-To enable this feature, you need to create a Telegram bot and obtain its token. The process is straightforward, with numerous online guides available.
+To enable this feature, you need to [create a Telegram bot](https://core.telegram.org/bots) and obtain its token. The process is straightforward, with numerous online guides available.
 :::
 
 This script serves as a notification dispatcher that is called from other scripts (and is generally callable). Currently, it dispatches a Telegram message to a designated `$TELEGRAM_CHAT_ID` but can be adjusted to use another notification provider.

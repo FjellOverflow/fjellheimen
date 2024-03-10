@@ -1,6 +1,6 @@
 # Shell Aliases
 
-To streamline repetitive tasks, shell aliases are available for common command line actions. These aliases can be located and modified in the `.aliases` file.
+To streamline repetitive tasks, [shell aliases](https://linuxize.com/post/how-to-create-bash-aliases/) are available for common command line actions. These aliases can be located and modified in the `.aliases` file.
 
 ## Adding aliases to the shell
 To utilize aliases, they must be [sourced](https://ss64.com/bash/source.html) in active shell sessions. Adding the following line to the end of your `.bashrc`, `.zshrc`, etc., will load them upon session initialization (provided they are stored in the correct location):

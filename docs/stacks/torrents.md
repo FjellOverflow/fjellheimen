@@ -1,6 +1,6 @@
 # Torrents
 
-The *Torrents* stack, comprising the `torrents-qBittorrent` and `torrents-gluetun` containers, facilitates downloads via the BitTorrent protocol over a VPN connection.
+The *Torrents* stack, comprising the `torrents-qBittorrent` and `torrents-gluetun` containers, facilitates downloads via the [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) protocol over a VPN connection.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|

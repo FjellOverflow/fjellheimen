@@ -8,7 +8,7 @@ Manysteps outlined here are specific to Debian. If you are setting up the home s
 ## Essentials
 These are the things needed on the host machine to run the documented home server setup.
 
-### Install sudo
+### Install [sudo](https://wiki.debian.org/sudo)
 ```bash
 su --login
 apt install -y sudo
@@ -23,7 +23,7 @@ Follow the [official documentation](https://docs.docker.com/engine/install/debia
 ## Security
 Some bare minimum security tweaks.
 
-### Install Uncomplicated Firewall
+### Install [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)
 It is important to allow `ssh` to not lose remote connection. Traffic on any other ports must also be manually enabled when needed.
 ```bash
 sudo apt install -y ufw
@@ -31,7 +31,7 @@ sudo ufw allow ssh
 sudo ufw enable
 ```
 
-### SSH Key-based authentication
+### [SSH](https://wiki.debian.org/SSH) Key-based authentication
 Ensure the SSH key is copied from the device to the server before disabling password authentication.
 ```bash
 # on the workstation
@@ -54,12 +54,12 @@ sudo touch /etc/sudoers.d/$USERNAME &&
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERNAME
 ```
 
-### Git
+### [Git](https://git-scm.com/download/linux)
 Install `git`.
 ```bash
 sudo apt install -y git
 ```
-### Share a folder with Samba
+### Share a folder with [Samba](https://wiki.debian.org/Samba/ServerSimple)
 Install `samba`.
 ```bash
 sudo apt install -y samba

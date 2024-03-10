@@ -14,8 +14,8 @@ Begin by creating the following files and directories:
 
 ```
 
-- `data`: Directory mapped as a volume to persist container data
-- `.env`: Contains environment variables. Refer to [Set up ENV](/usage/set-up-env) for details
+- `data`: Directory mapped as a [volume](https://docs.docker.com/storage/volumes/) to persist container data
+- `.env`: Contains [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/). Refer to [Set up ENV](/usage/set-up-env) for details
 - `.gitignore`: Used to exclude persisted `data` and sensitive `.env` from version control.
 
 The `docker-compose.yml` may resemble:
@@ -112,7 +112,7 @@ Note:
 
 ## .gitignores
 
-`.gitignore` files are essential to exclude large and sensitive data from version control. Each application or stack has its own `.gitignore` in its dedicated directory, typically containing the following:
+[.gitignore](https://git-scm.com/docs/gitignore) files are essential to exclude large and sensitive data from version control. Each application or stack has its own `.gitignore` in its dedicated directory, typically containing the following:
 
 ```
 # ignore all ENV
@@ -126,7 +126,7 @@ data/*
 ```
 
 ## Healthchecks
-Docker health checks are valuable for monitoring container health. While some images include built-in health checks, they can also be added manually. To monitor the service's reachability on port `8888`, a `curl` or `wget` request (assuming the tools are included in the Docker image) can be incorporated into a `healtcheck` within the `docker-compose.yml` file.
+Docker [health checks](https://docs.docker.com/reference/dockerfile/#healthcheck) are valuable for monitoring container health. While some images include built-in health checks, they can also be added manually. To monitor the service's reachability on port `8888`, a `curl` or `wget` request (assuming the tools are included in the Docker image) can be incorporated into a `healtcheck` within the `docker-compose.yml` file.
 
 ```yml
 healthcheck:
@@ -138,7 +138,7 @@ healthcheck:
 ```
 
 ## Proxy network
-Networking within Docker containers can be complex. Typically, we aim for services to be isolated from each other and the host network. However, to enable access to a service via the web through a reverse proxy, the container must be part of the `proxy-network`. For further information, refer to the section on [Reverse Proxy](/stacks/core#reverse-proxy).
+[Networking](https://docs.docker.com/network/) within Docker containers can be complex. Typically, we aim for services to be isolated from each other and the host network. However, to enable access to a service via the web through a reverse proxy, the container must be part of the `proxy-network`. For further information, refer to the section on [Reverse Proxy](/stacks/core#reverse-proxy).
 
 ```yml
 networks:

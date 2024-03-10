@@ -3,7 +3,7 @@ A unordered list of various useful resources, related to self-hosting and topics
 
 ## Tutorials
 Helpful tips and guidance.
-- [Trash Guides](https://trash-guides.info/), guides to Plex, Servarr and media
+- [TRaSH Guides](https://trash-guides.info/), guides to Plex, Servarr and media
 - [Wolfgang's channel](https://www.youtube.com/@WolfgangsChannel), Youtuber
 - [noted.lol](https://noted.lol/), blog
 
