@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# called Saturday, 4:00 AM
+# called Friday, 4:00 AM
 
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -8,7 +8,6 @@ source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
 
-SOURCE_FOLDER="/homeserver"
 BACKUP_NAME="homeserver_backup_$(date +%Y%m%d%H%M).tar.gz"
 
 $NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
