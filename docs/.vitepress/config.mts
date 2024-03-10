@@ -4,7 +4,11 @@ export default defineConfig({
   title: "Fjellheimen",
   description: "Home server documentation",
   head: [
-    ['link', { rel: 'icon', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', href: '/favicon.svg' },],
+    ['meta', { property: 'og:type', content: "website" }],
+    ['meta', { property: 'og:image', content: "/favicon.svg" }],
+    ['meta', { property: 'twitter:card', content: "summary_large_image" }],
+    ['meta', { property: 'twitter:image', content: "/favicon.svg" }],
   ],
   lastUpdated: true,
   themeConfig: {
