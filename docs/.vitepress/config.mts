@@ -5,10 +5,18 @@ export default defineConfig({
   description: "Home server documentation",
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' },],
+
+    ['meta', { property: 'og:url', content: "https://docs.fjellhei.men" }],
     ['meta', { property: 'og:type', content: "website" }],
-    ['meta', { property: 'og:image', content: "/favicon.svg" }],
-    ['meta', { property: 'twitter:card', content: "summary_large_image" }],
-    ['meta', { property: 'twitter:image', content: "/favicon.svg" }],
+    ['meta', { property: 'og:title', content: "Fjellheimen" }],
+    ['meta', { property: 'og:description', content: "Home server documentation" }],
+    ['meta', { property: 'og:image', content: "/logo.svg" }],
+    ['meta', { name: 'twitter:card', content: "summary_large_image" }],
+    ['meta', { property: 'twitter:domain', content: "docs.fjellhei.men" }],
+    ['meta', { property: 'twitter:url', content: "https://docs.fjellhei.men" }],
+    ['meta', { name: 'twitter:title', content: "Fjellheimen" }],
+    ['meta', { name: 'twitter:description', content: "Home server documentation" }],
+    ['meta', { name: 'twitter:image', content: "/logo.svg" }],
   ],
   lastUpdated: true,
   themeConfig: {
