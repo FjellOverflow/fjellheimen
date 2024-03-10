@@ -5,13 +5,13 @@ Maintenance is essential for server reliability. Several tasks should be perform
 ### Overview
 Predefined jobs are available in the `jobs` directory. Some require [ENV](https://wiki.archlinux.org/title/Environment_variables) variables to be configured in `jobs/.env`.
 
-| Script                 | Action                        | ENV                                        |
-|------------------------|-------------------------------|--------------------------------------------|
-| `jobs/backup`          | Create compressed backup      | `$BACKUP_FOLDER `                          |
-| `jobs/reboot`          | Initiate reboot               |                                            |
-| `jobs/check_public_ip` | Inform about public IP change | `$DNS_PROVIDER`                            |
-| `jobs/on_startup  `    | Inform about server start     | `$DRIVE_PATH`                              |
-| `jobs/notify`          | Send out notification         | `$TELEGRAM_CHAT_ID`, `$TELEGRAM_BOT_TOKEN` |
+| Script                 | Action                        | ENV                                         |
+|------------------------|-------------------------------|---------------------------------------------|
+| `jobs/backup`          | Create compressed backup      | `$SOURCE_FOLDER`, `$BACKUP_FOLDER`, `$USER` |
+| `jobs/reboot`          | Initiate reboot               |                                             |
+| `jobs/check_public_ip` | Inform about public IP change | `$DNS_PROVIDER`                             |
+| `jobs/on_startup  `    | Inform about server start     | `$DRIVE_PATH`                               |
+| `jobs/notify`          | Send out notification         | `$TELEGRAM_CHAT_ID`, `$TELEGRAM_BOT_TOKEN`  |
 
 ### Backup
 Copies and compresses the `/homeserver` directory, saving it to `$BACKUP_FOLDER`. Notifications are sent before and after backup creation. *Recommended frequency: at least weekly.*
