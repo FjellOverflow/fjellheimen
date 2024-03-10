@@ -5,7 +5,7 @@ I'm [FjellOverflow](https://fjelloverflow.dev/), a professional developer with a
   <img src="/logo.svg" style="margin: auto; width: 50%" alt="fjelloverflow logo">
 </div>
 
-Over time, I've built and maintained my own home server, named **Fjellheimen**, on an older machine at home. Despite tracking configuration changes with version control and taking notes, the setup became increasingly complex to manage.
+Over time, I've built and maintained my own home server, named *Fjellheimen*, on an older machine at home. Despite tracking configuration changes with version control and taking notes, the setup became increasingly complex to manage.
 
 The home server is designed to run silently and unsupervised for extended periods. However, making additions or fixes after a long interval or migrating the setup could be challenging without proper documentation.
 

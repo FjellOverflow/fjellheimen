@@ -1,5 +1,4 @@
 # Shell Aliases
-
 To streamline repetitive tasks, [shell aliases](https://linuxize.com/post/how-to-create-bash-aliases/) are available for common command line actions. These aliases can be located and modified in the `.aliases` file.
 
 ## Adding aliases to the shell

@@ -1,5 +1,4 @@
 # Host
-
 The *host* or *host machine* is the physical or virtual base for the home server. Most applications are intended to run [containerized](/stacks/overview) with [Docker](https://docs.docker.com/), but there are constraints to consider regarding the machine or operating system for the setup.
 
 ## Overview

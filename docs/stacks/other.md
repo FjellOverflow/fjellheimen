@@ -2,7 +2,6 @@
 This section covers various standalone applications not included in other stacks.
 
 ## Audiobookshelf
-
 *"Audiobookshelf is an open-source project that lets you stream and download audiobooks and podcasts from your own server."*
 
 |                 |                                                             |

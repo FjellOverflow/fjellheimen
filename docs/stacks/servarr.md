@@ -1,5 +1,4 @@
 # Servarr
-
 The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prowlarr` and `arr-sonarr`, facilitating media requesting, automated downloading, and management.
 
 | Service | URL | Purpose | Project |
