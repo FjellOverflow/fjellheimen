@@ -10,6 +10,6 @@ Fjellheimen is a Docker-based home server setup for personal use.
 Check out the documentation at [docs.fjellhei.men](https://docs.fjellhei.men) for more information.
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/FjellOverflow/fjellheimen/main/docs/public/Screenshot.svg" alt="Fjellheimen dashboard" width="75%">
+    <img src="https://raw.githubusercontent.com/FjellOverflow/fjellheimen/main/docs/public/Screenshot.png" alt="Fjellheimen dashboard" width="75%">
     <p>Home server dashboard</p>
 </div>
