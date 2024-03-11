@@ -14,7 +14,7 @@ hero:
       link: /introduction/getting-started
     - theme: alt
       text: View on Github
-      link: https://github.com/FjellOverflow/homeserver
+      link: https://github.com/FjellOverflow/fjellheimen
 
 features:
   - title: "IaC via docker-compose"

@@ -21,7 +21,7 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     editLink: {
-      pattern: 'https://github.com/FjellOverflow/homeserver/edit/main/docs/:path',
+      pattern: 'https://github.com/FjellOverflow/fjellheimen/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
     nav: [
@@ -74,7 +74,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/FjellOverflow/homeserver' }
+      { icon: 'github', link: 'https://github.com/FjellOverflow/fjellheimen' }
     ],
 
     search: {
