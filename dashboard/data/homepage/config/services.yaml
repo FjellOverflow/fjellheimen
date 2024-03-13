@@ -37,17 +37,6 @@
           url: {{HOMEPAGE_VAR_KAVITA_URL}}
           username: {{HOMEPAGE_VAR_KAVITA_USERNAME}}
           password: {{HOMEPAGE_VAR_KAVITA_PASSWORD}}
-    - Audiobookshelf:
-        icon: audiobookshelf.png
-        href: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_HREF}}
-        description: Audiobooks
-        server: docker
-        container: audiobookshelf
-        showStats: false
-        widget:
-          type: audiobookshelf
-          url: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_URL}}
-          key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
 
 - Media Management:
     - qBittorrent:

@@ -1,49 +1,6 @@
 # Miscellaneous applications
 This section covers various standalone applications not included in other stacks.
 
-## Audiobookshelf
-*"Audiobookshelf is an open-source project that lets you stream and download audiobooks and podcasts from your own server."*
-
-|                 |                                                             |
-|-----------------|-------------------------------------------------------------|
-| URL             | [audiobooks.fjellhei.men](https://audiobooks.fjellhei.men/) |
-| ENV             | /                                                           |
-| Volumes         | `/config`, `/metadata`, `/audiobooks`                       |
-| Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
-
-::: details Docker compose
-```yml
-version: '3'
-
-name: other
-
-services:
-
-  audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:latest
-    container_name: audiobookshelf
-    volumes:
-      - /homeserver/audiobookshelf/data/config:/config
-      - /homeserver/audiobookshelf/data/metadata:/metadata
-      - /xdrive/Media/Audiobooks:/audiobooks
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:80 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
-```
-:::
-
 ## Kavita
 *"Kavita is a self-hosted digital library that supports various file formats and allows you to access your files from external network."*
 

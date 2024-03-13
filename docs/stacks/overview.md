@@ -17,7 +17,6 @@ The home server's different stacks reside in their respective directories, each 
     - **qBittorrent**, torrent downloads
     - **gluetun**, VPN connection
 - [Other](/stacks/other)
-    - **Audiobookshelf**, audiobooks and podcasts library
     - **Kavita**, books library
     - **Mealie**, recipe management
     - **Plex**, movie & TV library
