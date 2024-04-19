@@ -25,18 +25,6 @@
           type: overseerr
           url: {{HOMEPAGE_VAR_OVERSEERR_URL}}
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
-    - Kavita:
-        icon: kavita.png
-        href: {{HOMEPAGE_VAR_KAVITA_HREF}}
-        description: Books
-        server: docker
-        container: kavita
-        showStats: false
-        widget:
-          type: kavita
-          url: {{HOMEPAGE_VAR_KAVITA_URL}}
-          username: {{HOMEPAGE_VAR_KAVITA_USERNAME}}
-          password: {{HOMEPAGE_VAR_KAVITA_PASSWORD}}
 
 - Media Management:
     - qBittorrent:

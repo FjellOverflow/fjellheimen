@@ -1,48 +1,6 @@
 # Miscellaneous applications
 This section covers various standalone applications not included in other stacks.
 
-## Kavita
-*"Kavita is a self-hosted digital library that supports various file formats and allows you to access your files from external network."*
-
-|                 |                                                   |
-|-----------------|---------------------------------------------------|
-| URL             | [books.fjellhei.men](https://books.fjellhei.men/) |
-| ENV             | /                                                 |
-| Volumes         | `/config`, `/data`                                |
-| Project website | [kavitareader.com](https://www.kavitareader.com/) |
-
-::: details Docker compose
-```yml
-version: '3'
-
-name: other
-
-services:
-
-  kavita:
-    image: lscr.io/linuxserver/kavita:latest
-    container_name: kavita
-    volumes:
-      - /homeserver/kavita/data/config:/config
-      - /xdrive/Media/Books:/data
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:5000 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
-```
-:::
-
 ## Mealie
 *"Mealie is a web app that lets you manage your recipes, import them from the web, and share them with your family."*
 
