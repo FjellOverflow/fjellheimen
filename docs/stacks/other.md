@@ -1,6 +1,42 @@
 # Miscellaneous applications
 This section covers various standalone applications not included in other stacks.
 
+## Vaultwarden
+*"Vaultwarden is a self-hosted server compatible with Bitwarden clients, written in Rust and with various features."*
+
+|                 |                                                                       |
+|-----------------|-----------------------------------------------------------------------|
+| URL             | [passwords.fjellhei.men](https://passwords.fjellhei.men/)             |
+| ENV             | /                                                                     |
+| Volumes         | `/data`                                                               |
+| Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
+
+::: details Docker compose
+```yml
+version: "3"
+
+name: other
+
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    volumes:
+      - /homeserver/vaultwarden/data:/data
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    external: true
+
+```
+:::
+
 ## Mealie
 *"Mealie is a web app that lets you manage your recipes, import them from the web, and share them with your family."*
 

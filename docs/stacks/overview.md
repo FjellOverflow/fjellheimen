@@ -17,6 +17,7 @@ The home server's different stacks reside in their respective directories, each 
     - **qBittorrent**, torrent downloads
     - **gluetun**, VPN connection
 - [Other](/stacks/other)
+    - **Vaultwarden**, password manager
     - **Mealie**, recipe management
     - **Plex**, movie & TV library
     - **Syncthing**, file syncing

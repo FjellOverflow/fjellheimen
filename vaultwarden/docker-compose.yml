@@ -1,0 +1,20 @@
+version: '3'
+
+name: other
+
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    volumes:
+      - /homeserver/vaultwarden/data:/data
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    external: true
