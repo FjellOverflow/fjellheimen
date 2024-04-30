@@ -30,10 +30,9 @@ Consult the [documentation](https://tailscale.com/kb/1017/install) for instructi
 
 SSH access to the server is restricted to devices with authorized keys, making server management challenging from unauthorized ones. Portainer fills this gap by offering a web-based UI for Docker container administration accessible from any device's browser.
 
-## docker-compose.yml
-```yml
-version: '3'
-
+## docker-compose.yaml
+```yaml
+---
 name: core
 
 services:

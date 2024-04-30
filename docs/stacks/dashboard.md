@@ -20,10 +20,9 @@ The content, layout, and appearance of homepage are configured using various YAM
 ## ENV
 Homepage features numerous shortcuts to various home server applications, necessitating a significant number of environment variables to define the corresponding URLs. These variables are located within tracked configuration files. It's important to note that certain variables apply to both instances of homepage, while others are specific to either the main or remote instance.
 
-## docker-compose.yml
-```yml
-version: '3'
-
+## docker-compose.yaml
+```yaml
+---
 name: dashboard
 
 services:

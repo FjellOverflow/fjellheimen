@@ -27,10 +27,9 @@ Starting the application containers is straightforward. The primary task involve
 
 [TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
-## docker-compose.yml
-```yml
-version: "3"
-
+## docker-compose.yaml
+```yaml
+---
 name: arr
 
 services:

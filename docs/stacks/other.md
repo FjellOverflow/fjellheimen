@@ -12,9 +12,8 @@ This section covers various standalone applications not included in other stacks
 | Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
 
 ::: details Docker compose
-```yml
-version: "3"
-
+```yaml
+---
 name: other
 
 services:
@@ -48,9 +47,8 @@ networks:
 | Project website | [mealie.io](https://mealie.io/)                   |
 
 ::: details Docker compose
-```yml
-version: '3'
-
+```yaml
+---
 name: other
 
 services:
@@ -92,9 +90,8 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 :::
 
 ::: details Docker compose
-```yml
-version: "3"
-
+```yaml
+---
 name: other
 
 services:
@@ -131,9 +128,8 @@ services:
 | Project website | [syncthing.net](https://syncthing.net/)         |
 
 ::: details Docker compose
-```yml
-version: "3"
-
+```yaml
+---
 name: other
 
 services:
@@ -178,9 +174,8 @@ To receive automatic notifications from Watchtower after Docker image updates, s
 :::
 
 ::: details Docker compose
-```yml
-version: '3'
-
+```yaml
+---
 name: other
 
 services:

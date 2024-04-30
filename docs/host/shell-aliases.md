@@ -28,7 +28,7 @@ The command `fjell <command>` serves as a wrapper to simplify frequently used Do
 |` fjell rm $C1 $C2 ...`      | Remove container `$C1` `$C2` ...  |
 | `fjell restart $C1 $C2 ...` | Restart container `$C1` `$C2` ... |
 
-The most useful commands, `up` and `down` pertain to Docker Compose. They initiate or terminate entire [stacks](/stacks/overview), assuming the individual stacks are defined in `/homeserver/$STACK_NAME/docker-compose.yml.`
+The most useful commands, `up` and `down` pertain to Docker Compose. They initiate or terminate entire [stacks](/stacks/overview), assuming the individual stacks are defined in `/homeserver/$STACK_NAME/docker-compose.yaml.`
 
 
 | Alias                    | Action                          |

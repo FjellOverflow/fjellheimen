@@ -62,8 +62,8 @@ fjell_restart() {
 
 fjell_up() {
   for file in "$@"; do
-    if [ -f "/homeserver/$file/docker-compose.yml" ]; then
-      sudo docker compose -f "/homeserver/$file/docker-compose.yml" up -d
+    if [ -f "/homeserver/$file/docker-compose.yaml" ]; then
+      sudo docker compose -f "/homeserver/$file/docker-compose.yaml" up -d
     else
       echo "Stack '$file' does not exist."
     fi
@@ -72,8 +72,8 @@ fjell_up() {
 
 fjell_down() {
   for file in "$@"; do
-    if [ -f "/homeserver/$file/docker-compose.yml" ]; then
-      sudo docker compose -f "/homeserver/$file/docker-compose.yml" down
+    if [ -f "/homeserver/$file/docker-compose.yaml" ]; then
+      sudo docker compose -f "/homeserver/$file/docker-compose.yaml" down
     else
       echo "Stack '$file' does not exist."
     fi
