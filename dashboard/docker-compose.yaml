@@ -61,4 +61,4 @@ services:
 
 networks:
   proxy-network:
-    name: proxy-network
+    external: true

@@ -1,6 +1,4 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/en/configs/services
 
 - Media:
     - Plex:
@@ -25,6 +23,17 @@
           type: overseerr
           url: {{HOMEPAGE_VAR_OVERSEERR_URL}}
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
+    - Bazarr:
+        icon: bazarr
+        href: {{HOMEPAGE_VAR_BAZARR_HREF}}
+        description: Subtitles
+        server: docker
+        container: arr-bazarr
+        showStats: false
+        widget:
+          type: bazarr
+          url: {{HOMEPAGE_VAR_BAZARR_URL}}
+          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
 
 - Media Management:
     - qBittorrent:
@@ -85,12 +94,19 @@
           type: mealie
           url: {{HOMEPAGE_VAR_MEALIE_URL}}
           key: {{HOMEPAGE_VAR_MEALIE_KEY}}
-    - syncthing:
+    - Syncthing:
         icon: syncthing.png
         href: {{HOMEPAGE_VAR_SYNCTHING_HREF}}
         description: Sync files
         server: docker
         container: syncthing
+        showStats: false
+    - Vaultwarden:
+        icon: vaultwarden.png
+        href: {{HOMEPAGE_VAR_VAULTWARDEN_HREF}}
+        description: Password manager
+        server: docker
+        container: vaultwarden
         showStats: false
     - Homepage:
         icon: /assets/logo.svg
