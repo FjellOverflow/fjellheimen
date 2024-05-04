@@ -75,6 +75,25 @@ services:
       retries: 3
     restart: unless-stopped
 
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: arr-bazarr
+    volumes:
+      - /homeserver/arr/data/bazarr/config:/config
+      - /xdrive/Media/TV:/tv
+      - /xdrive/Media/Movies:/movies
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+    healthcheck:
+      test: curl --fail http://localhost:6767 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
 networks:
   proxy-network:
     external: true

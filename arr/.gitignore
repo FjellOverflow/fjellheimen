@@ -9,3 +9,6 @@ data/radarr/*
 
 data/overseerr/*
 !data/overseerr/.gitkeep
+
+data/bazarr/*
+!data/bazarr/.gitkeep
