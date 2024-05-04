@@ -7,6 +7,7 @@ The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prow
 | sonarr | [sonarr.fjellhei.men](https://sonarr.fjellhei.men/) | TV series management | [linuxserver/sonarr](https://docs.linuxserver.io/images/docker-sonarr/) |
 | radarr | [radarr.fjellhei.men](https://radarr.fjellhei.men/) | Movie management | [linuxserver/radarr](https://docs.linuxserver.io/images/docker-radarr/) |
 | prowlarr | [prowlarr.fjellhei.men](https://prowlarr.fjellhei.men/) | Indexer management | [linuxserver/prowlarr](https://docs.linuxserver.io/images/docker-prowlarr/) |
+| bazarr | [subtitles.fjellhei.men](https://subtitles.fjellhei.men/) | Subtitle management | [linuxserver/bazarr](https://docs.linuxserver.io/images/docker-bazarr/) |
 
 *"Overseerr is a request management and media discovery tool built to work with your existing Plex ecosystem."*
 
@@ -16,6 +17,8 @@ The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prow
 
 *"Prowlarr is a tool that lets you manage your torrent trackers and usenet indexers for various PVR apps such as LazyLibrarian, Lidarr, Mylar3, Radarr, Readarr, and Sonarr."*
 
+*"Bazarr is a companion application to Sonarr and Radarr that manages and downloads subtitles based on your requirements."*
+
 ## Configuration
 Starting the application containers is straightforward. The primary task involves configuring the applications to seamlessly interact with each other. They are intended to operate together as follows:
 
@@ -24,6 +27,7 @@ Starting the application containers is straightforward. The primary task involve
 3. Radarr contacts Prowlarr-managed indexers for missing media.
 4. Radarr, upon finding the media, initiates a download on qBittorrent.
 5. After downloading, Radarr renames and copies the appropriate files into the library.
+6. Bazarr will, according to a language profile, search and add missing subtitles.
 
 [TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
@@ -100,6 +104,25 @@ services:
       - /homeserver/.env
     healthcheck:
       test: curl --fail http://localhost:5055 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: arr-bazarr
+    volumes:
+      - /homeserver/arr/data/bazarr/config:/config
+      - /xdrive/Media/TV:/tv
+      - /xdrive/Media/Movies:/movies
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+    healthcheck:
+      test: curl --fail http://localhost:6767 || exit 1
       interval: 1m
       start_period: 20s
       timeout: 10s
