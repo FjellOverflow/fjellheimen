@@ -1,7 +1,7 @@
 ---
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/settings
-title: {{HOMEPAGE_VAR_TITLE}}
+title: Fjellheimen
 favicon: /assets/logo.svg
 headerStyle: boxedWidgets
 hideErrors: true

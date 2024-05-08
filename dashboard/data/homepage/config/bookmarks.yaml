@@ -5,10 +5,10 @@
 - Manage Server:
   - Git repository:
     - icon: github-light.png
-      href: {{HOMEPAGE_VAR_HOMESERVER_REPOSITORY}}
-  - Tailscale:
-    - icon: tailscale-light.png
-      href: https://login.tailscale.com/admin
+      href: https://github.com/FjellOverflow/fjellheimen
+  - Documentation:
+    - icon: /assets/logo.svg
+      href: https://docs.fjellhei.men
   - Porkbun:
     - icon: https://porkbun.com/images/favicons/favicon-96x96.png
       href: https://porkbun.com/

@@ -14,26 +14,7 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/dashboard/.env
       - /homeserver/dashboard/homepage.env
-    environment:
-      - TZ=Europe/Tallinn
-    restart: unless-stopped
-
-  homepage-remote:
-    image: ghcr.io/gethomepage/homepage:latest
-    container_name: dashboard-homepage-remote
-    volumes:
-      - /homeserver/dashboard/data/homepage/config:/app/config
-      - /homeserver/dashboard/data/homepage/assets:/app/public/assets
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /xdrive:/xdrive
-      - /homeserver:/homeserver
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/dashboard/.env
-      - /homeserver/dashboard/homepage-remote.env
     environment:
       - TZ=Europe/Tallinn
     restart: unless-stopped
