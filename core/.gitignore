@@ -8,3 +8,6 @@ data/portainer/*
 
 data/tailscale/*
 !data/tailscale/.gitkeep
+
+data/dnsmasq/*
+!data/dnsmasq/.gitkeep

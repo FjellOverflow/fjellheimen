@@ -61,6 +61,16 @@ services:
       retries: 3
     restart: unless-stopped
 
+  dnsmasq:
+    image: dockurr/dnsmasq:latest
+    container_name: core-dnsmasq
+    volumes:
+      - /homeserver/core/data/dnsmasq/:/etc/dnsmasq.d/
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
 networks:
   proxy-network:
     name: proxy-network
