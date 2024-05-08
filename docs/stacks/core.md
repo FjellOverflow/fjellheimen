@@ -5,6 +5,7 @@ The *Core* stack comprises essential containers for server infrastructure, inclu
 |---------|-----|-------- |---------|
 | NPM | [proxy.fjellhei.men](https://proxy.fjellhei.men/) | Reverse proxy | [nginxproxymanager.com](https://nginxproxymanager.com/) |
 | Tailscale | / | Mesh VPN | [tailscale.com](https://tailscale.com/) |
+| dnsmasq | / | DNS server | [dnsmasq.org](https://dnsmasq.org) |
 | Portainer | [containers.fjellhei.men](https://containers.fjellhei.men/) | Container management UI | [portainer.io](https://www.portainer.io/) |
 
 ## Nginx Proxy Manager
@@ -24,6 +25,13 @@ For guides and detailed instructions on setting up and configuring the reverse p
 To remotely access the home server without exposing it to the internet, Tailscale utilizes the WireGuard protocol, creating a secure network called "Tailnet" for connected devices. This allows seamless access to server apps from anywhere, using different IP addresses.
 
 Consult the [documentation](https://tailscale.com/kb/1017/install) for instructions on how to set up and use Tailscale.
+
+## dnsmasq
+*"dnsmasq is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a small-scale network."*
+
+The home servers domain is pointed towards its private IP address to access the server under that domain. However, when remote and connected to tailscale, this private IP does not resolve. To circumwent that problem while still using the same domain, a running dnsmasq instance can added to tailscale as additional DNS server. In dnsmasq, the IP that the domain points to can be overwritten by its tailscale IP. Thus, when not connected to tailscale (and in the home network), the domain will resolve to the local IP of the server and when connected to tailscale a device querying the domain will instead get the servers tailscale IP as answer!
+
+Consult the [documentation](https://tailscale.com/kb/1114/pi-hole) for details of this approach.
 
 ## Portainer
 *"Portainer is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments."*
@@ -93,6 +101,16 @@ services:
       start_period: 20s
       timeout: 10s
       retries: 3
+    restart: unless-stopped
+
+  dnsmasq:
+    image: dockurr/dnsmasq:latest
+    container_name: core-dnsmasq
+    volumes:
+      - /homeserver/core/data/dnsmasq/:/etc/dnsmasq.d/
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
     restart: unless-stopped
 
 networks:
