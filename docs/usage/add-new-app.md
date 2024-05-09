@@ -131,6 +131,7 @@ Docker [health checks](https://docs.docker.com/reference/dockerfile/#healthcheck
 ```yaml
 healthcheck:
       test: curl --fail http://localhost:8888 || exit 1
+          # wget -nv -t1 --spider http://localhost:8888 || exit 1
       interval: 1m
       start_period: 20s
       timeout: 10s
