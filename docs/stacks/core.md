@@ -1,5 +1,5 @@
-# Core
-The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale` and `core-npm`.
+ex# Core
+The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale`, `core-dnsmasq` and `core-portainer`.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
@@ -29,9 +29,7 @@ Consult the [documentation](https://tailscale.com/kb/1017/install) for instructi
 ## dnsmasq
 *"dnsmasq is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a small-scale network."*
 
-The home servers domain is pointed towards its private IP address to access the server under that domain. However, when remote and connected to tailscale, this private IP does not resolve. To circumwent that problem while still using the same domain, a running dnsmasq instance can added to tailscale as additional DNS server. In dnsmasq, the IP that the domain points to can be overwritten by its tailscale IP. Thus, when not connected to tailscale (and in the home network), the domain will resolve to the local IP of the server and when connected to tailscale a device querying the domain will instead get the servers tailscale IP as answer!
-
-Consult the [documentation](https://tailscale.com/kb/1114/pi-hole) for details of this approach.
+Depending on if one tries to connect to the home server from the local network or from remotely with Tailscale, the home server will have a different IP address (local IP vs Tailscale IP). To reuse the same domain name for both cases, *dnsmasq* can be employed as a DNS server. It [can be added to Tailscale](https://tailscale.com/kb/1114/pi-hole#step-3-set-your-raspberry-pi-as-your-dns-server) and resolve the domain name to the Tailscale IP of the home server if, and only if, the workstation is connected to the Tailscale network, otherwise the domain name will resolve as usual.
 
 ## Portainer
 *"Portainer is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments."*
