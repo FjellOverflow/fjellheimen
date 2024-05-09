@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: "Fjellheimen",
+  title: "Fjellheimen Docs",
   description: "Home server documentation",
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' },],
