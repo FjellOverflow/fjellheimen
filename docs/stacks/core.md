@@ -1,4 +1,4 @@
-ex# Core
+# Core
 The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale`, `core-dnsmasq` and `core-portainer`.
 
 | Service | URL | Purpose | Project |
