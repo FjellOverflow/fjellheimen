@@ -1,0 +1,5 @@
+data/readeck/*
+!data/readeck/.gitkeep
+
+data/slash/*
+!data/slash/.gitkeep
