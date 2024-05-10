@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
 
   portainer:
-    image: portainer/portainer:latest
+    image: portainer/portainer-ce:latest
     container_name: core-portainer
     volumes:
       - /homeserver/core/data/portainer/data:/data
