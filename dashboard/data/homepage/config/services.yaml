@@ -24,7 +24,7 @@
           url: {{HOMEPAGE_VAR_OVERSEERR_URL}}
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
     - Bazarr:
-        icon: bazarr
+        icon: bazarr-light.png
         href: {{HOMEPAGE_VAR_BAZARR_URL}}
         description: Subtitles
         server: docker
@@ -60,7 +60,7 @@
           url: {{HOMEPAGE_VAR_SONARR_URL}}
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
     - Radarr:
-        icon: radarr.png
+        icon: radarr-light.png
         href: {{HOMEPAGE_VAR_RADARR_URL}}
         description: Movie management
         server: docker
@@ -102,11 +102,25 @@
         container: syncthing
         showStats: false
     - Vaultwarden:
-        icon: vaultwarden.png
+        icon: vaultwarden-light.png
         href: {{HOMEPAGE_VAR_VAULTWARDEN_URL}}
         description: Password manager
         server: docker
         container: vaultwarden
+        showStats: false
+    - Readeck:
+        icon: readeck.png
+        href: {{HOMEPAGE_VAR_READECK_URL}}
+        description: Bookmark articles to read later
+        server: docker
+        container: bookmarks-readeck
+        showStats: false
+    -  Slash:
+        icon: /assets/slash.svg
+        href: {{HOMEPAGE_VAR_SLASH_URL}}
+        description: Shortcut links
+        server: docker
+        container: bookmarks-slash
         showStats: false
 
 - Administration:
