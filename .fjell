@@ -92,5 +92,5 @@ fjell_logs() {
 }
 
 fjell_shell() {
-  sudo docker exec -it "$@"
+  sudo docker exec -it "$@" sh
 }
