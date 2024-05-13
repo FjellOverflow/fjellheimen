@@ -1,14 +1,3 @@
-alias l="ls -lah"
-
-# IP
-alias publicip='wget -O - -q https://checkip.amazonaws.com'
-alias localip="hostname -I | cut -f1 -d' '"
-
-# DRIVES
-alias server='cd /homeserver'
-alias xdrive='cd /xdrive'
-
-# DOCKER WRAPPER
 fjell() {
   COMMAND="$1"
   shift
@@ -34,6 +23,15 @@ fjell() {
     "down")
         fjell_down "$@"
         ;;
+    "ip")
+        fjell_ip "$@"
+        ;;
+    "logs")
+        fjell_logs "$@"
+        ;;
+    "shell")
+        fjell_shell "$@"
+        ;;
     *)
         echo "Invalid command"
         ;;
@@ -53,6 +51,7 @@ fjell_stop() {
 }
 
 fjell_rm() {
+  sudo docker stop "$@"
   sudo docker rm "$@"
 }
 
@@ -78,4 +77,20 @@ fjell_down() {
       echo "Stack '$file' does not exist."
     fi
   done
+}
+
+fjell_ip() {
+  publicip=$(wget -O - -q https://checkip.amazonaws.com)
+  localip=$(hostname -I | cut -f1 -d' ')
+
+  echo "Local: $localip"
+  echo "Public: $publicip"
+}
+
+fjell_logs() {
+  sudo docker logs -f "$@"
+}
+
+fjell_shell() {
+  sudo docker exec -it "$@"
 }
