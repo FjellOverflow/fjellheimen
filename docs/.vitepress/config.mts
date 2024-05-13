@@ -68,6 +68,7 @@ export default defineConfig({
           { text: 'Dashboard', link: '/stacks/dashboard' },
           { text: 'Servarr', link: '/stacks/servarr' },
           { text: 'Torrents', link: '/stacks/torrents' },
+          { text: 'Bookmarks', link: '/stacks/bookmarks' },
           { text: 'Other', link: '/stacks/other'}
         ]
       },
