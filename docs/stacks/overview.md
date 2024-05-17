@@ -24,5 +24,6 @@ The home server's different stacks reside in their respective directories, each 
     - **Vaultwarden**, password manager
     - **Mealie**, recipe management
     - **Plex**, movie & TV library
+    - **Audiobookshelf**, audiobooks and podcasts library
     - **Syncthing**, file syncing
     - **Watchtower**, Docker image updater

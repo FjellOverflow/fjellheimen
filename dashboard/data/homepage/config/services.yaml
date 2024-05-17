@@ -34,6 +34,17 @@
           type: bazarr
           url: {{HOMEPAGE_VAR_BAZARR_URL}}
           key: {{HOMEPAGE_VAR_BAZARR_KEY}}
+    - Audiobookshelf:
+        icon: audiobookshelf.png
+        href: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_URL}}
+        description: Audiobooks
+        server: docker
+        container: audiobookshelf
+        showStats: false
+        widget:
+          type: audiobookshelf
+          url: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_URL}}
+          key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
 
 - Media Management:
     - qBittorrent:
