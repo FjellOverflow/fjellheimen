@@ -1,3 +1,7 @@
+<script setup>
+import { data as composeFiles } from '../docker.data.js'
+</script>
+
 # Dashboard
 The *Dashboard* stack, which includes the `dashboard-homepage` and `dashboard-glances` containers, offers dashboards displaying application shortcuts and server metrics.
 
@@ -17,51 +21,6 @@ The content, layout, and appearance of homepage are configured using various YAM
 Homepage features numerous shortcuts to various home server applications, necessitating a significant number of environment variables to define the corresponding URLs. These variables are located within tracked configuration files.
 
 ## docker-compose.yaml
-```yaml
----
-name: dashboard
-
-services:
-  homepage:
-    image: ghcr.io/gethomepage/homepage:latest
-    container_name: dashboard-homepage
-    volumes:
-      - /homeserver/dashboard/data/homepage/config:/app/config
-      - /homeserver/dashboard/data/homepage/assets:/app/public/assets
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /xdrive:/xdrive
-      - /homeserver:/homeserver
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/dashboard/.env
-      - /homeserver/dashboard/homepage.env
-    environment:
-      - TZ=Europe/Tallinn
-    restart: unless-stopped
-
-  glances:
-    image: nicolargo/glances:latest
-    container_name: dashboard-glances
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    environment:
-      - GLANCES_OPT=-w
-    privileged: true
-    pid: host
-    healthcheck:
-      test: curl --fail -s http://localhost:61208 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    name: proxy-network
+```yaml-vue
+{{ composeFiles['dashboard'] }}
 ```

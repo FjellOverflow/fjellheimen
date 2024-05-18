@@ -1,3 +1,7 @@
+<script setup>
+import { data as composeFiles } from '../docker.data.js'
+</script>
+
 # Torrents
 The *Torrents* stack, comprising the `torrents-qBittorrent` and `torrents-gluetun` containers, facilitates downloads via the [BitTorrent](https://en.wikipedia.org/wiki/BitTorrent) protocol over a VPN connection.
 
@@ -34,50 +38,6 @@ To select/configure the VPN provider and necessary environment variables, please
 | `OWNED_ONLY`           | `yes`        | Use only servers owned by provider |
 
 ## docker-compose.yaml
-```yaml
----
-name: torrents
-
-services:
-
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: torrents-qbittorrent
-    volumes:
-      - /homeserver/torrents/data//qbittorrent/config:/config
-      - /xdrive/Media/Downloads:/downloads
-    network_mode: "service:gluetun"
-    env_file:
-      - /homeserver/.env
-    environment:
-      - WEBUI_PORT=9090
-    depends_on:
-      - gluetun
-    healthcheck:
-      test: curl --fail http://localhost:9090 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  gluetun:
-    image: qmcgaw/gluetun:latest
-    container_name: torrents-gluetun
-    cap_add:
-      - NET_ADMIN
-    expose:
-      - '9090'
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-      - /homeserver/torrents/gluetun.env
-    environment:
-      - VPN_TYPE=openvpn
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
+```yaml-vue
+{{ composeFiles['torrents'] }}
 ```

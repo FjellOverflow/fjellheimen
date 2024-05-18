@@ -1,3 +1,7 @@
+<script setup>
+import { data as composeFiles } from '../docker.data.js'
+</script>
+
 # Miscellaneous applications
 This section covers various standalone applications not included in other stacks.
 
@@ -12,27 +16,8 @@ This section covers various standalone applications not included in other stacks
 | Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    volumes:
-      - /homeserver/vaultwarden/data:/data
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
-
+```yaml-vue
+{{ composeFiles['vaultwarden'] }}
 ```
 :::
 
@@ -47,31 +32,8 @@ networks:
 | Project website | [mealie.io](https://mealie.io/)                   |
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  mealie:
-    image: ghcr.io/mealie-recipes/mealie:latest
-    container_name: mealie
-    volumes:
-      - /homeserver/mealie/data/config:/app/data/
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    environment:
-      - ALLOW_SIGNUP=true
-      - MAX_WORKERS=1
-      - WEB_CONCURRENCY=1
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
-
+```yaml-vue
+{{ composeFiles['mealie'] }}
 ```
 :::
 
@@ -90,30 +52,8 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 :::
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  plex:
-    image: lscr.io/linuxserver/plex:latest
-    container_name: plex
-    volumes:
-      - /homeserver/plex/data/config:/config
-      - /xdrive/Media/Movies:/movies
-      - /xdrive/Media/TV:/tv
-      - /xdrive/Media/Music:/music
-    network_mode: host
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:32400/web || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
+```yaml-vue
+{{ composeFiles['plex'] }}
 ```
 :::
 
@@ -128,34 +68,8 @@ services:
 | Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  audiobookshelf:
-    image: ghcr.io/advplyr/audiobookshelf:latest
-    container_name: audiobookshelf
-    volumes:
-      - /homeserver/audiobookshelf/data/config:/config
-      - /homeserver/audiobookshelf/data/metadata:/metadata
-      - /xdrive/Media/Audiobooks:/audiobooks
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:80 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
+```yaml-vue
+{{ composeFiles['audiobookshelf'] }}
 ```
 :::
 
@@ -170,33 +84,8 @@ networks:
 | Project website | [syncthing.net](https://syncthing.net/)         |
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  syncthing:
-    image: lscr.io/linuxserver/syncthing:latest
-    container_name: syncthing
-    volumes:
-      - /homeserver/syncthing/data/config:/config
-      - /xdrive/Syncthing:/data
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:8384 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
+```yaml-vue
+{{ composeFiles['syncthing'] }}
 ```
 :::
 
@@ -216,32 +105,7 @@ To receive automatic notifications from Watchtower after Docker image updates, s
 :::
 
 ::: details Docker compose
-```yaml
----
-name: other
-
-services:
-
-  watchtower:
-    image: containrrr/watchtower:latest
-    container_name: watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-      - /homeserver/watchtower/.env
-    environment:
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_SCHEDULE=0 0 4 * * SAT
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
-
+```yaml-vue
+{{ composeFiles['watchtower'] }}
 ```
 :::

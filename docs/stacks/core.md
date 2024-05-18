@@ -1,3 +1,7 @@
+<script setup>
+import { data as composeFiles } from '../docker.data.js'
+</script>
+
 # Core
 The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale`, `core-dnsmasq` and `core-portainer`.
 
@@ -37,82 +41,6 @@ Depending on if one tries to connect to the home server from the local network o
 SSH access to the server is restricted to devices with authorized keys, making server management challenging from unauthorized ones. Portainer fills this gap by offering a web-based UI for Docker container administration accessible from any device's browser.
 
 ## docker-compose.yaml
-```yaml
----
-name: core
-
-services:
-
-  proxy:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: core-npm
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    volumes:
-      - /homeserver/core/data/npm/data:/data
-      - /homeserver/core/data/npm/letsencrypt:/etc/letsencrypt
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: ["CMD", "/bin/check-health"]
-      interval: 10s
-      timeout: 3s
-    restart: unless-stopped
-
-  portainer:
-    image: portainer/portainer:latest
-    container_name: core-portainer
-    volumes:
-      - /homeserver/core/data/portainer/data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    privileged: true
-    restart: unless-stopped
-
-  tailscale:
-    image: tailscale/tailscale:latest
-    container_name: core-tailscale
-    cap_add:
-      - NET_ADMIN
-      - NET_RAW
-    volumes:
-      - /homeserver/core/data/tailscale/config:/var/lib/tailscale
-      - /dev/net/tun:/dev/net/tun
-    network_mode: host
-    env_file:
-      - /homeserver/.env
-      - /homeserver/core/tailscale.env
-    environment:
-      - TS_AUTH_ONCE=true
-      - TS_HOSTNAME=fjellheimen
-      - TS_STATE_DIR=/var/lib/tailscale
-    healthcheck:
-      test: tailscale ping fjellheimen || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  dnsmasq:
-    image: dockurr/dnsmasq:latest
-    container_name: core-dnsmasq
-    volumes:
-      - /homeserver/core/data/dnsmasq/:/etc/dnsmasq.d/
-    network_mode: host
-    cap_add:
-      - NET_ADMIN
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    name: proxy-network
-
+```yaml-vue
+{{ composeFiles['core'] }}
 ```

@@ -1,3 +1,7 @@
+<script setup>
+import { data as composeFiles } from '../docker.data.js'
+</script>
+
 # Servarr
 The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prowlarr` and `arr-sonarr`, facilitating media requesting, automated downloading, and management.
 
@@ -32,104 +36,6 @@ Starting the application containers is straightforward. The primary task involve
 [TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
 ## docker-compose.yaml
-```yaml
----
-name: arr
-
-services:
-
-  sonarr:
-    image: lscr.io/linuxserver/sonarr:latest
-    container_name: arr-sonarr
-    volumes:
-      - /homeserver/arr/data/sonarr/config:/config
-      - /xdrive/Media/TV:/tv
-      - /xdrive/Media/Downloads:/downloads
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:8989 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  radarr:
-    image: lscr.io/linuxserver/radarr:latest
-    container_name: arr-radarr
-    volumes:
-      - /homeserver/arr/data/radarr/config:/config
-      - /xdrive/Media/Movies:/movies
-      - /xdrive/Media/Downloads:/downloads
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:7878 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
-    container_name: arr-prowlarr
-    volumes:
-      - /homeserver/arr/data/prowlarr/config:/config
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:9696 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: arr-overseerr
-    volumes:
-      - /homeserver/arr/data/overseerr/config:/config
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:5055 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-  bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
-    container_name: arr-bazarr
-    volumes:
-      - /homeserver/arr/data/bazarr/config:/config
-      - /xdrive/Media/TV:/tv
-      - /xdrive/Media/Movies:/movies
-    networks:
-      - proxy-network
-    env_file:
-      - /homeserver/.env
-    healthcheck:
-      test: curl --fail http://localhost:6767 || exit 1
-      interval: 1m
-      start_period: 20s
-      timeout: 10s
-      retries: 3
-    restart: unless-stopped
-
-networks:
-  proxy-network:
-    external: true
+```yaml-vue
+{{ composeFiles['arr'] }}
 ```
