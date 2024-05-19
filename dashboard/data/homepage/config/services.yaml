@@ -183,19 +183,23 @@
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          version: 4
           metric: process
     - CPU:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          version: 4
           metric: cpu
     - Homserver disk usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          version: 4
           metric: disk:sdb
     - External disk usage:
         widget:
           type: glances
           url: {{HOMEPAGE_VAR_GLANCES_URL}}
+          version: 4
           metric: disk:sda
