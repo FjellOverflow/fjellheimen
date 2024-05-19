@@ -3,13 +3,12 @@ import { data as composeFiles } from '../docker.data.js'
 </script>
 
 # Core
-The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale`, `core-dnsmasq` and `core-portainer`.
+The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale` and `core-portainer`.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
 | NPM | [proxy.fjellhei.men](https://proxy.fjellhei.men/) | Reverse proxy | [nginxproxymanager.com](https://nginxproxymanager.com/) |
 | Tailscale | / | Mesh VPN | [tailscale.com](https://tailscale.com/) |
-| dnsmasq | / | DNS server | [dnsmasq.org](https://dnsmasq.org) |
 | Portainer | [containers.fjellhei.men](https://containers.fjellhei.men/) | Container management UI | [portainer.io](https://www.portainer.io/) |
 
 ## Nginx Proxy Manager
@@ -29,11 +28,6 @@ For guides and detailed instructions on setting up and configuring the reverse p
 To remotely access the home server without exposing it to the internet, Tailscale utilizes the WireGuard protocol, creating a secure network called "Tailnet" for connected devices. This allows seamless access to server apps from anywhere, using different IP addresses.
 
 Consult the [documentation](https://tailscale.com/kb/1017/install) for instructions on how to set up and use Tailscale.
-
-## dnsmasq
-*"dnsmasq is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a small-scale network."*
-
-Depending on if one tries to connect to the home server from the local network or from remotely with Tailscale, the home server will have a different IP address (local IP vs Tailscale IP). To reuse the same domain name for both cases, *dnsmasq* can be employed as a DNS server. It [can be added to Tailscale](https://tailscale.com/kb/1114/pi-hole#step-3-set-your-raspberry-pi-as-your-dns-server) and resolve the domain name to the Tailscale IP of the home server if, and only if, the workstation is connected to the Tailscale network, otherwise the domain name will resolve as usual.
 
 ## Portainer
 *"Portainer is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments."*
