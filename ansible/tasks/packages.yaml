@@ -1,0 +1,13 @@
+---
+- name: Update packages
+  ansible.builtin.apt:
+    update_cache: yes
+    upgrade: 'yes'
+
+- name: Install curl, wget, git, tmux
+  ansible.builtin.apt:
+    package:
+      - curl
+      - wget
+      - git
+      - tmux

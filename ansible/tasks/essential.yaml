@@ -1,0 +1,11 @@
+---
+- name: Set hostname to {{hostname}}
+  ansible.builtin.hostname:
+    name: "{{hostname}}"
+
+- name: Enable passwordless sudo for {{username}}
+  ansible.builtin.lineinfile:
+    dest: /etc/sudoers
+    regexp: "^%wheel"
+    line: "{{username}} ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"

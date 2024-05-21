@@ -1,0 +1,30 @@
+---
+# instructions: https://ubuntu.com/tutorials/install-and-configure-samba
+
+- name: Install samba
+  ansible.builtin.apt:
+    package: samba
+
+- name: Start samba service
+  ansible.builtin.service:
+    name: smbd
+    state: started
+
+- name: Configure {{username}} as samba user
+  shell: >
+    (pdbedit --user={{ username }} 2>&1 > /dev/null)
+    || (echo '{{ samba_password }}'; echo '{{ samba_password }}')
+    | smbpasswd -s -a {{ username }}
+  register: samba_user_created
+  changed_when: "'Added user' in samba_user_created.stdout"
+
+- name: Restart samba daemon
+  ansible.builtin.service:
+    name: smbd
+    state: restarted
+  when: samba_user_created.changed
+
+- name: Allow samba in ufw
+  community.general.ufw:
+    rule: allow
+    name: 'samba'

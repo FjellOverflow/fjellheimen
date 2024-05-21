@@ -1,0 +1,48 @@
+---
+#https://github.com/ohmyzsh/ohmyzsh/wiki
+
+- name: Install zsh, git
+  ansible.builtin.apt:
+    package:
+      - zsh
+      - git
+      - tmux
+
+- name: Set zsh as default shell for {{username}}
+  ansible.builtin.user:
+    name: "{{username}}"
+    shell: /bin/zsh
+
+- name: Check if .oh-my-zsh exists  
+  become: false
+  stat:
+    path: "/home/{{username}}/.oh-my-zsh"
+  register: oh_my_zsh_dir
+
+- name: Install oh-my-zsh
+  when: not oh_my_zsh_dir.stat.exists
+  become: false
+  block:
+    - name: Download oh-my-zsh installer
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: "/home/{{username}}/install_omz.sh"
+        mode: '755'
+
+    - name: Run oh-my-zsh installer
+      ansible.builtin.shell: "sh /home/{{username}}/install_omz.sh --unattended"
+
+- name: Remove oh-my-zsh installer
+  become: false
+  ansible.builtin.file:
+    path: "/home/{{username}}/install_omz.sh"
+    state: absent
+
+- name: Install oh-my-zsh plugins
+  become: false
+  import_tasks: tasks/zsh_plugins.yaml
+
+- name: Write .tmux.conf
+  copy:
+    src: "templates/.tmux.conf"
+    dest: "/home/{{username}}/.tmux.conf"     
