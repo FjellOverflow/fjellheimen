@@ -81,5 +81,8 @@ export default defineConfig({
     search: {
       provider: 'local'
     }
-  }
+  },
+  markdown: {
+     theme: { light: 'github-light', dark: 'nord' } 
+  },
 })
