@@ -1,104 +1,75 @@
 # Setting up the host
+
 While most services on the home server will run [containerized](/stacks/overview), some bare-metal installations must be performed on the host machine to set things up.
 
 ::: warning For non-debian users
-Manysteps outlined here are specific to Debian. If you are setting up the home server on another host OS, some steps might need to be adjusted or substituted with appropriate alternatives. Use provided commands with caution.
+Many steps outlined here are specific to Debian. If you are setting up the home server on another host OS, some steps might need to be adjusted or substituted with appropriate alternatives. Use provided commands with caution.
 :::
 
-## Essentials
-These are the things needed on the host machine to run the documented home server setup.
+## Preseeding Debian 12
 
-### Install [sudo](https://wiki.debian.org/sudo)
-```bash
-su --login
-apt install -y sudo
-adduser $USERNAME sudo
-```
-Remember to log out and log in again to apply changes.
+As the server is meant to run on Debian 12, the OS should be freshly installed. To accelerate the installation, a [preeseding](https://www.debian.org/releases/stable/amd64/apbs01.en.html) file is available at `setup/debian12_preseed.cfg`. It defines answers to the choices to be made when doing a manual install, hence when using preseeding the installer will skip these questions, minimizing user intervention.
 
+The file can be used by, after launching the installer, navigating to *Advanced Options* -> *Automated Install* and entering the URL of some preseeding file. In its current form, it does not define answers for the following points, meaning the user must manually configure during installation:
 
-### Install Docker
-Follow the [official documentation](https://docs.docker.com/engine/install/debian/) to install Docker.
+- Disk partitioning
+- User password
+- bootloader location
 
-## Security
-Some bare minimum security tweaks.
+When using preseeding, make sure to adjust the choices in the file to your needs.
+Of cource, the system can always be installed entirely manually or any other preferred way, without using preseeding.
 
-### Install [Uncomplicated Firewall](https://wiki.debian.org/Uncomplicated%20Firewall%20%28ufw%29)
-It is important to allow `ssh` to not lose remote connection. Traffic on any other ports must also be manually enabled when needed.
-```bash
-sudo apt install -y ufw
-sudo ufw allow ssh
-sudo ufw enable
-```
+## Bare minimum
 
-### [SSH](https://wiki.debian.org/SSH) Key-based authentication
-Ensure the SSH key is copied from the device to the server before disabling password authentication.
-```bash
-# on the workstation
-ssh-copy-id $USERNAME@$SERVER_IP
-```
-Disable password authentication on the server.
+The minimal working server installation needs at least a user with [sudo](https://wiki.debian.org/sudo) privileges as well as [Docker](https://docs.docker.com/engine/install/debian/) installed.
 
-```bash
-sudo sed -i -E 's/#?PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config &&
-sudo systemctl restart sshd
-```
+## Ansible
 
-## Useful
-Here are some non-essential but useful tweaks:
+To get started with a rich suite of packages and get some common configurations done automatically, an [Ansible](https://www.ansible.com/) playbook is provided in the `setup` directory. For detailed instructions refer to `setup/README.md`, but roughly sketched, the playbook will
 
-### Passwordless sudo
-Save time by not typing out a password when using `sudo`.
-```bash
-sudo touch /etc/sudoers.d/$USERNAME &&
-echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers.d/$USERNAME
-```
+- set hostname and enable passwordless sudo
+- disable ssh-password auth
+- install and configure [Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewall)
+- install [Docker](https://www.docker.com/)
+- install [Samba](https://www.samba.org/) and create user
+- configure [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) as default shell with [useful plugins](https://github.com/ohmyzsh/ohmyzsh)
+- install additional packages
 
-### [Git](https://git-scm.com/download/linux)
-Install `git`.
-```bash
-sudo apt install -y git
-```
-### Share a folder with [Samba](https://wiki.debian.org/Samba/ServerSimple)
-Install `samba`.
-```bash
-sudo apt install -y samba
-sudo service smbd restart
-sudo ufw allow samba
-```
-
-Share a folder.
-```bash
-# add this in /etc/samba/smb.conf
-[media]
-    comment = Media
-    path = /home/user/media
-    browsable = yes
-    write list = $USERNAME
-    
-# restart
-sudo service smbd restart
-sudo smbpasswd -a $USERNAME
-# assign a new password
-```
+It assumes ssh access to the machine and can be run with `ansible-playbook -K playbook.yaml` from within the `setup` directory.
+When using the playbook, make sure to check the tasks being run and adjust them to your needs. Of course all tasks can be easily done manually by hand, without using Ansible.
 
 ## Laptop as host machine
+
 When using a laptop as a host machine, a few tweaks can be useful.
 
+### Additional packages
+
+Debian includes packages targeted for laptop hosts, but they might not be present, for example when [preseeding](#preseeding-debian-12). They can be added manually.
+
+```bash
+sudo tasksel install laptop
+```
+
 ### Disable WIFI
+
 When the machine is connected with Ethernet, we can disable WiFi. Assuming the WiFi interface is `wlan0`, the following command comments out the relevant lines in the network configuration.
+
 ```bash
 sudo sed -i '/wlan0/ s/^/#/' /etc/network/interfaces
 ```
 
 ### Disable Bluetooth
+
 The same applies to Bluetooth.
+
 ```bash
 sudo systemctl disable bluetooth
 ```
 
 ### Display timeout
+
 When the machine runs no graphical environment, the display might be always on, consuming unnecessary power. We can add a timeout to the kernel parameters.
+
 ```bash
 # edit GRUB configuration
 sudo nano /etc/default/grub
