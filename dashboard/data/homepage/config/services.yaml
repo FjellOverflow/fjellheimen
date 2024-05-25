@@ -94,6 +94,17 @@
           key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
 - Utilities:
+    - Immich:
+        icon: immich.png
+        href: "https://photos.fjellhei.men"
+        description: Photo library
+        server: docker
+        container: immich-server
+        showStats: false
+        widget:
+          type: immich
+          url: "http://immich-server:3001"
+          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
     - Mealie:
         icon: mealie.png
         href: "https://meals.fjellhei.men"

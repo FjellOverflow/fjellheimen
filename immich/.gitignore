@@ -1,0 +1,7 @@
+*.env
+
+data/upload/*
+!data/upload/.gitkeep
+
+data/postgres/*
+!data/postgres/.gitkeep
