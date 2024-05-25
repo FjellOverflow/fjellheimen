@@ -19,6 +19,7 @@ This section covers various standalone applications not included in other stacks
 ```yaml-vue
 {{ composeFiles['audiobookshelf'] }}
 ```
+:::
 
 ## Immich
 *"Self-hosted photo and video management solution."*
@@ -70,8 +71,6 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 ```yaml-vue
 {{ composeFiles['plex'] }}
 ```
-:::
-
 :::
 
 ## Syncthing
