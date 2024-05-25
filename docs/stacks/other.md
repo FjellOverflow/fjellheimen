@@ -5,21 +5,20 @@ import { data as composeFiles } from '../docker.data.js'
 # Miscellaneous applications
 This section covers various standalone applications not included in other stacks.
 
-## Vaultwarden
-*"Vaultwarden is a self-hosted server compatible with Bitwarden clients, written in Rust and with various features."*
+## Audiobookshelf
+*"Audiobookshelf is an open-source project that lets you stream and download audiobooks and podcasts from your own server."*
 
-|                 |                                                                       |
-|-----------------|-----------------------------------------------------------------------|
-| URL             | [passwords.fjellhei.men](https://passwords.fjellhei.men/)             |
-| ENV             | /                                                                     |
-| Volumes         | `/data`                                                               |
-| Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
+|                 |                                                             |
+|-----------------|-------------------------------------------------------------|
+| URL             | [audiobooks.fjellhei.men](https://audiobooks.fjellhei.men/) |
+| ENV             | /                                                           |
+| Volumes         | `/config`, `/metadata`, `/audiobooks`                       |
+| Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
 
 ::: details Docker compose
 ```yaml-vue
-{{ composeFiles['vaultwarden'] }}
+{{ composeFiles['audiobookshelf'] }}
 ```
-:::
 
 ## Immich
 *"Self-hosted photo and video management solution."*
@@ -36,7 +35,6 @@ This section covers various standalone applications not included in other stacks
 {{ composeFiles['immich'] }}
 ```
 :::
-
 
 ## Mealie
 *"Mealie is a web app that lets you manage your recipes, import them from the web, and share them with your family."*
@@ -74,20 +72,6 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 ```
 :::
 
-## Audiobookshelf
-*"Audiobookshelf is an open-source project that lets you stream and download audiobooks and podcasts from your own server."*
-
-|                 |                                                             |
-|-----------------|-------------------------------------------------------------|
-| URL             | [audiobooks.fjellhei.men](https://audiobooks.fjellhei.men/) |
-| ENV             | /                                                           |
-| Volumes         | `/config`, `/metadata`, `/audiobooks`                       |
-| Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
-
-::: details Docker compose
-```yaml-vue
-{{ composeFiles['audiobookshelf'] }}
-```
 :::
 
 ## Syncthing
@@ -103,6 +87,22 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 ::: details Docker compose
 ```yaml-vue
 {{ composeFiles['syncthing'] }}
+```
+:::
+
+## Vaultwarden
+*"Vaultwarden is a self-hosted server compatible with Bitwarden clients, written in Rust and with various features."*
+
+|                 |                                                                       |
+|-----------------|-----------------------------------------------------------------------|
+| URL             | [passwords.fjellhei.men](https://passwords.fjellhei.men/)             |
+| ENV             | /                                                                     |
+| Volumes         | `/data`                                                               |
+| Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['vaultwarden'] }}
 ```
 :::
 

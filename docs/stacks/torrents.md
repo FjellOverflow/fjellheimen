@@ -7,12 +7,12 @@ The *Torrents* stack, comprising the `torrents-qBittorrent` and `torrents-gluetu
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
-| qBittorrent | [downloads.fjellhei.men](https://downloads.fjellhei.men/) | Download torrents | [linuxserver/qbittorrent](https://docs.linuxserver.io/images/docker-qbittorrent/) |
 | gluetun     | / | VPN connection | [qdm12/gluetun](https://github.com/qdm12/gluetun) |
-
-*"qBittorrent is a cross-platform software that lets you download and share files via the BitTorrent protocol."*
+| qBittorrent | [downloads.fjellhei.men](https://downloads.fjellhei.men/) | Download torrents | [linuxserver/qbittorrent](https://docs.linuxserver.io/images/docker-qbittorrent/) |
 
 *"Gluetun is a lightweight and versatile VPN client that supports multiple providers, protocols, and features."*
+
+*"qBittorrent is a cross-platform software that lets you download and share files via the BitTorrent protocol."*
 
 ## Networking
 The gluetun container functions as a tunnel, directing all of qBittorrent's traffic through it by configuring `network_mode: "service:gluetun"` on qBittorrent. The gluetun container itself routes traffic through an OpenVPN connection. Setting `depends_on: gluetun` on qBittorrent ensures the container starts and operates only when the gluetun container is running properly.

@@ -22,19 +22,20 @@ At the core of the home server is Nginx Proxy Manager (NPM), functioning as a re
 
 For guides and detailed instructions on setting up and configuring the reverse proxy based on your existing network, refer to the [documentation](https://nginxproxymanager.com/guide/#quick-setup).
 
-## Tailscale
-*"Tailscale is a zero config VPN that works on any platform, service, or runtime."*
-
-To remotely access the home server without exposing it to the internet, Tailscale utilizes the WireGuard protocol, creating a secure network called "Tailnet" for connected devices. This allows seamless access to server apps from anywhere, using different IP addresses.
-
-Consult the [documentation](https://tailscale.com/kb/1017/install) for instructions on how to set up and use Tailscale.
-
 ## Portainer
 *"Portainer is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments."*
 
 SSH access to the server is restricted to devices with authorized keys, making server management challenging from unauthorized ones. Portainer fills this gap by offering a web-based UI for Docker container administration accessible from any device's browser.
 
 ## docker-compose.yaml
+
 ```yaml-vue
 {{ composeFiles['core'] }}
 ```
+
+## Tailscale
+*"Tailscale is a zero config VPN that works on any platform, service, or runtime."*
+
+To remotely access the home server without exposing it to the internet, Tailscale utilizes the WireGuard protocol, creating a secure network called "Tailnet" for connected devices. This allows seamless access to server apps from anywhere, using different IP addresses.
+
+Consult the [documentation](https://tailscale.com/kb/1017/install) for instructions on how to set up and use Tailscale.

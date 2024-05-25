@@ -3,26 +3,27 @@ The home server's different stacks reside in their respective directories, each 
 
 - [Core](/stacks/core), the most essential applications:
     - **Nginx Proxy Manager**, a reverse proxy
-    - **Tailscale**, a mesh VPN
     - **Portainer**, container management UI
+    - **Tailscale**, a mesh VPN
 - [Dashboard](/stacks/dashboard), providing application shortcuts and server metrics with:
-    - **Homepage**, main dashboard
     - **Glances**, server metrics
+    - **Homepage**, main dashboard
 - [Servarr](/stacks/servarr)
     - **Overseerr**, media requests
+    - **Prowlarr**, indexer management
     - **Radarr**, movie management
     - **Sonarr**, TV series management
-    - **Prowlarr**, indexer management
 - [Torrents](/stacks/torrents)
-    - **qBittorrent**, torrent downloads
     - **gluetun**, VPN connection
+    - **qBittorrent**, torrent downloads
 - [Bookmarks](/stacks/bookmarks)
     - **Readeck**, save articles to read later
     - **Slash**, shortcuts and link collections
 - [Other](/stacks/other)
-    - **Vaultwarden**, password manager
+    - **Audiobookshelf**, audiobooks and podcasts library
+    - **Immich**,photo management
     - **Mealie**, recipe management
     - **Plex**, movie & TV library
-    - **Audiobookshelf**, audiobooks and podcasts library
     - **Syncthing**, file syncing
+    - **Vaultwarden**, password manager
     - **Watchtower**, Docker image updater
