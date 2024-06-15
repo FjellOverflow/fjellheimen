@@ -4,10 +4,11 @@
     update_cache: yes
     upgrade: 'yes'
 
-- name: Install curl, wget, git, tmux
+- name: Install curl, wget, git, tmux, ncdu
   ansible.builtin.apt:
     package:
       - curl
       - wget
       - git
       - tmux
+      - ncdu
