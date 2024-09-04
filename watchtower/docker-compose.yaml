@@ -18,6 +18,7 @@ services:
       - WATCHTOWER_INCLUDE_STOPPED=true
       - WATCHTOWER_NOTIFICATIONS=shoutrrr
       - WATCHTOWER_SCHEDULE=0 0 4 * * SAT
+      - WATCHTOWER_MONITOR_ONLY=true
     restart: unless-stopped
 
 networks:
