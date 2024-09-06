@@ -45,6 +45,19 @@ services:
       POSTGRES_INITDB_ARGS: '--data-checksums'
     restart: unless-stopped
 
+  kiosk:
+    image: damongolding/immich-kiosk:latest
+    container_name: immich-kiosk
+    networks:
+      - immich-network
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+      - /homeserver/immich/immich-kiosk.env
+    environment:
+      KIOSK_IMMICH_URL: immich-server:3001
+    restart: unless-stopped
+
 networks:
   immich-network:
     name: immich-network
