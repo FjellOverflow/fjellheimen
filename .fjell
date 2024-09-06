@@ -39,30 +39,30 @@ fjell() {
 }
 
 fjell_ps() {
-  sudo docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}" "$@"
+  docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Size}}\t{{.Status}}\t{{.Names}}" "$@"
 }
 
 fjell_start() {
-  sudo docker start "$@"
+  docker start "$@"
 }
 
 fjell_stop() {
-  sudo docker stop "$@"
+  docker stop "$@"
 }
 
 fjell_rm() {
-  sudo docker stop "$@"
-  sudo docker rm "$@"
+  docker stop "$@"
+  docker rm "$@"
 }
 
 fjell_restart() {
-  sudo docker restart "$@"
+  docker restart "$@"
 }
 
 fjell_up() {
   for file in "$@"; do
     if [ -f "/homeserver/$file/docker-compose.yaml" ]; then
-      sudo docker compose -f "/homeserver/$file/docker-compose.yaml" up -d
+      docker compose -f "/homeserver/$file/docker-compose.yaml" up -d
     else
       echo "Stack '$file' does not exist."
     fi
@@ -72,7 +72,7 @@ fjell_up() {
 fjell_down() {
   for file in "$@"; do
     if [ -f "/homeserver/$file/docker-compose.yaml" ]; then
-      sudo docker compose -f "/homeserver/$file/docker-compose.yaml" down
+      docker compose -f "/homeserver/$file/docker-compose.yaml" down
     else
       echo "Stack '$file' does not exist."
     fi
@@ -88,9 +88,9 @@ fjell_ip() {
 }
 
 fjell_logs() {
-  sudo docker logs -f "$@"
+  docker logs -f "$@"
 }
 
 fjell_shell() {
-  sudo docker exec -it "$@" sh
+  docker exec -it "$@" sh
 }

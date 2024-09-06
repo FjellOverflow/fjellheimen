@@ -12,7 +12,7 @@ NOTIFY=$CURRENT_DIR/notify
 sleep 2m
 
 
-RUNNING_CONTAINERS=$(sudo docker ps -a --filter "status=exited" --format "{{.Names}}")
+RUNNING_CONTAINERS=$(docker ps -a --filter "status=exited" --format "{{.Names}}")
 DRIVE_MOUNTED=""
 
 if ! findmnt "$DRIVE_PATH" > /dev/null; then
