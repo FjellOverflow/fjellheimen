@@ -137,12 +137,12 @@
         server: docker
         container: bookmarks-readeck
         showStats: false
-    -  Slash:
-        icon: /assets/slash.svg
+    -  Linkding:
+        icon: linkding.png
         href: "https://links.fjellhei.men"
-        description: Shortcut links
+        description: Bookmarks
         server: docker
-        container: bookmarks-slash
+        container: bookmarks-linkding
         showStats: false
 
 - Administration:
