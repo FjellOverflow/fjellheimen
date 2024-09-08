@@ -17,11 +17,11 @@ The home server's different stacks reside in their respective directories, each 
     - **gluetun**, VPN connection
     - **qBittorrent**, torrent downloads
 - [Bookmarks](/stacks/bookmarks)
+    - **Linkding**, bookmarks
     - **Readeck**, save articles to read later
-    - **Slash**, shortcuts and link collections
 - [Other](/stacks/other)
     - **Audiobookshelf**, audiobooks and podcasts library
-    - **Immich**,photo management
+    - **Immich**, photo management
     - **Mealie**, recipe management
     - **Plex**, movie & TV library
     - **Syncthing**, file syncing
