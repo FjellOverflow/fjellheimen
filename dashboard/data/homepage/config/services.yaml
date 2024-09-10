@@ -130,19 +130,12 @@
         server: docker
         container: vaultwarden
         showStats: false
-    - Readeck:
-        icon: readeck.png
-        href: "https://readeck.fjellhei.men"
-        description: Bookmark articles to read later
-        server: docker
-        container: bookmarks-readeck
-        showStats: false
     -  Linkding:
         icon: linkding.png
         href: "https://links.fjellhei.men"
         description: Bookmarks
         server: docker
-        container: bookmarks-linkding
+        container: linkding
         showStats: false
 
 - Administration:
