@@ -37,6 +37,22 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
+## Linkding
+*"Linkding is a self-hosted bookmark manager that is designed be to be minimal, fast, and easy to set up using Docker."*
+
+|                 |                                                                   |
+|-----------------|-------------------------------------------------------------------|
+| URL             | [links.fjellhei.men](https://links.fjellhei.men/)                 |
+| ENV             | /                                                                 |
+| Volumes         | `/etc/linkding/data`                                              |
+| Project website | [sissbruecker/linkding](https://github.com/sissbruecker/linkding) |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['linkding'] }}
+```
+:::
+
 ## Mealie
 *"Mealie is a web app that lets you manage your recipes, import them from the web, and share them with your family."*
 
