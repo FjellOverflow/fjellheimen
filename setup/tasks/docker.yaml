@@ -19,4 +19,10 @@
       - docker-ce-cli
       - containerd.io
       - docker-buildx-plugin
-      - docker-compose-plugin    
+      - docker-compose-plugin
+
+- name: Add {{username}} to docker group
+  user:
+    name: "{{username}}"
+    groups: docker
+    append: yes
