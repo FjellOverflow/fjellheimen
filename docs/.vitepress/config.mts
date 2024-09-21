@@ -66,6 +66,7 @@ export default defineConfig({
           { text: 'Overview', link: '/stacks/overview' },
           { text: 'Core', link: '/stacks/core' },
           { text: 'Dashboard', link: '/stacks/dashboard' },
+          { text: 'Immich', link: '/stacks/immich' },
           { text: 'Servarr', link: '/stacks/servarr' },
           { text: 'Torrents', link: '/stacks/torrents' },
           { text: 'Other', link: '/stacks/other'}

@@ -8,6 +8,9 @@ The home server's different stacks reside in their respective directories, each 
 - [Dashboard](/stacks/dashboard), providing application shortcuts and server metrics with:
     - **Glances**, server metrics
     - **Homepage**, main dashboard
+- [Immich](/stacks/immich)
+    - **Immich**, photo management
+    - **Immich-kiosk**, photo gallery
 - [Servarr](/stacks/servarr)
     - **Overseerr**, media requests
     - **Prowlarr**, indexer management
@@ -18,7 +21,6 @@ The home server's different stacks reside in their respective directories, each 
     - **qBittorrent**, torrent downloads
 - [Other](/stacks/other)
     - **Audiobookshelf**, audiobooks and podcasts library
-    - **Immich**, photo management
     - **Linkding**, bookmarks
     - **Mealie**, recipe management
     - **Plex**, movie & TV library

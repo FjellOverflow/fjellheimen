@@ -21,22 +21,6 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
-## Immich
-*"Self-hosted photo and video management solution."*
-
-|                 |                                                                              |
-|-----------------|------------------------------------------------------------------------------|
-| URL             | [photos.fjellhei.men](https://photos.fjellhei.men/)                          |
-| ENV             | /                                                                            |
-| Volumes         | `/usr/src/app/upload`, `usr/src/app/external:ro`, `/var/lib/postgresql/data` |
-| Project website | [immich.app](https://immich.app/)                                            |
-
-::: details Docker compose
-```yaml-vue
-{{ composeFiles['immich'] }}
-```
-:::
-
 ## Linkding
 *"Linkding is a self-hosted bookmark manager that is designed be to be minimal, fast, and easy to set up using Docker."*
 
