@@ -58,4 +58,4 @@ sudo apt upgrade -y
 ```
 
 ### Docker image updates
-Keeping Docker images updated is crucial. While manual updates are an option, an automated solution like [Watchtower](/stacks/other#watchtower) is more convenient. Critical or experimental images should be updated manually to avoid potential issues.
+Keeping Docker images updated is crucial. While manual updates are an option, an automated solution like [Watchtower](https://github.com/containrrr/watchtower/) can be convenient. Critical or experimental images should be updated manually to avoid potential issues.

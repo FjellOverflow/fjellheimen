@@ -120,24 +120,3 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 {{ composeFiles['vaultwarden'] }}
 ```
 :::
-
-## Watchtower
-*"Watchtower is a container-based solution that lets you update your containerized app by pushing a new image to the Docker Hub or your own registry."*
-
-|                 |                                                                 |
-|-----------------|-----------------------------------------------------------------|
-| URL             | /                                                               |
-| ENV             | <ul><li><code>WATCHTOWER_NOTIFICATION_URL</code> = <code>&lt;shoutrrr URL&gt;</code></li><li><code>WATCHTOWER_CLEANUP</code> = <code>true</code></li><li><code>WATCHTOWER_INCLUDE_STOPPED</code> = <code>true</code></li><li><code>WATCHTOWER_NOTIFICATIONS</code> = <code>shoutrrr</code></li><li><code>WATCHTOWER_SCHEDULE</code> = <code>0 0 4 * * SAT</code> </li></ul>                                                         |
-| Volumes         | /                                                               |
-| Project website | [containrrr.dev/watchtower](https://containrrr.dev/watchtower/) |
-
-
-::: warning Notifications
-To receive automatic notifications from Watchtower after Docker image updates, set `WATCHTOWER_NOTIFICATIONS` to `shoutrrr` and `WATCHTOWER_NOTIFICATION_URL` to a valid shoutrrr URL, such as one provided for [Telegram](https://containrrr.dev/shoutrrr/v0.8/services/telegram/).
-:::
-
-::: details Docker compose
-```yaml-vue
-{{ composeFiles['watchtower'] }}
-```
-:::

@@ -11,7 +11,7 @@ Initiate container startup or shutdown with `fjell start` and `fjell stop`, resp
 Remove containers simply with `fjell rm myApplication` after stopping them. Entire stacks can be removed using `fjell down myStack`.
 
 ## Updates
-Docker images are kept up to date with [Watchtower](/stacks/other#watchtower), an automated solution that periodically checks for newer images and updates containers. Containers excluded from automatic updates should be manually updated:
+Docker images can be updated in different ways, depending on personal taste. For a deeper dive into automated options, check out [this blog post](https://fjelloverflow.dev/posts/update-docker-containers/). They can also be manually updated:
 
 - Stop the running container with `fjell stop myApplication`
 - Back up data in `myApplication/data`
