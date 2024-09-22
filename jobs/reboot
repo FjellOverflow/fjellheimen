@@ -7,10 +7,11 @@ CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
+TIMEOUT=10
 
-$NOTIFY "Rebooting server."
+$NOTIFY "Rebooting server in $TIMEOUT seconds."
 
 # wait for notification to go out
-sleep 10s
+sleep "$TIMEOUT"s
 
 sudo systemctl reboot

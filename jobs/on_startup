@@ -9,17 +9,23 @@ source $CURRENT_DIR/.env
 NOTIFY=$CURRENT_DIR/notify
 
 # wait until docker started containers
-sleep 2m
+#sleep 2m
 
 
-RUNNING_CONTAINERS=$(docker ps -a --filter "status=exited" --format "{{.Names}}")
+STOPPED_CONTAINERS=$(docker ps -a --filter "status=exited" --format '{{.Names}}')
 DRIVE_MOUNTED=""
+
+if [ -n "$STOPPED_CONTAINERS" ]; then
+    STOPPED_CONTAINERS="Stopped containers: "$STOPPED_CONTAINERS
+else
+    STOPPED_CONTAINERS="All containers running."
+fi
 
 if ! findmnt "$DRIVE_PATH" > /dev/null; then
     DRIVE_MOUNTED="$DRIVE_PATH is not mounted."
 fi
 
-$NOTIFY "Server booted up. Stopped containers:
-$RUNNING_CONTAINERS
+$NOTIFY "Server booted up.
+$STOPPED_CONTAINERS
 $DRIVE_MOUNTED"
 

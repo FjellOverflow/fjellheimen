@@ -20,7 +20,8 @@ fi
 
 if [ ! "$LAST_IP" == "$CURRENT_IP" ]; then
     echo $CURRENT_IP > $FILENAME
-    $NOTIFY "IP change detected. Old IP: $LAST_IP
+    $NOTIFY "Public IP change detected!
+Old IP: $LAST_IP
 New IP: $CURRENT_IP
-Update IP at $DNS_PROVIDER"
+Update DNS records now at $DNS_PROVIDER"
 fi
