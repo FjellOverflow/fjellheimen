@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# called Saturday, 4:00 AM
+
+# load ENV
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $CURRENT_DIR/.env
+
+~/.local/bin/dockcheck.sh -in
