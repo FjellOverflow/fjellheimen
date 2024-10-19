@@ -16,6 +16,7 @@ services:
       - ALLOW_SIGNUP=true
       - MAX_WORKERS=1
       - WEB_CONCURRENCY=1
+      - TOKEN_TIME=744
     restart: unless-stopped
 
 networks:

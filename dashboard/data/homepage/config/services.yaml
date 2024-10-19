@@ -103,8 +103,9 @@
         showStats: false
         widget:
           type: immich
-          url: "http://immich-server:3001"
+          url: "http://immich-server:2283"
           key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+          version: 2
     - Mealie:
         icon: mealie.png
         href: "https://meals.fjellhei.men"
