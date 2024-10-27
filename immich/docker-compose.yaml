@@ -62,7 +62,7 @@ services:
       - /homeserver/.env
       - /homeserver/immich/immich-kiosk.env
     environment:
-      KIOSK_IMMICH_URL: immich-server:3001
+      KIOSK_IMMICH_URL: immich-server:2283
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:3000 || exit 1
       interval: 1m

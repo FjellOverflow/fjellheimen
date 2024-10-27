@@ -106,6 +106,13 @@
           url: "http://immich-server:2283"
           key: {{HOMEPAGE_VAR_IMMICH_KEY}}
           version: 2
+    - "Immich Kiosk":
+        icon: immich-kiosk.png
+        href: "https://kiosk.fjellhei.men"
+        description: Photo gallery
+        server: docker
+        container: immich-kiosk
+        showStats: false
     - Mealie:
         icon: mealie.png
         href: "https://meals.fjellhei.men"
