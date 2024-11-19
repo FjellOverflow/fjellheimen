@@ -2,7 +2,7 @@
 I'm [FjellOverflow](https://fjelloverflow.dev/), a professional developer with a keen interest in self-hosted solutions and privacy.
 
 <div>
-  <img src="/logo.svg" style="margin: auto; width: 50%" alt="fjelloverflow logo">
+  <img src="/favicon.svg" style="margin: auto; width: 25%" alt="fjelloverflow logo">
 </div>
 
 Over time, I've built and maintained my own home server, named *Fjellheimen*, on an older machine at home. Despite tracking configuration changes with version control and taking notes, the setup became increasingly complex to manage.

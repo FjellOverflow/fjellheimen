@@ -2,21 +2,19 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "Fjellheimen Docs",
-  description: "Home server documentation",
+  description: "Docker-based home server setup",
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' },],
 
     ['meta', { property: 'og:url', content: "https://docs.fjellhei.men" }],
     ['meta', { property: 'og:type', content: "website" }],
     ['meta', { property: 'og:title', content: "Fjellheimen" }],
-    ['meta', { property: 'og:description', content: "Home server documentation" }],
-    ['meta', { property: 'og:image', content: "/logo.svg" }],
+    ['meta', { property: 'og:description', content: "Docker-based home server setup" }],
     ['meta', { name: 'twitter:card', content: "summary_large_image" }],
     ['meta', { property: 'twitter:domain', content: "docs.fjellhei.men" }],
     ['meta', { property: 'twitter:url', content: "https://docs.fjellhei.men" }],
     ['meta', { name: 'twitter:title', content: "Fjellheimen" }],
-    ['meta', { name: 'twitter:description', content: "Home server documentation" }],
-    ['meta', { name: 'twitter:image', content: "/logo.svg" }],
+    ['meta', { name: 'twitter:description', content: "Docker-based home server setup" }],
   ],
   lastUpdated: true,
   themeConfig: {
