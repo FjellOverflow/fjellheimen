@@ -25,6 +25,8 @@ services:
   gluetun:
     image: qmcgaw/gluetun:latest
     container_name: torrents-gluetun
+    devices:
+      - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN
     expose:

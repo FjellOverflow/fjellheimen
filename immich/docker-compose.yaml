@@ -4,7 +4,7 @@ name: immich
 services:
 
   server:
-    image: ghcr.io/immich-app/immich-server:v1.120.1
+    image: ghcr.io/immich-app/immich-server:v1.123.0
     container_name: immich-server
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: docker.io/redis:6.2-alpine@sha256:2ba50e1ac3a0ea17b736ce9db2b0a9f6f8b85d4c27d5f5accc6a416d8f42c6d5
+    image: docker.io/redis:6.2-alpine@sha256:eaba718fecd1196d88533de7ba49bf903ad33664a92debb24660a922ecd9cac8
     container_name: immich-redis
     networks:
       - immich-network
