@@ -53,6 +53,20 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
+## note-pls
+*"Telegram bot that takes notes."*
+
+|                 |                                                   |
+|-----------------|---------------------------------------------------|
+| Volumes         | `/inbox`                                      |
+| Project website | [FjellOverflow/note-pls](https://github.com/FjellOverflow/note-pls)                   |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['note-pls'] }}
+```
+:::
+
 ## Plex
 *"Plex is an app that lets you organize, stream, and share your personal media and discover new content from various sources."*
 
