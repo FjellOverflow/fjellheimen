@@ -145,6 +145,12 @@
         server: docker
         container: linkding
         showStats: false
+    - note-pls:
+        icon: https://assets.fjelloverflow.dev/note-pls.svg
+        description: Telegram bot
+        server: docker
+        container: note-pls
+        showStats: false
 
 - Administration:
     - Nginx Proxy Manager:
