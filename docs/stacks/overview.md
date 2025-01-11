@@ -22,7 +22,9 @@ The home server's different stacks reside in their respective directories, each 
 - [Other](/stacks/other)
     - **Audiobookshelf**, audiobooks and podcasts library
     - **Linkding**, bookmarks
+    - **Homebox**, inventory management
     - **Mealie**, recipe management
+    - **note-pls**, Telegram bot
     - **Plex**, movie & TV library
     - **Syncthing**, file syncing
     - **Vaultwarden**, password manager

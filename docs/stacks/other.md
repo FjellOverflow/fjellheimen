@@ -21,6 +21,22 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
+## Homebox
+*"HomeBox is a simple and fast web app for managing your home inventory, organization, and needs."*
+
+|                 |                                                             |
+|-----------------|-------------------------------------------------------------|
+| URL             | [inventory.fjellhei.men](https://inventory.fjellhei.men/) |
+| ENV             | /                                                           |
+| Volumes         | `/data`                       |
+| Project website | [sysadminsmedia/homebox](https://github.com/sysadminsmedia/homebox)       |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['homebox'] }}
+```
+:::
+
 ## Linkding
 *"Linkding is a self-hosted bookmark manager that is designed be to be minimal, fast, and easy to set up using Docker."*
 
