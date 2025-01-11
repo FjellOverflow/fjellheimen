@@ -15,7 +15,11 @@ layout:
     icon: mdi-multimedia-#7FC5D9
   Media Management:
     icon: mdi-download-multiple-#7FC5D9
-  Utilities:
-    icon: mdi-tools-#7FC5D9
+  Organization:
+    icon: mdi-file-cabinet-#7FC5D9
   Administration:
     icon: mdi-account-wrench-#7FC5D9
+  Utilities:
+    icon: mdi-tools-#7FC5D9
+    style: row
+    columns: 4

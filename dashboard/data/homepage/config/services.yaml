@@ -1,5 +1,4 @@
 ---
-
 - Media:
     - Plex:
         icon: plex.png
@@ -23,6 +22,7 @@
           type: overseerr
           url: "http://arr-overseerr:5055"
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
+          fields: ['pending', 'processing']
     - Bazarr:
         icon: bazarr-light.png
         href: "https://subtitles.fjellhei.men"
@@ -45,6 +45,7 @@
           type: audiobookshelf
           url: "http://audiobookshelf:80"
           key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
+          fields: ['books']
 
 - Media Management:
     - qBittorrent:
@@ -59,6 +60,7 @@
           url: "http://torrents-gluetun:9090"
           username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
           password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+          fields: ['leech', 'download']
     - Sonarr:
         icon: sonarr.png
         href: "https://sonarr.fjellhei.men"
@@ -70,6 +72,7 @@
           type: sonarr
           url: "http://arr-sonarr:8989"
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
+          fields: ['wanted', 'queued']
     - Radarr:
         icon: radarr-light.png
         href: "https://radarr.fjellhei.men"
@@ -81,6 +84,7 @@
           type: radarr
           url: "http://arr-radarr:7878"
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
+          fields: ['wanted', 'missing', 'queued']
     - Prowlarr:
         icon: prowlarr.png
         href: "https://prowlarr.fjellhei.men"
@@ -88,42 +92,8 @@
         server: docker
         container: arr-prowlarr
         showStats: false
-        widget:
-          type: prowlarr
-          url: "http://arr-prowlarr:9696"
-          key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
 - Utilities:
-    - Immich:
-        icon: immich.png
-        href: "https://photos.fjellhei.men"
-        description: Photo library
-        server: docker
-        container: immich-server
-        showStats: false
-        widget:
-          type: immich
-          url: "http://immich-server:2283"
-          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
-          version: 2
-    - "Immich Kiosk":
-        icon: immich-kiosk.png
-        href: "https://kiosk.fjellhei.men"
-        description: Photo gallery
-        server: docker
-        container: immich-kiosk
-        showStats: false
-    - Mealie:
-        icon: mealie.png
-        href: "https://meals.fjellhei.men"
-        description: Plan meals
-        server: docker
-        container: mealie
-        showStats: false
-        widget:
-          type: mealie
-          url: "http://mealie:9000"
-          key: {{HOMEPAGE_VAR_MEALIE_KEY}}
     - Syncthing:
         icon: syncthing.png
         href: "https://sync.fjellhei.men"
@@ -151,7 +121,53 @@
         server: docker
         container: note-pls
         showStats: false
-
+- Organization:
+    - Immich:
+        icon: immich.png
+        href: "https://photos.fjellhei.men"
+        description: Photo library
+        server: docker
+        container: immich-server
+        showStats: false
+        widget:
+          type: immich
+          url: "http://immich-server:2283"
+          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+          version: 2
+          fields: ['photos', 'videos']
+    - "Immich Kiosk":
+        icon: immich-kiosk.png
+        href: "https://kiosk.fjellhei.men"
+        description: Photo gallery
+        server: docker
+        container: immich-kiosk
+        showStats: false
+    - Mealie:
+        icon: mealie.png
+        href: "https://meals.fjellhei.men"
+        description: Plan meals
+        server: docker
+        container: mealie
+        showStats: false
+        widget:
+          type: mealie
+          url: "http://mealie:9000"
+          key: {{HOMEPAGE_VAR_MEALIE_KEY}}
+          version: 2
+          fields: ['recipes']
+    - Homebox:
+        icon: homebox.png
+        href: https://inventory.fjellhei.men
+        description: Inventory management
+        server: docker
+        container: homebox
+        showStats: false
+        widget:
+          type: homebox
+          url: http://homebox:7745
+          username: {{HOMEPAGE_VAR_HOMEBOX_USERNAME}}
+          password: {{HOMEPAGE_VAR_HOMEBOX_PASSWORD}}
+          fields: ['items', 'locations']
 - Administration:
     - Nginx Proxy Manager:
         icon: nginx-proxy-manager.png
@@ -165,6 +181,7 @@
           url: "http://core-npm:81"
           username: {{HOMEPAGE_VAR_NPM_USERNAME}}
           password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
+          fields: ['enabled', 'disabled']
     - Portainer:
         icon: portainer.png
         href: "https://containers.fjellhei.men"
@@ -177,6 +194,7 @@
           url: "http://core-portainer:9000"
           env: 2
           key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+          fields: ['running', 'stopped']
     - Tailscale:
         icon: tailscale-light.png
         href: https://login.tailscale.com/admin
@@ -188,6 +206,7 @@
           type: tailscale
           deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
           key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+          fields: ['address']
     - Glances:
         icon: glances.png
         href: "https://metrics.fjellhei.men"
