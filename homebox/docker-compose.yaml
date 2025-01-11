@@ -1,0 +1,21 @@
+---
+name: other
+
+services:
+
+  homebox:
+    image: ghcr.io/sysadminsmedia/homebox:latest
+    container_name: homebox
+    volumes:
+      - /homeserver/homebox/data:/data/
+    networks:
+      - proxy-network
+    env_file:
+      - /homeserver/.env
+    environment:
+      - HBOX_OPTIONS_ALLOW_REGISTRATION=false
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    external: true
