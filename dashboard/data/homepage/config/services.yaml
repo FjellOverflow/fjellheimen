@@ -24,7 +24,7 @@
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
           fields: ['pending', 'processing']
     - Bazarr:
-        icon: bazarr-light.png
+        icon: bazarr.png
         href: "https://subtitles.fjellhei.men"
         description: Subtitles
         server: docker
@@ -74,7 +74,7 @@
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
           fields: ['wanted', 'queued']
     - Radarr:
-        icon: radarr-light.png
+        icon: sh-radarr
         href: "https://radarr.fjellhei.men"
         description: Movie management
         server: docker
@@ -213,6 +213,13 @@
         description: Server metrics
         server: docker
         container: dashboard-glances
+        showStats: false
+    - WatchYourLAN:
+        icon: sh-watchyourlan
+        href: "https://lan.fjellhei.men"
+        description: Network monitor
+        server: docker
+        container: watchyourlan
         showStats: false
 
 - Metrics:
