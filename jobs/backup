@@ -8,7 +8,7 @@ source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
 
-BACKUP_NAME="homeserver_backup_$(date +%Y%m%d%H%M).tar.gz"
+BACKUP_NAME="fjellheimen_backup_$(date +%Y%m%d%H%M).tar.gz"
 
 $NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
 
