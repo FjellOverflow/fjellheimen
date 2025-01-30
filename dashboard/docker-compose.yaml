@@ -10,7 +10,7 @@ services:
       - /homeserver/dashboard/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /xdrive:/xdrive
-      - /homeserver:/homeserver
+      - /homeserver:/fjellheimen
     networks:
       - proxy-network
     env_file:

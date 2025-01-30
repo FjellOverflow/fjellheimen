@@ -15,7 +15,7 @@
     cputemp: true
     memory: true
     uptime: true
-    disk: /homeserver
+    disk: /fjellheimen
 
 - resources:
     label: External disk

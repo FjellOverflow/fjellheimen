@@ -192,7 +192,7 @@
         widget:
           type: portainer
           url: "http://core-portainer:9000"
-          env: 2
+          env: 3
           key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
           fields: ['running', 'stopped']
     - Tailscale:
@@ -240,10 +240,10 @@
           type: glances
           url: "http://dashboard-glances:61208"
           version: 4
-          metric: disk:sdb
+          metric: disk:sda
     - External disk usage:
         widget:
           type: glances
           url: "http://dashboard-glances:61208"
           version: 4
-          metric: disk:sda
+          metric: disk:sdb
