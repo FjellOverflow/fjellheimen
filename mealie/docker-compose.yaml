@@ -7,11 +7,11 @@ services:
     image: ghcr.io/mealie-recipes/mealie:latest
     container_name: mealie
     volumes:
-      - /homeserver/mealie/data/config:/app/data/
+      - /fjellheimen/mealie/data/config:/app/data/
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     environment:
       - ALLOW_SIGNUP=true
       - MAX_WORKERS=1

@@ -6,15 +6,15 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: dashboard-homepage
     volumes:
-      - /homeserver/dashboard/data/homepage/config:/app/config
-      - /homeserver/dashboard/data/homepage/assets:/app/public/assets
+      - /fjellheimen/dashboard/data/homepage/config:/app/config
+      - /fjellheimen/dashboard/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /xdrive:/xdrive
-      - /homeserver:/fjellheimen
+      - /fjellheimen:/fjellheimen
     networks:
       - proxy-network
     env_file:
-      - /homeserver/dashboard/homepage.env
+      - /fjellheimen/dashboard/homepage.env
     environment:
       - TZ=Europe/Tallinn
     restart: unless-stopped
@@ -27,7 +27,7 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     environment:
       - GLANCES_OPT=-w
     privileged: true

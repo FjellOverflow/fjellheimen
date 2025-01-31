@@ -9,8 +9,8 @@ services:
     volumes:
       - /xdrive/Syncthing/Notes/0 - Inbox:/inbox
     env_file:
-      - /homeserver/.env
-      - /homeserver/note-pls/.env
+      - /fjellheimen/.env
+      - /fjellheimen/note-pls/.env
     environment:
       NP_FILEPATH: /inbox/TODOs.md
       NP_PREPEND:  "\

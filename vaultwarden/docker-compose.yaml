@@ -7,11 +7,11 @@ services:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     volumes:
-      - /homeserver/vaultwarden/data:/data
+      - /fjellheimen/vaultwarden/data:/data
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     restart: unless-stopped
 
 networks:

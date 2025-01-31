@@ -7,13 +7,13 @@ services:
     image: ghcr.io/advplyr/audiobookshelf:latest
     container_name: audiobookshelf
     volumes:
-      - /homeserver/audiobookshelf/data/config:/config
-      - /homeserver/audiobookshelf/data/metadata:/metadata
+      - /fjellheimen/audiobookshelf/data/config:/config
+      - /fjellheimen/audiobookshelf/data/metadata:/metadata
       - /xdrive/Media/Audiobooks:/audiobooks
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     healthcheck:
       test: curl --fail http://localhost:80 || exit 1
       interval: 1m

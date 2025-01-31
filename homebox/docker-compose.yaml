@@ -7,11 +7,11 @@ services:
     image: ghcr.io/sysadminsmedia/homebox:latest
     container_name: homebox
     volumes:
-      - /homeserver/homebox/data:/data/
+      - /fjellheimen/homebox/data:/data/
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     environment:
       - HBOX_OPTIONS_ALLOW_REGISTRATION=false
     restart: unless-stopped

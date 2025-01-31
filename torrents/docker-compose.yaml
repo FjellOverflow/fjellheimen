@@ -7,11 +7,11 @@ services:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: torrents-qbittorrent
     volumes:
-      - /homeserver/torrents/data//qbittorrent/config:/config
+      - /fjellheimen/torrents/data//qbittorrent/config:/config
       - /xdrive/Media/Downloads:/downloads
     network_mode: "service:gluetun"
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     environment:
       - WEBUI_PORT=9090
     healthcheck:
@@ -34,8 +34,8 @@ services:
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
-      - /homeserver/torrents/gluetun.env
+      - /fjellheimen/.env
+      - /fjellheimen/torrents/gluetun.env
     environment:
       - VPN_TYPE=openvpn
     restart: unless-stopped

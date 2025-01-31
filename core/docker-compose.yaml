@@ -11,12 +11,12 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /homeserver/core/data/npm/data:/data
-      - /homeserver/core/data/npm/letsencrypt:/etc/letsencrypt
+      - /fjellheimen/core/data/npm/data:/data
+      - /fjellheimen/core/data/npm/letsencrypt:/etc/letsencrypt
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     healthcheck:
       test: ["CMD", "/bin/check-health"]
       interval: 10s
@@ -27,12 +27,12 @@ services:
     image: portainer/portainer-ce:sts
     container_name: core-portainer
     volumes:
-      - /homeserver/core/data/portainer/data:/data
+      - /fjellheimen/core/data/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     privileged: true
     restart: unless-stopped
 
@@ -43,12 +43,12 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - /homeserver/core/data/tailscale/config:/var/lib/tailscale
+      - /fjellheimen/core/data/tailscale/config:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun
     network_mode: host
     env_file:
-      - /homeserver/.env
-      - /homeserver/core/tailscale.env
+      - /fjellheimen/.env
+      - /fjellheimen/core/tailscale.env
     environment:
       - TS_AUTH_ONCE=true
       - TS_HOSTNAME=fjellheimen

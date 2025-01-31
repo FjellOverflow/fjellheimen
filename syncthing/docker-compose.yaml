@@ -7,12 +7,12 @@ services:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
     volumes:
-      - /homeserver/syncthing/data/config:/config
+      - /fjellheimen/syncthing/data/config:/config
       - /xdrive/Syncthing:/data
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     healthcheck:
       test: curl --fail http://localhost:8384 || exit 1
       interval: 1m

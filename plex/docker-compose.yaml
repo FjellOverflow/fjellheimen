@@ -7,13 +7,13 @@ services:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
     volumes:
-      - /homeserver/plex/data/config:/config
+      - /fjellheimen/plex/data/config:/config
       - /xdrive/Media/Movies:/movies
       - /xdrive/Media/TV:/tv
       - /xdrive/Media/Music:/music
     network_mode: host
     env_file:
-      - /homeserver/.env
+      - /fjellheimen/.env
     healthcheck:
       test: curl --fail http://localhost:32400/web || exit 1
       interval: 1m

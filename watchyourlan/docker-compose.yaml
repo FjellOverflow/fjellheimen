@@ -7,11 +7,11 @@ services:
     image: aceberg/watchyourlan:latest
     container_name: watchyourlan
     volumes:
-      - /homeserver/watchyourlan/data:/data/WatchYourLAN
+      - /fjellheimen/watchyourlan/data:/data/WatchYourLAN
     network_mode: host
     env_file:
-      - /homeserver/.env
-      - /homeserver/watchyourlan/.env
+      - /fjellheimen/.env
+      - /fjellheimen/watchyourlan/.env
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:8840 || exit 1
       interval: 1m
