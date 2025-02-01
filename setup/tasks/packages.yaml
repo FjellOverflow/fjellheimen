@@ -12,3 +12,26 @@
       - git
       - tmux
       - ncdu
+
+- name: Install dockcheck.sh
+  become: false
+  block:
+    - name: Create .local/bin directory
+      ansible.builtin.file:
+        path: "/home/{{username}}/.local/bin"
+        state: directory
+        mode: '700'
+
+    - name: Download dockcheck.sh
+      ansible.builtin.uri:
+        url:  https://raw.githubusercontent.com/mag37/dockcheck/main/dockcheck.sh
+        dest: "/home/{{username}}/.local/bin/dockcheck.sh"
+        creates: "/home/{{username}}/.local/bin/dockcheck.sh"
+        mode: '755'
+
+    - name: Download notify.sh
+      ansible.builtin.uri:
+        url:  https://github.com/mag37/dockcheck/blob/main/notify_templates/notify_telegram.sh
+        dest: "/home/{{username}}/.local/bin/notify.sh"
+        creates: "/home/{{username}}/.local/bin/notify.sh"
+        mode: '755'

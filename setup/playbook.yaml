@@ -21,3 +21,5 @@
     - import_tasks: tasks/docker.yaml
     - import_tasks: tasks/samba.yaml
     - import_tasks: tasks/shell.yaml
+    - import_tasks: tasks/tailscale.yaml
+    - import_tasks: tasks/cronjobs.yaml
