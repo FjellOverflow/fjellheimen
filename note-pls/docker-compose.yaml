@@ -7,7 +7,7 @@ services:
     image: ghcr.io/fjelloverflow/note-pls:latest
     container_name: note-pls
     volumes:
-      - /xdrive/Syncthing/Notes/0 - Inbox:/inbox
+      - /xdrive/Syncthing/Notes/00 - Inbox:/inbox
     env_file:
       - /fjellheimen/.env
       - /fjellheimen/note-pls/.env
