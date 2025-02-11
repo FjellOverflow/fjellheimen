@@ -5,7 +5,7 @@ This documentation covers a range of topics related to setting up a machine and 
 The [Resources](/introduction/resources) page compiles and provides links to diverse supplementary materials concerning self-hosting and home server setups, offering more detailed insights and additional information beyond what's covered in this documentation.
 
 ## Host machine
-The [Host](/host/overview) section covers aspects pertaining to the physical home server machine, including [initial installations](/host/setting-up-host), [Shell aliases](/host/shell-aliases), and various automated [maintenance tasks](/host/maintenance).
+The [Host](/host/overview) section covers aspects pertaining to the physical home server machine, including [initial installations](/host/setting-up-host) and various automated [maintenance tasks](/host/maintenance).
 
 ## Usage
 The [Usage](/usage/overview) section delves into the process of [integrating a new application](/usage/add-new-app) or stack into the system, configuring [environment variables](/usage/set-up-env) containing sensitive data, and effectively [managing Docker containers](/usage/manage-containers) in operation.

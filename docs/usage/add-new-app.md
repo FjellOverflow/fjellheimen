@@ -28,13 +28,13 @@ services:
     image: ghcr.io/FjellOverflow/myApplication:latest
     container_name: myApplication
     volumes:
-      - /homeserver/myApplication/data:/config
+      - /fjellheimen/myApplication/data:/config
       - /xdrive/Media:/media
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
-      - /homeserver/myApplication/.env
+      - /fjellheimen/.env
+      - /fjellheimen/myApplication/.env
     environment:
       - MY_BOOLEAN_FLAG=true
     restart: unless-stopped
@@ -78,26 +78,26 @@ services:
     image: ghcr.io/FjellOverflow/application1:latest
     container_name: myStack-application1
     volumes:
-      - /homeserver/myStack/application1/data:/config
+      - /fjellheimen/myStack/application1/data:/config
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
-      - /homeserver/myStack/.env
-      - /homeserver/myStack/application1.env
+      - /fjellheimen/.env
+      - /fjellheimen/myStack/.env
+      - /fjellheimen/myStack/application1.env
     restart: unless-stopped
 
   application1:
     image: ghcr.io/FjellOverflow/application2:latest
     container_name: myStack-application2
     volumes:
-      - /homeserver/myStack/application2/data:/data
+      - /fjellheimen/myStack/application2/data:/data
     networks:
       - proxy-network
     env_file:
-      - /homeserver/.env
-      - /homeserver/myStack/.env
-      - /homeserver/myStack/application2.env
+      - /fjellheimen/.env
+      - /fjellheimen/myStack/.env
+      - /fjellheimen/myStack/application2.env
     restart: unless-stopped
 
 networks:

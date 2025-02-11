@@ -14,7 +14,7 @@ Predefined jobs are available in the `jobs` directory. Some require [ENV](https:
 | `jobs/notify`          | Send out notification         | `$TELEGRAM_CHAT_ID`, `$TELEGRAM_BOT_TOKEN`  |
 
 ### Backup
-Copies and compresses the `/homeserver` directory, saving it to `$BACKUP_FOLDER`. Notifications are sent before and after backup creation. *Recommended frequency: at least weekly.*
+Copies and compresses the `/fjellheimen` directory, saving it to `$BACKUP_FOLDER`. Notifications are sent before and after backup creation. *Recommended frequency: at least weekly.*
 
 ### Reboot
 Sends notification and shuts down the server. *Recommended to run: after `backup`.*
@@ -37,13 +37,13 @@ To schedule jobs efficiently, use [cron](https://en.wikipedia.org/wiki/Cron) wit
 
 ```
 # On startup
-@reboot /homeserver/jobs/on_startup
+@reboot /fjellheimen/jobs/on_startup
 # Every day, 0:00 AM
-0 0 * * * /homeserver/jobs/check_public_ip
+0 0 * * * /fjellheimen/jobs/check_public_ip
 # Fridays, 4:00 AM
-0 4 * * FRI /homeserver/jobs/backup
+0 4 * * FRI /fjellheimen/jobs/backup
 # Saturdays, 4:00 AM
-0 4 * * SUN /homeserver/jobs/reboot
+0 4 * * SUN /fjellheimen/jobs/reboot
 ```
 
 ## Updates

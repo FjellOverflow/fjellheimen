@@ -31,8 +31,11 @@ To get started with a rich suite of packages and get some common configurations 
 - disable ssh-password auth
 - install and configure [Uncomplicated Firewall](https://en.wikipedia.org/wiki/Uncomplicated_Firewall)
 - install [Docker](https://www.docker.com/)
+- install [Tailscale](http://tailscale.com/)
 - install [Samba](https://www.samba.org/) and create user
 - configure [zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) as default shell with [useful plugins](https://github.com/ohmyzsh/ohmyzsh)
+- clone the skeleton repository
+- add cronjobs
 - install additional packages
 
 It assumes ssh access to the machine and can be run with `ansible-playbook -K playbook.yaml` from within the `setup` directory.

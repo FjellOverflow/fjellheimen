@@ -45,7 +45,6 @@ export default defineConfig({
         items: [
           { text: 'Overview', link: '/host/overview' },
           { text: 'Setting up host', link: '/host/setting-up-host' },
-          { text: 'Shell aliases', link: '/host/shell-aliases'},
           { text: 'Maintenance', link: '/host/maintenance'},
         ]
       },

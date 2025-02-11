@@ -1,5 +1,5 @@
 # Manage containers
-Containers are generally managed using standard Docker commands and the supplementary wrapper, `fjell`, as described in [Shell Aliasese](/host/shell-aliases).
+Containers are generally managed using standard Docker commands.
 
 ## Creation
 All services are defined in `myApplication/docker-compose.yaml`. To start single containers, use `fjell up myApplication`; for entire stacks, use `fjell up myStack`. This command creates any missing containers and starts them.

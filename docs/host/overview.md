@@ -6,8 +6,6 @@ To establish a functional home server, start by selecting and installing a suita
 
 After setting up the base system, proceed with additional package installations and configurations outlined in [Setting up host](/host/setting-up-host) to secure and optimize the server for web application hosting.
 
-Familiarize yourself with [Shell aliases](/host/shell-aliases) for efficient command line interaction once the setup is complete.
-
 Lastly, enable [Maintenance](/host/maintenance) tasks such as regular backups and updates to ensure smooth operation over time.
 
 ## Operating system
