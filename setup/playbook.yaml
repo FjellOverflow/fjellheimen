@@ -23,3 +23,4 @@
     - import_tasks: tasks/shell.yaml
     - import_tasks: tasks/tailscale.yaml
     - import_tasks: tasks/cronjobs.yaml
+    - import_tasks: tasks/skeleton.yaml
