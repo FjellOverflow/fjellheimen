@@ -18,11 +18,18 @@
   register: samba_user_created
   changed_when: "'Added user' in samba_user_created.stdout"
 
+- name: Copy config
+  ansible.builtin.template:
+    src: "templates/smb.conf"
+    dest: "/etc/samba/smb.conf"
+    validate: 'testparm -s %s'
+  register: samba_config
+
 - name: Restart samba daemon
   ansible.builtin.service:
     name: smbd
     state: restarted
-  when: samba_user_created.changed
+  when: samba_user_created.changed or samba_config.changed
 
 - name: Allow samba in ufw
   community.general.ufw:
