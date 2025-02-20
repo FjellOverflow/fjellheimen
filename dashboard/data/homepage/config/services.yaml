@@ -199,8 +199,6 @@
         icon: tailscale-light.png
         href: https://login.tailscale.com/admin
         description: Remote access
-        server: docker
-        container: core-tailscale
         showStats: false
         widget:
           type: tailscale
@@ -240,10 +238,10 @@
           type: glances
           url: "http://dashboard-glances:61208"
           version: 4
-          metric: disk:sda
+          metric: disk:nvme0n1
     - External disk usage:
         widget:
           type: glances
           url: "http://dashboard-glances:61208"
           version: 4
-          metric: disk:sdb
+          metric: disk:sda
