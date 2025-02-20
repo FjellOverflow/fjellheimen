@@ -10,6 +10,7 @@ services:
       - /fjellheimen/audiobookshelf/data/config:/config
       - /fjellheimen/audiobookshelf/data/metadata:/metadata
       - /xdrive/Media/Audiobooks:/audiobooks
+      - /xdrive/Media/Podcasts:/podcasts
     networks:
       - proxy-network
     env_file:
