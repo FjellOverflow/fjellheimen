@@ -12,6 +12,7 @@
       - git
       - tmux
       - ncdu
+      - tree
 
 - name: Install dockcheck.sh
   become: false
