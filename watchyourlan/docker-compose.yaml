@@ -4,7 +4,7 @@ name: other
 services:
 
   watchyourlan:
-    image: aceberg/watchyourlan:latest
+    image: ghcr.io/aceberg/watchyourlan:latest
     container_name: watchyourlan
     volumes:
       - /fjellheimen/watchyourlan/data:/data/WatchYourLAN

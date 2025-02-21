@@ -4,7 +4,7 @@ name: other
 services:
 
   vaultwarden:
-    image: vaultwarden/server:latest
+    image: ghcr.io/dani-garcia/vaultwarden:latest
     container_name: vaultwarden
     volumes:
       - /fjellheimen/vaultwarden/data:/data
