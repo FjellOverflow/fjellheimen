@@ -9,7 +9,7 @@
         showStats: false
         widget:
           type: plex
-          url: "http://192.168.1.74:32400"
+          url: "http://192.168.1.116:32400"
           key: {{HOMEPAGE_VAR_PLEX_KEY}}
     - Overseerr:
         icon: overseerr.png
