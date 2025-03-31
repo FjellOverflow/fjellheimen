@@ -14,6 +14,12 @@
       - ncdu
       - tree
       - rsync
+      - cockpit
+
+- name: Copy cockpit.conf
+  copy:
+    src: "templates/cockpit.conf"
+    dest: "/etc/cockpit/cockpit.conf"     
 
 - name: Install dockcheck.sh
   become: false
