@@ -215,7 +215,7 @@
         container: watchyourlan
         showStats: false
     - Cockpit:
-        icon: cockpit.png
+        icon: cockpit-light.png
         href: "https://cockpit.fjellhei.men"
         description: Graphical server interface
         showStats: false
