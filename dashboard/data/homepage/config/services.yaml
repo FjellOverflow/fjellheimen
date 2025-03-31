@@ -200,11 +200,6 @@
         href: https://login.tailscale.com/admin
         description: Remote access
         showStats: false
-        widget:
-          type: tailscale
-          deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
-          key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
-          fields: ['address']
     - Glances:
         icon: glances.png
         href: "https://metrics.fjellhei.men"
@@ -218,6 +213,11 @@
         description: Network monitor
         server: docker
         container: watchyourlan
+        showStats: false
+    - Cockpit:
+        icon: cockpit.png
+        href: "https://cockpit.fjellhei.men"
+        description: Graphical server interface
         showStats: false
 
 - Metrics:
