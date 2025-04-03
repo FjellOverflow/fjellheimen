@@ -15,6 +15,7 @@
       - tree
       - rsync
       - cockpit
+      - borgbackup
 
 - name: Copy cockpit.conf
   copy:

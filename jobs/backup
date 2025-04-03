@@ -8,18 +8,8 @@ source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
 
-BACKUP_NAME="fjellheimen_backup_$(date +%Y%m%d%H%M).tar.gz"
+$NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER."
 
-$NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER/$BACKUP_NAME."
+sudo borg create $BACKUP_FOLDER::{hostname}-{now} $SOURCE_FOLDER
 
-mkdir "$SOURCE_FOLDER/.backups"
-
-sudo rsync -az --copy-links --delete --exclude "immich/data" "$SOURCE_FOLDER" "$BACKUP_FOLDER"
-
-sudo tar --numeric-owner -czf "$BACKUP_FOLDER/$BACKUP_NAME" -C "$BACKUP_FOLDER" "$(basename "$SOURCE_FOLDER")"
-
-sudo rm -rf "$BACKUP_FOLDER/$(basename "$SOURCE_FOLDER")"
-
-sudo rm -r "$SOURCE_FOLDER/.backups"
-
-$NOTIFY "Created $BACKUP_FOLDER/$BACKUP_NAME."
+$NOTIFY "Backup finished."
