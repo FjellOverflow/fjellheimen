@@ -4,7 +4,7 @@ name: immich
 services:
 
   server:
-    image: ghcr.io/immich-app/immich-server:v1.130.3
+    image: ghcr.io/immich-app/immich-server:v1.131.3
     container_name: immich-server
     volumes:
       - /etc/localtime:/etc/localtime:ro
