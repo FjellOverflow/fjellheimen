@@ -53,7 +53,7 @@ services:
     restart: unless-stopped
 
   kiosk:
-    image: damongolding/immich-kiosk:latest
+    image: ghcr.io/damongolding/immich-kiosk:latest
     container_name: immich-kiosk
     networks:
       - immich-network
