@@ -4,7 +4,7 @@ name: immich
 services:
 
   server:
-    image: ghcr.io/immich-app/immich-server:v1.133.0
+    image: ghcr.io/immich-app/immich-server:v1.134.0
     container_name: immich-server
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: docker.io/valkey/valkey:8-bookworm@sha256:42cba146593a5ea9a622002c1b7cba5da7be248650cbb64ecb9c6c33d29794b1
+    image: docker.io/valkey/valkey:8-bookworm@sha256:ff21bc0f8194dc9c105b769aeabf9585fea6a8ed649c0781caeac5cb3c247884
     container_name: immich-redis
     networks:
       - immich-network
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
 
   database:
-    image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0@sha256:fa4f6e0971f454cd95fec5a9aaed2ed93d8f46725cc6bc61e0698e97dba96da1
     container_name: immich-database
     volumes:
       - /fjellheimen/immich/data/postgres:/var/lib/postgresql/data
