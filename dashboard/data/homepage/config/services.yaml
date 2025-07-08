@@ -121,6 +121,13 @@
         server: docker
         container: note-pls
         showStats: false
+    - nocodb:
+        icon: nocodb.png
+        href: "https://database.fjellhei.men"
+        description: No-code database
+        server: docker
+        container: nocodb
+        showStats: false
 - Organization:
     - Immich:
         icon: immich.png

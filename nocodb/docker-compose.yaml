@@ -1,0 +1,19 @@
+---
+name: other
+
+services:
+
+  nocodb:
+    image: nocodb/nocodb:latest
+    container_name: nocodb
+    volumes:
+      - /fjellheimen/nocodb/data:/usr/app/data/
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/.env
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    external: true
