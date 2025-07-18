@@ -3,12 +3,11 @@ import { data as composeFiles } from '../docker.data.js'
 </script>
 
 # Core
-The *Core* stack comprises essential containers for server infrastructure, including `core-npm`, `core-tailscale` and `core-portainer`.
+The *Core* stack comprises essential containers for server infrastructure, including `core-npm` and `core-portainer`.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
 | NPM | [proxy.fjellhei.men](https://proxy.fjellhei.men/) | Reverse proxy | [nginxproxymanager.com](https://nginxproxymanager.com/) |
-| Tailscale | / | Mesh VPN | [tailscale.com](https://tailscale.com/) |
 | Portainer | [containers.fjellhei.men](https://containers.fjellhei.men/) | Container management UI | [portainer.io](https://www.portainer.io/) |
 
 ## Nginx Proxy Manager
@@ -32,10 +31,3 @@ SSH access to the server is restricted to devices with authorized keys, making s
 ```yaml-vue
 {{ composeFiles['core'] }}
 ```
-
-## Tailscale
-*"Tailscale is a zero config VPN that works on any platform, service, or runtime."*
-
-To remotely access the home server without exposing it to the internet, Tailscale utilizes the WireGuard protocol, creating a secure network called "Tailnet" for connected devices. This allows seamless access to server apps from anywhere, using different IP addresses.
-
-Consult the [documentation](https://tailscale.com/kb/1017/install) for instructions on how to set up and use Tailscale.

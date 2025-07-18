@@ -4,7 +4,6 @@ The home server's different stacks reside in their respective directories, each 
 - [Core](/stacks/core), the most essential applications:
     - **Nginx Proxy Manager**, a reverse proxy
     - **Portainer**, container management UI
-    - **Tailscale**, a mesh VPN
 - [Dashboard](/stacks/dashboard), providing application shortcuts and server metrics with:
     - **Glances**, server metrics
     - **Homepage**, main dashboard
@@ -16,6 +15,7 @@ The home server's different stacks reside in their respective directories, each 
     - **Prowlarr**, indexer management
     - **Radarr**, movie management
     - **Sonarr**, TV series management
+    - **Bazarr**, subtitles management
 - [Torrents](/stacks/torrents)
     - **gluetun**, VPN connection
     - **qBittorrent**, torrent downloads

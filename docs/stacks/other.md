@@ -69,6 +69,21 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
+## NocoDB
+*"Open Source Airtable Alternative"*
+
+|                 |                                                         |
+|-----------------|---------------------------------------------------------|
+| URL             | [database.fjellhei.men](https://database.fjellhei.men/) |
+| Volumes         | `/usr/app/data`                                         |
+| Project website | [nocodb.com](https://nocodb.com/)                       |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['nocodb'] }}
+```
+:::
+
 ## note-pls
 *"Telegram bot that takes notes."*
 
