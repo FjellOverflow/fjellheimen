@@ -12,6 +12,7 @@ services:
       - /fjellheimen/.env
       - /fjellheimen/note-pls/.env
     environment:
+      NP_DEBUG: true
       NP_FILEPATH: /inbox/TODOs.md
       NP_PREPEND:  "\
       
