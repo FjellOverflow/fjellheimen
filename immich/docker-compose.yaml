@@ -4,7 +4,7 @@ name: immich
 services:
 
   server:
-    image: ghcr.io/immich-app/immich-server:v1.142.1
+    image: ghcr.io/immich-app/immich-server:v1.143.1
     container_name: immich-server
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
 
   database:
-    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:8d292bdb796aa58bbbaa47fe971c8516f6f57d6a47e7172e62754feb6ed4e7b0
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:c44be5f2871c59362966d71eab4268170eb6f5653c0e6170184e72b38ffdf107
     container_name: immich-database
     volumes:
       - /fjellheimen/immich/data/postgres:/var/lib/postgresql/data
