@@ -33,20 +33,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          package_json_file: ./docs/package.json
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
       - name: Install dependencies
-        run: pnpm install
+        run: bun install --frozen-lockfile
 
       - name: Build with VitePress
         run: |
-          pnpm build
+          bun run build
           touch .vitepress/dist/.nojekyll
 
       - name: Upload artifact
