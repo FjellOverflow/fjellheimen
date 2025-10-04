@@ -37,6 +37,21 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
+## iSponsorBlockTV
+*"iSponsorBlockTV is a self-hosted application that connects to your YouTube TV app and automatically skips segments (like Sponsors or intros) in YouTube videos using the SponsorBlock ⁠ API."*
+
+|                 |                                                                           |
+|-----------------|---------------------------------------------------------------------------|
+| ENV             | /                                                                         |
+| Volumes         | `/app/data`                                                      |
+| Project website | [dmunozv04/iSponsorBlockTV](https://github.com/dmunozv04/iSponsorBlockTV) |
+
+::: details Docker compose
+```yaml-vue
+{{ composeFiles['isponsorblocktv'] }}
+```
+:::
+
 ## Linkding
 *"Linkding is a self-hosted bookmark manager that is designed be to be minimal, fast, and easy to set up using Docker."*
 
