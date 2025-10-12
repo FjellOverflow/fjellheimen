@@ -7,7 +7,6 @@ services:
     container_name: dashboard-homepage
     volumes:
       - /fjellheimen/dashboard/data/homepage/config:/app/config
-      - /fjellheimen/dashboard/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /xdrive:/xdrive
       - /fjellheimen:/fjellheimen

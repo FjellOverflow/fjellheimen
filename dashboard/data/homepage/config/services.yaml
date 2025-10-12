@@ -115,12 +115,6 @@
         server: docker
         container: linkding
         showStats: false
-    - note-pls:
-        icon: https://assets.fjelloverflow.dev/note-pls.svg
-        description: Telegram bot
-        server: docker
-        container: note-pls
-        showStats: false
     - nocodb:
         icon: nocodb.png
         href: "https://database.fjellhei.men"
@@ -128,6 +122,14 @@
         server: docker
         container: nocodb
         showStats: false
+    - Obsidian:
+        icon: obsidian.png
+        href: "https://notes.fjellhei.men"
+        description: Notes
+        server: docker
+        container: obsidian
+        showStats: false
+
 - Organization:
     - Immich:
         icon: immich.png
