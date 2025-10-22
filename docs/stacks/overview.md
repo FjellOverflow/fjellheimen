@@ -24,7 +24,6 @@ The home server's different stacks reside in their respective directories, each 
     - **Homebox**, inventory management
     - **iSponsorBlockTV**, skips ads on YouTube TV app
     - **Linkding**, bookmarks
-    - **Mealie**, recipe management
     - **NocoDB**, no-code database
     - **Obsidian**, note-taking
     - **Plex**, movie & TV library

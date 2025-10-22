@@ -73,23 +73,6 @@ This section covers various standalone applications not included in other stacks
 ```
 :::
 
-## Mealie
-
-*"Mealie is a web app that lets you manage your recipes, import them from the web, and share them with your family."*
-
-|                 |                                                   |
-|-----------------|---------------------------------------------------|
-| URL             | [meals.fjellhei.men](https://meals.fjellhei.men/) |
-| ENV             | `ALLOW_SIGNUP` = `true`                           |
-| Volumes         | `/app/data/`                                      |
-| Project website | [mealie.io](https://mealie.io/)                   |
-
-::: details Docker compose
-```yaml-vue
-{{ composeFiles['mealie'] }}
-```
-:::
-
 ## NocoDB
 
 *"Open Source Airtable Alternative"*
