@@ -173,19 +173,3 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 {{ composeFiles['vaultwarden'] }}
 ```
 :::
-
-## WatchYourLAN
-
-*"Lightweight network IP scanner. Can be used to notify about new hosts and monitor host online/offline history."*
-
-|                 |                                                                 |
-|-----------------|-----------------------------------------------------------------|
-| URL             | [lan.fjellhei.men](https://lan.fjellhei.men/)                   |
-| Volumes         | `/data/WatchYourLAN`                                            |
-| Project website | [aceberg/WatchYourLAN](https://github.com/aceberg/WatchYourLAN) |
-
-::: details Docker compose
-```yaml-vue
-{{ composeFiles['watchyourlan'] }}
-```
-:::
