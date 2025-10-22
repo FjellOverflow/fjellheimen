@@ -151,19 +151,6 @@
         server: docker
         container: immich-kiosk
         showStats: false
-    - Mealie:
-        icon: mealie.png
-        href: "https://meals.fjellhei.men"
-        description: Plan meals
-        server: docker
-        container: mealie
-        showStats: false
-        widget:
-          type: mealie
-          url: "http://mealie:9000"
-          key: {{HOMEPAGE_VAR_MEALIE_KEY}}
-          version: 2
-          fields: ['recipes']
     - Homebox:
         icon: homebox.png
         href: https://inventory.fjellhei.men
@@ -215,13 +202,6 @@
         description: Server metrics
         server: docker
         container: dashboard-glances
-        showStats: false
-    - WatchYourLAN:
-        icon: sh-watchyourlan
-        href: "https://lan.fjellhei.men"
-        description: Network monitor
-        server: docker
-        container: watchyourlan
         showStats: false
 
 - Metrics:
