@@ -1,0 +1,27 @@
+---
+- name: Install borgbackup
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - borgbackup
+
+- name: Install dockcheck.sh
+  ansible.builtin.import_tasks: install-dockcheck.yaml
+
+- name: Setup cronjobs
+  ansible.builtin.import_tasks: setup-cronjobs.yaml
+
+- name: Setup skeleton
+  ansible.builtin.import_tasks: setup-skeleton.yaml
+
+- name: Setup firewall
+  ansible.builtin.import_tasks: setup-ufw.yaml
+
+- name: Copy samba config
+  become: true
+  ansible.builtin.template:
+    src: "templates/smb.conf"
+    dest: "/etc/samba/smb.conf"
+    validate: "testparm -s %s"
+    mode: "0644"
+  register: samba_config

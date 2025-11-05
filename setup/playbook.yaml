@@ -1,26 +1,19 @@
 ---
-- name: Initial set up
+- name: Setup fjellheimen
   hosts: all
-  become: true
-  vars_prompt:
-    - name: hostname
-      prompt: Enter hostname
-      private: false
-      default: fjellheimen
-    - name: username
-      prompt: Enter username
-      private: false
-      default: fjelloverflow
-    - name: samba_password
-      prompt: Enter samba password
   tasks:
-    - import_tasks: tasks/essential.yaml        
-    - import_tasks: tasks/ssh.yaml
-    - import_tasks: tasks/ufw.yaml
-    - import_tasks: tasks/packages.yaml
-    - import_tasks: tasks/docker.yaml
-    - import_tasks: tasks/samba.yaml
-    - import_tasks: tasks/shell.yaml
-    - import_tasks: tasks/tailscale.yaml
-    - import_tasks: tasks/cronjobs.yaml
-    - import_tasks: tasks/skeleton.yaml
+    - name: Install git
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - git
+    - name: Download ansible-fedora-setup collection
+      ansible.builtin.git:
+        repo: "https://github.com/FjellOverflow/ansible-fedora-setup"
+        dest: "ansible-fedora-setup"
+        version: HEAD # noqa: latest
+    - name: Run setup_fedora_server role from ansible-fedora-setup
+      ansible.builtin.include_role:
+        name: setup_fedora_server
+    - name: Setup passwordless sudo
+      ansible.builtin.import_tasks: tasks/main.yaml

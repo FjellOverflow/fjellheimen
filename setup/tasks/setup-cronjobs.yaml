@@ -1,7 +1,5 @@
 ---
-
 - name: Add backup cronjob
-  become: false
   ansible.builtin.cron:
     name: "Run backup job"
     minute: "0"
@@ -10,7 +8,6 @@
     job: "/fjellheimen/jobs/backup"
 
 - name: Add IP check cronjob
-  become: false
   ansible.builtin.cron:
     name: "Check for IP change"
     minute: "0"
@@ -18,7 +15,6 @@
     job: "/fjellheimen/jobs/check_public_ip"
 
 - name: Add container update check cronjob
-  become: false
   ansible.builtin.cron:
     name: "Check for container updates"
     minute: "0"
@@ -27,7 +23,6 @@
     job: "/fjellheimen/jobs/check_container_updates"
 
 - name: Add server boot cronjob
-  become: false
   ansible.builtin.cron:
     name: "Job on server start"
     special_time: "reboot"

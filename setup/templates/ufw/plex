@@ -1,4 +1,4 @@
-[plex]
+[plex-mms]
 title=Plex Media Server
 description=Plex Media Server is a software application that allows you to organize and stream your collection of movies, TV shows, music, and photos, from a central location.
 ports=32400,32469/tcp|1900,32410,32412:32414/udp

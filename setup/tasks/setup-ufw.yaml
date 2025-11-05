@@ -1,0 +1,13 @@
+---
+- name: Copy ufw app-profiles
+  become: true
+  ansible.builtin.copy:
+    src: "../templates/ufw/"
+    dest: "/etc/ufw/applications.d/"
+    mode: "0644"
+
+- name: Allow plex in ufw
+  become: true
+  community.general.ufw:
+    rule: allow
+    name: "plex-mms"

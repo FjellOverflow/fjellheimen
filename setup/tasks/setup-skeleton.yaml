@@ -1,0 +1,17 @@
+---
+- name: Get current user
+  ansible.builtin.set_fact:
+    usename: "{{ lookup('env', 'USER') }}"
+
+- name: Clone fjellheimen repo
+  ansible.builtin.git:
+    repo: "https://github.com/FjellOverflow/fjellheimen.git"
+    dest: "/home/{{ username }}/fjellheimen"
+    version: HEAD # noqa: latest
+
+- name: Symlink /fjellheimen
+  become: true
+  ansible.builtin.file:
+    src: "/home/{{ username }}/fjellheimen"
+    dest: "/fjellheimen"
+    state: link
