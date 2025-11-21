@@ -1,9 +1,6 @@
-<script setup>
-import { data as composeFiles } from '../docker.data.js'
-</script>
-
 # Immich
-The *Immich* stack is centered the immich photo management server and its depedants with a slideshow webapp as addition.
+
+The *Immich* stack is essentially the immich photo management server , its dependencies and a slideshow webapp.
 
 | Service | URL | Purpose | Project |
 |--------------|-----|-------- |---------|
@@ -15,6 +12,5 @@ The *Immich* stack is centered the immich photo management server and its depeda
 *"Immich-kiosk is a web slideshow for Immich."*
 
 ## docker-compose.yaml
-```yaml-vue
-{{ composeFiles['immich'] }}
-```
+
+<<< @/../immich/docker-compose.yaml

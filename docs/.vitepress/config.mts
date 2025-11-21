@@ -49,13 +49,13 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Usage',
+        text: 'Applications',
         collapsed: false,
         items: [
-          { text: 'Overview', link: '/usage/overview' },
-          { text: 'Adding applications', link: '/usage/add-new-app' },
-          { text: 'Set up ENV', link: '/usage/set-up-env' },
-          { text: 'Manage containers', link: '/usage/manage-containers' },
+          { text: 'Overview', link: '/applications/overview' },
+          { text: 'Adding applications', link: '/applications/add-new-app' },
+          { text: 'Set up ENV', link: '/applications/set-up-env' },
+          { text: 'Manage containers', link: '/applications/manage-containers' },
         ]
       },
       {

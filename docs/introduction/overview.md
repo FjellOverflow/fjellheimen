@@ -1,14 +1,11 @@
 # Overview
-This documentation covers a range of topics related to setting up a machine and setting up the home server configuration, working with the server, carrying out maintance and details of the infrastructure and included applications.
 
-## Resources
-The [Resources](/introduction/resources) page compiles and provides links to diverse supplementary materials concerning self-hosting and home server setups, offering more detailed insights and additional information beyond what's covered in this documentation.
+The docs are split up in a few larger topics.
 
-## Host machine
-The [Host](/host/overview) section covers aspects pertaining to the physical home server machine, including [initial installations](/host/setting-up-host) and various automated [maintenance tasks](/host/maintenance).
+The [Resources](/introduction/resources) page lists links to other potentially useful materials regarding self-hosting and home server administration.
 
-## Usage
-The [Usage](/usage/overview) section delves into the process of [integrating a new application](/usage/add-new-app) or stack into the system, configuring [environment variables](/usage/set-up-env) containing sensitive data, and effectively [managing Docker containers](/usage/manage-containers) in operation.
+The [Host](/host/overview) section covers aspects regarding the physical home server machine, including [initial installations](/host/setting-up-host) and [maintenance tasks](/host/maintenance).
 
-## Stacks
-The [Stacks](/stacks/overview) section offers detailed insights into included applications, providing essential information on configurations, interactions, and tips. It's a go-to resource for understanding specific applications, their purposes, and examples of Docker setups.
+The [Usage](/applications/overview) section guides the process of [adding a new application](/applications/add-new-app) or stack into the system, configuring [environment variables](/applications/set-up-env) with sensitive data, and [managing Docker containers](/applications/manage-containers).
+
+The [Stacks](/stacks/overview) section lists all included applications and provides additional information on configurations and interactions. It servers as the go-to resource to understand specific applications purposes, and see examples of Docker setups.

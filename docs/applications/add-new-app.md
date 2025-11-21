@@ -1,13 +1,14 @@
 # Adding applications
 
-When incorporating a new service or group of services with Docker images into the home server setup, follow the outlined process:
+To add a new service or group of services to the home server setup, we most likely want to follow the steps outlined in the following.
 
-## Single application
-Begin by creating the following files and directories:
+## For a single application
+
+We create the following files and directories:
 
 ```
-└── myApplication
-    ├── data
+└── myApplication/
+    ├── data/
     ├── .env
     ├── .gitignore
     └── docker-compose.yaml
@@ -15,7 +16,7 @@ Begin by creating the following files and directories:
 ```
 
 - `data`: Directory mapped as a [volume](https://docs.docker.com/storage/volumes/) to persist container data
-- `.env`: Contains [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/). Refer to [Set up ENV](/usage/set-up-env) for details
+- `.env`: Contains [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/). Refer to [Set up ENV](/applications/set-up-env) for details
 - `.gitignore`: Used to exclude persisted `data` and sensitive `.env` from version control.
 
 The `docker-compose.yaml` may resemble:
@@ -49,15 +50,15 @@ Note:
 - Different ENVs are loaded and additional ENV variables can be defined
 - The service is part of the [Proxy network](#proxy-network)
 
-## Entire stack
-Adding a stack follows a similar process:
-Create the following structure:
+## For an entire stack
+
+We create the following structure:
 
 ```
-└── someStack
-    ├── data
-    │   ├── application1
-    │   └── application2
+└── someStack/
+    ├── data/
+    │   ├── application1/
+    │   └── application2/
     ├── docker-compose.yaml
     ├── .gitignore
     ├── .env
@@ -66,7 +67,7 @@ Create the following structure:
 ```
 
 - `data`: Contains directories for all stack applications to persist their data
-- `.env` contains stack-wide ENV variables, while `application1.env`: Holds stack-wide ENV variables. Specific ENVs for each application can be placed in `<application name>.env`. See [Set up ENV](/usage/set-up-env) more information
+- `.env` contains stack-wide ENV variables, while `application1.env`: Holds stack-wide ENV variables. Specific ENVs for each application can be placed in `<application name>.env`. See [Set up ENV](/applications/set-up-env) more information
 
 The `docker-compose.yaml` may resemble:
 
@@ -126,6 +127,7 @@ data/*
 ```
 
 ## Healthchecks
+
 Docker [health checks](https://docs.docker.com/reference/dockerfile/#healthcheck) are valuable for monitoring container health. While some images include built-in health checks, they can also be added manually. To monitor the service's reachability on port `8888`, a `curl` or `wget` request (assuming the tools are included in the Docker image) can be incorporated into a `healtcheck` within the `docker-compose.yaml` file.
 
 ```yaml
@@ -139,6 +141,7 @@ healthcheck:
 ```
 
 ## Proxy network
+
 [Networking](https://docs.docker.com/network/) within Docker containers can be complex. Typically, we aim for services to be isolated from each other and the host network. However, to enable access to a service via the web through a reverse proxy, the container must be part of the `proxy-network`. For further information, refer to the section on [Reverse Proxy](/stacks/core#reverse-proxy).
 
 ```yaml

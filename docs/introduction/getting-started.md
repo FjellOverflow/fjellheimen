@@ -1,21 +1,19 @@
 # Getting started
-This documentation focuses on setting up and managing a private home server based on Linux, primarily utilizing [Docker](https://docs.docker.com/get-docker/).
 
-## Contents
-The setup includes configuration files and explanations for a Linux-based home server, running on a dedicated machine with full shell access, tailored for [media management and consumption](/stacks/servarr), and easy [server administration](/stacks/core), even remotely. The user base can vary from individual to multiple users, depending on machine specifications.
+This documentation focuses on getting up and running and managing a Linux-based home server based on Linux, mainly with [Docker](https://docs.docker.com/get-docker/). While mostly containerized, the setup is ideally run on a dedicated machine with full shell access.
 
-## Scope and purpose
-This documentation accompanies [FjellOverflow/fjellheimen](https://github.com/FjellOverflow/fjellheimen) shedding light on the infrastructure and core concepts behind the setup. Tracking and documenting home server configuration files facilitate reproducibility, adoption, or migration to new machines. The focus is on the general server infrastructure and application integration, with personal preference-dependent application configurations omitted.
+The configuration files live in the [FjellOverflow/fjellheimen](https://github.com/FjellOverflow/fjellheimen) repository and define infrastructure & setup for mostly [media management and consumption](/stacks/servarr) and [server administration](/stacks/core).
+
+## Goal
+
+The docs mean to document and explain the infrastructure and core concepts behind the setup. With configuration files and documentation at hand, the whole server setup should be quick to setup, highly reproducible, and easy to migrate or recover. As a personal project, most choiced are obviously opinionated and reflect my own use cases and preferences (sensitive data is omitted with `.gitignore`).
 
 ## Target audience
-Me. Primarily intended for personal use, this documentation serves as a guide for future adjustments, troubleshooting, or migrations of the server. It may also assist others in setting up their own home servers, assuming familiarity with Linux, command-line usage, Docker, and basic networking. Visit the [Resources](/introduction/resources) page for additional background information and guidance on these topics.
 
-::: warning Networking & security
-If networking or implementing strict security measures is not of interest, consider using pre-made home server solutions or providers to avoid risking data loss or security breaches. This setup requires knowledge of networking concepts, including VPNs, reverse proxies, and firewalls.
+Me. Because intended for personal use, these docs are a guide for my future self to help with adjustments, troubleshooting, or migrations of the server. Still, it could also inspire or aid interested others in setting up their own home servers. 
+
+Naturally, the docs assume certain familiarity with Linux, command-line usage, Docker, and basic networking. Visit the [Resources](/introduction/resources) page for additional hints.
+
+::: warning A note on security
+Good security measures are critical for protecting your personal data and devices; measures such as [VPNs](https://en.wikipedia.org/wiki/Virtual_private_network), [reverse proxies](https://en.wikipedia.org/wiki/Reverse_proxy), and [firewalls](https://en.wikipedia.org/wiki/Firewall_(computing)) are recommended. Avoid exposing services directly to the internet and isolate networks for enhanced security. This documentation is not the place to seek guidance on such things; if in doubt, please consult qualified experts based on your use cases.
 :::
-
-## Networking
-While networking is essential for home servers, this documentation does not delve into it extensively, as it varies based on server type (VPS or physical machine), home network configuration and ISP. Seek guidance from qualified sources for specific networking setups.
-
-## Security
-Critical for protecting personal data and devices, security measures such as [VPNs](https://en.wikipedia.org/wiki/Virtual_private_network), [reverse proxies](https://en.wikipedia.org/wiki/Reverse_proxy), and [firewalls](https://en.wikipedia.org/wiki/Firewall_(computing)) are recommended. Avoid exposing services directly to the internet and utilize isolated networks for enhanced security. Again, for detailed security guidance, consult qualified experts based on individual use cases.

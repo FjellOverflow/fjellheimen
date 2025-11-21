@@ -1,7 +1,3 @@
-<script setup>
-import { data as composeFiles } from '../docker.data.js'
-</script>
-
 # Miscellaneous applications
 
 This section covers various standalone applications not included in other stacks.
@@ -17,10 +13,9 @@ This section covers various standalone applications not included in other stacks
 | Volumes         | `/config`, `/metadata`, `/audiobooks`                       |
 | Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
 
+
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['audiobookshelf'] }}
-```
+<<< @/../audiobookshelf/docker-compose.yaml
 :::
 
 ## Homebox
@@ -35,9 +30,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [sysadminsmedia/homebox](https://github.com/sysadminsmedia/homebox) |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['homebox'] }}
-```
+<<< @/../homebox/docker-compose.yaml
 :::
 
 ## iSponsorBlockTV
@@ -51,9 +44,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [dmunozv04/iSponsorBlockTV](https://github.com/dmunozv04/iSponsorBlockTV) |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['isponsorblocktv'] }}
-```
+<<< @/../isponsorblocktv/docker-compose.yaml
 :::
 
 ## Linkding
@@ -68,9 +59,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [sissbruecker/linkding](https://github.com/sissbruecker/linkding) |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['linkding'] }}
-```
+<<< @/../linkding/docker-compose.yaml
 :::
 
 ## NocoDB
@@ -84,9 +73,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [nocodb.com](https://nocodb.com/)                       |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['nocodb'] }}
-```
+<<< @/../nocodb/docker-compose.yaml
 :::
 
 ## Obsidian
@@ -100,9 +87,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [linuxserver.io/obsidian](https://docs.linuxserver.io/images/docker-obsidian/) |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['obsidian'] }}
-```
+<<< @/../obsidian/docker-compose.yaml
 :::
 
 ## Plex
@@ -120,9 +105,7 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 :::
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['plex'] }}
-```
+<<< @/../plex/docker-compose.yaml
 :::
 
 ## Syncthing
@@ -136,9 +119,7 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 | Project website | [syncthing.net](https://syncthing.net/)         |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['syncthing'] }}
-```
+<<< @/../syncthing/docker-compose.yaml
 :::
 
 ## Vaultwarden
@@ -152,7 +133,5 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 | Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
 
 ::: details Docker compose
-```yaml-vue
-{{ composeFiles['vaultwarden'] }}
-```
+<<< @/../vaultwarden/docker-compose.yaml
 :::

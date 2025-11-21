@@ -1,9 +1,5 @@
-<script setup>
-import { data as composeFiles } from '../docker.data.js'
-</script>
-
 # Servarr
-The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prowlarr` and `arr-sonarr`, facilitating media requesting, automated downloading, and management.
+The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prowlarr`, `arr-sonarr` and `arr-bazarr`, for media requesting, automated downloading, and management.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
@@ -26,7 +22,8 @@ The *Servarr* stack includes containers `arr-overseerr`, `arr-radarr`, `arr-prow
 
 
 ## Configuration
-Starting the application containers is straightforward. The primary task involves configuring the applications to seamlessly interact with each other. They are intended to operate together as follows:
+
+Starting the application containers is straightforward. The main task is to configure the applications to seamlessly interact with each other. They are intended to operate together as follows:
 
 1. Media (e.g., a specific movie) is requested on Overseerr.
 2. The request is forwarded to Radarr (or Sonarr for TV shows).
@@ -38,6 +35,5 @@ Starting the application containers is straightforward. The primary task involve
 [TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
 ## docker-compose.yaml
-```yaml-vue
-{{ composeFiles['arr'] }}
-```
+
+<<< @/../arr/docker-compose.yaml

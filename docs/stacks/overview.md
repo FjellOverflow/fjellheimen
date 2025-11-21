@@ -1,4 +1,5 @@
 # Overview
+
 The home server's different stacks reside in their respective directories, each housing `docker-compose.yaml`, ENV files, and configuration files. They are categorized as
 
 - [Core](/stacks/core), the most essential applications:

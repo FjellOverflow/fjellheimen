@@ -1,9 +1,6 @@
-<script setup>
-import { data as composeFiles } from '../docker.data.js'
-</script>
-
 # Dashboard
-The *Dashboard* stack, which includes the `dashboard-homepage` and `dashboard-glances` containers, offers dashboards displaying application shortcuts and server metrics.
+
+The *Dashboard* stack includes the `dashboard-homepage` and `dashboard-glances` containers, for dashboards displaying application shortcuts and server metrics.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
@@ -16,12 +13,13 @@ The *Dashboard* stack, which includes the `dashboard-homepage` and `dashboard-gl
 
 
 ## Configuration
-The content, layout, and appearance of homepage are configured using various YAML files. These files, located in `dashboard/data/homepage/config`, are tracked by Git, with all sensitive data outsourced into environment variables.
+
+The content, layout, and appearance of homepage are configured using various YAML files; they are located in `dashboard/data/homepage/config` and are tracked by Git, with all sensitive data outsourced into environment variables.
 
 ## ENV
-Homepage features numerous shortcuts to various home server applications, necessitating a significant number of environment variables to define the corresponding URLs. These variables are located within tracked configuration files.
+
+Homepage has shortcuts and widgets of various home server applications, needing a significant number of environment variables to define corresponding URLs or API keys. They are defined in `homepage.env` and are not tracked by git.
 
 ## docker-compose.yaml
-```yaml-vue
-{{ composeFiles['dashboard'] }}
-```
+
+<<< @/../vaultwarden/docker-compose.yaml
