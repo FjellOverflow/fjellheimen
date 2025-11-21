@@ -1,6 +1,6 @@
 # Applications
 
-Most likely, we are selfhosting not for the server's sake, but to run some useful applications we plan on using. This setup intends to run applications as Docker containers, if possible, which is why we installed and set up docker in the previous [Host](host/setting-up-host) section.
+Most likely, we are selfhosting not for the server's sake, but to run some useful applications we plan on using. This setup intends to run applications as Docker containers, if possible, which is why we installed and set up docker in the previous [Host](/host/setting-up-host) section.
 
 The next steps typically involve [Adding applications](/applications/add-new-app), by creating the relevant files and directory structure, with the `docker-compose.yaml` files as the central points.
 
