@@ -1,9 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap);
-
 :root {
-  --vp-font-family-base: "IBM Plex Mono", sans-serif;
-  --vp-font-family-mono: "IBM Plex Mono", monospace;
-
   --vp-c-brand-1: rgb(55, 157, 186);
   --vp-c-brand-2: rgb(39, 112, 133);
   --vp-c-brand-3: rgb(55, 157, 186);
