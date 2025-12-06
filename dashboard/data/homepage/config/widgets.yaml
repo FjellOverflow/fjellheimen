@@ -6,9 +6,6 @@
     text_size: 2xl
     text: Fjellheimen
 
-- logo:
-    icon: /assets/logo.svg
-
 - resources:
     label: Server
     cpu: true
