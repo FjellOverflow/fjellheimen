@@ -7,7 +7,7 @@
     - icon: github-light.png
       href: https://github.com/FjellOverflow/fjellheimen
   - Documentation:
-    - icon: /assets/logo.svg
+    - icon: https://api.iconify.design/simple-icons/vitepress.svg?color=white
       href: https://docs.fjellhei.men
   - Porkbun:
     - icon: https://porkbun.com/images/favicons/favicon-96x96.png

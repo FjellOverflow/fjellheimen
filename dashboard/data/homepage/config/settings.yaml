@@ -2,7 +2,6 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/en/configs/settings
 title: Fjellheimen
-favicon: /assets/logo.svg
 background:
   image: /assets/background.png
   blur: xs
