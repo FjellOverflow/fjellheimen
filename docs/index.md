@@ -6,7 +6,8 @@ hero:
   text: "Home server"
   tagline: Docs for a Docker-based home server
   image:
-    src: /favicon.svg
+    light: /logo_light.svg
+    dark: /logo_dark.svg
     alt: Fjellheimen logo
   actions:
     - theme: brand
