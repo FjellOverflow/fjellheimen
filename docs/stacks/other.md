@@ -62,20 +62,6 @@ This section covers various standalone applications not included in other stacks
 <<< @/../linkding/docker-compose.yaml
 :::
 
-## NocoDB
-
-*"Open Source Airtable Alternative"*
-
-|                 |                                                         |
-|-----------------|---------------------------------------------------------|
-| URL             | [database.fjellhei.men](https://database.fjellhei.men/) |
-| Volumes         | `/usr/app/data`                                         |
-| Project website | [nocodb.com](https://nocodb.com/)                       |
-
-::: details Docker compose
-<<< @/../nocodb/docker-compose.yaml
-:::
-
 ## Obsidian
 
 *"Obsidian is a flexible and open app that lets you store, link, and publish your notes on any device."*
