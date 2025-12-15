@@ -115,13 +115,6 @@
         server: docker
         container: linkding
         showStats: false
-    - nocodb:
-        icon: nocodb.png
-        href: "https://database.fjellhei.men"
-        description: No-code database
-        server: docker
-        container: nocodb
-        showStats: false
     - Obsidian:
         icon: obsidian.png
         href: "https://notes.fjellhei.men"
