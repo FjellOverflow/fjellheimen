@@ -1,0 +1,28 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/settings
+title: Fjellheimen
+background:
+  image: /assets/background.png
+  blur: xs
+  opacity: 15
+headerStyle: boxedWidgets
+hideErrors: true
+statusStyle: "dot"
+layout:
+  Metrics:
+    icon: mdi-chart-areaspline-#7FC5D9
+    style: row
+    columns: 4
+  Media:
+    icon: mdi-multimedia-#7FC5D9
+  Media Management:
+    icon: mdi-download-multiple-#7FC5D9
+  Organization:
+    icon: mdi-file-cabinet-#7FC5D9
+  Administration:
+    icon: mdi-account-wrench-#7FC5D9
+  Utilities:
+    icon: mdi-tools-#7FC5D9
+    style: row
+    columns: 4

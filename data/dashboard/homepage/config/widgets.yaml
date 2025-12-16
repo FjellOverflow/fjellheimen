@@ -1,0 +1,25 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+- greeting:
+    text_size: 2xl
+    text: Fjellheimen
+
+- resources:
+    label: Server
+    cpu: true
+    cputemp: true
+    memory: true
+    uptime: true
+    disk: /fjellheimen
+
+- resources:
+    label: External disk
+    disk: /xdrive
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+      hourCycle: h23

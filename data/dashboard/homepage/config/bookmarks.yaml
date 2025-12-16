@@ -1,0 +1,27 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+
+- Manage Server:
+  - Git repository:
+    - icon: github-light.png
+      href: https://github.com/FjellOverflow/fjellheimen
+  - Documentation:
+    - icon: https://api.iconify.design/simple-icons/vitepress.svg?color=white
+      href: https://docs.fjellhei.men
+  - Porkbun:
+    - icon: https://porkbun.com/images/favicons/favicon-96x96.png
+      href: https://porkbun.com/
+
+- Resources:
+  - Homepage docs:
+    - icon: homepage
+      href: https://gethomepage.dev/
+  - selfh.st:
+    - icon: sh-selfh-st
+      href: https://selfh.st/apps/
+  - r/selfhosted:
+    - icon: reddit.png
+      href: https://reddit.com/r/selfhosted
+
+

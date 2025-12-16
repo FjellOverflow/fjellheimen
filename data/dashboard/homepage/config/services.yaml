@@ -1,0 +1,224 @@
+---
+- Media:
+    - Plex:
+        icon: plex.png
+        href: "https://tv.fjellhei.men"
+        description: Movies, TV Shows & Music
+        server: docker
+        container: plex
+        showStats: false
+        widget:
+          type: plex
+          url: {{HOMEPAGE_VAR_PLEX_URL}}
+          key: {{HOMEPAGE_VAR_PLEX_KEY}}
+    - Overseerr:
+        icon: overseerr.png
+        href: "https://requests.fjellhei.men"
+        description: Request Movies & TV shows
+        server: docker
+        container: arr-overseerr
+        showStats: false
+        widget:
+          type: overseerr
+          url: "http://arr-overseerr:5055"
+          key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
+          fields: ['pending', 'processing']
+    - Bazarr:
+        icon: bazarr.png
+        href: "https://subtitles.fjellhei.men"
+        description: Subtitles
+        server: docker
+        container: arr-bazarr
+        showStats: false
+        widget:
+          type: bazarr
+          url: "http://arr-bazarr:6767"
+          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
+    - Audiobookshelf:
+        icon: audiobookshelf.png
+        href: "https://audiobooks.fjellhei.men"
+        description: Audiobooks
+        server: docker
+        container: audiobookshelf
+        showStats: false
+        widget:
+          type: audiobookshelf
+          url: "http://audiobookshelf:80"
+          key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
+          fields: ['books']
+
+- Media Management:
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: "https://downloads.fjellhei.men"
+        description: Torrents
+        server: docker
+        container: torrents-qbittorrent
+        showStats: false
+        widget:
+          type: qbittorrent
+          url: "http://torrents-gluetun:9090"
+          username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
+          password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+          fields: ['leech', 'download']
+    - Sonarr:
+        icon: sonarr.png
+        href: "https://sonarr.fjellhei.men"
+        description: TV Show management
+        server: docker
+        container: arr-sonarr
+        showStats: false
+        widget:
+          type: sonarr
+          url: "http://arr-sonarr:8989"
+          key: {{HOMEPAGE_VAR_SONARR_KEY}}
+          fields: ['wanted', 'queued']
+    - Radarr:
+        icon: sh-radarr
+        href: "https://radarr.fjellhei.men"
+        description: Movie management
+        server: docker
+        container: arr-radarr
+        showStats: false
+        widget:
+          type: radarr
+          url: "http://arr-radarr:7878"
+          key: {{HOMEPAGE_VAR_RADARR_KEY}}
+          fields: ['wanted', 'missing', 'queued']
+    - Prowlarr:
+        icon: prowlarr.png
+        href: "https://prowlarr.fjellhei.men"
+        description: Indexer management
+        server: docker
+        container: arr-prowlarr
+        showStats: false
+
+- Utilities:
+    - Syncthing:
+        icon: syncthing.png
+        href: "https://sync.fjellhei.men"
+        description: Sync files
+        server: docker
+        container: syncthing
+        showStats: false
+    - Vaultwarden:
+        icon: vaultwarden-light.png
+        href: "https://passwords.fjellhei.men"
+        description: Password manager
+        server: docker
+        container: vaultwarden
+        showStats: false
+    -  Linkding:
+        icon: linkding.png
+        href: "https://links.fjellhei.men"
+        description: Bookmarks
+        server: docker
+        container: linkding
+        showStats: false
+    - Obsidian:
+        icon: obsidian.png
+        href: "https://notes.fjellhei.men"
+        description: Notes
+        server: docker
+        container: obsidian
+        showStats: false
+
+- Organization:
+    - Immich:
+        icon: immich.png
+        href: "https://photos.fjellhei.men"
+        description: Photo library
+        server: docker
+        container: immich-server
+        showStats: false
+        widget:
+          type: immich
+          url: "http://immich-server:2283"
+          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+          version: 2
+          fields: ['photos', 'videos']
+    - "Immich Kiosk":
+        icon: immich-kiosk.png
+        href: "https://kiosk.fjellhei.men"
+        description: Photo gallery
+        server: docker
+        container: immich-kiosk
+        showStats: false
+    - Homebox:
+        icon: homebox.png
+        href: https://inventory.fjellhei.men
+        description: Inventory management
+        server: docker
+        container: homebox
+        showStats: false
+        widget:
+          type: homebox
+          url: http://homebox:7745
+          username: {{HOMEPAGE_VAR_HOMEBOX_USERNAME}}
+          password: {{HOMEPAGE_VAR_HOMEBOX_PASSWORD}}
+          fields: ['items', 'locations']
+- Administration:
+    - Nginx Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: "https://proxy.fjellhei.men"
+        description: Manage Reverse Proxy & SSL
+        server: docker
+        container: core-npm
+        showStats: false
+        widget:
+          type: npm
+          url: "http://core-npm:81"
+          username: {{HOMEPAGE_VAR_NPM_USERNAME}}
+          password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
+          fields: ['enabled', 'disabled']
+    - Portainer:
+        icon: portainer.png
+        href: "https://containers.fjellhei.men"
+        description: Manage Docker containers
+        server: docker
+        container: core-portainer
+        showStats: false
+        widget:
+          type: portainer
+          url: "http://core-portainer:9000"
+          env: 3
+          key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+          fields: ['running', 'stopped']
+    - Tailscale:
+        icon: tailscale-light.png
+        href: https://login.tailscale.com/admin
+        description: Remote access
+        showStats: false
+    - Glances:
+        icon: glances.png
+        href: "https://metrics.fjellhei.men"
+        description: Server metrics
+        server: docker
+        container: dashboard-glances
+        showStats: false
+
+- Metrics:
+    - Processes:
+        widget:
+          type: glances
+          url: "http://dashboard-glances:61208"
+          version: 4
+          metric: process
+    - CPU:
+        widget:
+          type: glances
+          url: "http://dashboard-glances:61208"
+          version: 4
+          metric: cpu
+    - Homserver disk usage:
+        widget:
+          type: glances
+          url: "http://dashboard-glances:61208"
+          version: 4
+          metric: disk:nvme0n1
+    - External disk usage:
+        widget:
+          type: glances
+          url: "http://dashboard-glances:61208"
+          version: 4
+          metric: disk:sda
