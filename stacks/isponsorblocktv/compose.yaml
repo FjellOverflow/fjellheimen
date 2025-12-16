@@ -1,0 +1,12 @@
+name: isponsorblocktv
+services:
+  isponsorblocktv:
+    image: ghcr.io/dmunozv04/isponsorblocktv:latest
+    container_name: isponsorblocktv
+    volumes:
+      - /fjellheimen/data/isponsorblocktv:/app/data
+    network_mode: host
+    env_file:
+      - /fjellheimen/stacks/.env
+    restart: unless-stopped
+networks: {}

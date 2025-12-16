@@ -1,0 +1,15 @@
+name: vaultwarden
+services:
+  vaultwarden:
+    image: ghcr.io/dani-garcia/vaultwarden:latest
+    container_name: vaultwarden
+    volumes:
+      - /fjellheimen/data/vaultwarden:/data
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true

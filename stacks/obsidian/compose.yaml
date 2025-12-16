@@ -1,0 +1,17 @@
+name: obsidian
+services:
+  obsidian:
+    image: lscr.io/linuxserver/obsidian:latest
+    container_name: obsidian
+    volumes:
+      - /fjellheimen/data/obsidian:/config
+      - /xdrive/Data/Vaults:/vaults
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    shm_size: 1gb
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true

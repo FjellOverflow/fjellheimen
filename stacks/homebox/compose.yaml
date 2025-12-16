@@ -1,0 +1,17 @@
+name: homebox
+services:
+  homebox:
+    image: ghcr.io/sysadminsmedia/homebox:latest
+    container_name: homebox
+    volumes:
+      - /fjellheimen/data/homebox:/data/
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    environment:
+      - HBOX_OPTIONS_ALLOW_REGISTRATION=false
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true

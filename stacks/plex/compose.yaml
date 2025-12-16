@@ -1,0 +1,21 @@
+name: plex
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    volumes:
+      - /fjellheimen/data/plex/:/config
+      - /xdrive/Media/Movies:/movies
+      - /xdrive/Media/TV:/tv
+      - /xdrive/Media/Music:/music
+    network_mode: host
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: curl --fail http://localhost:32400/web || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks: {}

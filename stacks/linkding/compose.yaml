@@ -1,0 +1,21 @@
+name: linkding
+services:
+  linkding:
+    image: sissbruecker/linkding:latest
+    container_name: linkding
+    volumes:
+      - /fjellheimen/data/linkding:/etc/linkding/data
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: curl --fail http://localhost:9090 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true

@@ -1,0 +1,68 @@
+name: immich
+services:
+  server:
+    image: ghcr.io/immich-app/immich-server:v2.3.1
+    container_name: immich-server
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /fjellheimen/data/immich/server:/usr/src/app/upload
+      - /xdrive/Data/Photos:/usr/src/app/external:ro
+    networks:
+      - proxy-network
+      - immich-network
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/immich/.env
+    depends_on:
+      - redis
+      - database
+    restart: unless-stopped
+  redis:
+    image: docker.io/valkey/valkey:8@sha256:81db6d39e1bba3b3ff32bd3a1b19a6d69690f94a3954ec131277b9a26b95b3aa
+    container_name: immich-redis
+    networks:
+      - immich-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: redis-cli ping || exit 1
+    restart: unless-stopped
+  database:
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
+    container_name: immich-database
+    volumes:
+      - /fjellheimen/data/immich/database:/var/lib/postgresql/data
+    networks:
+      - immich-network
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/immich/.env
+    environment:
+      POSTGRES_INITDB_ARGS: --data-checksums
+      DB_STORAGE_TYPE: HDD
+    shm_size: 128mb
+    restart: unless-stopped
+  kiosk:
+    image: ghcr.io/damongolding/immich-kiosk:latest
+    container_name: immich-kiosk
+    networks:
+      - immich-network
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/immich/.env
+    environment:
+      KIOSK_IMMICH_URL: immich-server:2283
+      KIOSK_IMMICH_EXTERNAL_URL: https://photos.fjellhei.men
+    healthcheck:
+      test: wget -nv -t1 --spider http://localhost:3000 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  immich-network:
+    name: immich-network
+  proxy-network:
+    external: true
