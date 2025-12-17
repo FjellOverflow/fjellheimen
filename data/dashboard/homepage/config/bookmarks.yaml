@@ -1,24 +1,24 @@
 ---
 - Manage Server:
   - Fjellheimen Git repository:
-    - icon: github-light.png
+    - icon: sh-github-light
       href: https://github.com/FjellOverflow/fjellheimen
   - Fjellheimen Documentation:
-    - icon: https://api.iconify.design/simple-icons/vitepress.svg?color=white
+    - icon: sh-vitepress-light
       href: https://docs.fjellhei.men
   - Porkbun DNS registrar:
-    - icon: https://porkbun.com/images/favicons/favicon-96x96.png
+    - icon: sh-porkbun-light
       href: https://porkbun.com/
 
 - Selfhosting Resources:
   - Homepage documentation:
-    - icon: homepage
+    - icon: sh-homepage
       href: https://gethomepage.dev/
   - selfh.st Directory:
-    - icon: sh-selfh-st
+    - icon: sh-selfh-st-light
       href: https://selfh.st/apps/
   - r/selfhosted on Reddit:
-    - icon: reddit.png
+    - icon: sh-reddit-light
       href: https://reddit.com/r/selfhosted
 
 
