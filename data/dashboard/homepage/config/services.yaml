@@ -1,7 +1,7 @@
 ---
 - Media:
     - Plex:
-        icon: plex.png
+        icon: sh-plex-light
         href: "https://tv.fjellhei.men"
         description: Movies, TV Shows & Music
         server: docker
@@ -12,7 +12,7 @@
           url: {{HOMEPAGE_VAR_PLEX_URL}}
           key: {{HOMEPAGE_VAR_PLEX_KEY}}
     - Overseerr:
-        icon: overseerr.png
+        icon: sh-overseerr-light
         href: "https://requests.fjellhei.men"
         description: Request Movies & TV shows
         server: docker
@@ -24,7 +24,7 @@
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
           fields: ['pending', 'processing']
     - Bazarr:
-        icon: bazarr.png
+        icon: sh-bazarr-light
         href: "https://subtitles.fjellhei.men"
         description: Subtitles
         server: docker
@@ -35,7 +35,7 @@
           url: "http://arr-bazarr:6767"
           key: {{HOMEPAGE_VAR_BAZARR_KEY}}
     - Audiobookshelf:
-        icon: audiobookshelf.png
+        icon: sh-audiobookshelf-light
         href: "https://audiobooks.fjellhei.men"
         description: Audiobooks
         server: docker
@@ -49,7 +49,7 @@
 
 - Media Management:
     - qBittorrent:
-        icon: qbittorrent.png
+        icon: sh-qbittorrent-light
         href: "https://downloads.fjellhei.men"
         description: Torrents
         server: docker
@@ -62,7 +62,7 @@
           password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
           fields: ['leech', 'download']
     - Sonarr:
-        icon: sonarr.png
+        icon: sh-sonarr-light
         href: "https://sonarr.fjellhei.men"
         description: TV Show management
         server: docker
@@ -74,7 +74,7 @@
           key: {{HOMEPAGE_VAR_SONARR_KEY}}
           fields: ['wanted', 'queued']
     - Radarr:
-        icon: sh-radarr
+        icon: sh-radarr-light
         href: "https://radarr.fjellhei.men"
         description: Movie management
         server: docker
@@ -86,7 +86,7 @@
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
           fields: ['wanted', 'missing', 'queued']
     - Prowlarr:
-        icon: prowlarr.png
+        icon: sh-prowlarr-light
         href: "https://prowlarr.fjellhei.men"
         description: Indexer management
         server: docker
@@ -95,35 +95,35 @@
 
 - Utilities:
     - Syncthing:
-        icon: syncthing.png
+        icon: sh-syncthing-light
         href: "https://sync.fjellhei.men"
         description: Sync files
         server: docker
         container: syncthing
         showStats: false
     - Vaultwarden:
-        icon: vaultwarden-light.png
+        icon: sh-vaultwarden-light
         href: "https://passwords.fjellhei.men"
         description: Password manager
         server: docker
         container: vaultwarden
         showStats: false
     -  Linkding:
-        icon: linkding.png
+        icon: sh-linkding-light
         href: "https://links.fjellhei.men"
         description: Bookmarks
         server: docker
         container: linkding
         showStats: false
     - Obsidian:
-        icon: obsidian.png
+        icon: sh-obsidian-light
         href: "https://notes.fjellhei.men"
         description: Notes
         server: docker
         container: obsidian
         showStats: false
     - Gramps:
-        icon: gramps-web.png
+        icon: sh-gramps-light
         href: "https://gramps.fjellhei.men"
         description: Genealogy system
         server: docker
@@ -132,7 +132,7 @@
 
 - Organization:
     - Immich:
-        icon: immich.png
+        icon: sh-immich-light
         href: "https://photos.fjellhei.men"
         description: Photo library
         server: docker
@@ -145,14 +145,14 @@
           version: 2
           fields: ['photos', 'videos']
     - "Immich Kiosk":
-        icon: immich-kiosk.png
+        icon: sh-immich-kiosk-light
         href: "https://kiosk.fjellhei.men"
         description: Photo gallery
         server: docker
         container: immich-kiosk
         showStats: false
     - Homebox:
-        icon: homebox.png
+        icon: sh-homebox-light
         href: https://inventory.fjellhei.men
         description: Inventory management
         server: docker
@@ -166,7 +166,7 @@
           fields: ['items', 'locations']
 - Administration:
     - Nginx Proxy Manager:
-        icon: nginx-proxy-manager.png
+        icon: sh-nginx-proxy-manager-light
         href: "https://proxy.fjellhei.men"
         description: Manage Reverse Proxy & SSL
         server: docker
@@ -179,21 +179,21 @@
           password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
           fields: ['enabled', 'disabled']
     - Dockge:
-        icon: dockge.png
+        icon: sh-dockge-light
         href: "https://containers.fjellhei.men"
         description: Manage Docker containers
         server: docker
         container: core-dockge
         showStats: false
     - Glances:
-        icon: glances.png
+        icon: sh-glances-light
         href: "https://metrics.fjellhei.men"
         description: Server metrics
         server: docker
         container: dashboard-glances
         showStats: false
     - Tailscale:
-        icon: tailscale-light.png
+        icon: sh-tailscale-light
         href: https://login.tailscale.com/admin
         description: Remote access
         showStats: false
