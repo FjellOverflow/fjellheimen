@@ -1,0 +1,64 @@
+name: gramps
+services:
+  server: &a1
+    image: ghcr.io/gramps-project/grampsweb:latest
+    container_name: gramps-server
+    environment:
+      GRAMPSWEB_TREE: Gramps Web
+      GRAMPSWEB_CELERY_CONFIG__broker_url: redis://gramps-redis:6379/0
+      GRAMPSWEB_CELERY_CONFIG__result_backend: redis://gramps-redis:6379/0
+      GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://gramps-redis:6379/1
+    depends_on:
+      - redis
+    volumes:
+      - /fjellheimen/data/gramps/app/users:/app/users
+      - /fjellheimen/data/gramps/app/indexdir:/app/indexdir
+      - /fjellheimen/data/gramps/app/thumbnail_cache:/app/thumbnail_cache
+      - /fjellheimen/data/gramps/app/cache:/app/cache
+      - /fjellheimen/data/gramps/app/secret:/app/secret
+      - /fjellheimen/data/gramps/app/media:/app/media
+      - /fjellheimen/data/gramps/tmp:/tmp
+      - /fjellheimen/data/gramps/database/:/root/.gramps/grampsdb
+    networks:
+      - proxy-network
+      - gramps-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: wget -nv -t1 --spider http://localhost:5000 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+  celery:
+    <<: *a1
+    container_name: gramps-celery
+    depends_on:
+      - server
+      - redis
+    command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
+    networks:
+      - gramps-network
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - SECRET_KEY=123 celery -A gramps_webapi.celery inspect ping | grep -q 'pong' || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+  redis:
+    image: docker.io/library/redis:7.2.4-alpine
+    container_name: gramps-redis
+    networks:
+      - gramps-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: redis-cli ping || exit 1
+    restart: unless-stopped
+networks:
+  gramps-network: {}
+  proxy-network:
+    external: true
