@@ -2,7 +2,7 @@
 - Media:
     - Plex:
         icon: sh-plex-light
-        href: "https://tv.fjellhei.men"
+        href: https://tv.fjellhei.men
         description: Movies, TV Shows & Music
         server: docker
         container: plex
@@ -11,18 +11,19 @@
           type: plex
           url: {{HOMEPAGE_VAR_PLEX_URL}}
           key: {{HOMEPAGE_VAR_PLEX_KEY}}
+          fields: [movies, tv]
     - Overseerr:
         icon: sh-overseerr-light
-        href: "https://requests.fjellhei.men"
+        href: https://requests.fjellhei.men
         description: Request Movies & TV shows
         server: docker
         container: arr-overseerr
         showStats: false
         widget:
           type: overseerr
-          url: "http://arr-overseerr:5055"
+          url: http://arr-overseerr:5055
           key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
-          fields: ['pending', 'processing']
+          fields: [pending, processing]
     - Bazarr:
         icon: sh-bazarr-light
         href: "https://subtitles.fjellhei.men"
@@ -122,15 +123,8 @@
         server: docker
         container: obsidian
         showStats: false
-    - Gramps:
-        icon: sh-gramps-light
-        href: "https://gramps.fjellhei.men"
-        description: Genealogy system
-        server: docker
-        container: gramps-server
-        showStats: false
 
-- Organization:
+- Data Organization:
     - Immich:
         icon: sh-immich-light
         href: "https://photos.fjellhei.men"
@@ -164,6 +158,14 @@
           username: {{HOMEPAGE_VAR_HOMEBOX_USERNAME}}
           password: {{HOMEPAGE_VAR_HOMEBOX_PASSWORD}}
           fields: ['items', 'locations']
+    - Gramps:
+        icon: sh-gramps-light
+        href: "https://gramps.fjellhei.men"
+        description: Genealogy system
+        server: docker
+        container: gramps-server
+        showStats: false
+
 - Administration:
     - Nginx Proxy Manager:
         icon: sh-nginx-proxy-manager-light

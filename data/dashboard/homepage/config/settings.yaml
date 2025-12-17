@@ -4,22 +4,25 @@ background:
   image: /assets/background.png
   blur: xs
   opacity: 15
-headerStyle: boxedWidgets
 hideErrors: true
-statusStyle: "dot"
+statusStyle: dot
 maxGroupColumns: 5
 layout:
   Metrics:
-    icon: mdi-chart-areaspline-#7FC5D9
+    icon: mdi-chart-areaspline
     style: row
     columns: 4
   Media:
-    icon: mdi-multimedia-#7FC5D9
-  Media Management:
-    icon: mdi-download-multiple-#7FC5D9
-  Organization:
-    icon: mdi-file-cabinet-#7FC5D9
+    icon: mdi-multimedia
+  'Media Management':
+    icon: mdi-download
+  'Data Organization':
+    icon: mdi-file-cabinet
   Utilities:
-    icon: mdi-tools-#7FC5D9
+    icon: mdi-tools
   Administration:
-    icon: mdi-account-wrench-#7FC5D9
+    icon: mdi-account-wrench
+  Manage Server:
+    icon: mdi-server-outline
+  Selfhosting Resources:
+    icon: mdi-school-outline

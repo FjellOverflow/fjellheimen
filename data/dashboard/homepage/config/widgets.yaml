@@ -1,17 +1,6 @@
 ---
-- greeting:
-    text_size: 2xl
-    text: Fjellheimen
-
 - resources:
-    label: Server
     cpu: true
     cputemp: true
     memory: true
     uptime: true
-
-- datetime:
-    text_size: xl
-    format:
-      timeStyle: short
-      hourCycle: h23
