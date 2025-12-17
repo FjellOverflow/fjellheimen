@@ -10,8 +10,6 @@ services:
       - /fjellheimen/data/dashboard/homepage/config:/app/config
       - /fjellheimen/data/dashboard/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /xdrive:/xdrive
-      - /fjellheimen:/fjellheimen
     networks:
       - proxy-network
     env_file:
