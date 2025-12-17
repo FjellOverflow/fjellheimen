@@ -9,6 +9,7 @@ background:
 headerStyle: boxedWidgets
 hideErrors: true
 statusStyle: "dot"
+maxGroupColumns: 5
 layout:
   Metrics:
     icon: mdi-chart-areaspline-#7FC5D9
@@ -20,9 +21,7 @@ layout:
     icon: mdi-download-multiple-#7FC5D9
   Organization:
     icon: mdi-file-cabinet-#7FC5D9
-  Administration:
-    icon: mdi-account-wrench-#7FC5D9
   Utilities:
     icon: mdi-tools-#7FC5D9
-    style: row
-    columns: 4
+  Administration:
+    icon: mdi-account-wrench-#7FC5D9

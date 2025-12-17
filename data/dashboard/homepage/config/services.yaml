@@ -122,6 +122,13 @@
         server: docker
         container: obsidian
         showStats: false
+    - Gramps:
+        icon: gramps-web.png
+        href: "https://gramps.fjellhei.men"
+        description: Genealogy system
+        server: docker
+        container: gramps-server
+        showStats: false
 
 - Organization:
     - Immich:
@@ -171,23 +178,12 @@
           username: {{HOMEPAGE_VAR_NPM_USERNAME}}
           password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
           fields: ['enabled', 'disabled']
-    - Portainer:
-        icon: portainer.png
+    - Dockge:
+        icon: dockge.png
         href: "https://containers.fjellhei.men"
         description: Manage Docker containers
         server: docker
-        container: core-portainer
-        showStats: false
-        widget:
-          type: portainer
-          url: "http://core-portainer:9000"
-          env: 3
-          key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
-          fields: ['running', 'stopped']
-    - Tailscale:
-        icon: tailscale-light.png
-        href: https://login.tailscale.com/admin
-        description: Remote access
+        container: core-dockge
         showStats: false
     - Glances:
         icon: glances.png
@@ -195,6 +191,11 @@
         description: Server metrics
         server: docker
         container: dashboard-glances
+        showStats: false
+    - Tailscale:
+        icon: tailscale-light.png
+        href: https://login.tailscale.com/admin
+        description: Remote access
         showStats: false
 
 - Metrics:
