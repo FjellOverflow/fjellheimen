@@ -14,9 +14,9 @@ layout:
     columns: 4
   Media:
     icon: mdi-multimedia
-  'Media Management':
+  Media Management:
     icon: mdi-download
-  'Data Organization':
+  Data Organization:
     icon: mdi-file-cabinet
   Utilities:
     icon: mdi-tools
