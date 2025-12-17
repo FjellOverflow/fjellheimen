@@ -3,6 +3,9 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: dashboard-homepage
+    user: 1000:1000
+    group_add:
+      - "996"
     volumes:
       - /fjellheimen/data/dashboard/homepage/config:/app/config
       - /fjellheimen/data/dashboard/homepage/assets:/app/public/assets
@@ -13,8 +16,6 @@ services:
       - proxy-network
     env_file:
       - /fjellheimen/stacks/dashboard/.env
-    environment:
-      - TZ=Europe/Tallinn
     restart: unless-stopped
   glances:
     image: nicolargo/glances:latest
