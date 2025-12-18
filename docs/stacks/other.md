@@ -15,7 +15,7 @@ This section covers various standalone applications not included in other stacks
 
 
 ::: details Docker compose
-<<< @/../audiobookshelf/docker-compose.yaml
+<<< @/../stacks/audiobookshelf/compose.yaml
 :::
 
 ## Homebox
@@ -30,7 +30,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [sysadminsmedia/homebox](https://github.com/sysadminsmedia/homebox) |
 
 ::: details Docker compose
-<<< @/../homebox/docker-compose.yaml
+<<< @/../stacks/homebox/compose.yaml
 :::
 
 ## iSponsorBlockTV
@@ -44,7 +44,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [dmunozv04/iSponsorBlockTV](https://github.com/dmunozv04/iSponsorBlockTV) |
 
 ::: details Docker compose
-<<< @/../isponsorblocktv/docker-compose.yaml
+<<< @/../stacks/isponsorblocktv/compose.yaml
 :::
 
 ## Linkding
@@ -59,7 +59,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [sissbruecker/linkding](https://github.com/sissbruecker/linkding) |
 
 ::: details Docker compose
-<<< @/../linkding/docker-compose.yaml
+<<< @/../stacks/linkding/compose.yaml
 :::
 
 ## Obsidian
@@ -73,7 +73,7 @@ This section covers various standalone applications not included in other stacks
 | Project website | [linuxserver.io/obsidian](https://docs.linuxserver.io/images/docker-obsidian/) |
 
 ::: details Docker compose
-<<< @/../obsidian/docker-compose.yaml
+<<< @/../stacks/obsidian/compose.yaml
 :::
 
 ## Plex
@@ -91,7 +91,7 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 :::
 
 ::: details Docker compose
-<<< @/../plex/docker-compose.yaml
+<<< @/../stacks/plex/compose.yaml
 :::
 
 ## Syncthing
@@ -105,7 +105,7 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 | Project website | [syncthing.net](https://syncthing.net/)         |
 
 ::: details Docker compose
-<<< @/../syncthing/docker-compose.yaml
+<<< @/../stacks/syncthing/compose.yaml
 :::
 
 ## Vaultwarden
@@ -119,5 +119,5 @@ Running Plex with ```network_mode: host``` appears to increase the chance that r
 | Project website | [dani-garcia/vaultwarden](https://github.com/dani-garcia/vaultwarden) |
 
 ::: details Docker compose
-<<< @/../vaultwarden/docker-compose.yaml
+<<< @/../stacks/vaultwarden/compose.yaml
 :::

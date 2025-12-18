@@ -13,4 +13,4 @@ The *Immich* stack is essentially the immich photo management server , its depen
 
 ## docker-compose.yaml
 
-<<< @/../immich/docker-compose.yaml
+<<< @/../stacks/immich/compose.yaml

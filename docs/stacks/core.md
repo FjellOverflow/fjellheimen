@@ -28,4 +28,4 @@ SSH access to the server is restricted to devices with authorized keys, making s
 ## docker-compose.yaml
 
 
-<<< @/../core/docker-compose.yaml
+<<< @/../stacks/core/compose.yaml

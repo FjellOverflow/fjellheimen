@@ -22,4 +22,4 @@ Homepage has shortcuts and widgets of various home server applications, needing 
 
 ## docker-compose.yaml
 
-<<< @/../vaultwarden/docker-compose.yaml
+<<< @/../stacks/vaultwarden/compose.yaml

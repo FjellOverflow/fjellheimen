@@ -40,4 +40,4 @@ To select/configure the VPN provider and necessary environment variables, please
 
 ## docker-compose.yaml
 
-<<< @/../torrents/docker-compose.yaml
+<<< @/../stacks/torrents/compose.yaml

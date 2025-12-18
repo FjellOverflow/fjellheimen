@@ -36,4 +36,4 @@ Starting the application containers is straightforward. The main task is to conf
 
 ## docker-compose.yaml
 
-<<< @/../arr/docker-compose.yaml
+<<< @/../stacks/arr/compose.yaml
