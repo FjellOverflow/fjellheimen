@@ -22,6 +22,7 @@ The home server's different stacks reside in their respective directories, each 
     - **qBittorrent**, torrent downloads
 - [Other](/stacks/other)
     - **Audiobookshelf**, audiobooks and podcasts library
+    - **Gramps**, genealogical database
     - **Homebox**, inventory management
     - **iSponsorBlockTV**, skips ads on YouTube TV app
     - **Linkding**, bookmarks

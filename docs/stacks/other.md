@@ -9,13 +9,26 @@ This section covers various standalone applications not included in other stacks
 |                 |                                                             |
 |-----------------|-------------------------------------------------------------|
 | URL             | [audiobooks.fjellhei.men](https://audiobooks.fjellhei.men/) |
-| ENV             | /                                                           |
-| Volumes         | `/config`, `/metadata`, `/audiobooks`                       |
+| Volumes         | `/config`, `/metadata`, `/audiobooks`, `/podcasts`          |
 | Project website | [audiobookshelf.org](https://www.audiobookshelf.org/)       |
 
 
 ::: details Docker compose
 <<< @/../stacks/audiobookshelf/compose.yaml
+:::
+
+## Gramps Web
+
+*"Gramps Web is a modern, feature-packed, free & open source web app for browsing and collaboratively editing genealogical databases."*
+
+|                 |                                                                           |
+|-----------------|---------------------------------------------------------------------------|
+| URL             | [gramps.fjellhei.men](https://inventory.fjellhei.men/)                    |
+| Volumes         | `/app/users`, `/app/indexdir`, `/app/thumbnail_cache`, `/app/cache`, `/app/secret`, `/app/media`,`/tmp`, `/root/.gramps/grampsdb` |
+| Project website | [gramps-project/gramps-web](https://github.com/gramps-project/gramps-web) |
+
+::: details Docker compose
+<<< @/../stacks/gramps/compose.yaml
 :::
 
 ## Homebox
@@ -25,7 +38,6 @@ This section covers various standalone applications not included in other stacks
 |                 |                                                                     |
 |-----------------|---------------------------------------------------------------------|
 | URL             | [inventory.fjellhei.men](https://inventory.fjellhei.men/)           |
-| ENV             | /                                                                   |
 | Volumes         | `/data`                                                             |
 | Project website | [sysadminsmedia/homebox](https://github.com/sysadminsmedia/homebox) |
 
@@ -39,7 +51,6 @@ This section covers various standalone applications not included in other stacks
 
 |                 |                                                                           |
 |-----------------|---------------------------------------------------------------------------|
-| ENV             | /                                                                         |
 | Volumes         | `/app/data`                                                               |
 | Project website | [dmunozv04/iSponsorBlockTV](https://github.com/dmunozv04/iSponsorBlockTV) |
 
@@ -54,7 +65,6 @@ This section covers various standalone applications not included in other stacks
 |                 |                                                                   |
 |-----------------|-------------------------------------------------------------------|
 | URL             | [links.fjellhei.men](https://links.fjellhei.men/)                 |
-| ENV             | /                                                                 |
 | Volumes         | `/etc/linkding/data`                                              |
 | Project website | [sissbruecker/linkding](https://github.com/sissbruecker/linkding) |
 
