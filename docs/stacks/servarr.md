@@ -34,6 +34,6 @@ Starting the application containers is straightforward. The main task is to conf
 
 [TRaSH guides](https://trash-guides.info/) give good guidance on completing the described setup.
 
-## docker-compose.yaml
+## compose.yaml
 
 <<< @/../stacks/arr/compose.yaml

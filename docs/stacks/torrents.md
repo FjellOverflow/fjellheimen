@@ -38,6 +38,6 @@ To select/configure the VPN provider and necessary environment variables, please
 | `OPENVPN_USER`         | `<username>` | VPN username                       |
 | `OWNED_ONLY`           | `yes`        | Use only servers owned by provider |
 
-## docker-compose.yaml
+## compose.yaml
 
 <<< @/../stacks/torrents/compose.yaml

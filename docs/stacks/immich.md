@@ -11,6 +11,6 @@ The *Immich* stack is essentially the immich photo management server , its depen
 
 *"Immich-kiosk is a web slideshow for Immich."*
 
-## docker-compose.yaml
+## compose.yaml
 
 <<< @/../stacks/immich/compose.yaml

@@ -25,7 +25,7 @@ For guidance on setting up and configuring the reverse proxy based on your exist
 
 SSH access to the server is restricted to devices with authorized keys, making server management tricky without ssh. Dockge fills the gap, by offering a web-UI for Docker container administration accessible in the browser.
 
-## docker-compose.yaml
+## compose.yaml
 
 
 <<< @/../stacks/core/compose.yaml

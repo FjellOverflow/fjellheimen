@@ -4,40 +4,31 @@ For the setup to be easily configured, environment (ENV) variables are defined i
 
 ```
 /homeserver
+│  
+├── stacks
+│   ├── .env # global ENV
+│   │
+│   ├── stack1
+│   │   ├── compose.yaml
+│   │   └── .env # stack1 env
+│   │   
+│   └── stack2
+│       ├── compose.yaml
+│       └── .env # stack2 env
 │ 
-├── someStack
-│   ├── data
-│   │   ├── application1
-│   │   └── application2
-│   ├── docker-compose.yaml
-│   ├── .gitignore
-│   ├── .env // stack-wide ENV
-│   ├── application1.env // app-specific ENV
-│   └── application2.env // app-specific ENV
-│ 
-├── .env // global ENV
-├── .gitignore
-│ 
-├── jobs
-│   ├── someJob
-│   ├── ...
-│   └── .env // jobs-specific ENV
-│ 
-└── someApplication
-    ├── data
-    ├── docker-compose.yaml
-    ├── .env // app-specific ENV
-    └── .gitignore
-
+└── jobs
+    ├── someJob
+    ├── ...
+    └── .env # jobs-specific ENV
 ```
 
 ## Different ENV levels
 
-For some application there is up to 4 different levels of environment variables loaded after one another: [Global ENV](#global-env), [Stack ENV](#stack-env), [Local ENV](#local-env) and variables directly defined in the `docker-compose.yaml` file. As they are loaded after one another, variables from higher levels can be overridden on lower levels.
+For some application there is up to 3 different levels of environment variables loaded after one another: [Global ENV](#global-env), [Stack ENV](#stack-env), and variables directly defined in the `compose.yaml` file. As they are loaded after one another, variables from higher levels can be overridden on lower levels.
 
 ### Global ENV
 
-The global ENV is located in `/homeserver/.env` and is by default loaded in every `docker-compose.yaml` (with exceptions). Hence it should contain universal variables that are shared across all applications. Example variables are User- and Group-ID or timezone.
+The global ENV is located in `/homeserver/stacks/.env` and is by default loaded in every `compose.yaml` (with exceptions). Hence it should contain universal variables that are shared across all applications. Example variables are User- and Group-ID or timezone.
 
 ```
 PUID=1000
@@ -47,33 +38,17 @@ TZ=Europe/Oslo
 
 ### Stack ENV
 
-The stack ENV only applies to stacks of multiple applications and is located in `/homeserver/myStack/.env`. It contains variables that are shared by the applications that are part of the stack.
+The stack ENV only applies to stacks of multiple applications and is located in `/homeserver/stacks/myStack/.env`. It contains variables that are shared by the applications that are part of the stack.
 
-### Local ENV
+## ENV in compose.yaml
 
-The local ENV contains variables specific to `myApplication` and mostly sensitive data like credentials. If the application is part of some stack the local ENV is in `/homeserver/myStack/myApplication.env`, if it is a standalone application it is in `/homeserver/myApplication/.env`. All non-sensitive ENV variables that configure the application should go into `docker-compose.yaml` to make sure they are tracked by version control.
-
-## ENV in docker-compose
-
-As stacks and applications are defined in `docker-compose.yaml` files, this is where the different ENV levels are loaded. The relevant section of a standalone will firstly load global ENV, then load local ENV and define additional ENV vars.
-```yaml
-...
-    env_file:
-      - /homeserver/.env
-      - /homeserver/myApplication/.env
-    environment:
-      - HOSTNAME=fjellheimen
-...
-```
-
-The same section of some application in stack may look like this, loading additionally the stack ENV:
+As stacks and applications are defined in `compose.yaml` files, this is where the different ENV levels are loaded. The relevant section of a stack will firstly load global ENV, then load local ENV and define additional ENV vars.
 
 ```yaml
 ...
     env_file:
-      - /homeserver/.env
-      - /homeserver/myStack/.env
-      - /homeserver/myStack/myApplication.env
+      - /homeserver/stacks/.env
+      - /homeserver/stacks/myStack/.env
     environment:
       - HOSTNAME=fjellheimen
 ...
@@ -81,10 +56,4 @@ The same section of some application in stack may look like this, loading additi
 
 ## Git and ENV
 
-As ENV variables commonly contain sensitive information, it is best practice to keep them out of version control. Hence there are `.gitignore` files scattered across the setup that exclude `.env` files from being tracked. The pattern is
-- `/homeserver/.gitignore` excludes `/homeserver/.env`
-- `/homeserver/myApplication/.gitignore` excludes `/homeserver/myApplication/.env`
-- `/homeserver/myStack/.gitignore` excludes `/homeserver/myStack/*.env`
-- `/homeserver/jobs/.gitignore` excludes `/homeserver/jobs/.env`
-
-All ENV variables that should be tracked by Git (e.g. boolean flags) should instead be set in `docker-compose.yaml`'s `environment` section.
+As ENV variables commonly contain sensitive information, it is best practice to keep them out of version control. Hence the root `.gitignore` excludes all `.env` files from being tracked. All ENV variables that should be tracked by Git (e.g. boolean flags) should instead be set in `compose.yaml`'s `environment` section.

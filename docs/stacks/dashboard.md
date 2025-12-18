@@ -20,6 +20,6 @@ The content, layout, and appearance of homepage are configured using various YAM
 
 Homepage has shortcuts and widgets of various home server applications, needing a significant number of environment variables to define corresponding URLs or API keys. They are defined in `homepage.env` and are not tracked by git.
 
-## docker-compose.yaml
+## compose.yaml
 
 <<< @/../stacks/vaultwarden/compose.yaml
