@@ -1,11 +1,11 @@
 # Core
 
-The *Core* stack contains essential containers for server infrastructure: `core-npm` and `core-portainer`.
+The *Core* stack contains essential containers for server infrastructure: `core-npm` and `core-dockge`.
 
 | Service | URL | Purpose | Project |
 |---------|-----|-------- |---------|
-| NPM | [proxy.fjellhei.men](https://proxy.fjellhei.men/) | Reverse proxy | [nginxproxymanager.com](https://nginxproxymanager.com/) |
-| Portainer | [containers.fjellhei.men](https://containers.fjellhei.men/) | Container management UI | [portainer.io](https://www.portainer.io/) |
+| NPM     | [proxy.fjellhei.men](https://proxy.fjellhei.men/)           | Reverse proxy           | [nginxproxymanager.com](https://nginxproxymanager.com/) |
+| Dockge  | [containers.fjellhei.men](https://containers.fjellhei.men/) | Container management UI | [louislam/dockge](https://github.com/louislam/dockge)   |
 
 ## Nginx Proxy Manager
 
@@ -19,11 +19,11 @@ At the core of the home server is Nginx Proxy Manager (NPM), a reverse proxy tha
 
 For guidance on setting up and configuring the reverse proxy based on your existing network, refer to the [documentation](https://nginxproxymanager.com/guide/#quick-setup).
 
-## Portainer
+## Dockge
 
-*"Portainer is a lightweight service delivery platform for containerized applications that can be used to manage Docker, Swarm, Kubernetes and ACI environments."*
+*"Dockge is a fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager."*
 
-SSH access to the server is restricted to devices with authorized keys, making server management tricky without ssh. Portainer fills the gap, by offering a web-UI for Docker container administration accessible in the browser.
+SSH access to the server is restricted to devices with authorized keys, making server management tricky without ssh. Dockge fills the gap, by offering a web-UI for Docker container administration accessible in the browser.
 
 ## docker-compose.yaml
 

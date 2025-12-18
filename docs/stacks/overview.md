@@ -4,7 +4,7 @@ The home server's different stacks reside in their respective directories, each 
 
 - [Core](/stacks/core), the most essential applications:
     - **Nginx Proxy Manager**, a reverse proxy
-    - **Portainer**, container management UI
+    - **Dockge**, container management UI
 - [Dashboard](/stacks/dashboard), providing application shortcuts and server metrics with:
     - **Glances**, server metrics
     - **Homepage**, main dashboard
