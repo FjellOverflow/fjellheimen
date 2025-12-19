@@ -12,7 +12,6 @@ data/dashboard/homepage/*
 !data/dashboard/homepage/config
 data/dashboard/homepage/config/*
 !data/dashboard/homepage/config/bookmarks.yaml
-!data/dashboard/homepage/config/docker.yaml
 !data/dashboard/homepage/config/services.yaml
 !data/dashboard/homepage/config/settings.yaml
 !data/dashboard/homepage/config/widgets.yaml
