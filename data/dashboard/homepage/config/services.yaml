@@ -4,9 +4,7 @@
         icon: sh-plex-light
         href: https://tv.fjellhei.men
         description: Movies, TV Shows & Music
-        server: docker
         container: plex
-        showStats: false
         widget:
           type: plex
           url: {{HOMEPAGE_VAR_PLEX_URL}}
@@ -15,10 +13,8 @@
     - Overseerr:
         icon: sh-overseerr-light
         href: https://requests.fjellhei.men
-        description: Request Movies & TV shows
-        server: docker
+        description: Movie & TV show requests
         container: arr-overseerr
-        showStats: false
         widget:
           type: overseerr
           url: http://arr-overseerr:5055
@@ -28,9 +24,7 @@
         icon: sh-bazarr-light
         href: https://subtitles.fjellhei.men
         description: Subtitles
-        server: docker
         container: arr-bazarr
-        showStats: false
         widget:
           type: bazarr
           url: http://arr-bazarr:6767
@@ -39,9 +33,7 @@
         icon: sh-audiobookshelf-light
         href: https://audiobooks.fjellhei.men
         description: Audiobooks
-        server: docker
         container: audiobookshelf
-        showStats: false
         widget:
           type: audiobookshelf
           url: http://audiobookshelf:80
@@ -53,9 +45,7 @@
         icon: sh-qbittorrent-light
         href: https://downloads.fjellhei.men
         description: Torrents
-        server: docker
         container: torrents-qbittorrent
-        showStats: false
         widget:
           type: qbittorrent
           url: http://torrents-gluetun:9090
@@ -66,9 +56,7 @@
         icon: sh-sonarr-light
         href: https://sonarr.fjellhei.men
         description: TV Show management
-        server: docker
         container: arr-sonarr
-        showStats: false
         widget:
           type: sonarr
           url: http://arr-sonarr:8989
@@ -78,9 +66,7 @@
         icon: sh-radarr-light
         href: https://radarr.fjellhei.men
         description: Movie management
-        server: docker
         container: arr-radarr
-        showStats: false
         widget:
           type: radarr
           url: http://arr-radarr:7878
@@ -90,48 +76,14 @@
         icon: sh-prowlarr-light
         href: https://prowlarr.fjellhei.men
         description: Indexer management
-        server: docker
         container: arr-prowlarr
-        showStats: false
-
-- Utilities:
-    - Syncthing:
-        icon: sh-syncthing-light
-        href: https://sync.fjellhei.men
-        description: Sync files
-        server: docker
-        container: syncthing
-        showStats: false
-    - Vaultwarden:
-        icon: sh-vaultwarden-light
-        href: https://passwords.fjellhei.men
-        description: Password manager
-        server: docker
-        container: vaultwarden
-        showStats: false
-    -  Linkding:
-        icon: sh-linkding-light
-        href: https://links.fjellhei.men
-        description: Bookmarks
-        server: docker
-        container: linkding
-        showStats: false
-    - Obsidian:
-        icon: sh-obsidian-light
-        href: https://notes.fjellhei.men
-        description: Notes
-        server: docker
-        container: obsidian
-        showStats: false
 
 - Data Organization:
     - Immich:
         icon: sh-immich-light
         href: https://photos.fjellhei.men
-        description: Photo library
-        server: docker
+        description: Photo management
         container: immich-server
-        showStats: false
         widget:
           type: immich
           url: http://immich-server:2283
@@ -142,16 +94,12 @@
         icon: sh-immich-kiosk-light
         href: https://kiosk.fjellhei.men
         description: Photo gallery
-        server: docker
         container: immich-kiosk
-        showStats: false
     - Homebox:
         icon: sh-homebox-light
         href: https://inventory.fjellhei.men
         description: Inventory management
-        server: docker
         container: homebox
-        showStats: false
         widget:
           type: homebox
           url: http://homebox:7745
@@ -161,19 +109,37 @@
     - Gramps:
         icon: sh-gramps-light
         href: https://gramps.fjellhei.men
-        description: Genealogy system
-        server: docker
+        description: Genealogy
         container: gramps-server
-        showStats: false
+
+- Utilities:
+    - Syncthing:
+        icon: sh-syncthing-light
+        href: https://sync.fjellhei.men
+        description: Synchronization
+        container: syncthing
+    - Vaultwarden:
+        icon: sh-vaultwarden-light
+        href: https://passwords.fjellhei.men
+        description: Passwords
+        container: vaultwarden
+    -  Linkding:
+        icon: sh-linkding-light
+        href: https://links.fjellhei.men
+        description: Bookmarks
+        container: linkding
+    - Obsidian:
+        icon: sh-obsidian-light
+        href: https://notes.fjellhei.men
+        description: Notes
+        container: obsidian
 
 - Administration:
     - Nginx Proxy Manager:
         icon: sh-nginx-proxy-manager-light
         href: https://proxy.fjellhei.men
-        description: Manage Reverse Proxy & SSL
-        server: docker
+        description: Reverse Proxy & SSL
         container: core-npm
-        showStats: false
         widget:
           type: npm
           url: http://core-npm:81
@@ -183,22 +149,17 @@
     - Dockge:
         icon: sh-dockge-light
         href: https://containers.fjellhei.men
-        description: Manage Docker containers
-        server: docker
+        description: Container management
         container: core-dockge
-        showStats: false
     - Glances:
         icon: sh-glances-light
         href: https://metrics.fjellhei.men
         description: Server metrics
-        server: docker
         container: dashboard-glances
-        showStats: false
     - Tailscale:
         icon: sh-tailscale-light
         href: https://login.tailscale.com/admin
         description: Remote access
-        showStats: false
 
 - Metrics:
     - Processes:
