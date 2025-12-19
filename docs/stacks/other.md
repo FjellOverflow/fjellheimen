@@ -17,6 +17,24 @@ This section covers various standalone applications not included in other stacks
 <<< @/../stacks/audiobookshelf/compose.yaml
 :::
 
+## Forgejo
+
+*"Forgejo is a self-hosted lightweight software forge. Easy to install and low maintenance, it just does the job."*
+
+|                 |                                                 |
+|-----------------|-------------------------------------------------|
+| URL             | [code.fjellhei.men](https://code.fjellhei.men/) |
+| Volumes         | `data`                                          |
+| Project website | [forgejo.org/](https://forgejo.org/)            |
+
+::: details Docker compose
+<<< @/../stacks/forgejo/compose.yaml
+:::
+
+::: warning ssh port
+To use ssh for cloning, pushing, ... you need to map open a port in your firewal (eg. `2222`), map it to `22` in the container and set `SSH_PORT` setting to `2222` when setting up the instance. This enables users to connect to Forgejos built-in ssh server for git operations, while not interfering with your standard-use ssh port on the machine.
+:::
+
 ## Gramps Web
 
 *"Gramps Web is a modern, feature-packed, free & open source web app for browsing and collaboratively editing genealogical databases."*
