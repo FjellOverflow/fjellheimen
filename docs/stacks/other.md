@@ -24,15 +24,15 @@ This section covers various standalone applications not included in other stacks
 |                 |                                                 |
 |-----------------|-------------------------------------------------|
 | URL             | [code.fjellhei.men](https://code.fjellhei.men/) |
-| Volumes         | `data`                                          |
-| Project website | [forgejo.org/](https://forgejo.org/)            |
+| Volumes         | `/data`                                         |
+| Project website | [forgejo.org](https://forgejo.org/)             |
 
 ::: details Docker compose
 <<< @/../stacks/forgejo/compose.yaml
 :::
 
 ::: warning ssh port
-To use ssh for cloning, pushing, ... you need to map open a port in your firewal (eg. `2222`), map it to `22` in the container and set `SSH_PORT` setting to `2222` when setting up the instance. This enables users to connect to Forgejos built-in ssh server for git operations, while not interfering with your standard-use ssh port on the machine.
+To use ssh for git operations, open a port in your firewall (eg. `2222`), map it to `22` in the container and set `SSH_PORT` setting to `2222` when setting up the Forgejo instance. This enables users to connect to Forgejos built-in ssh server via git, while not interfering with the default ssh port on the machine.
 :::
 
 ## Gramps Web
