@@ -133,6 +133,11 @@
         href: https://notes.fjellhei.men
         description: Notes
         container: obsidian
+    - Forgejo:
+        icon: sh-forgejo-light
+        href: https://code.fjellhei.men
+        description: Code
+        container: forgejo
 
 - Administration:
     - Nginx Proxy Manager:

@@ -1,0 +1,19 @@
+name: forgejo
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:13
+    container_name: forgejo
+    volumes:
+      - /fjellheimen/data/forgejo:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    restart: unless-stopped
+    ports:
+      - 2222:22
+networks:
+  proxy-network:
+    external: true
