@@ -3,6 +3,8 @@ services:
   forgejo:
     image: codeberg.org/forgejo/forgejo:13
     container_name: forgejo
+    ports:
+      - 2222:22
     volumes:
       - /fjellheimen/data/forgejo:/data
       - /etc/timezone:/etc/timezone:ro
@@ -11,9 +13,13 @@ services:
       - proxy-network
     env_file:
       - /fjellheimen/stacks/.env
+    healthcheck:
+      test: curl --fail http://localhost:3000 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
-    ports:
-      - 2222:22
 networks:
   proxy-network:
     external: true
