@@ -38,7 +38,7 @@
           type: audiobookshelf
           url: http://audiobookshelf:80
           key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
-          fields: [books]
+          fields: [podcasts, books]
 
 - Media Management:
     - qBittorrent:
@@ -95,6 +95,13 @@
         href: https://kiosk.fjellhei.men
         description: Photo gallery
         container: immich-kiosk
+        widget:
+          type: customapi
+          url: http://immich-server:2283/api/albums/{{HOMEPAGE_VAR_IMMICH_ALBUM_ID}}?apiKey={{HOMEPAGE_VAR_IMMICH_KEY}}&withoutAssets=true
+          mappings:
+            - field: assetCount
+              label: Images
+              format: number
     - Homebox:
         icon: sh-homebox-light
         href: https://inventory.fjellhei.men
