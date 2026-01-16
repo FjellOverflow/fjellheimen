@@ -36,23 +36,22 @@ services:
       timeout: 10s
       retries: 3
     restart: unless-stopped
-  #  prowlarr:
-  #    image: lscr.io/linuxserver/prowlarr:latest
-  #    container_name: arr-prowlarr
-  #    volumes:
-  #      - /fjellheimen/data/arr/prowlarr:/config
-  #    networks:
-  #      - proxy-network
-  #    env_file:
-  #      - /fjellheimen/stacks/.env
-  #    healthcheck:
-  #      test: curl --fail http://localhost:9696 || exit 1
-  #      interval: 1m
-  #      start_period: 20s
-  #      timeout: 10s
-  #      retries: 3
-  #    restart: unless-stopped
-
+  prowlarr:
+      image: lscr.io/linuxserver/prowlarr:latest
+      container_name: arr-prowlarr
+      volumes:
+        - /fjellheimen/data/arr/prowlarr:/config
+      networks:
+        - proxy-network
+      env_file:
+        - /fjellheimen/stacks/.env
+      healthcheck:
+        test: curl --fail http://localhost:9696 || exit 1
+        interval: 1m
+        start_period: 20s
+        timeout: 10s
+        retries: 3
+      restart: unless-stopped
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: arr-overseerr
