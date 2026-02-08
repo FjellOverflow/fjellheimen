@@ -32,8 +32,6 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/torrents/.env
-    environment:
-      - VPN_TYPE=openvpn
     restart: unless-stopped
 networks:
   proxy-network:
