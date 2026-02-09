@@ -4,7 +4,6 @@ services:
     image: jc21/nginx-proxy-manager:latest
     container_name: npm
     ports:
-      - 81:81
       - 80:80
       - 443:443
     volumes:
