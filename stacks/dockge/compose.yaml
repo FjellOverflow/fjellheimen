@@ -1,0 +1,22 @@
+name: dockge
+services:
+  dockge:
+    image: louislam/dockge:latest
+    container_name: dockge
+    user: 1000:1000
+    group_add:
+      - "996"
+    volumes:
+      - /fjellheimen/data/dockge:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /fjellheimen/stacks:/fjellheimen/stacks
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    environment:
+      - DOCKGE_STACKS_DIR=/fjellheimen/stacks
+    restart: unless-stopped
+networks:
+  proxy-network:
+    name: proxy-network

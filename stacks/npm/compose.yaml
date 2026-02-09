@@ -1,0 +1,26 @@
+name: npm
+services:
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: npm
+    ports:
+      - 81:81
+      - 80:80
+      - 443:443
+    volumes:
+      - /fjellheimen/data/npm/data:/data
+      - /fjellheimen/data/npm/letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test:
+        - CMD
+        - /bin/check-health
+      interval: 10s
+      timeout: 3s
+    restart: unless-stopped
+networks:
+  proxy-network:
+    name: proxy-network
