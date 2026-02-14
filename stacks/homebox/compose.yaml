@@ -9,6 +9,7 @@ services:
       - proxy-network
     env_file:
       - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/homebox/.env
     environment:
       - HBOX_OPTIONS_ALLOW_REGISTRATION=false
     restart: unless-stopped
