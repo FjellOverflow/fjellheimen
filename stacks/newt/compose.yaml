@@ -1,0 +1,18 @@
+name: newt
+services:
+  newt:
+    image: fosrl/newt:latest
+    container_name: newt
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/newt/.env
+    environment:
+      - DOCKER_SOCKET=unix:///var/run/docker.sock
+    networks:
+      - proxy-network
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true
