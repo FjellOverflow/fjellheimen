@@ -1,0 +1,18 @@
+services:
+  voidauth:
+    image: voidauth/voidauth:latest
+    container_name: voidauth
+    volumes:
+      - /fjellheimen/data/voidauth/config:/app/config
+      - /fjellheimen/data/voidauth/db:/app/db
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/voidauth/.env
+    environment:
+      DB_ADAPTER: sqlite
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true
