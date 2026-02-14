@@ -170,7 +170,7 @@
         container: core-npm
         widget:
           type: npm
-          url: http://core-npm:81
+          url: http://npm:81
           username: {{HOMEPAGE_VAR_NPM_USERNAME}}
           password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
           fields: [enabled, disabled]
@@ -178,7 +178,7 @@
         icon: sh-dockge-light
         href: https://containers.fjellhei.men
         description: Container management
-        container: core-dockge
+        container: dockge
     - Glances:
         icon: sh-glances-light
         href: https://metrics.fjellhei.men
