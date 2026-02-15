@@ -24,6 +24,7 @@ services:
       - gramps-network
     env_file:
       - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/gramps/.env
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:5000 || exit 1
       interval: 1m
