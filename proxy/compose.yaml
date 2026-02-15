@@ -1,0 +1,56 @@
+name: pangolin
+services:
+  pangolin:
+    image: docker.io/fosrl/pangolin:ee-1.15.4
+    container_name: pangolin
+    volumes:
+      - /fjellheimen/proxy/data/config:/app/config
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/v1/"]
+      interval: "10s"
+      timeout: "10s"
+      retries: 15
+    restart: unless-stopped
+
+  gerbil:
+    image: docker.io/fosrl/gerbil:1.3.0
+    container_name: gerbil
+    ports:
+      - 51820:51820/udp
+      - 21820:21820/udp
+      - 443:443
+      - 80:80
+    volumes:
+      - /fjellheimen/proxy/data/config/:/var/config
+    depends_on:
+      pangolin:
+        condition: service_healthy
+    command:
+      - --reachableAt=http://gerbil:3004
+      - --generateAndSaveKeyTo=/var/config/key
+      - --remoteConfig=http://pangolin:3001/api/v1/
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    restart: unless-stopped
+
+  traefik:
+    image: docker.io/traefik:v3.6
+    container_name: traefik
+    volumes:
+      - /fjellheimen/proxy/data/config/traefik:/etc/traefik:ro
+      - /fjellheimen/proxy/data/config/letsencrypt:/letsencrypt
+      - /fjellheimen/proxy/data/config/traefik/logs:/var/log/traefik
+    command:
+      - --configFile=/etc/traefik/traefik_config.yml
+    depends_on:
+      pangolin:
+        condition: service_healthy
+    network_mode: service:gerbil
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
+    name: pangolin
+    enable_ipv6: true

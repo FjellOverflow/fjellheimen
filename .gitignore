@@ -15,3 +15,5 @@ data/dashboard/homepage/config/*
 !data/dashboard/homepage/config/services.yaml
 !data/dashboard/homepage/config/settings.yaml
 !data/dashboard/homepage/config/widgets.yaml
+
+proxy/data/*
