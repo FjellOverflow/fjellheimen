@@ -37,35 +37,35 @@ services:
       retries: 3
     restart: unless-stopped
   prowlarr:
-      image: lscr.io/linuxserver/prowlarr:latest
-      container_name: arr-prowlarr
-      volumes:
-        - /fjellheimen/data/arr/prowlarr:/config
-      networks:
-        - proxy-network
-      env_file:
-        - /fjellheimen/stacks/.env
-      healthcheck:
-        test: curl --fail http://localhost:9696 || exit 1
-        interval: 1m
-        start_period: 20s
-        timeout: 10s
-        retries: 3
-      restart: unless-stopped
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: arr-overseerr
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: arr-prowlarr
     volumes:
-      - /fjellheimen/data/arr/overseerr:/config
+      - /fjellheimen/data/arr/prowlarr:/config
     networks:
       - proxy-network
     env_file:
       - /fjellheimen/stacks/.env
     healthcheck:
-      test: curl --fail http://localhost:5055 || exit 1
+      test: curl --fail http://localhost:9696 || exit 1
       interval: 1m
       start_period: 20s
       timeout: 10s
+      retries: 3
+    restart: unless-stopped
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    container_name: arr-seerr
+    volumes:
+      - /fjellheimen/data/arr/seerr:/app/config
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
       retries: 3
     restart: unless-stopped
   bazarr:
@@ -80,7 +80,7 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
     healthcheck:
-      test: curl --fail http://localhost:6767 || exit 1
+      test: curl --fail http://localhost:6767/api || exit 1
       interval: 1m
       start_period: 20s
       timeout: 10s
