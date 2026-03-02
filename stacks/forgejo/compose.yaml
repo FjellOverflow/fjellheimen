@@ -3,8 +3,6 @@ services:
   forgejo:
     image: codeberg.org/forgejo/forgejo:13
     container_name: forgejo
-    ports:
-      - 2222:22
     volumes:
       - /fjellheimen/data/forgejo:/data
       - /etc/timezone:/etc/timezone:ro
