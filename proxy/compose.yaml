@@ -1,7 +1,7 @@
 name: pangolin
 services:
   pangolin:
-    image: docker.io/fosrl/pangolin:ee-1.15.4
+    image: docker.io/fosrl/pangolin:ee-1.16.2
     container_name: pangolin
     volumes:
       - /fjellheimen/proxy/data/config:/app/config
@@ -20,6 +20,7 @@ services:
       - 21820:21820/udp
       - 443:443
       - 80:80
+      - 4444:4444
     volumes:
       - /fjellheimen/proxy/data/config/:/var/config
     depends_on:
