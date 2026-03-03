@@ -5,15 +5,13 @@ data/*
 
 jobs/.last_public_ip
 
-!data/dashboard
-data/dashboard/*
-!data/dashboard/homepage
-data/dashboard/homepage/*
-!data/dashboard/homepage/config
-data/dashboard/homepage/config/*
-!data/dashboard/homepage/config/bookmarks.yaml
-!data/dashboard/homepage/config/services.yaml
-!data/dashboard/homepage/config/settings.yaml
-!data/dashboard/homepage/config/widgets.yaml
+!data/homepage
+data/homepage/*
+!data/homepage/config
+data/homepage/config/*
+!data/homepage/config/bookmarks.yaml
+!data/homepage/config/services.yaml
+!data/homepage/config/settings.yaml
+!data/homepage/config/widgets.yaml
 
 proxy/data/*

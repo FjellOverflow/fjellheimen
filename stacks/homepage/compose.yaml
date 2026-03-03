@@ -1,0 +1,20 @@
+name: homepage
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    user: 1000:1000
+    group_add:
+      - "996"
+    volumes:
+      - /fjellheimen/data/homepage/config:/app/config
+      - /fjellheimen/data/homepage/assets:/app/public/assets
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/homepage/.env
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true

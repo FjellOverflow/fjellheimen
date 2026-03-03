@@ -2,7 +2,7 @@
 - Media:
     - Plex:
         icon: sh-plex-light
-        href: https://tv.fjellhei.men
+        href: https://app.plex.tv
         description: Movies, TV Shows & Music
         container: plex
         widget:
@@ -10,16 +10,11 @@
           url: {{HOMEPAGE_VAR_PLEX_URL}}
           key: {{HOMEPAGE_VAR_PLEX_KEY}}
           fields: [movies, tv]
-    - Overseerr:
-        icon: sh-overseerr-light
+    - Seerr:
+        icon: sh-seerr-light
         href: https://requests.fjellhei.men
         description: Movie & TV show requests
-        container: arr-overseerr
-        widget:
-          type: overseerr
-          url: http://arr-overseerr:5055
-          key: {{HOMEPAGE_VAR_OVERSEERR_KEY}}
-          fields: [pending, processing]
+        container: arr-seerr
     - Bazarr:
         icon: sh-bazarr-light
         href: https://subtitles.fjellhei.men
@@ -71,7 +66,7 @@
           type: radarr
           url: http://arr-radarr:7878
           key: {{HOMEPAGE_VAR_RADARR_KEY}}
-          fields: [wanted, missing, queued]
+          fields: [wanted, queued]
     - Prowlarr:
         icon: sh-prowlarr-light
         href: https://prowlarr.fjellhei.men
@@ -107,12 +102,6 @@
         href: https://inventory.fjellhei.men
         description: Inventory management
         container: homebox
-        widget:
-          type: homebox
-          url: http://homebox:7745
-          username: {{HOMEPAGE_VAR_HOMEBOX_USERNAME}}
-          password: {{HOMEPAGE_VAR_HOMEBOX_PASSWORD}}
-          fields: [items, locations]
     - Gramps:
         icon: sh-gramps-light
         href: https://gramps.fjellhei.men
@@ -163,17 +152,15 @@
             - label: Repositories
               format: size
 - Administration:
-    - Nginx Proxy Manager:
-        icon: sh-nginx-proxy-manager-light
+    - Pangolin:
+        icon: sh-pangolin-light
         href: https://proxy.fjellhei.men
-        description: Reverse Proxy & SSL
-        container: core-npm
-        widget:
-          type: npm
-          url: http://npm:81
-          username: {{HOMEPAGE_VAR_NPM_USERNAME}}
-          password: {{HOMEPAGE_VAR_NPM_PASSWORD}}
-          fields: [enabled, disabled]
+        description: Reverse Proxy & Secure Tunneling
+        container: newt
+    - VoidAuth:
+        icon: sh-voidauth-light
+        href: https://auth.fjellhei.men
+        description: OIDC SSO portal
     - Dockge:
         icon: sh-dockge-light
         href: https://containers.fjellhei.men
@@ -183,7 +170,7 @@
         icon: sh-glances-light
         href: https://metrics.fjellhei.men
         description: Server metrics
-        container: dashboard-glances
+        container: glances
     - Tailscale:
         icon: sh-tailscale-light
         href: https://login.tailscale.com/admin
@@ -193,24 +180,24 @@
     - Processes:
         widget:
           type: glances
-          url: http://dashboard-glances:61208
+          url: http://glances:61208
           version: 4
           metric: process
     - CPU:
         widget:
           type: glances
-          url: http://dashboard-glances:61208
+          url: http://glances:61208
           version: 4
           metric: cpu
     - Homserver disk usage:
         widget:
           type: glances
-          url: http://dashboard-glances:61208
+          url: http://glances:61208
           version: 4
           metric: disk:nvme0n1
     - External disk usage:
         widget:
           type: glances
-          url: http://dashboard-glances:61208
+          url: http://glances:61208
           version: 4
           metric: disk:sda

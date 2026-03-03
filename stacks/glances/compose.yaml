@@ -1,0 +1,25 @@
+name: glances
+services:
+  glances:
+    image: nicolargo/glances:latest
+    container_name: glances
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    environment:
+      - GLANCES_OPT=-w
+    privileged: true
+    pid: host
+    healthcheck:
+      test: curl --fail -s http://localhost:61208 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true
