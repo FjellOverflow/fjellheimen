@@ -8,8 +8,9 @@ source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
 
-$NOTIFY "Backing up $SOURCE_FOLDER to $BACKUP_FOLDER."
+$NOTIFY "Backing up $BACKUP_SOURCE to $BACKUP_DESTINATION."
 
-sudo borg create $BACKUP_FOLDER::{hostname}-{now} $SOURCE_FOLDER
+sudo borg create $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE
+sudo chown -R $BACKUP_USER:$BACKUP_USER $BACKUP_DESTINATION/
 
 $NOTIFY "Backup finished."
