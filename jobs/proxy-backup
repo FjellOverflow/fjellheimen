@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# called Friday, 4:00 AM
+
+# load ENV
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $CURRENT_DIR/.env
+
+NOTIFY=$CURRENT_DIR/notify
+
+$NOTIFY "Backing up $PROXY_BACKUP_SOURCE to $PROXY_BACKUP_DESTINATION on $PROXY_BACKUP_URL."
+
+ssh $PROXY_BACKUP_URL "sudo borg create $PROXY_BACKUP_DESTINATION::{hostname}-{now} $PROXY_BACKUP_SOURCE"
+ssh $PROXY_BACKUP_URL "sudo chown -R $PROXY_BACKUP_USER:$PROXY_BACKUP_USER $PROXY_BACKUP_DESTINATION/"
+rsync --progress -r $PROXY_BACKUP_URL:$PROXY_BACKUP_DESTINATION/ $PROXY_BACKUP_LOCAL_DESTINATION
+
+$NOTIFY "Backup finished on $PROXY_BACKUP_URL."
