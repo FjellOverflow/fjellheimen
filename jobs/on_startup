@@ -21,8 +21,8 @@ else
     STOPPED_CONTAINERS="All containers running."
 fi
 
-if ! findmnt "$DRIVE_PATH" > /dev/null; then
-    DRIVE_MOUNTED="$DRIVE_PATH is not mounted."
+if ! findmnt "$ON_STARTUP_DRIVE_PATH" > /dev/null; then
+    DRIVE_MOUNTED="$ON_STARTUP_DRIVE_PATH is not mounted."
 fi
 
 $NOTIFY "Server booted up.
