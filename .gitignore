@@ -13,5 +13,3 @@ data/homepage/config/*
 !data/homepage/config/services.yaml
 !data/homepage/config/settings.yaml
 !data/homepage/config/widgets.yaml
-
-proxy/data/*

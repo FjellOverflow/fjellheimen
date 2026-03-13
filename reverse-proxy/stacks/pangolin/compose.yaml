@@ -4,7 +4,7 @@ services:
     image: docker.io/fosrl/pangolin:ee-1.16.2
     container_name: pangolin
     volumes:
-      - /fjellheimen/proxy/data/config:/app/config
+      - /fjellheimen/reverse-proxy/data/pangolin/config:/app/config
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/api/v1/"]
       interval: "10s"
@@ -22,7 +22,7 @@ services:
       - 80:80
       - 4444:4444
     volumes:
-      - /fjellheimen/proxy/data/config/:/var/config
+      - /fjellheimen/reverse-proxy/data/pangolin/config/:/var/config
     depends_on:
       pangolin:
         condition: service_healthy
@@ -39,9 +39,9 @@ services:
     image: docker.io/traefik:v3.6
     container_name: traefik
     volumes:
-      - /fjellheimen/proxy/data/config/traefik:/etc/traefik:ro
-      - /fjellheimen/proxy/data/config/letsencrypt:/letsencrypt
-      - /fjellheimen/proxy/data/config/traefik/logs:/var/log/traefik
+      - /fjellheimen/reverse-proxy/data/pangolin/config/traefik:/etc/traefik:ro
+      - /fjellheimen/reverse-proxy/data/pangolin/config/letsencrypt:/letsencrypt
+      - /fjellheimen/reverse-proxy/data/pangolin/config/traefik/logs:/var/log/traefik
     command:
       - --configFile=/etc/traefik/traefik_config.yml
     depends_on:
