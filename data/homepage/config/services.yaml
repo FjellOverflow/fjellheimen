@@ -12,12 +12,12 @@
           fields: [movies, tv]
     - Seerr:
         icon: sh-seerr-light
-        href: https://requests.fjellhei.men
+        href: https://requests.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Movie & TV show requests
         container: arr-seerr
     - Bazarr:
         icon: sh-bazarr-light
-        href: https://subtitles.fjellhei.men
+        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Subtitles
         container: arr-bazarr
         widget:
@@ -26,7 +26,7 @@
           key: {{HOMEPAGE_VAR_BAZARR_KEY}}
     - Audiobookshelf:
         icon: sh-audiobookshelf-light
-        href: https://audiobooks.fjellhei.men
+        href: https://audiobooks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Audiobooks
         container: audiobookshelf
         widget:
@@ -38,7 +38,7 @@
 - Media Management:
     - qBittorrent:
         icon: sh-qbittorrent-light
-        href: https://downloads.fjellhei.men
+        href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Torrents
         container: torrents-qbittorrent
         widget:
@@ -49,7 +49,7 @@
           fields: [leech, download]
     - Sonarr:
         icon: sh-sonarr-light
-        href: https://sonarr.fjellhei.men
+        href: https://sonarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: TV Show management
         container: arr-sonarr
         widget:
@@ -59,7 +59,7 @@
           fields: [wanted, queued]
     - Radarr:
         icon: sh-radarr-light
-        href: https://radarr.fjellhei.men
+        href: https://radarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Movie management
         container: arr-radarr
         widget:
@@ -69,14 +69,14 @@
           fields: [wanted, queued]
     - Prowlarr:
         icon: sh-prowlarr-light
-        href: https://prowlarr.fjellhei.men
+        href: https://prowlarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Indexer management
         container: arr-prowlarr
 
 - Data Organization:
     - Immich:
         icon: sh-immich-light
-        href: https://photos.fjellhei.men
+        href: https://photos.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Photo management
         container: immich-server
         widget:
@@ -87,7 +87,7 @@
           fields: [photos, videos]
     - Immich Kiosk:
         icon: sh-immich-kiosk-light
-        href: https://kiosk.fjellhei.men
+        href: https://kiosk.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Photo gallery
         container: immich-kiosk
         widget:
@@ -99,29 +99,29 @@
               format: number
     - Homebox:
         icon: sh-homebox-light
-        href: https://inventory.fjellhei.men
+        href: https://inventory.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Inventory management
         container: homebox
     - Gramps:
         icon: sh-gramps-light
-        href: https://gramps.fjellhei.men
+        href: https://familytree.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Genealogy
         container: gramps-server
 
 - Utilities:
     - Syncthing:
         icon: sh-syncthing-light
-        href: https://sync.fjellhei.men
+        href: https://sync.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Synchronization
         container: syncthing
     - Vaultwarden:
         icon: sh-vaultwarden-light
-        href: https://passwords.fjellhei.men
+        href: https://passwords.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Passwords
         container: vaultwarden
     -  Linkding:
         icon: sh-linkding-light
-        href: https://links.fjellhei.men
+        href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Bookmarks
         container: linkding
         widgets:
@@ -135,12 +135,12 @@
                 format: number
     - Obsidian:
         icon: sh-obsidian-light
-        href: https://notes.fjellhei.men
+        href: https://notes.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Notes
         container: obsidian
     - Forgejo:
         icon: sh-forgejo-light
-        href: https://code.fjellhei.men
+        href: https://forge.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Code
         container: forgejo
         widget:
@@ -154,21 +154,21 @@
 - Administration:
     - Pangolin:
         icon: sh-pangolin-light
-        href: https://proxy.fjellhei.men
+        href: https://proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Reverse Proxy & Secure Tunneling
         container: newt
     - VoidAuth:
         icon: sh-voidauth-light
-        href: https://auth.fjellhei.men
+        href: https://auth.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: OIDC SSO portal
     - Dockge:
         icon: sh-dockge-light
-        href: https://containers.fjellhei.men
+        href: https://containers.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Container management
         container: dockge
     - Glances:
         icon: sh-glances-light
-        href: https://metrics.fjellhei.men
+        href: https://metrics.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Server metrics
         container: glances
     - Tailscale:

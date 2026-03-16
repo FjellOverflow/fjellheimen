@@ -66,7 +66,7 @@ services:
       - /fjellheimen/stacks/immich/.env
     environment:
       KIOSK_IMMICH_URL: immich-server:2283
-      KIOSK_IMMICH_EXTERNAL_URL: https://photos.fjellhei.men
+      KIOSK_IMMICH_EXTERNAL_URL: https://photos.${BASE_DOMAIN}
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:3000 || exit 1
       interval: 1m
