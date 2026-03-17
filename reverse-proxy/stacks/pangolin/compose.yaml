@@ -1,8 +1,29 @@
 name: pangolin
 services:
+  config-init:
+    image: alpine:3
+    volumes:
+      - /fjellheimen/reverse-proxy/stacks/pangolin/templates:/templates:ro
+      - /fjellheimen/reverse-proxy/data/pangolin/config:/config
+    env_file:
+      - /fjellheimen/reverse-proxy/stacks/pangolin/.env
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache gettext
+        envsubst < /templates/config/config.yml > /config/config.yml
+        envsubst < /templates/config/privateConfig.yml > /config/privateConfig.yml
+        envsubst < /templates/config/traefik/traefik_config.yml > /config/traefik/traefik_config.yml
+        envsubst < /templates/config/traefik/dynamic_config.yml > /config/traefik/dynamic_config.yml
+    restart: no
+
   pangolin:
     image: docker.io/fosrl/pangolin:ee-1.16.2
     container_name: pangolin
+    depends_on:
+      config-init:
+        condition: service_completed_successfully
     volumes:
       - /fjellheimen/reverse-proxy/data/pangolin/config:/app/config
     healthcheck:
@@ -11,6 +32,7 @@ services:
       timeout: "10s"
       retries: 15
     restart: unless-stopped
+
   gerbil:
     image: docker.io/fosrl/gerbil:1.3.0
     container_name: gerbil
@@ -23,6 +45,8 @@ services:
     volumes:
       - /fjellheimen/reverse-proxy/data/pangolin/config/:/var/config
     depends_on:
+      config-init:
+        condition: service_completed_successfully
       pangolin:
         condition: service_healthy
     command:
@@ -33,6 +57,7 @@ services:
       - NET_ADMIN
       - SYS_MODULE
     restart: unless-stopped
+
   traefik:
     image: docker.io/traefik:v3.6
     container_name: traefik
@@ -43,10 +68,13 @@ services:
     command:
       - --configFile=/etc/traefik/traefik_config.yml
     depends_on:
+      config-init:
+        condition: service_completed_successfully
       pangolin:
         condition: service_healthy
     network_mode: service:gerbil
     restart: unless-stopped
+
   geoipupdate:
     image: ghcr.io/maxmind/geoipupdate:latest
     container_name: geoipupdate

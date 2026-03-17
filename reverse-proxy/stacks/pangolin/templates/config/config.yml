@@ -1,0 +1,29 @@
+gerbil:
+    start_port: 51820
+    base_endpoint: "proxy.${BASE_DOMAIN}"
+
+app:
+    dashboard_url: "https://proxy.${BASE_DOMAIN}"
+    log_level: "info"
+    telemetry:
+        anonymous_usage: true
+
+domains:
+    domain1:
+        base_domain: "${BASE_DOMAIN}"
+
+server:
+    secret: "${PANGOLIN_SECRET}"
+    cors:
+        origins: ["https://proxy.${BASE_DOMAIN}"]
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
+        allowed_headers: ["X-CSRF-Token", "Content-Type"]
+        credentials: false
+    maxmind_db_path: "./config/geoip/GeoLite2-Country.mmdb"
+    maxmind_asn_path: "./config/geoip/GeoLite2-ASN.mmdb"
+
+flags:
+    require_email_verification: false
+    disable_signup_without_invite: true
+    disable_user_create_org: false
+    allow_raw_resources: true
