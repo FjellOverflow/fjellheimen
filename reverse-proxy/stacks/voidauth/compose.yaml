@@ -1,0 +1,19 @@
+services:
+  voidauth:
+    image: voidauth/voidauth:latest
+    container_name: voidauth
+    volumes:
+      - /fjellheimen/reverse-proxy/data/voidauth/config:/app/config
+      - /fjellheimen/reverse-proxy/data/voidauth/db:/app/db
+    networks:
+      - pangolin
+    env_file:
+      - /fjellheimen/reverse-proxy/stacks/.env
+      - /fjellheimen/reverse-proxy/stacks/voidauth/.env
+    environment:
+      DB_ADAPTER: sqlite
+    restart: unless-stopped
+
+networks:
+  pangolin:
+    external: true
