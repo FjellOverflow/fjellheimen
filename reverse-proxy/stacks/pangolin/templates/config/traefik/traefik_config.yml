@@ -40,8 +40,6 @@ entryPoints:
         allowEncodedQuestionMark: true
   tcp-4444:
     address: ":4444/tcp"
-  traefik:
-    address: ":8080"
 
 serversTransport:
   insecureSkipVerify: true
