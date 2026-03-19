@@ -7,12 +7,13 @@
     weekday: "5"
     job: "/fjellheimen/jobs/backup"
 
-- name: Add IP check cronjob
+- name: Add proxy backup cronjob
   ansible.builtin.cron:
-    name: "Check for IP change"
+    name: "Run proxy backup job"
     minute: "0"
-    hour: "0"
-    job: "/fjellheimen/jobs/check_public_ip"
+    hour: "3"
+    weekday: "5"
+    job: "/fjellheimen/jobs/proxy-backup"
 
 - name: Add container update check cronjob
   ansible.builtin.cron:
