@@ -17,8 +17,10 @@ services:
       APP_URL: http://localhost:8090
     healthcheck:
       test: ['CMD', '/beszel', 'health', '--url', 'http://localhost:8090']
-      start_period: 5s
-      interval: 120s
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
 
   beszel-agent:
@@ -39,7 +41,10 @@ services:
     network_mode: host
     healthcheck:
       test: ['CMD', '/agent', 'health']
-      interval: 120s
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
 
 networks:

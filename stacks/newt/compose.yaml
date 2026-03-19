@@ -12,6 +12,13 @@ services:
       - DOCKER_SOCKET=unix:///var/run/docker.sock
     networks:
       - proxy-network
+    command: --health-file /tmp/healthy
+    healthcheck:
+      test: ["CMD", "test", "-f", "/tmp/healthy"]
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
 networks:
   proxy-network:
