@@ -19,4 +19,4 @@ services:
     restart: unless-stopped
 networks:
   proxy-network:
-    name: proxy-network
+    external: true
