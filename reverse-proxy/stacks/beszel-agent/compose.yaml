@@ -1,0 +1,16 @@
+name: beszel-agent
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    container_name: beszel-agent
+    volumes:
+      - /fjellheimen/reverse-proxy/data/beszel-agent:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    env_file:
+      - /fjellheimen/reverse-proxy/stacks/.env
+      - /fjellheimen/reverse-proxy/stacks/beszel-agent/.env
+    network_mode: host
+    healthcheck:
+      test: ['CMD', '/agent', 'health']
+      interval: 120s
+    restart: unless-stopped
