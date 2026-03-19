@@ -1,7 +1,7 @@
 ---
 - name: Get current user
   ansible.builtin.set_fact:
-    usename: "{{ lookup('env', 'USER') }}"
+    username: "{{ lookup('env', 'USER') }}"
 
 - name: Clone fjellheimen repo
   ansible.builtin.git:
