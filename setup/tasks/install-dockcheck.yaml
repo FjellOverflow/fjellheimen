@@ -10,15 +10,15 @@
     mode: "700"
 
 - name: Download dockcheck.sh
-  ansible.builtin.uri:
-    url: https://raw.githubusercontent.com/mag37/dockcheck/main/dockcheck.sh
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/mag37/dockcheck/v0.7.7/dockcheck.sh
     dest: "/home/{{ username }}/.local/bin/dockcheck.sh"
-    creates: "/home/{{ username }}/.local/bin/dockcheck.sh"
     mode: "755"
+    checksum: "sha256:cbc2185c34cab7102b614664158b312263c284b45c01d00fd28ecc9838e30d73"
 
 - name: Download notify.sh
-  ansible.builtin.uri:
-    url: https://github.com/mag37/dockcheck/blob/main/notify_templates/notify_telegram.sh
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/mag37/dockcheck/v0.7.7/notify_templates/notify_telegram.sh
     dest: "/home/{{ username }}/.local/bin/notify.sh"
-    creates: "/home/{{ username }}/.local/bin/notify.sh"
     mode: "755"
+    checksum: "sha256:665b4718e1be8787f381089837e8960e96f20c9ebc663f0f086fc0910b8f268f"
