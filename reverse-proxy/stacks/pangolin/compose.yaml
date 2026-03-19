@@ -2,6 +2,7 @@ name: pangolin
 services:
   config-init:
     image: alpine:3
+    container_name: config-init
     volumes:
       - /fjellheimen/reverse-proxy/stacks/pangolin/templates:/templates:ro
       - /fjellheimen/reverse-proxy/data/pangolin/config:/config
