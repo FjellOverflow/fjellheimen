@@ -6,10 +6,10 @@ services:
     volumes:
       - /fjellheimen/reverse-proxy/data/beszel-agent:/var/lib/beszel-agent
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    network_mode: host
     env_file:
       - /fjellheimen/reverse-proxy/stacks/.env
       - /fjellheimen/reverse-proxy/stacks/beszel-agent/.env
-    network_mode: host
     healthcheck:
       test: ['CMD', '/agent', 'health']
       interval: 1m

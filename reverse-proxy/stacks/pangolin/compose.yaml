@@ -18,15 +18,14 @@ services:
         envsubst < /templates/config/traefik/traefik_config.yml > /config/traefik/traefik_config.yml
         envsubst < /templates/config/traefik/dynamic_config.yml > /config/traefik/dynamic_config.yml
     restart: no
-
   pangolin:
     image: docker.io/fosrl/pangolin:ee-1.16.2
     container_name: pangolin
+    volumes:
+      - /fjellheimen/reverse-proxy/data/pangolin/config:/app/config
     depends_on:
       config-init:
         condition: service_completed_successfully
-    volumes:
-      - /fjellheimen/reverse-proxy/data/pangolin/config:/app/config
     healthcheck:
       test: curl --fail http://localhost:3001/api/v1/ || exit 1
       interval: 1m
@@ -34,7 +33,6 @@ services:
       timeout: 10s
       retries: 3
     restart: unless-stopped
-
   gerbil:
     image: docker.io/fosrl/gerbil:1.3.0
     container_name: gerbil
@@ -51,15 +49,14 @@ services:
         condition: service_completed_successfully
       pangolin:
         condition: service_healthy
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
     command:
       - --reachableAt=http://gerbil:3004
       - --generateAndSaveKeyTo=/var/config/key
       - --remoteConfig=http://pangolin:3001/api/v1/
-    cap_add:
-      - NET_ADMIN
-      - SYS_MODULE
     restart: unless-stopped
-
   traefik:
     image: docker.io/traefik:v3.6
     container_name: traefik
@@ -67,16 +64,15 @@ services:
       - /fjellheimen/reverse-proxy/data/pangolin/config/traefik:/etc/traefik:ro
       - /fjellheimen/reverse-proxy/data/pangolin/config/letsencrypt:/letsencrypt
       - /fjellheimen/reverse-proxy/data/pangolin/config/traefik/logs:/var/log/traefik
-    command:
-      - --configFile=/etc/traefik/traefik_config.yml
+    network_mode: service:gerbil
     depends_on:
       config-init:
         condition: service_completed_successfully
       pangolin:
         condition: service_healthy
-    network_mode: service:gerbil
+    command:
+      - --configFile=/etc/traefik/traefik_config.yml
     restart: unless-stopped
-
   geoipupdate:
     image: ghcr.io/maxmind/geoipupdate:latest
     container_name: geoipupdate
@@ -88,7 +84,6 @@ services:
       - 'GEOIPUPDATE_EDITION_IDS=GeoLite2-Country GeoLite2-ASN GeoLite2-City'
       - GEOIPUPDATE_FREQUENCY=72
     restart: unless-stopped
-
 networks:
   default:
     driver: bridge

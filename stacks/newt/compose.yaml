@@ -14,7 +14,11 @@ services:
       - DOCKER_SOCKET=unix:///var/run/docker.sock
     command: --health-file /tmp/healthy
     healthcheck:
-      test: ["CMD", "test", "-f", "/tmp/healthy"]
+      test:
+        - CMD
+        - test
+        - -f
+        - /tmp/healthy
       interval: 1m
       start_period: 20s
       timeout: 10s
