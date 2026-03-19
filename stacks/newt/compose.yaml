@@ -5,13 +5,13 @@ services:
     container_name: newt
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy-network
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/newt/.env
     environment:
       - DOCKER_SOCKET=unix:///var/run/docker.sock
-    networks:
-      - proxy-network
     command: --health-file /tmp/healthy
     healthcheck:
       test: ["CMD", "test", "-f", "/tmp/healthy"]

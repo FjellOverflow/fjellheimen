@@ -8,11 +8,11 @@ services:
     volumes:
       - /fjellheimen/data/beszel/data:/beszel_data
       - /fjellheimen/data/beszel/socket:/beszel_socket
+    networks:
+      - proxy-network
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/beszel/.env
-    networks:
-      - proxy-network
     environment:
       APP_URL: http://localhost:8090
     healthcheck:
@@ -32,13 +32,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /xdrive/.beszel:/extra-filesystems/sda1__HDD:ro
       - /proc/diskstats:/proc/diskstats:ro
+    network_mode: host
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/beszel/.env
     environment:
       LISTEN: /beszel_socket/beszel.sock
       HUB_URL: http://localhost:8090
-    network_mode: host
     healthcheck:
       test: ['CMD', '/agent', 'health']
       interval: 1m

@@ -1,3 +1,4 @@
+name: voidauth
 services:
   voidauth:
     image: voidauth/voidauth:latest

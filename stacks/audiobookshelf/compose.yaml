@@ -8,10 +8,10 @@ services:
       - /fjellheimen/data/audiobookshelf/metadata:/metadata
       - /xdrive/Media/Audiobooks:/audiobooks
       - /xdrive/Media/Podcasts:/podcasts
-    env_file:
-      - /fjellheimen/stacks/.env
     networks:
       - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:80 || exit 1
       interval: 1m
