@@ -42,11 +42,11 @@ services:
       - 443:443
       - 80:80
       - 4444:4444
-    volumes:
-      - /fjellheimen/reverse-proxy/data/pangolin/config/:/var/config
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
+    volumes:
+      - /fjellheimen/reverse-proxy/data/pangolin/config:/var/config
     depends_on:
       config-init:
         condition: service_completed_successfully

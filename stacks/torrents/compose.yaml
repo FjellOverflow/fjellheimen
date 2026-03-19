@@ -26,7 +26,7 @@ services:
     cap_add:
       - NET_ADMIN
     expose:
-      - "9090"
+      - 9090
     networks:
       - proxy-network
     env_file:

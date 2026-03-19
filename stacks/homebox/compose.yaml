@@ -4,7 +4,7 @@ services:
     image: ghcr.io/sysadminsmedia/homebox:latest
     container_name: homebox
     volumes:
-      - /fjellheimen/data/homebox:/data/
+      - /fjellheimen/data/homebox:/data
     networks:
       - proxy-network
     env_file:

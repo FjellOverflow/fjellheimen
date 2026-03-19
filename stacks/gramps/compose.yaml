@@ -11,7 +11,7 @@ services:
       - /fjellheimen/data/gramps/app/secret:/app/secret
       - /fjellheimen/data/gramps/app/media:/app/media
       - /fjellheimen/data/gramps/tmp:/tmp
-      - /fjellheimen/data/gramps/database/:/root/.gramps/grampsdb
+      - /fjellheimen/data/gramps/database:/root/.gramps/grampsdb
     networks:
       - proxy-network
       - gramps-network
