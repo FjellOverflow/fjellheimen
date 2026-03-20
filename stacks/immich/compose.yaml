@@ -14,8 +14,10 @@ services:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
     depends_on:
-      - redis
-      - database
+      redis:
+        condition: service_healthy
+      database:
+        condition: service_healthy
     restart: unless-stopped
   machine-learning:
     image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
@@ -62,6 +64,9 @@ services:
   kiosk:
     image: ghcr.io/damongolding/immich-kiosk:latest
     container_name: immich-kiosk
+    depends_on:
+      server:
+        condition: service_healthy
     networks:
       - immich-network
       - proxy-network

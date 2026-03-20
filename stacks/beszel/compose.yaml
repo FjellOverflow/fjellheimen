@@ -30,6 +30,9 @@ services:
   beszel-agent:
     image: henrygd/beszel-agent:latest
     container_name: beszel-agent
+    depends_on:
+      beszel:
+        condition: service_healthy
     volumes:
       - /fjellheimen/data/beszel/agent:/var/lib/beszel-agent
       - /fjellheimen/data/beszel/socket:/beszel_socket

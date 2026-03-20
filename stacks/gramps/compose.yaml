@@ -24,7 +24,8 @@ services:
       GRAMPSWEB_CELERY_CONFIG__result_backend: redis://gramps-redis:6379
       GRAMPSWEB_RATELIMIT_STORAGE_URI: redis://gramps-redis:6379/1
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:5000 || exit 1
       interval: 1m
@@ -38,8 +39,10 @@ services:
     networks:
       - gramps-network
     depends_on:
-      - server
-      - redis
+      server:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
     healthcheck:
       test:

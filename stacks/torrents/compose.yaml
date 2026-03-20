@@ -7,6 +7,9 @@ services:
       - /fjellheimen/data/torrents/qbittorrent:/config
       - /xdrive/Media/Downloads:/downloads
     network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
     env_file:
       - /fjellheimen/stacks/.env
     environment:
