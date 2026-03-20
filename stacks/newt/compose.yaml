@@ -11,7 +11,7 @@ services:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/newt/.env
     environment:
-      - DOCKER_SOCKET=unix:///var/run/docker.sock
+      DOCKER_SOCKET: unix:///var/run/docker.sock
     command: --health-file /tmp/healthy
     healthcheck:
       test:

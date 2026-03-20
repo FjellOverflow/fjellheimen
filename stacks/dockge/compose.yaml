@@ -15,7 +15,7 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
     environment:
-      - DOCKGE_STACKS_DIR=/fjellheimen/stacks
+      DOCKGE_STACKS_DIR: /fjellheimen/stacks
     restart: unless-stopped
 networks:
   proxy-network:

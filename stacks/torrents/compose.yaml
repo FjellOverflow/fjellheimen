@@ -10,7 +10,7 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
     environment:
-      - WEBUI_PORT=9090
+      WEBUI_PORT: 9090
     healthcheck:
       test: curl --fail http://localhost:9090 || exit 1
       interval: 1m
