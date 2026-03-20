@@ -8,8 +8,22 @@ source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
 
-# wait until docker started containers
-sleep 2m
+# wait until docker has settled (all containers stable or timeout)
+TIMEOUT=180
+INTERVAL=10
+ELAPSED=0
+STARTUP_STATUS="ok"
+
+while true; do
+    PENDING=$(docker ps -a --format '{{.Status}}' | grep -cE '^(Starting|Restarting)' || true)
+    [ "$PENDING" -eq 0 ] && break
+    if [ "$ELAPSED" -ge "$TIMEOUT" ]; then
+        STARTUP_STATUS="timeout"
+        break
+    fi
+    sleep $INTERVAL
+    ELAPSED=$((ELAPSED + INTERVAL))
+done
 
 
 STOPPED_CONTAINERS=$(docker ps -a --filter "status=exited" --format '{{.Names}}')
@@ -25,7 +39,10 @@ if ! findmnt "$ON_STARTUP_DRIVE_PATH" > /dev/null; then
     DRIVE_MOUNTED="$ON_STARTUP_DRIVE_PATH is not mounted."
 fi
 
+STARTUP_NOTE="Containers settled in ${ELAPSED}s."
+[ "$STARTUP_STATUS" = "timeout" ] && STARTUP_NOTE="Timed out waiting for containers after ${TIMEOUT}s."
+
 $NOTIFY "Server booted up.
+$STARTUP_NOTE
 $STOPPED_CONTAINERS
 $DRIVE_MOUNTED"
-
