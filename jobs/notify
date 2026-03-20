@@ -5,8 +5,7 @@ CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
 # Notify using Telegram
-curl -X POST \
-     -H 'Content-Type: application/json' \
-     -d "{\"chat_id\": \"$NOTIFY_TELEGRAM_CHAT_ID\", \"text\": \"$1\"}" \
-     "https://api.telegram.org/bot$NOTIFY_TELEGRAM_BOT_TOKEN/sendMessage"
-
+curl -s -X POST \
+     "https://api.telegram.org/bot$NOTIFY_TELEGRAM_BOT_TOKEN/sendMessage" \
+     --data-urlencode "chat_id=$NOTIFY_TELEGRAM_CHAT_ID" \
+     --data-urlencode "text=$1"

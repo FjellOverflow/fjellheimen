@@ -2,11 +2,18 @@
 
 # called Friday, 4:00 AM
 
+set -euo pipefail
+
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
+
+on_error() {
+    $NOTIFY "Backup FAILED (exit $?)."
+}
+trap on_error ERR
 
 $NOTIFY "Backing up $BACKUP_SOURCE to $BACKUP_DESTINATION."
 

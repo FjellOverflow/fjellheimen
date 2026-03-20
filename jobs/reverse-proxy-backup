@@ -1,12 +1,19 @@
 #!/bin/bash
 
-# called Friday, 4:00 AM
+# called Friday, 3:00 AM
+
+set -euo pipefail
 
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $CURRENT_DIR/.env
 
 NOTIFY=$CURRENT_DIR/notify
+
+on_error() {
+    $NOTIFY "Proxy backup FAILED (exit $?)."
+}
+trap on_error ERR
 
 $NOTIFY "Backing up $PROXY_BACKUP_SOURCE to $PROXY_BACKUP_DESTINATION on $PROXY_BACKUP_URL."
 
