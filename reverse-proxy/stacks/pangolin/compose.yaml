@@ -56,6 +56,12 @@ services:
       - --reachableAt=http://gerbil:3004
       - --generateAndSaveKeyTo=/var/config/key
       - --remoteConfig=http://pangolin:3001/api/v1/
+    healthcheck:
+      test: wget -nv -t1 --spider http://localhost:3004 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
   traefik:
     image: docker.io/traefik:v3.6
@@ -72,6 +78,12 @@ services:
         condition: service_healthy
     command:
       - --configFile=/etc/traefik/traefik_config.yml
+    healthcheck:
+      test: traefik healthcheck
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
     restart: unless-stopped
   geoipupdate:
     image: ghcr.io/maxmind/geoipupdate:latest

@@ -7,13 +7,13 @@ services:
       - /fjellheimen/data/torrents/qbittorrent:/config
       - /xdrive/Media/Downloads:/downloads
     network_mode: service:gluetun
-    depends_on:
-      gluetun:
-        condition: service_healthy
     env_file:
       - /fjellheimen/stacks/.env
     environment:
       WEBUI_PORT: 9090
+    depends_on:
+      gluetun:
+        condition: service_healthy
     healthcheck:
       test: curl --fail http://localhost:9090 || exit 1
       interval: 1m

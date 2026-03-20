@@ -30,9 +30,6 @@ services:
   beszel-agent:
     image: henrygd/beszel-agent:latest
     container_name: beszel-agent
-    depends_on:
-      beszel:
-        condition: service_healthy
     volumes:
       - /fjellheimen/data/beszel/agent:/var/lib/beszel-agent
       - /fjellheimen/data/beszel/socket:/beszel_socket
@@ -46,6 +43,9 @@ services:
     environment:
       LISTEN: /beszel_socket/beszel.sock
       HUB_URL: http://localhost:8090
+    depends_on:
+      beszel:
+        condition: service_healthy
     healthcheck:
       test:
         - CMD
