@@ -6,6 +6,7 @@ services:
     volumes:
       - /fjellheimen/reverse-proxy/data/beszel-agent:/var/lib/beszel-agent
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
     network_mode: host
     env_file:
       - /fjellheimen/reverse-proxy/stacks/.env
