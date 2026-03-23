@@ -31,7 +31,7 @@ services:
       - /fjellheimen/stacks/immich/.env
     restart: unless-stopped
   redis:
-    image: docker.io/valkey/valkey:9@sha256:3eeb09785cd61ec8e3be35f8804c8892080f3ca21934d628abc24ee4ed1698f6
+    image: docker.io/valkey/valkey:${IMMICH_VALKEY_VERSION}
     container_name: immich-redis
     networks:
       - immich-network
@@ -45,7 +45,7 @@ services:
       retries: 3
     restart: unless-stopped
   database:
-    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
+    image: ghcr.io/immich-app/postgres:${IMMICH_POSTGRES_VERSION}
     container_name: immich-database
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
