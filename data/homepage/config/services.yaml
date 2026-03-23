@@ -5,73 +5,43 @@
         href: https://app.plex.tv
         description: Movies, TV Shows & Music
         container: plex
-        widget:
-          type: plex
-          url: {{HOMEPAGE_VAR_PLEX_URL}}
-          key: {{HOMEPAGE_VAR_PLEX_KEY}}
-          fields: [movies, tv]
-    - Seerr:
-        icon: sh-seerr-light
-        href: https://requests.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Movie & TV show requests
-        container: arr-seerr
-    - Bazarr:
-        icon: sh-bazarr-light
-        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Subtitles
-        container: arr-bazarr
-        widget:
-          type: bazarr
-          url: http://arr-bazarr:6767
-          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
     - Audiobookshelf:
         icon: sh-audiobookshelf-light
         href: https://audiobooks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Audiobooks
         container: audiobookshelf
-        widget:
-          type: audiobookshelf
-          url: http://audiobookshelf:80
-          key: {{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}
-          fields: [podcasts, books]
 
 - Media Management:
-    - qBittorrent:
-        icon: sh-qbittorrent-light
-        href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Torrents
-        container: torrents-qbittorrent
-        widget:
-          type: qbittorrent
-          url: http://torrents-gluetun:9090
-          username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
-          password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
-          fields: [leech, download]
+    - Seerr:
+        icon: sh-seerr-light
+        href: https://requests.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Movie & TV show requests
+        container: arr-seerr
     - Sonarr:
         icon: sh-sonarr-light
         href: https://sonarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: TV Show management
         container: arr-sonarr
-        widget:
-          type: sonarr
-          url: http://arr-sonarr:8989
-          key: {{HOMEPAGE_VAR_SONARR_KEY}}
-          fields: [wanted, queued]
     - Radarr:
         icon: sh-radarr-light
         href: https://radarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Movie management
         container: arr-radarr
-        widget:
-          type: radarr
-          url: http://arr-radarr:7878
-          key: {{HOMEPAGE_VAR_RADARR_KEY}}
-          fields: [wanted, queued]
     - Prowlarr:
         icon: sh-prowlarr-light
         href: https://prowlarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Indexer management
         container: arr-prowlarr
+    - Bazarr:
+        icon: sh-bazarr-light
+        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Subtitles
+        container: arr-bazarr
+    - qBittorrent:
+        icon: sh-qbittorrent-light
+        href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Torrents
+        container: torrents-qbittorrent
 
 - Data Organization:
     - Immich:
@@ -79,24 +49,11 @@
         href: https://photos.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Photo management
         container: immich-server
-        widget:
-          type: immich
-          url: http://immich-server:2283
-          key: {{HOMEPAGE_VAR_IMMICH_KEY}}
-          version: 2
-          fields: [photos, videos]
     - Immich Kiosk:
         icon: sh-immich-kiosk-light
         href: https://kiosk.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Photo gallery
         container: immich-kiosk
-        widget:
-          type: customapi
-          url: http://immich-server:2283/api/albums/{{HOMEPAGE_VAR_IMMICH_ALBUM_ID}}?apiKey={{HOMEPAGE_VAR_IMMICH_KEY}}&withoutAssets=true
-          mappings:
-            - field: assetCount
-              label: Images
-              format: number
     - Homebox:
         icon: sh-homebox-light
         href: https://inventory.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -124,34 +81,18 @@
         href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Bookmarks
         container: linkding
-        widgets:
-          - type: customapi
-            url: http://linkding:9090/api/bookmarks?limit=1000
-            headers:
-              Authorization: 'Bearer {{HOMEPAGE_VAR_LINKDING_KEY}}'
-            mappings:
-              - field: count
-                label: Links
-                format: number
-    - Obsidian:
-        icon: sh-obsidian-light
-        href: https://notes.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Notes
-        container: obsidian
     - Forgejo:
         icon: sh-forgejo-light
         href: https://forge.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Code
         container: forgejo
-        widget:
-          type: customapi
-          url: http://forgejo:3000/api/v1/users/FjellOverflow/repos
-          headers:
-            Authorization: 'BEARER {{HOMEPAGE_VAR_FORGEJO_KEY}}'
-          mappings:
-            - label: Repositories
-              format: size
+
 - Administration:
+    - Beszel:
+        icon: sh-beszel-light
+        href: https://dashboard.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Monitoring
+        container: beszel
     - Pangolin:
         icon: sh-pangolin-light
         href: https://proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -166,38 +107,11 @@
         href: https://containers.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Container management
         container: dockge
-    - Glances:
-        icon: sh-glances-light
-        href: https://metrics.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Server metrics
-        container: glances
+    - Traefik:
+        icon: sh-traefik-light
+        href: https://dashboard.proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Remote access
     - Tailscale:
         icon: sh-tailscale-light
         href: https://login.tailscale.com/admin
         description: Remote access
-
-- Metrics:
-    - Processes:
-        widget:
-          type: glances
-          url: http://glances:61208
-          version: 4
-          metric: process
-    - CPU:
-        widget:
-          type: glances
-          url: http://glances:61208
-          version: 4
-          metric: cpu
-    - Homserver disk usage:
-        widget:
-          type: glances
-          url: http://glances:61208
-          version: 4
-          metric: disk:nvme0n1
-    - External disk usage:
-        widget:
-          type: glances
-          url: http://glances:61208
-          version: 4
-          metric: disk:sda

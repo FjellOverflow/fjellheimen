@@ -8,10 +8,6 @@ hideErrors: true
 statusStyle: dot
 maxGroupColumns: 5
 layout:
-  Metrics:
-    icon: mdi-chart-areaspline
-    style: row
-    columns: 4
   Media:
     icon: mdi-multimedia
   Media Management:

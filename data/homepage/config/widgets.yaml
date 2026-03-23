@@ -1,6 +1,3 @@
 ---
 - resources:
-    cpu: true
-    cputemp: true
-    memory: true
     uptime: true
