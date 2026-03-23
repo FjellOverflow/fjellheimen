@@ -10,13 +10,18 @@
         href: https://audiobooks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Audiobooks
         container: audiobookshelf
-
-- Media Management:
     - Seerr:
         icon: sh-seerr-light
         href: https://requests.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Movie & TV show requests
         container: arr-seerr
+    - Bazarr:
+        icon: sh-bazarr-light
+        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Subtitles
+        container: arr-bazarr
+
+- Automation:
     - Sonarr:
         icon: sh-sonarr-light
         href: https://sonarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -32,18 +37,13 @@
         href: https://prowlarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Indexer management
         container: arr-prowlarr
-    - Bazarr:
-        icon: sh-bazarr-light
-        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Subtitles
-        container: arr-bazarr
     - qBittorrent:
         icon: sh-qbittorrent-light
         href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Torrents
         container: torrents-qbittorrent
 
-- Data Organization:
+- Personal Data:
     - Immich:
         icon: sh-immich-light
         href: https://photos.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -65,18 +65,13 @@
         description: Genealogy
         container: gramps-server
 
-- Utilities:
-    - Syncthing:
-        icon: sh-syncthing-light
-        href: https://sync.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Synchronization
-        container: syncthing
+- Tools:
     - Vaultwarden:
         icon: sh-vaultwarden-light
         href: https://passwords.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Passwords
         container: vaultwarden
-    -  Linkding:
+    - Linkding:
         icon: sh-linkding-light
         href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Bookmarks
@@ -86,8 +81,13 @@
         href: https://forge.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Code
         container: forgejo
+    - Syncthing:
+        icon: sh-syncthing-light
+        href: https://sync.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Synchronization
+        container: syncthing
 
-- Administration:
+- Infrastructure:
     - Beszel:
         icon: sh-beszel-light
         href: https://dashboard.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -110,8 +110,5 @@
     - Traefik:
         icon: sh-traefik-light
         href: https://dashboard.proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Remote access
-    - Tailscale:
-        icon: sh-tailscale-light
-        href: https://login.tailscale.com/admin
-        description: Remote access
+        description: Proxy traffic
+

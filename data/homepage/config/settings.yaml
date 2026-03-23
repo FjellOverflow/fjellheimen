@@ -10,15 +10,17 @@ maxGroupColumns: 5
 layout:
   Media:
     icon: mdi-multimedia
-  Media Management:
+  Automation:
     icon: mdi-download
-  Data Organization:
+  Personal Data:
     icon: mdi-file-cabinet
-  Utilities:
+  Tools:
     icon: mdi-tools
-  Administration:
+  Infrastructure:
     icon: mdi-account-wrench
-  Manage Server:
+  Providers:
     icon: mdi-server-outline
-  Selfhosting Resources:
+  Fjellheimen:
+    icon: mdi-image-filter-hdr-outline
+  Resources:
     icon: mdi-school-outline

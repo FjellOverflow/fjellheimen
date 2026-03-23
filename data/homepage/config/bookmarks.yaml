@@ -1,16 +1,24 @@
 ---
-- Manage Server:
-  - Fjellheimen Git repository:
-    - icon: sh-github-light
-      href: https://github.com/FjellOverflow/fjellheimen
-  - Fjellheimen Documentation:
-    - icon: sh-vitepress-light
-      href: https://docs.fjellhei.men
-  - Porkbun DNS registrar:
+- Providers:
+  - Hetzner:
+    - icon: sh-hetzner-light
+      href: https://console.hetzner.cloud/
+  - Tailscale:
+    - icon: sh-tailscale-light
+      href: https://login.tailscale.com/admin
+  - Porkbun:
     - icon: sh-porkbun-light
       href: https://porkbun.com/
 
-- Selfhosting Resources:
+- Fjellheimen:
+  - Git repository:
+    - icon: sh-github-light
+      href: https://github.com/FjellOverflow/fjellheimen
+  - Documentation:
+    - icon: sh-vitepress-light
+      href: https://docs.fjellhei.men
+
+- Resources:
   - Homepage documentation:
     - icon: si-homepage-#ffffff
       href: https://gethomepage.dev/
@@ -20,5 +28,3 @@
   - r/selfhosted on Reddit:
     - icon: sh-reddit-light
       href: https://reddit.com/r/selfhosted
-
-
