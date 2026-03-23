@@ -98,10 +98,6 @@
         href: https://proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Reverse Proxy & Secure Tunneling
         container: newt
-    - VoidAuth:
-        icon: sh-voidauth-light
-        href: https://auth.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: OIDC SSO portal
     - Dockge:
         icon: sh-dockge-light
         href: https://containers.{{HOMEPAGE_VAR_BASE_DOMAIN}}
@@ -111,4 +107,7 @@
         icon: sh-traefik-light
         href: https://dashboard.proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Proxy traffic
-
+    - VoidAuth:
+        icon: sh-voidauth-light
+        href: https://auth.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: OIDC SSO portal

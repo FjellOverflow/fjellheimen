@@ -17,6 +17,9 @@
   - Documentation:
     - icon: sh-vitepress-light
       href: https://docs.fjellhei.men
+  - Fjellside:
+      - icon: mdi-image-filter-hdr-#ffffff
+        href: {{HOMEPAGE_VAR_FJELLSIDE_URL}}
 
 - Resources:
   - Homepage documentation:
