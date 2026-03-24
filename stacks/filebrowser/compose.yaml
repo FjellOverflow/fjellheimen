@@ -1,0 +1,23 @@
+name: filebrowser
+services:
+  filebrowser:
+    image: gtstef/filebrowser:stable
+    container_name: filebrowser
+    volumes:
+      - /fjellheimen/data/filebrowser:/home/filebrowser/data
+      - /xdrive/Syncthing:/xdrive/syncthing:ro
+      - /xdrive/Data/Documents:/xdrive/documents:ro
+    networks:
+      - proxy-network
+    env_file:
+      - /fjellheimen/stacks/.env
+    healthcheck:
+      test: wget -nv -t1 --spider http://localhost:80 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  proxy-network:
+    external: true
