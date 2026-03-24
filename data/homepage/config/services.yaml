@@ -20,7 +20,6 @@
         href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Subtitles
         container: arr-bazarr
-
 - Automation:
     - Sonarr:
         icon: sh-sonarr-light
@@ -42,7 +41,6 @@
         href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Torrents
         container: torrents-qbittorrent
-
 - Personal Data:
     - Immich:
         icon: sh-immich-light
@@ -64,7 +62,6 @@
         href: https://familytree.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Genealogy
         container: gramps-server
-
 - Tools:
     - Vaultwarden:
         icon: sh-vaultwarden-light
@@ -86,7 +83,11 @@
         href: https://sync.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Synchronization
         container: syncthing
-
+    - Filebrowser Quantum:
+        icon: sh-filebrowser-quantum-light
+        href: https://files.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: File browser
+        container: filebrowser
 - Infrastructure:
     - Beszel:
         icon: sh-beszel-light
