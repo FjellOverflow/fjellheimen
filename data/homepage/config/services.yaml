@@ -57,22 +57,18 @@
         href: https://inventory.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Inventory management
         container: homebox
-    - Gramps:
-        icon: sh-gramps-light
-        href: https://familytree.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Genealogy
-        container: gramps-server
+    - Linkding:
+        icon: sh-linkding-light
+        href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Bookmarks
+        container: linkding
+
 - Tools:
     - Vaultwarden:
         icon: sh-vaultwarden-light
         href: https://passwords.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: Passwords
         container: vaultwarden
-    - Linkding:
-        icon: sh-linkding-light
-        href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Bookmarks
-        container: linkding
     - Forgejo:
         icon: sh-forgejo-light
         href: https://forge.{{HOMEPAGE_VAR_BASE_DOMAIN}}
