@@ -84,6 +84,11 @@
         href: https://files.{{HOMEPAGE_VAR_BASE_DOMAIN}}
         description: File browser
         container: filebrowser
+    - Apprise:
+        icon: sh-apprise-light
+        href: https://notifications.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        description: Notifications
+        container: apprise
 - Infrastructure:
     - Beszel:
         icon: sh-beszel-light

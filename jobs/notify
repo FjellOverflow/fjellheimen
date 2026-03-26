@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-# load ENV
-CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source $CURRENT_DIR/.env
-
-# Notify using Telegram
-curl -s -X POST \
-     "https://api.telegram.org/bot$NOTIFY_TELEGRAM_BOT_TOKEN/sendMessage" \
-     --data-urlencode "chat_id=$NOTIFY_TELEGRAM_CHAT_ID" \
-     --data-urlencode "text=$1"
+# Notify using Apprise
+curl -s -X POST http://localhost:8000/notify/apprise \
+     -H "Content-Type: application/json" \
+     -d "{\"title\": \"\", \"body\": \"$1\"}"
