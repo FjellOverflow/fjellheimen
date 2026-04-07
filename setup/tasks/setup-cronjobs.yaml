@@ -7,14 +7,6 @@
     weekday: "5"
     job: "/fjellheimen/jobs/backup"
 
-- name: Add reverse-proxy backup cronjob
-  ansible.builtin.cron:
-    name: "Run reverse-proxy backup job"
-    minute: "0"
-    hour: "3"
-    weekday: "5"
-    job: "/fjellheimen/jobs/reverse-proxy-backup"
-
 - name: Add container update check cronjob
   ansible.builtin.cron:
     name: "Check for container updates"
