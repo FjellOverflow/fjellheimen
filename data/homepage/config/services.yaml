@@ -7,109 +7,106 @@
         container: plex
     - Audiobookshelf:
         icon: sh-audiobookshelf-light
-        href: https://audiobooks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://audiobooks.fjellhei.men
         description: Audiobooks
         container: audiobookshelf
     - Seerr:
         icon: sh-seerr-light
-        href: https://requests.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://requests.fjellhei.men
         description: Movie & TV show requests
         container: arr-seerr
     - Bazarr:
         icon: sh-bazarr-light
-        href: https://subtitles.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://subtitles.fjellhei.men
         description: Subtitles
         container: arr-bazarr
 - Automation:
     - Sonarr:
         icon: sh-sonarr-light
-        href: https://sonarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://sonarr.fjellhei.men
         description: TV Show management
         container: arr-sonarr
     - Radarr:
         icon: sh-radarr-light
-        href: https://radarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://radarr.fjellhei.men
         description: Movie management
         container: arr-radarr
     - Prowlarr:
         icon: sh-prowlarr-light
-        href: https://prowlarr.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://prowlarr.fjellhei.men
         description: Indexer management
         container: arr-prowlarr
     - qBittorrent:
         icon: sh-qbittorrent-light
-        href: https://torrents.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://torrents.fjellhei.men
         description: Torrents
         container: torrents-qbittorrent
 - Personal Data:
     - Immich:
         icon: sh-immich-light
-        href: https://photos.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://photos.fjellhei.men
         description: Photo management
         container: immich-server
     - Immich Kiosk:
         icon: sh-immich-kiosk-light
-        href: https://kiosk.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://kiosk.fjellhei.men
         description: Photo gallery
         container: immich-kiosk
     - Homebox:
         icon: sh-homebox-light
-        href: https://inventory.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://inventory.fjellhei.men
         description: Inventory management
         container: homebox
     - Linkding:
         icon: sh-linkding-light
-        href: https://bookmarks.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://bookmarks.fjellhei.men
         description: Bookmarks
         container: linkding
 
 - Tools:
     - Vaultwarden:
         icon: sh-vaultwarden-light
-        href: https://passwords.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://passwords.fjellhei.men
         description: Passwords
         container: vaultwarden
     - Forgejo:
         icon: sh-forgejo-light
-        href: https://forge.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://forge.fjellhei.men
         description: Code
         container: forgejo
     - Syncthing:
         icon: sh-syncthing-light
-        href: https://sync.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://sync.fjellhei.men
         description: Synchronization
         container: syncthing
     - Filebrowser Quantum:
         icon: sh-filebrowser-quantum-light
-        href: https://files.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://files.fjellhei.men
         description: File browser
         container: filebrowser
     - Apprise:
         icon: sh-apprise-light
-        href: https://notifications.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://notifications.fjellhei.men
         description: Notifications
         container: apprise
 - Infrastructure:
     - Beszel:
         icon: sh-beszel-light
-        href: https://dashboard.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://dashboard.fjellhei.men
         description: Monitoring
         container: beszel
-    - Pangolin:
-        icon: sh-pangolin-light
-        href: https://proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
-        description: Reverse Proxy & Secure Tunneling
-        container: newt
     - Dockge:
         icon: sh-dockge-light
-        href: https://containers.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://containers.fjellhei.men
         description: Container management
         container: dockge
     - Traefik:
         icon: sh-traefik-light
-        href: https://dashboard.proxy.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://proxy.fjellhei.men
         description: Proxy traffic
+        container: traefik
     - VoidAuth:
         icon: sh-voidauth-light
-        href: https://auth.{{HOMEPAGE_VAR_BASE_DOMAIN}}
+        href: https://auth.fjellhei.men
         description: OIDC SSO portal
+        container: voidauth
