@@ -8,11 +8,18 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /xdrive/Data/Photos:/usr/src/app/external:ro
     networks:
-      - proxy-network
-      - immich-network
+      - reverse-proxy
+      - immich
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.immich.rule: Host(`photos.fjellhei.men`)
+      traefik.http.routers.immich.entrypoints: websecure
+      traefik.http.services.immich.loadbalancer.server.port: "2283"
     depends_on:
       redis:
         condition: service_healthy
@@ -25,7 +32,7 @@ services:
     volumes:
       - /fjellheimen/data/immich/model-cache:/cache
     networks:
-      - immich-network
+      - immich
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
@@ -34,7 +41,7 @@ services:
     image: docker.io/valkey/valkey:${IMMICH_VALKEY_VERSION}
     container_name: immich-redis
     networks:
-      - immich-network
+      - immich
     env_file:
       - /fjellheimen/stacks/.env
     healthcheck:
@@ -50,7 +57,7 @@ services:
     volumes:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     networks:
-      - immich-network
+      - immich
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
@@ -65,14 +72,22 @@ services:
     image: ghcr.io/damongolding/immich-kiosk:latest
     container_name: immich-kiosk
     networks:
-      - immich-network
-      - proxy-network
+      - immich
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
     environment:
       KIOSK_IMMICH_URL: immich-server:2283
-      KIOSK_IMMICH_EXTERNAL_URL: https://photos.${BASE_DOMAIN}
+      KIOSK_IMMICH_EXTERNAL_URL: https://photos.fjellhei.men
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.immich-kiosk.rule: Host(`kiosk.fjellhei.men`)
+      traefik.http.routers.immich-kiosk.entrypoints: websecure
+      traefik.http.routers.immich-kiosk.middlewares: voidauth@docker
+      traefik.http.services.immich-kiosk.loadbalancer.server.port: "3000"
     depends_on:
       server:
         condition: service_healthy
@@ -84,7 +99,7 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  immich-network:
-    name: immich-network
-  proxy-network:
+  immich:
+    name: immich
+  reverse-proxy:
     external: true

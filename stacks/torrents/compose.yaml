@@ -31,11 +31,17 @@ services:
     expose:
       - 9090
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/torrents/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.qbittorrent.rule: Host(`torrents.fjellhei.men`)
+      traefik.http.routers.qbittorrent.entrypoints: websecure
+      traefik.http.routers.qbittorrent.middlewares: voidauth@docker
+      traefik.http.services.qbittorrent.loadbalancer.server.port: "9090"
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

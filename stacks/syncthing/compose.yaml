@@ -7,9 +7,16 @@ services:
       - /fjellheimen/data/syncthing:/config
       - /xdrive/Syncthing:/data
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.syncthing.rule: Host(`sync.fjellhei.men`)
+      traefik.http.routers.syncthing.entrypoints: websecure
+      traefik.http.routers.syncthing.middlewares: voidauth@docker,syncthing-auth
+      traefik.http.middlewares.syncthing-auth.headers.customrequestheaders.Authorization: ${SYNCTHING_BASIC_AUTH}
+      traefik.http.services.syncthing.loadbalancer.server.port: "8384"
     healthcheck:
       test: curl --fail http://localhost:8384 || exit 1
       interval: 1m
@@ -18,5 +25,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

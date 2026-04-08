@@ -8,9 +8,15 @@ services:
       - /xdrive/Media/TV:/tv
       - /xdrive/Media/Downloads:/downloads
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.sonarr.rule: Host(`sonarr.fjellhei.men`)
+      traefik.http.routers.sonarr.entrypoints: websecure
+      traefik.http.routers.sonarr.middlewares: voidauth@docker
+      traefik.http.services.sonarr.loadbalancer.server.port: "8989"
     healthcheck:
       test: curl --fail http://localhost:8989 || exit 1
       interval: 1m
@@ -26,9 +32,15 @@ services:
       - /xdrive/Media/Movies:/movies
       - /xdrive/Media/Downloads:/downloads
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.radarr.rule: Host(`radarr.fjellhei.men`)
+      traefik.http.routers.radarr.entrypoints: websecure
+      traefik.http.routers.radarr.middlewares: voidauth@docker
+      traefik.http.services.radarr.loadbalancer.server.port: "7878"
     healthcheck:
       test: curl --fail http://localhost:7878 || exit 1
       interval: 1m
@@ -42,9 +54,15 @@ services:
     volumes:
       - /fjellheimen/data/arr/prowlarr:/config
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.prowlarr.rule: Host(`prowlarr.fjellhei.men`)
+      traefik.http.routers.prowlarr.entrypoints: websecure
+      traefik.http.routers.prowlarr.middlewares: voidauth@docker
+      traefik.http.services.prowlarr.loadbalancer.server.port: "9696"
     healthcheck:
       test: curl --fail http://localhost:9696 || exit 1
       interval: 1m
@@ -58,9 +76,15 @@ services:
     volumes:
       - /fjellheimen/data/arr/seerr:/app/config
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.seerr.rule: Host(`requests.fjellhei.men`)
+      traefik.http.routers.seerr.entrypoints: websecure
+      traefik.http.routers.seerr.middlewares: voidauth@docker
+      traefik.http.services.seerr.loadbalancer.server.port: "5055"
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status
         || exit 1
@@ -77,9 +101,15 @@ services:
       - /xdrive/Media/TV:/tv
       - /xdrive/Media/Movies:/movies
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.bazarr.rule: Host(`subtitles.fjellhei.men`)
+      traefik.http.routers.bazarr.entrypoints: websecure
+      traefik.http.routers.bazarr.middlewares: voidauth@docker
+      traefik.http.services.bazarr.loadbalancer.server.port: "6767"
     healthcheck:
       test: curl --fail http://localhost:6767/api || exit 1
       interval: 1m
@@ -88,5 +118,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

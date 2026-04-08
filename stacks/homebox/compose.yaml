@@ -6,13 +6,21 @@ services:
     volumes:
       - /fjellheimen/data/homebox:/data
     networks:
-      - proxy-network
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/homebox/.env
     environment:
       HBOX_OPTIONS_ALLOW_REGISTRATION: "false"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.homebox.rule: Host(`inventory.fjellhei.men`)
+      traefik.http.routers.homebox.entrypoints: websecure
+      traefik.http.routers.homebox.middlewares: voidauth@docker
+      traefik.http.services.homebox.loadbalancer.server.port: "7745"
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true
