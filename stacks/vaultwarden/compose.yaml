@@ -7,8 +7,11 @@ services:
       - /fjellheimen/data/vaultwarden:/data
     networks:
       - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/vaultwarden/.env
     labels:
       traefik.enable: "true"
       traefik.http.routers.vaultwarden.rule: Host(`passwords.fjellhei.men`)
