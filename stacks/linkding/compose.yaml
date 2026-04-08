@@ -6,10 +6,18 @@ services:
     volumes:
       - /fjellheimen/data/linkding:/etc/linkding/data
     networks:
-      - proxy-network
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/linkding/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.linkding.rule: Host(`bookmarks.fjellhei.men`)
+      traefik.http.routers.linkding.entrypoints: websecure
+      traefik.http.routers.linkding.middlewares: voidauth@docker
+      traefik.http.services.linkding.loadbalancer.server.port: "9090"
     healthcheck:
       test: curl --fail http://localhost:9090 || exit 1
       interval: 1m
@@ -18,5 +26,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

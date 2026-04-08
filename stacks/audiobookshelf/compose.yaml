@@ -9,9 +9,16 @@ services:
       - /xdrive/Media/Audiobooks:/audiobooks
       - /xdrive/Media/Podcasts:/podcasts
     networks:
-      - proxy-network
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.audiobooks.rule: Host(`audiobooks.fjellhei.men`)
+      traefik.http.routers.audiobooks.entrypoints: websecure
+      traefik.http.services.audiobooks.loadbalancer.server.port: "80"
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:80 || exit 1
       interval: 1m
@@ -20,5 +27,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

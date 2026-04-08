@@ -8,9 +8,17 @@ services:
       - /xdrive/Syncthing:/xdrive/syncthing:ro
       - /xdrive/Data/Documents:/xdrive/documents:ro
     networks:
-      - proxy-network
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.filebrowser.rule: Host(`files.fjellhei.men`)
+      traefik.http.routers.filebrowser.entrypoints: websecure
+      traefik.http.routers.filebrowser.middlewares: voidauth@docker
+      traefik.http.services.filebrowser.loadbalancer.server.port: "80"
     healthcheck:
       test: wget -nv -t1 --spider http://localhost:80 || exit 1
       interval: 1m
@@ -19,5 +27,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

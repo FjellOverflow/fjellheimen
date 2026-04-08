@@ -9,13 +9,19 @@ services:
       - /fjellheimen/data/apprise/config:/config
       - /fjellheimen/data/apprise/attach:/attach
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
     environment:
       APPRISE_STATEFUL_MODE: simple
       APPRISE_WORKER_COUNT: 1
       APPRISE_ADMIN: yes
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.apprise.rule: Host(`notifications.fjellhei.men`)
+      traefik.http.routers.apprise.entrypoints: websecure
+      traefik.http.routers.apprise.middlewares: voidauth@docker
+      traefik.http.services.apprise.loadbalancer.server.port: "8000"
     healthcheck:
       test: curl --fail http://localhost:8000 || exit 1
       interval: 1m
@@ -24,5 +30,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true
