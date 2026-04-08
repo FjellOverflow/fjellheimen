@@ -6,10 +6,15 @@ services:
     volumes:
       - /fjellheimen/data/vaultwarden:/data
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.vaultwarden.rule: Host(`passwords.fjellhei.men`)
+      traefik.http.routers.vaultwarden.entrypoints: websecure
+      traefik.http.services.vaultwarden.loadbalancer.server.port: "80"
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

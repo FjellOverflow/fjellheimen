@@ -1,0 +1,85 @@
+name: reverse-proxy
+services:
+  traefik:
+    image: traefik:v3.6
+    container_name: traefik
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /fjellheimen/data/reverse-proxy/traefik/letsencrypt:/letsencrypt
+    networks:
+      reverse-proxy:
+        ipv4_address: 172.20.0.2
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/reverse-proxy/.env
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.web.http.redirections.entrypoint.permanent=true
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.http.tls.certresolver=letsencrypt
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=reverse-proxy
+      - --api=true
+      - --api.dashboard=true
+      - --api.insecure=false
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge.provider=${ACME_PROVIDER}
+      - --certificatesresolvers.letsencrypt.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+      - --certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --log.level=INFO
+      - --accesslog=true
+      - --global.sendAnonymousUsage=false
+      - --ping=true
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.traefik.rule: Host(`proxy.fjellhei.men`)
+      traefik.http.routers.traefik.entrypoints: websecure
+      traefik.http.routers.traefik.service: api@internal
+      traefik.http.routers.traefik.middlewares: voidauth@docker
+      traefik.http.routers.traefik.tls.certresolver: letsencrypt
+    healthcheck:
+      test: traefik healthcheck --ping
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+  voidauth:
+    image: voidauth/voidauth:latest
+    container_name: voidauth
+    volumes:
+      - /fjellheimen/data/reverse-proxy/voidauth/config:/app/config
+      - /fjellheimen/data/reverse-proxy/voidauth/db:/app/db
+    networks:
+      - reverse-proxy
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/reverse-proxy/.env
+    environment:
+      DB_ADAPTER: sqlite
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.voidauth.rule: Host(`auth.fjellhei.men`)
+      traefik.http.routers.voidauth.entrypoints: websecure
+      traefik.http.middlewares.voidauth.forwardauth.address: http://voidauth:3000/api/authz/forward-auth
+      traefik.http.middlewares.voidauth.forwardauth.trustforwardheader: "true"
+      traefik.http.middlewares.voidauth.forwardauth.authresponseheaders: Remote-User,Remote-Name,Remote-Email,Remote-Groups
+      traefik.http.middlewares.voidauth.forwardauth.maxResponseBodySize: "104857600"
+      traefik.http.services.voidauth.loadbalancer.server.port: "3000"
+    depends_on:
+      traefik:
+        condition: service_healthy
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    name: reverse-proxy
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

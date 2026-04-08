@@ -11,10 +11,16 @@ services:
       - /fjellheimen/data/homepage/assets:/app/public/assets
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/homepage/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.homepage.rule: Host(`fjellhei.men`)
+      traefik.http.routers.homepage.entrypoints: websecure
+      traefik.http.routers.homepage.middlewares: voidauth@docker
+      traefik.http.services.homepage.loadbalancer.server.port: "3000"
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

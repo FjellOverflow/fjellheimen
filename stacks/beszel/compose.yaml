@@ -9,12 +9,20 @@ services:
       - /fjellheimen/data/beszel/data:/beszel_data
       - /fjellheimen/data/beszel/socket:/beszel_socket
     networks:
-      - proxy-network
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/beszel/.env
     environment:
       APP_URL: http://localhost:8090
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.beszel.rule: Host(`dashboard.fjellhei.men`)
+      traefik.http.routers.beszel.entrypoints: websecure
+      traefik.http.routers.beszel.middlewares: voidauth@docker
+      traefik.http.services.beszel.loadbalancer.server.port: "8090"
     healthcheck:
       test:
         - CMD
@@ -58,5 +66,5 @@ services:
       retries: 3
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true

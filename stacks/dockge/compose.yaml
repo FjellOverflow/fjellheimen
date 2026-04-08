@@ -11,12 +11,18 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /fjellheimen/stacks:/fjellheimen/stacks
     networks:
-      - proxy-network
+      - reverse-proxy
     env_file:
       - /fjellheimen/stacks/.env
     environment:
       DOCKGE_STACKS_DIR: /fjellheimen/stacks
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.dockge.rule: Host(`containers.fjellhei.men`)
+      traefik.http.routers.dockge.entrypoints: websecure
+      traefik.http.routers.dockge.middlewares: voidauth@docker
+      traefik.http.services.dockge.loadbalancer.server.port: "5001"
     restart: unless-stopped
 networks:
-  proxy-network:
+  reverse-proxy:
     external: true
