@@ -2,14 +2,3 @@
 
 data/*
 !data/.gitkeep
-
-jobs/.last_public_ip
-
-!data/homepage
-data/homepage/*
-!data/homepage/config
-data/homepage/config/*
-!data/homepage/config/bookmarks.yaml
-!data/homepage/config/services.yaml
-!data/homepage/config/settings.yaml
-!data/homepage/config/widgets.yaml
