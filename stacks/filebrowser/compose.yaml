@@ -6,6 +6,7 @@ services:
     volumes:
       - /fjellheimen/data/filebrowser:/home/filebrowser/data
       - /xdrive/Syncthing:/xdrive/syncthing:ro
+      - /xdrive/Syncthing/uploaded:/upload
       - /xdrive/Data/Documents:/xdrive/documents:ro
     networks:
       - reverse-proxy
