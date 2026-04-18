@@ -1,0 +1,37 @@
+name: code-server
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    hostname: code-server
+    volumes:
+      - /fjellheimen/data/code-server/config:/config
+      - /fjellheimen/data/code-server/projects:/projects
+      - /fjellheimen/stacks/code-server/init:/custom-cont-init.d:ro
+      - /fjellheimen/stacks/code-server/services:/custom-services.d:ro
+      - /home/fjelloverflow/.oh-my-zsh:/opt/oh-my-zsh:ro
+    networks:
+      - reverse-proxy
+    ports:
+      - 4444:22
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/code-server/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.codeserver.rule: Host(`code.fjellhei.men`)
+      traefik.http.routers.codeserver.entrypoints: websecure
+      traefik.http.routers.codeserver.middlewares: voidauth@docker
+      traefik.http.services.codeserver.loadbalancer.server.port: "8443"
+      traefik.http.routers.codeserver-ports.rule: HostRegexp(`^\d+\.code\.fjellhei\.men$`)
+      traefik.http.routers.codeserver-ports.entrypoints: websecure
+      traefik.http.routers.codeserver-ports.middlewares: voidauth@docker
+      traefik.http.routers.codeserver-ports.service: codeserver
+      traefik.http.routers.codeserver-ports.tls.domains[0].main: code.fjellhei.men
+      traefik.http.routers.codeserver-ports.tls.domains[0].sans: "*.code.fjellhei.men"
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
