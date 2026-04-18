@@ -84,11 +84,11 @@
         href: https://files.fjellhei.men
         description: File browser
         container: filebrowser
-    - Apprise:
-        icon: sh-apprise-light
-        href: https://notifications.fjellhei.men
-        description: Notifications
-        container: apprise
+    - Code Server:
+        icon: sh-coder-light
+        href: https://code.fjellhei.men
+        description: Development
+        container: code-server
 - Infrastructure:
     - Beszel:
         icon: sh-beszel-light
@@ -110,3 +110,8 @@
         href: https://auth.fjellhei.men
         description: OIDC SSO portal
         container: voidauth
+    - Apprise:
+        icon: sh-apprise-light
+        href: https://notifications.fjellhei.men
+        description: Notifications
+        container: apprise
