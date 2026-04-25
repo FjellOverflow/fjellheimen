@@ -1,7 +1,7 @@
 name: forgejo
 services:
   forgejo:
-    image: codeberg.org/forgejo/forgejo:14
+    image: codeberg.org/forgejo/forgejo:15
     container_name: forgejo
     volumes:
       - /fjellheimen/data/forgejo:/data
