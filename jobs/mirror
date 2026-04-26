@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# call manually
+
+set -euo pipefail
+
+# load ENV
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $CURRENT_DIR/.env
+
+NOTIFY=$CURRENT_DIR/notify
+
+on_error() {
+    $NOTIFY "Mirror FAILED (exit $?)."
+}
+trap on_error ERR
+
+$NOTIFY "Mirroring $MIRROR_SOURCE."
+
+# exit if destination drive not available
+if ! sudo blkid -U "$MIRROR_UUID" >/dev/null 2>&1; then
+ 	$NOTIFY "Disk with UUID $MIRROR_UUID not found, exiting."
+  	exit 1
+fi
+
+TEMP_MOUNTPOINT=$(mktemp -d)
+
+sudo mount UUID="$MIRROR_UUID" "$TEMP_MOUNTPOINT"
+
+sudo rsync -av --delete "$MIRROR_SOURCE/" "$TEMP_MOUNTPOINT/"
+
+sudo umount "$TEMP_MOUNTPOINT"
+
+$NOTIFY "Mirror finished."
