@@ -5,7 +5,7 @@
     minute: "0"
     hour: "4"
     weekday: "4"
-    job: "/fjellheimen/jobs/offsite-backup"
+    job: "/fjellheimen/jobs/offsite_backup"
 
 - name: Add backup cronjob
   ansible.builtin.cron:
