@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# called Thursday, 4:00 AM
+
+set -euo pipefail
+
+# load ENV
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source $CURRENT_DIR/.env
+
+NOTIFY=$CURRENT_DIR/notify
+
+on_error() {
+    $NOTIFY "Backup FAILED (exit $?)."
+}
+trap on_error ERR
+
+$NOTIFY "Backing up $OFFSITE_BACKUP_SOURCE to $OFFSITE_BACKUP_DRIVE/$OFFSITE_BACKUP_DESTINATION."
+
+TEMP_MOUNTPOINT=$(mktemp -d)
+
+sudo mount -t cifs "$OFFSITE_BACKUP_DRIVE" "$TEMP_MOUNTPOINT" -o credentials="$OFFSITE_BACKUP_CREDENTIALS_FILE",vers=3.0
+
+sudo rsync -rltP --delete --stats "$OFFSITE_BACKUP_SOURCE" "$TEMP_MOUNTPOINT/$OFFSITE_BACKUP_DESTINATION"
+
+sudo umount "$TEMP_MOUNTPOINT"
+
+$NOTIFY "Backup finished."
