@@ -15,7 +15,8 @@ services:
       traefik.enable: "true"
       traefik.http.routers.sonarr.rule: Host(`sonarr.fjellhei.men`)
       traefik.http.routers.sonarr.entrypoints: websecure
-      traefik.http.routers.sonarr.middlewares: voidauth@docker
+      traefik.http.routers.sonarr.middlewares: voidauth@docker,sonarr-auth
+      traefik.http.middlewares.sonarr-auth.headers.customrequestheaders.Authorization: ${SONARR_BASIC_AUTH}
       traefik.http.services.sonarr.loadbalancer.server.port: "8989"
     healthcheck:
       test: curl --fail http://localhost:8989 || exit 1
