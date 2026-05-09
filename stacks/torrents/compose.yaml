@@ -39,7 +39,8 @@ services:
       traefik.enable: "true"
       traefik.http.routers.qbittorrent.rule: Host(`torrents.fjellhei.men`)
       traefik.http.routers.qbittorrent.entrypoints: websecure
-      traefik.http.routers.qbittorrent.middlewares: voidauth@docker
+      traefik.http.routers.qbittorrent.middlewares: voidauth@docker,qbittorrent-auth
+      traefik.http.middlewares.qbittorrent-auth.headers.customrequestheaders.Authorization: ${QBITTORRENT_BASIC_AUTH}
       traefik.http.services.qbittorrent.loadbalancer.server.port: "9090"
     restart: unless-stopped
 networks:
