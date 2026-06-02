@@ -57,6 +57,11 @@
         href: https://inventory.fjellhei.men
         description: Inventory management
         container: homebox
+    - Actual Budget:
+        icon: sh-actual-budget-light
+        href: https://finances.fjellhei.men
+        description: Manage finances
+        container: actualbudget
     - Linkding:
         icon: sh-linkding-light
         href: https://bookmarks.fjellhei.men
