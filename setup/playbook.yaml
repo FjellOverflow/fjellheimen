@@ -15,5 +15,5 @@
     - name: Run setup_fedora_server role from ansible-fedora-setup
       ansible.builtin.include_role:
         name: setup_fedora_server
-    - name: Setup passwordless sudo
+    - name: Run local tasks
       ansible.builtin.import_tasks: tasks/main.yaml
