@@ -1,0 +1,27 @@
+[tools]
+node = "24"
+pnpm = "11.5"
+
+[tasks.setup]
+dir = "{{config_root}}/docs-next"
+run = "pnpm i --frozen-lockfile"
+
+[tasks.dev]
+dir = "{{config_root}}/docs-next"
+depends = ["setup"]
+run = "pnpm dev --host"
+
+[tasks.build]
+dir = "{{config_root}}/docs-next"
+depends = ["setup"]
+run = "pnpm build"
+
+[tasks.preview]
+dir = "{{config_root}}/docs-next"
+depends = ["build"]
+run = "pnpm preview"
+
+[tasks.lint]
+dir = "{{config_root}}/docs-next"
+depends = ["setup"]
+run = "pnpm lint"
