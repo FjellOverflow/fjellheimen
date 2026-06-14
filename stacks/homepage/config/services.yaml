@@ -10,6 +10,11 @@
         href: https://audiobooks.fjellhei.men
         description: Audiobooks
         container: audiobookshelf
+    - Stump:
+        icon: sh-stump-light
+        href: https://books.fjellhei.men
+        description: Books
+        container: stump
     - Seerr:
         icon: sh-seerr-light
         href: https://requests.fjellhei.men

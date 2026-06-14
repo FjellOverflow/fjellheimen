@@ -1,0 +1,31 @@
+name: stump
+services:
+  stump:
+    image: aaronleopold/stump:latest
+    container_name: stump
+    volumes:
+      - /fjellheimen/data/stump:/config
+      - /xdrive/Media/Books:/books:ro
+    networks:
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/stump/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.stump.rule: Host(`books.fjellhei.men`)
+      traefik.http.routers.stump.entrypoints: websecure
+      traefik.http.routers.stump.middlewares: voidauth@docker
+      traefik.http.services.stump.loadbalancer.server.port: "10801"
+    healthcheck:
+      test: wget -nv -t1 --spider http://localhost:10801 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
