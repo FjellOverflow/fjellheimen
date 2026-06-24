@@ -1,0 +1,33 @@
+name: vikunja
+services:
+  tududi:
+    image: vikunja/vikunja:latest
+    container_name: vikunja
+    volumes:
+      - /fjellheimen/data/vikunja/files:/app/vikunja/files
+      - /fjellheimen/data/vikunja/db:/db
+    networks:
+      - reverse-proxy
+    extra_hosts:
+      - auth.fjellhei.men:172.20.0.2
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/vikunja/.env
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.vikunja.rule: Host(`tasks.fjellhei.men`)
+      traefik.http.routers.vikunja.entrypoints: websecure
+      traefik.http.services.vikunja.loadbalancer.server.port: "3456"
+    healthcheck:
+      test:
+        - CMD
+        - /app/vikunja/vikunja
+        - healthcheck
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true

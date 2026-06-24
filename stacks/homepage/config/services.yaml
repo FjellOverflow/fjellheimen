@@ -72,6 +72,11 @@
         href: https://bookmarks.fjellhei.men
         description: Bookmarks
         container: linkding
+    - Vikunja:
+        icon: sh-vikunja-light
+        href: https://tasks.fjellhei.men
+        description: Tasks
+        container: vikunja
 
 - Tools:
     - Vaultwarden:
