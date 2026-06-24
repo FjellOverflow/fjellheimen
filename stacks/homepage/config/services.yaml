@@ -1,4 +1,3 @@
----
 - Media:
     - Plex:
         icon: sh-plex-light
@@ -8,55 +7,89 @@
     - Audiobookshelf:
         icon: sh-audiobookshelf-light
         href: https://audiobooks.fjellhei.men
-        description: Audiobooks
+        description: Audiobooks & Podcasts
         container: audiobookshelf
     - Stump:
         icon: sh-stump-light
         href: https://books.fjellhei.men
         description: Books
         container: stump
-    - Seerr:
-        icon: sh-seerr-light
-        href: https://requests.fjellhei.men
-        description: Movie & TV show requests
-        container: arr-seerr
-    - Bazarr:
-        icon: sh-bazarr-light
-        href: https://subtitles.fjellhei.men
-        description: Subtitles
-        container: arr-bazarr
-- Automation:
-    - Sonarr:
-        icon: sh-sonarr-light
-        href: https://sonarr.fjellhei.men
-        description: TV Show management
-        container: arr-sonarr
+- Media Management:
     - Radarr:
         icon: sh-radarr-light
         href: https://radarr.fjellhei.men
         description: Movie management
         container: arr-radarr
+    - Sonarr:
+        icon: sh-sonarr-light
+        href: https://sonarr.fjellhei.men
+        description: TV Show management
+        container: arr-sonarr
     - Prowlarr:
         icon: sh-prowlarr-light
         href: https://prowlarr.fjellhei.men
         description: Indexer management
         container: arr-prowlarr
+    - Seerr:
+        icon: sh-seerr-light
+        href: https://requests.fjellhei.men
+        description: Movie & TV show requests
+        container: arr-seerr
     - qBittorrent:
         icon: sh-qbittorrent-light
         href: https://torrents.fjellhei.men
         description: Torrents
         container: torrents-qbittorrent
-- Personal Data:
-    - Immich:
-        icon: sh-immich-light
-        href: https://photos.fjellhei.men
-        description: Photo management
-        container: immich-server
-    - Immich Kiosk:
-        icon: sh-immich-kiosk-light
-        href: https://kiosk.fjellhei.men
-        description: Photo gallery
-        container: immich-kiosk
+    - Bazarr:
+        icon: sh-bazarr-light
+        href: https://subtitles.fjellhei.men
+        description: Subtitles
+        container: arr-bazarr
+- Personal:
+    - Photos:
+        - Immich:
+            icon: sh-immich-light
+            href: https://photos.fjellhei.men
+            description: Photo management
+            container: immich-server
+        - Immich Kiosk:
+            icon: sh-immich-kiosk-light
+            href: https://kiosk.fjellhei.men
+            description: Photo gallery
+            container: immich-kiosk
+    - Development:
+        - Code Server:
+            icon: sh-coder-light
+            href: https://code.fjellhei.men
+            description: Development
+            container: code-server
+        - Forgejo:
+            icon: sh-forgejo-light
+            href: https://forge.fjellhei.men
+            description: Code
+            container: forgejo
+    - Files:
+        - Filebrowser Quantum:
+            icon: sh-filebrowser-quantum-light
+            href: https://files.fjellhei.men
+            description: File browser
+            container: filebrowser
+        - Syncthing:
+            icon: sh-syncthing-light
+            href: https://sync.fjellhei.men
+            description: Synchronization
+            container: syncthing
+- Organization:
+    - Vikunja:
+        icon: sh-vikunja-light
+        href: https://tasks.fjellhei.men
+        description: Tasks
+        container: vikunja
+    - Linkding:
+        icon: sh-linkding-light
+        href: https://bookmarks.fjellhei.men
+        description: Bookmarks
+        container: linkding
     - Homebox:
         icon: sh-homebox-light
         href: https://inventory.fjellhei.men
@@ -67,43 +100,11 @@
         href: https://finances.fjellhei.men
         description: Manage finances
         container: actualbudget
-    - Linkding:
-        icon: sh-linkding-light
-        href: https://bookmarks.fjellhei.men
-        description: Bookmarks
-        container: linkding
-    - Vikunja:
-        icon: sh-vikunja-light
-        href: https://tasks.fjellhei.men
-        description: Tasks
-        container: vikunja
-
-- Tools:
     - Vaultwarden:
         icon: sh-vaultwarden-light
         href: https://passwords.fjellhei.men
         description: Passwords
         container: vaultwarden
-    - Forgejo:
-        icon: sh-forgejo-light
-        href: https://forge.fjellhei.men
-        description: Code
-        container: forgejo
-    - Syncthing:
-        icon: sh-syncthing-light
-        href: https://sync.fjellhei.men
-        description: Synchronization
-        container: syncthing
-    - Filebrowser Quantum:
-        icon: sh-filebrowser-quantum-light
-        href: https://files.fjellhei.men
-        description: File browser
-        container: filebrowser
-    - Code Server:
-        icon: sh-coder-light
-        href: https://code.fjellhei.men
-        description: Development
-        container: code-server
 - Infrastructure:
     - Beszel:
         icon: sh-beszel-light

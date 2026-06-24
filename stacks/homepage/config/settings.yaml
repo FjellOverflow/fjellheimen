@@ -1,4 +1,3 @@
----
 title: Fjellheimen
 background:
   image: /assets/background.png
@@ -7,20 +6,34 @@ background:
 hideErrors: true
 statusStyle: dot
 maxGroupColumns: 5
+disableCollapse: true
 layout:
   Media:
     icon: mdi-multimedia
-  Automation:
-    icon: mdi-download
-  Personal Data:
-    icon: mdi-file-cabinet
-  Tools:
-    icon: mdi-tools
+    style: row
+    columns: 3
+  Media Management:
+    icon: mdi-download-box
+    style: row
+    columns: 3
+  Personal:
+    header: false
+    style: row
+    columns: 3
+    Photos:
+      icon: mdi-image-multiple
+      style: column
+    Development:
+      icon: mdi-code-tags
+      style: column
+    Files:
+      icon: mdi-folder-multiple
+      style: column
+  Organization:
+    icon: mdi-view-dashboard
+    style: row
+    columns: 5
   Infrastructure:
     icon: mdi-account-wrench
-  Providers:
-    icon: mdi-server-outline
-  Fjellheimen:
-    icon: mdi-image-filter-hdr-outline
-  Resources:
-    icon: mdi-school-outline
+    style: row
+    columns: 5
