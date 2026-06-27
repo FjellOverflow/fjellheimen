@@ -1,0 +1,18 @@
+name: renovate
+services:
+  renovate:
+    image: renovate/renovate:latest
+    pull_policy: always
+    container_name: renovate
+    volumes:
+      - /fjellheimen/data/renovate/cache:/tmp/renovate
+      - /fjellheimen/data/renovate/report:/report
+      - /fjellheimen/stacks/renovate/config.json:/config.json:ro
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/renovate/.env
+    environment:
+      LOG_LEVEL: info
+      RENOVATE_CONFIG_FILE: /config.json
+    restart: no
+networks: {}
