@@ -1,7 +1,7 @@
 name: torrents
 services:
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: ghcr.io/linuxserver/qbittorrent:5.2.1
     container_name: torrents-qbittorrent
     volumes:
       - /fjellheimen/data/torrents/qbittorrent:/config
@@ -22,7 +22,7 @@ services:
       retries: 3
     restart: unless-stopped
   gluetun:
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:v3.41.1
     container_name: torrents-gluetun
     devices:
       - /dev/net/tun:/dev/net/tun

@@ -1,7 +1,7 @@
 name: reverse-proxy
 services:
   traefik:
-    image: traefik:v3.7
+    image: traefik:v3.7.5
     container_name: traefik
     ports:
       - 80:80
@@ -52,7 +52,7 @@ services:
       retries: 3
     restart: unless-stopped
   voidauth:
-    image: voidauth/voidauth:latest
+    image: ghcr.io/voidauth/voidauth:1.14.1
     container_name: voidauth
     volumes:
       - /fjellheimen/data/reverse-proxy/voidauth/config:/app/config

@@ -1,7 +1,7 @@
 name: stump
 services:
   stump:
-    image: aaronleopold/stump:latest
+    image: aaronleopold/stump:0.1.5
     container_name: stump
     volumes:
       - /fjellheimen/data/stump:/config

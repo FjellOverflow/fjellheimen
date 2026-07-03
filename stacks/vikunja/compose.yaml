@@ -1,7 +1,7 @@
 name: vikunja
 services:
   tududi:
-    image: vikunja/vikunja:latest
+    image: ghcr.io/go-vikunja/vikunja:2.3.0
     container_name: vikunja
     volumes:
       - /fjellheimen/data/vikunja/files:/app/vikunja/files

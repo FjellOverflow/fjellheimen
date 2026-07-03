@@ -1,7 +1,7 @@
 name: dockge
 services:
   dockge:
-    image: louislam/dockge:latest
+    image: louislam/dockge:1.5.0
     container_name: dockge
     user: 1000:1000
     group_add:

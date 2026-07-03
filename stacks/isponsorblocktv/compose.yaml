@@ -1,7 +1,7 @@
 name: isponsorblocktv
 services:
   isponsorblocktv:
-    image: ghcr.io/dmunozv04/isponsorblocktv:latest
+    image: ghcr.io/dmunozv04/isponsorblocktv:v2.9.0
     container_name: isponsorblocktv
     volumes:
       - /fjellheimen/data/isponsorblocktv:/app/data

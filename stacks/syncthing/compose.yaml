@@ -1,7 +1,7 @@
 name: syncthing
 services:
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest
+    image: ghcr.io/syncthing/syncthing:2.1.1
     container_name: syncthing
     volumes:
       - /fjellheimen/data/syncthing:/config

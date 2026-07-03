@@ -1,7 +1,7 @@
 name: linkding
 services:
   linkding:
-    image: sissbruecker/linkding:latest
+    image: ghcr.io/sissbruecker/linkding:1.45.0
     container_name: linkding
     volumes:
       - /fjellheimen/data/linkding:/etc/linkding/data

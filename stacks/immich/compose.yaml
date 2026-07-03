@@ -69,7 +69,7 @@ services:
     shm_size: 128mb
     restart: unless-stopped
   kiosk:
-    image: ghcr.io/damongolding/immich-kiosk:latest
+    image: ghcr.io/damongolding/immich-kiosk:0.39.3
     container_name: immich-kiosk
     networks:
       - immich

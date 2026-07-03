@@ -1,7 +1,7 @@
 name: beszel
 services:
   beszel:
-    image: henrygd/beszel:latest
+    image: ghcr.io/henrygd/beszel/beszel:0.18.7
     container_name: beszel
     ports:
       - 8090:8090
@@ -36,7 +36,7 @@ services:
       retries: 3
     restart: unless-stopped
   beszel-agent:
-    image: henrygd/beszel-agent:latest
+    image: ghcr.io/henrygd/beszel/beszel-agent:0.18.7
     container_name: beszel-agent
     volumes:
       - /fjellheimen/data/beszel/agent:/var/lib/beszel-agent
