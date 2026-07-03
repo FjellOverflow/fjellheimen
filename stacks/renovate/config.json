@@ -9,6 +9,7 @@
   "reportType": "file",
   "reportPath": "/report/report.json",
   "rangeStrategy": "bump",
+  "minimumReleaseAge": "1 day",
   "packageRules": [
     { "matchPackageNames": ["*"], "groupName": "all dependencies", "groupSlug": "all-deps" },
     { "matchUpdateTypes": ["major"], "groupName": null }
