@@ -5,9 +5,6 @@
     name:
       - borgbackup
 
-- name: Install dockcheck.sh
-  ansible.builtin.import_tasks: install-dockcheck.yaml
-
 - name: Setup cronjobs
   ansible.builtin.import_tasks: setup-cronjobs.yaml
 

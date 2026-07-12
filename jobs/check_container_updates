@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# called Saturday, 4:00 AM
-
-~/.local/bin/dockcheck.sh -in

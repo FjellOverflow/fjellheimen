@@ -15,14 +15,6 @@
     weekday: "5"
     job: "/fjellheimen/jobs/backup"
 
-- name: Add container update check cronjob
-  ansible.builtin.cron:
-    name: "Check for container updates"
-    minute: "0"
-    hour: "4"
-    weekday: "6"
-    job: "/fjellheimen/jobs/check_container_updates"
-
 - name: Add server boot cronjob
   ansible.builtin.cron:
     name: "Job on server start"
