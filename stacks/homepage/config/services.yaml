@@ -80,6 +80,11 @@
             description: Synchronization
             container: syncthing
 - Organization:
+    - FreshRSS:
+        icon: sh-freshrss-light
+        href: https://feed.fjellhei.men
+        description: RSS feed aggregator
+        container: freshrss
     - Vikunja:
         icon: sh-vikunja-light
         href: https://tasks.fjellhei.men
