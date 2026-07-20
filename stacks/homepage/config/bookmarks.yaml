@@ -1,8 +1,5 @@
 ---
 - Providers:
-  - Hetzner:
-    - icon: sh-hetzner-light
-      href: https://console.hetzner.cloud/
   - Tailscale:
     - icon: sh-tailscale-light
       href: https://login.tailscale.com/admin
@@ -25,6 +22,3 @@
   - selfh.st Directory:
     - icon: sh-selfh-st-light
       href: https://selfh.st/apps/
-  - r/selfhosted on Reddit:
-    - icon: sh-reddit-light
-      href: https://reddit.com/r/selfhosted
