@@ -13,8 +13,6 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/freshrss/.env
-    environment:
-      CRON_MIN: 0,30
     labels:
       traefik.enable: "true"
       traefik.http.routers.feed.rule: Host(`feed.fjellhei.men`)
