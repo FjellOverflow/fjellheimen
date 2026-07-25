@@ -52,7 +52,7 @@ services:
       retries: 3
     restart: unless-stopped
   voidauth:
-    image: ghcr.io/voidauth/voidauth:1.14.1
+    image: ghcr.io/voidauth/voidauth:1.14.4
     container_name: voidauth
     volumes:
       - /fjellheimen/data/reverse-proxy/voidauth/config:/app/config
