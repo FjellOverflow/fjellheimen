@@ -10,8 +10,10 @@
   "reportPath": "/report/report.json",
   "rangeStrategy": "bump",
   "minimumReleaseAge": "1 day",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
   "packageRules": [
     { "matchPackageNames": ["*"], "groupName": "all dependencies", "groupSlug": "all-deps" },
-    { "matchUpdateTypes": ["major"], "groupName": null }
+    { "matchUpdateTypes": ["major"], "groupName": null },
+    { "matchUpdateTypes": ["digest"], "minimumReleaseAge": null }
   ]
 }
