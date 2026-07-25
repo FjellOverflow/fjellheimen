@@ -1,7 +1,7 @@
 name: immich
 services:
   server:
-    image: ghcr.io/immich-app/immich-server:v3.0.1
+    image: ghcr.io/immich-app/immich-server:v3.0.3
     container_name: immich-server
     volumes:
       - /fjellheimen/data/immich/server:/data
