@@ -1,7 +1,7 @@
 name: immich
 services:
   server:
-    image: ghcr.io/immich-app/immich-server:v3.0.3
+    image: ghcr.io/immich-app/immich-server:v3.1.0
     container_name: immich-server
     volumes:
       - /fjellheimen/data/immich/server:/data
@@ -27,7 +27,7 @@ services:
         condition: service_healthy
     restart: unless-stopped
   machine-learning:
-    image: ghcr.io/immich-app/immich-machine-learning:v3.0.3
+    image: ghcr.io/immich-app/immich-machine-learning:v3.1.0
     container_name: immich-machine-learning
     volumes:
       - /fjellheimen/data/immich/model-cache:/cache
@@ -69,7 +69,7 @@ services:
     shm_size: 128mb
     restart: unless-stopped
   kiosk:
-    image: ghcr.io/damongolding/immich-kiosk:0.41.0
+    image: ghcr.io/damongolding/immich-kiosk:0.42.0
     container_name: immich-kiosk
     networks:
       - immich
