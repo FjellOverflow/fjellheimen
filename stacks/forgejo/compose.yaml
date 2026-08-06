@@ -17,7 +17,6 @@ services:
       traefik.enable: "true"
       traefik.http.routers.forgejo.rule: Host(`forge.fjellhei.men`)
       traefik.http.routers.forgejo.entrypoints: websecure
-      traefik.http.routers.forgejo.middlewares: voidauth@docker
       traefik.http.services.forgejo.loadbalancer.server.port: "3000"
     healthcheck:
       test: curl --fail http://localhost:3000 || exit 1
