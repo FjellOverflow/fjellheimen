@@ -22,7 +22,7 @@ services:
       retries: 3
     restart: unless-stopped
   gluetun:
-    image: qmcgaw/gluetun:v3.41.1
+    image: qmcgaw/gluetun:v3.41.3
     container_name: torrents-gluetun
     devices:
       - /dev/net/tun:/dev/net/tun
