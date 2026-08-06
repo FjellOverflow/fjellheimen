@@ -1,0 +1,22 @@
+name: gickup
+services:
+  gickup:
+    image: ghcr.io/cooperspencer/gickup:0.10.45
+    container_name: gickup
+    volumes:
+      - /fjellheimen/stacks/gickup/conf.yaml:/gickup/conf.yaml:ro
+      - /fjellheimen/data/gickup:/gickup/data
+    networks:
+      - reverse-proxy
+    extra_hosts:
+      - forge.fjellhei.men:172.20.0.2
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/gickup/.env
+    command:
+      - /gickup/conf.yaml
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
+

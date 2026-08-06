@@ -1,0 +1,23 @@
+---
+source:
+  github:
+    - token: GICKUP_GITHUB_TOKEN
+      ssh: false
+
+destination:
+  gitea:
+    - token: GICKUP_FORGEJO_TOKEN
+      url: http://forgejo:3000
+      user: FjellOverflow
+      mirror:
+        enabled: true
+      visibility:
+        repositories: private
+
+cron: 0 4 * * sat
+
+log:
+  file-logging:
+    dir: /gickup/data/log
+    file: gickup.log
+    maxage: 30
