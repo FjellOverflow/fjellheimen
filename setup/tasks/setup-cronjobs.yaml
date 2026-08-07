@@ -1,6 +1,6 @@
 ---
 - name: Add offsite-backup cronjob
-   ansible.builtin.cron:
+  ansible.builtin.cron:
     name: "Run offsite-backup job"
     minute: "0"
     hour: "4"
