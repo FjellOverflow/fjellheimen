@@ -9,6 +9,10 @@ services:
       - /xdrive/Media/TV:/tv
       - /xdrive/Media/Music:/music
     network_mode: host
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - 105
     env_file:
       - /fjellheimen/stacks/.env
     healthcheck:
