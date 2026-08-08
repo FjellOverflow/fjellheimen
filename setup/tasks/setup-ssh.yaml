@@ -1,0 +1,9 @@
+---
+- name: Disable ssh password authentication
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/ssh/sshd_config.d/01-fjellheimen.conf # override default sshd config
+    mode: "0600"
+    content: |
+      PasswordAuthentication no
+  notify: Reload ssh daemon
