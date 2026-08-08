@@ -2,31 +2,25 @@
 
 The homeserver is intended to run on Fedora. Installing a fresh Fedora Server Edition is precondition to applying this setup.
 
+> [!TIP]
+> [nisse](https://github.com/FjellOverflow/nisse) applies an opinionated, batteries-included base to a fresh Fedora install. Running it beforehand can be useful, but is not a requirement.
 
-## Usage
-
-The server is set up with [Ansible](https://docs.ansible.com/ansible/latest/index.html). The provided playbook will first pull and run a role from a more general opinionated [ansible-fedora-setup](https://github.com/FjellOverflow/ansible-fedora-setup) and then run some custom tasks in addition.
-
-1. [Install Ansible]((https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)) on workstation
-
-2. Create `hosts.yaml` in current directory
-
-    ```yaml
-    all:
-        hosts:
-            remote-machine:
-                ansible_host: 192.168.1.123
-                ansible_user: fjelloverflow
-    ```
-
-3. Copy ssh-key to server
+1. Install Ansible and git on the server
 
     ```bash
-    ssh-copy-id 192.168.1.123
+    sudo dnf install -y ansible git
     ```
 
-3. Run playbook
+2. Clone the repository
 
     ```bash
-    ansible-playbook playbook.yaml -K
+    git clone https://github.com/FjellOverflow/fjellheimen.git ~/fjellheimen
+    ```
+
+3. Install collections and run playbook
+
+    ```bash
+    cd ~/fjellheimen/setup
+    ansible-galaxy collection install -r requirements.yaml
+    ansible-playbook site.yaml -K
     ```
