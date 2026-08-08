@@ -1,0 +1,38 @@
+---
+- name: Install samba
+  become: true
+  ansible.builtin.dnf:
+    name: samba
+
+- name: Write samba config
+  become: true
+  ansible.builtin.template:
+    src: "templates/smb.conf"
+    dest: "/etc/samba/smb.conf"
+    validate: "testparm -s %s"
+    mode: "0644"
+  notify: Restart samba daemon
+
+- name: Enable and start samba service
+  become: true
+  ansible.builtin.service:
+    name: smb
+    enabled: true
+    state: started
+
+- name: Check whether samba user exists
+  become: true
+  ansible.builtin.command: pdbedit --user={{ target_user }}
+  register: fjellheimen_samba_user
+  changed_when: false
+  failed_when: false
+
+- name: Create samba user
+  become: true
+  ansible.builtin.shell: >
+    set -o pipefail;
+    printf '%s\n%s\n' '{{ target_user }}' '{{ target_user }}'
+    | smbpasswd -s -a {{ target_user }}
+  when: fjellheimen_samba_user.rc != 0
+  changed_when: true
+  notify: Restart samba daemon
