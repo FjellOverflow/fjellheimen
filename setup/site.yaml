@@ -1,0 +1,51 @@
+---
+- name: Setup fjellheimen
+  hosts: all
+  pre_tasks:
+    - name: Install dnf Python bindings
+      become: true
+      ansible.builtin.command: dnf install --assumeyes python3-libdnf5 python3-dnf
+      changed_when: false
+
+  tasks:
+    - name: Install server packages
+      become: true
+      ansible.builtin.dnf:
+        name:
+          - borgbackup
+          - git
+          - rsync
+
+    - name: Setup docker
+      ansible.builtin.import_tasks: tasks/setup-docker.yaml
+
+    - name: Setup ssh
+      ansible.builtin.import_tasks: tasks/setup-ssh.yaml
+
+    - name: Setup tmux
+      ansible.builtin.import_tasks: tasks/setup-tmux.yaml
+
+    - name: Setup cronjobs
+      ansible.builtin.import_tasks: tasks/setup-cronjobs.yaml
+
+    - name: Setup skeleton
+      ansible.builtin.import_tasks: tasks/setup-skeleton.yaml
+
+    - name: Setup firewall
+      ansible.builtin.import_tasks: tasks/setup-firewall.yaml
+
+    - name: Setup samba
+      ansible.builtin.import_tasks: tasks/setup-samba.yaml
+
+  handlers:
+    - name: Reload ssh daemon
+      become: true
+      ansible.builtin.service:
+        name: sshd
+        state: reloaded
+
+    - name: Restart samba daemon
+      become: true
+      ansible.builtin.service:
+        name: smb
+        state: restarted
