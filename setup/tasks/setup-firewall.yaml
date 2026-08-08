@@ -1,0 +1,24 @@
+---
+- name: Install firewalld
+  become: true
+  ansible.builtin.dnf:
+    name: firewalld
+
+- name: Enable and start firewalld service
+  become: true
+  ansible.builtin.service:
+    name: firewalld
+    enabled: true
+    state: started
+
+- name: Allow services through firewalld
+  become: true
+  ansible.posix.firewalld:
+    service: "{{ item }}"
+    state: enabled
+    permanent: true
+    immediate: true
+  loop:
+    - ssh
+    - samba
+    - plex
