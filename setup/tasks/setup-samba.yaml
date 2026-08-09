@@ -4,6 +4,13 @@
   ansible.builtin.dnf:
     name: samba
 
+- name: Allow samba to serve files outside samba_share_t
+  become: true
+  ansible.posix.seboolean:
+    name: samba_export_all_rw
+    state: true
+    persistent: true
+
 - name: Write samba config
   become: true
   ansible.builtin.template:
