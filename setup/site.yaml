@@ -19,6 +19,9 @@
     - name: Setup docker
       ansible.builtin.import_tasks: tasks/setup-docker.yaml
 
+    - name: Setup tailscale
+      ansible.builtin.import_tasks: tasks/setup-tailscale.yaml
+
     - name: Setup ssh
       ansible.builtin.import_tasks: tasks/setup-ssh.yaml
 
