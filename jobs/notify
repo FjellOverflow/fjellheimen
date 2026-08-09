@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 # Notify using Apprise
-curl -s -X POST http://localhost:8000/notify/apprise \
+curl -s --max-time 10 -X POST http://localhost:8000/notify/apprise \
      -H "Content-Type: application/json" \
-     -d "{\"title\": \"\", \"body\": \"$1\"}"
+     -d "{\"title\": \"\", \"body\": \"$1\"}" || true
