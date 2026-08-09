@@ -5,7 +5,7 @@ services:
     container_name: homepage
     user: 1000:1000
     group_add:
-      - "996"
+      - "987"
     volumes:
       - /fjellheimen/data/homepage/config:/app/config
       - /fjellheimen/data/homepage/assets:/app/public/assets
