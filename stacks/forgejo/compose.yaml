@@ -13,6 +13,8 @@ services:
       - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
+    environment:
+      FORGEJO__repository__DISABLED_REPO_UNITS: repo.actions
     labels:
       traefik.enable: "true"
       traefik.http.routers.forgejo.rule: Host(`forge.fjellhei.men`)
