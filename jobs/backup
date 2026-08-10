@@ -17,7 +17,16 @@ trap on_error ERR
 
 $NOTIFY "Backing up $BACKUP_SOURCE to $BACKUP_DESTINATION."
 
-sudo borg create --numeric-ids $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE
+if [ -z "${BACKUP_EXCLUDES+x}" ]; then
+    BACKUP_EXCLUDES=()
+fi
+
+EXCLUDE_ARGS=()
+for pattern in "${BACKUP_EXCLUDES[@]}"; do
+    EXCLUDE_ARGS+=(--exclude "$pattern")
+done
+
+sudo borg create --numeric-ids "${EXCLUDE_ARGS[@]}" $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE
 sudo chown -R $BACKUP_USER:$BACKUP_USER $BACKUP_DESTINATION/
 
 $NOTIFY "Backup finished."
