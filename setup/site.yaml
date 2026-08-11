@@ -40,6 +40,9 @@
     - name: Setup samba
       ansible.builtin.import_tasks: tasks/setup-samba.yaml
 
+    - name: Setup cockpit
+      ansible.builtin.import_tasks: tasks/setup-cockpit.yaml
+
   handlers:
     - name: Reload ssh daemon
       become: true
@@ -51,4 +54,10 @@
       become: true
       ansible.builtin.service:
         name: smb
+        state: restarted
+
+    - name: Restart cockpit daemon
+      become: true
+      ansible.builtin.service:
+        name: cockpit
         state: restarted

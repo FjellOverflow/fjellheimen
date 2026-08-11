@@ -9,9 +9,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /fjellheimen/data/reverse-proxy/traefik/letsencrypt:/letsencrypt
+      - /fjellheimen/stacks/reverse-proxy/dynamic:/etc/traefik/dynamic:ro
     networks:
       reverse-proxy:
         ipv4_address: 172.20.0.2
+    extra_hosts:
+      - host.docker.internal:host-gateway
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/reverse-proxy/.env
@@ -25,6 +28,8 @@ services:
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
       - --providers.docker.network=reverse-proxy
+      - --providers.file.directory=/etc/traefik/dynamic
+      - --providers.file.watch=true
       - --api=true
       - --api.dashboard=true
       - --api.insecure=false

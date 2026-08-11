@@ -1,0 +1,16 @@
+http:
+  routers:
+    cockpit:
+      rule: Host(`cockpit.fjellhei.men`)
+      entrypoints:
+        - websecure
+      middlewares:
+        - voidauth@docker
+      service: cockpit
+      tls:
+        certresolver: letsencrypt
+  services:
+    cockpit:
+      loadbalancer:
+        servers:
+          - url: http://host.docker.internal:9090

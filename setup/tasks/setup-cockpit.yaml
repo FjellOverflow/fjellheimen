@@ -1,0 +1,20 @@
+---
+- name: Install cockpit
+  become: true
+  ansible.builtin.dnf:
+    name: cockpit
+
+- name: Write cockpit config
+  become: true
+  ansible.builtin.template:
+    src: "templates/cockpit.conf"
+    dest: "/etc/cockpit/cockpit.conf"
+    mode: "0644"
+  notify: Restart cockpit daemon
+
+- name: Enable and start cockpit socket
+  become: true
+  ansible.builtin.service:
+    name: cockpit.socket
+    enabled: true
+    state: started

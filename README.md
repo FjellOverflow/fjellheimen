@@ -34,7 +34,9 @@ Everything is served under `*.fjellhei.men`: with a single *wildcard DNS record*
 
 The `reverse-proxy` stack owns a bridge network (`subnet 172.20.0.0/16`); every other stack joins it with `external: true`. Traefik itself is pinned to the static IP `172.20.0.2` (load-bearing, see [_Adding a stack_](#adding-a-stack)).
 
-A few services bypass the proxy entirely and use host networking, so they are reached directly on their own ports (opened in firewalld) with no Traefik routing or SSO.
+A few services use host networking and are also reachable directly on their own ports (opened in firewalld), bypassing Traefik and SSO.
+
+Host-level routes can be declared with YAML files in `stacks/reverse-proxy/dynamic/`, reaching the host via `host.docker.internal`.
 
 ### Adding a stack
 
