@@ -26,7 +26,7 @@ for pattern in "${BACKUP_EXCLUDES[@]}"; do
     EXCLUDE_ARGS+=(--exclude "$pattern")
 done
 
-sudo borg create --numeric-ids "${EXCLUDE_ARGS[@]}" $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE
+sudo borg create --numeric-ids "${EXCLUDE_ARGS[@]}" $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE || [ $? -le 1 ]
 sudo chown -R $BACKUP_USER:$BACKUP_USER $BACKUP_DESTINATION/
 
 $NOTIFY "Backup finished."
