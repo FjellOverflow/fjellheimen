@@ -5,6 +5,15 @@
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": null
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    },
+    {
+      "matchFileNames": ["stacks/immich/compose.yaml"],
+      "groupName": "immich"
     }
   ]
 }
