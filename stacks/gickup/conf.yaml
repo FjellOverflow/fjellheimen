@@ -9,6 +9,7 @@ destination:
     - token: GICKUP_FORGEJO_TOKEN
       url: http://forgejo:3000
       user: FjellOverflow
+      force: true
       mirror:
         enabled: true
       visibility:
