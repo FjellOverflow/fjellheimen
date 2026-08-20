@@ -1,7 +1,7 @@
 name: actualbudget
 services:
   actualbudget:
-    image: ghcr.io/actualbudget/actual:26.8.0
+    image: ghcr.io/actualbudget/actual:26.8.1
     container_name: actualbudget
     volumes:
       - /fjellheimen/data/actualbudget:/data
