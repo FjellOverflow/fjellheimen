@@ -1,7 +1,7 @@
 name: beszel
 services:
   beszel:
-    image: ghcr.io/henrygd/beszel/beszel:0.18.7
+    image: ghcr.io/henrygd/beszel/beszel:0.18.8
     container_name: beszel
     ports:
       - 8090:8090
