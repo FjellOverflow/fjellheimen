@@ -111,6 +111,10 @@
         description: Passwords
         container: vaultwarden
 - Infrastructure:
+    - Cockpit:
+        icon: sh-cockpit-light
+        href: https://cockpit.fjellhei.men
+        description: Admin interface
     - Beszel:
         icon: sh-beszel-light
         href: https://dashboard.fjellhei.men

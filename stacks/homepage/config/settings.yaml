@@ -36,4 +36,4 @@ layout:
   Infrastructure:
     icon: mdi-account-wrench
     style: row
-    columns: 5
+    columns: 6
