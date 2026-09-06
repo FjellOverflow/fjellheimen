@@ -36,7 +36,7 @@ services:
       retries: 3
     restart: unless-stopped
   beszel-agent:
-    image: ghcr.io/henrygd/beszel/beszel-agent:0.18.8
+    image: ghcr.io/henrygd/beszel/beszel-agent:0.19.0
     container_name: beszel-agent
     volumes:
       - /fjellheimen/data/beszel/agent:/var/lib/beszel-agent
