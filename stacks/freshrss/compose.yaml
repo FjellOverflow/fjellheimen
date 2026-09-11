@@ -1,7 +1,7 @@
 name: freshrss
 services:
   freshrss:
-    image: ghcr.io/freshrss/freshrss:1.29.1
+    image: ghcr.io/freshrss/freshrss:1.30.0
     container_name: freshrss
     volumes:
       - /fjellheimen/data/freshrss/data:/var/www/FreshRSS/data
