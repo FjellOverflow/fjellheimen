@@ -15,7 +15,7 @@ services:
       gluetun:
         condition: service_healthy
     healthcheck:
-      test: curl --fail http://localhost:9090 || exit 1
+      test: curl --fail http://localhost:9090 && curl --fail http://127.0.0.1:9999 || exit 1
       interval: 1m
       start_period: 20s
       timeout: 10s
