@@ -80,7 +80,7 @@ services:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/immich/.env
     environment:
-      KIOSK_IMMICH_URL: immich-server:2283
+      KIOSK_IMMICH_URL: http://immich-server:2283
       KIOSK_IMMICH_EXTERNAL_URL: https://photos.fjellhei.men
     labels:
       traefik.enable: "true"
