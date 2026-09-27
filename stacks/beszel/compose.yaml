@@ -16,7 +16,7 @@ services:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/beszel/.env
     environment:
-      APP_URL: http://localhost:8090
+      APP_URL: https://dashboard.fjellhei.men
     labels:
       traefik.enable: "true"
       traefik.http.routers.beszel.rule: Host(`dashboard.fjellhei.men`)
