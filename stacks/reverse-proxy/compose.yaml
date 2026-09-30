@@ -84,7 +84,4 @@ services:
     restart: unless-stopped
 networks:
   reverse-proxy:
-    name: reverse-proxy
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
+    external: true

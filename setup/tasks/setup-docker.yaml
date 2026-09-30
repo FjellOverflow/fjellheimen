@@ -31,3 +31,14 @@
     name: "docker"
     enabled: true
     state: started
+
+- name: Create reverse-proxy network
+  become: true
+  ansible.builtin.command: >-
+    docker network create
+    --subnet 172.20.0.0/16
+    --ip-range 172.20.1.0/24
+    reverse-proxy
+  register: reverse_proxy_network
+  changed_when: reverse_proxy_network.rc == 0
+  failed_when: reverse_proxy_network.rc != 0 and 'already exists' not in reverse_proxy_network.stderr
