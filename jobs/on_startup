@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# called at reboot
+# called at boot, once docker is up
 
 # load ENV
 CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -9,13 +9,13 @@ source $CURRENT_DIR/.env
 NOTIFY=$CURRENT_DIR/notify
 
 # wait until docker has settled (all containers stable or timeout)
-TIMEOUT=180
+TIMEOUT=300
 INTERVAL=10
 ELAPSED=0
 STARTUP_STATUS="ok"
 
 while true; do
-    PENDING=$(docker ps -a --format '{{.Status}}' | grep -cE '^(Starting|Restarting)' || true)
+    PENDING=$( { docker ps -q --filter health=starting; docker ps -q --filter status=restarting; } | wc -l )
     [ "$PENDING" -eq 0 ] && break
     if [ "$ELAPSED" -ge "$TIMEOUT" ]; then
         STARTUP_STATUS="timeout"
@@ -27,7 +27,12 @@ done
 
 
 STOPPED_CONTAINERS=$(docker ps -a --filter "status=exited" --format '{{.Names}}')
+UNHEALTHY_CONTAINERS=$(docker ps --filter "health=unhealthy" --format '{{.Names}}')
+STARTING_CONTAINERS=$(docker ps --filter "health=starting" --format '{{.Names}}')
 DRIVE_MOUNTED=""
+
+[ -n "$UNHEALTHY_CONTAINERS" ] && UNHEALTHY_CONTAINERS="Unhealthy containers: "$UNHEALTHY_CONTAINERS
+[ -n "$STARTING_CONTAINERS" ] && STARTING_CONTAINERS="Still starting: "$STARTING_CONTAINERS
 
 if [ -n "$STOPPED_CONTAINERS" ]; then
     STOPPED_CONTAINERS="Stopped containers: "$STOPPED_CONTAINERS
@@ -45,4 +50,6 @@ STARTUP_NOTE="Containers settled in ${ELAPSED}s."
 $NOTIFY "Server booted up.
 $STARTUP_NOTE
 $STOPPED_CONTAINERS
+$UNHEALTHY_CONTAINERS
+$STARTING_CONTAINERS
 $DRIVE_MOUNTED"

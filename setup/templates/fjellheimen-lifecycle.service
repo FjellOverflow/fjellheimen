@@ -1,0 +1,17 @@
+[Unit]
+Description=fjellheimen boot and shutdown notifications
+Wants=network-online.target docker.service
+# ordered after docker and network: started once they are up, stopped before they go down
+After=network-online.target docker.service
+
+[Service]
+Type=exec
+RemainAfterExit=yes
+User={{ target_user }}
+# invoked via bash, SELinux denies services executing scripts from home dirs directly
+ExecStart=/usr/bin/bash /fjellheimen/jobs/on_startup
+ExecStop=/usr/bin/bash /fjellheimen/jobs/on_shutdown
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

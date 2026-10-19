@@ -104,11 +104,12 @@ Image versions are kept up-to-date by [Renovate](https://github.com/renovatebot/
 
 ## Jobs
 
-Common maintenance tasks have their own script in `jobs/`, some of which are automatically called on a cron schedule. They are configured with their own ENV (`jobs/.env`).
+Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run via cron, `on_startup`/`on_shutdown` via the `fjellheimen-lifecycle` systemd unit.
 
 | Job              | When      | Does                                                             |
 | ---------------- | --------- | ---------------------------------------------------------------- |
-| `on_startup`     | `@reboot` | Waits for containers to settle, then sends a status notification |
+| `on_startup`     | boot      | Notifies with container status once settled                      |
+| `on_shutdown`    | shutdown  | Notifies about shutdown/reboot                                   |
 | `offsite_backup` | Thu 04:00 | Backs up data to remote with `rsync`                             |
 | `backup`         | Fri 04:00 | Backs up data locally with `borg`                                |
 | `mirror`         | manual    | Mirrors data to local drive                                      |

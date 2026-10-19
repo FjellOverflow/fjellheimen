@@ -34,6 +34,9 @@
     - name: Setup skeleton
       ansible.builtin.import_tasks: tasks/setup-skeleton.yaml
 
+    - name: Setup lifecycle notifications
+      ansible.builtin.import_tasks: tasks/setup-lifecycle.yaml
+
     - name: Setup firewall
       ansible.builtin.import_tasks: tasks/setup-firewall.yaml
 

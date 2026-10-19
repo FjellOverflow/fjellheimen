@@ -14,9 +14,3 @@
     hour: "4"
     weekday: "5"
     job: "/fjellheimen/jobs/backup"
-
-- name: Add server boot cronjob
-  ansible.builtin.cron:
-    name: "Job on server start"
-    special_time: "reboot"
-    job: "/fjellheimen/jobs/on_startup"

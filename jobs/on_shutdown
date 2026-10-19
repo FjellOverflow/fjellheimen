@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# called at shutdown, before docker stops
+
+CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+NOTIFY=$CURRENT_DIR/notify
+
+ACTION="shutting down"
+systemctl list-jobs --no-legend | grep -q 'reboot.target' && ACTION="rebooting"
+
+$NOTIFY "Server $ACTION."
