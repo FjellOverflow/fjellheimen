@@ -58,11 +58,6 @@
             description: Photo gallery
             container: immich-kiosk
     - Development:
-        - Code Server:
-            icon: sh-coder-light
-            href: https://code.fjellhei.men
-            description: Development
-            container: code-server
         - Forgejo:
             icon: sh-forgejo-light
             href: https://forge.fjellhei.men
