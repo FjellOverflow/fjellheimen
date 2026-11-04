@@ -1,0 +1,87 @@
+---
+- name: Set up firewall
+  become: true
+  block:
+    - name: Install firewalld
+      ansible.builtin.dnf:
+        name: firewalld
+
+    - name: Enable and start firewalld service
+      ansible.builtin.service:
+        name: firewalld
+        enabled: true
+        state: started
+
+    - name: Set firewalld allowed services
+      ansible.posix.firewalld:
+        service: "{{ item }}"
+        state: enabled
+        permanent: true
+        immediate: true
+      loop:
+        - ssh
+        - samba
+        - plex
+        - cockpit
+
+- name: Set up Samba
+  become: true
+  block:
+    - name: Install Samba
+      ansible.builtin.dnf:
+        name: samba
+
+    - name: Set SELinux Samba export of all files on
+      ansible.posix.seboolean:
+        name: samba_export_all_rw
+        state: true
+        persistent: true
+
+    - name: Write Samba config
+      ansible.builtin.template:
+        src: smb.conf
+        dest: /etc/samba/smb.conf
+        validate: testparm -s %s
+        mode: "0644"
+      notify: Restart Samba daemon
+
+    - name: Enable and start Samba service
+      ansible.builtin.service:
+        name: smb
+        enabled: true
+        state: started
+
+    - name: Check Samba user
+      ansible.builtin.command: pdbedit --user={{ target_user }}
+      register: samba_user
+      changed_when: false
+      failed_when: false
+
+    - name: Ensure Samba user exists
+      ansible.builtin.shell: >
+        set -o pipefail;
+        printf '%s\n%s\n' '{{ target_user }}' '{{ target_user }}'
+        | smbpasswd -s -a {{ target_user }}
+      when: samba_user.rc != 0
+      changed_when: true
+      notify: Restart Samba daemon
+
+- name: Set up Cockpit
+  become: true
+  block:
+    - name: Install Cockpit
+      ansible.builtin.dnf:
+        name: cockpit
+
+    - name: Write Cockpit config
+      ansible.builtin.template:
+        src: cockpit.conf
+        dest: /etc/cockpit/cockpit.conf
+        mode: "0644"
+      notify: Restart Cockpit daemon
+
+    - name: Enable and start Cockpit socket
+      ansible.builtin.service:
+        name: cockpit.socket
+        enabled: true
+        state: started

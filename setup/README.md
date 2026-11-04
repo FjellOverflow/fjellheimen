@@ -2,9 +2,6 @@
 
 The homeserver is intended to run on Fedora. Installing a fresh Fedora Server Edition is precondition to applying this setup.
 
-> [!TIP]
-> [nisse](https://github.com/FjellOverflow/nisse) applies an opinionated, batteries-included base to a fresh Fedora install. Running it beforehand can be useful, but is not a requirement.
-
 1. Install Ansible and git on the server
 
     ```bash

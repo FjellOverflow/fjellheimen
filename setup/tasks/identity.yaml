@@ -1,0 +1,32 @@
+---
+- name: Set up git
+  block:
+    - name: Set git user name
+      community.general.git_config:
+        name: user.name
+        scope: global
+        value: "{{ identity.full_name }}"
+
+    - name: Set git user email
+      community.general.git_config:
+        name: user.email
+        scope: global
+        value: "{{ identity.email }}"
+
+    - name: Set git signing key
+      community.general.git_config:
+        name: user.signingkey
+        scope: global
+        value: "{{ identity.signing_key }}"
+
+    - name: Set commit signing on
+      community.general.git_config:
+        name: commit.gpgsign
+        scope: global
+        value: "true"
+
+    - name: Set git default branch
+      community.general.git_config:
+        name: init.defaultbranch
+        scope: global
+        value: main

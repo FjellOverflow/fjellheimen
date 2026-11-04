@@ -1,0 +1,114 @@
+---
+- name: Set up base packages
+  become: true
+  block:
+    - name: Install server packages
+      ansible.builtin.dnf:
+        name:
+          - bat
+          - borgbackup
+          - curl
+          - git
+          - gnupg2
+          - nano
+          - ncdu
+          - rsync
+          - tmux
+          - tree
+          - wget
+
+- name: Set up locale
+  become: true
+  block:
+    - name: Set timezone
+      community.general.timezone:
+        name: "{{ timezone }}"
+
+    - name: Install locale langpacks
+      ansible.builtin.dnf:
+        name:
+          - "glibc-langpack-{{ default_locale.split('_')[0] }}"
+          - "glibc-langpack-{{ regional_locale.split('_')[0] }}"
+
+    - name: Write locale configuration
+      ansible.builtin.copy:
+        dest: /etc/locale.conf
+        mode: "0644"
+        content: |
+          LANG={{ default_locale }}
+          LC_TIME={{ regional_locale }}
+          LC_MONETARY={{ regional_locale }}
+          LC_PAPER={{ regional_locale }}
+          LC_MEASUREMENT={{ regional_locale }}
+
+- name: Set up keyboard
+  become: true
+  block:
+    - name: Set console keymap
+      ansible.builtin.lineinfile:
+        path: /etc/vconsole.conf
+        regexp: "^KEYMAP="
+        line: "KEYMAP={{ console_keymap }}"
+        create: true
+        mode: "0644"
+
+- name: Set up fish
+  block:
+    - name: Install fish
+      become: true
+      ansible.builtin.dnf:
+        name: fish
+
+    - name: Add starship COPR repository
+      become: true
+      community.general.copr:
+        name: atim/starship
+
+    - name: Install starship
+      become: true
+      ansible.builtin.dnf:
+        name: starship
+
+    - name: Set fish as default shell for {{ target_user }}
+      become: true
+      ansible.builtin.user:
+        name: "{{ target_user }}"
+        shell: /usr/bin/fish
+
+    - name: Ensure fish conf.d directory exists
+      ansible.builtin.file:
+        path: "{{ target_home }}/.config/fish/conf.d"
+        state: directory
+        mode: "0755"
+
+    # conf.d keeps config.fish free for hand edits.
+    - name: Write fish config
+      ansible.builtin.copy:
+        src: config.fish
+        dest: "{{ target_home }}/.config/fish/conf.d/ansible.fish"
+        mode: "0644"
+
+- name: Set up tmux
+  block:
+    - name: Write tmux config
+      ansible.builtin.copy:
+        src: .tmux.conf
+        dest: "{{ target_home }}/.tmux.conf"
+        mode: "0644"
+
+- name: Set up sudo
+  become: true
+  block:
+    - name: Add wheel group membership for {{ target_user }}
+      ansible.builtin.user:
+        name: "{{ target_user }}"
+        groups: wheel
+        append: true
+
+    - name: Write passwordless sudo rule for wheel
+      ansible.builtin.copy:
+        dest: /etc/sudoers.d/10-wheel-nopasswd
+        mode: "0440"
+        validate: /usr/sbin/visudo -cf %s
+        content: |
+          %wheel ALL=(ALL) NOPASSWD: ALL

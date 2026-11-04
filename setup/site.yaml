@@ -1,65 +1,52 @@
 ---
-- name: Setup fjellheimen
+- name: Set up fjellheimen
   hosts: all
   pre_tasks:
-    - name: Install dnf Python bindings
-      become: true
-      ansible.builtin.command: dnf install --assumeyes python3-libdnf5 python3-dnf
-      changed_when: false
+    - name: Set up dnf Python bindings
+      block:
+        - name: Check dnf Python bindings # noqa: command-instead-of-module need to verify that modules have deps available
+          ansible.builtin.command: rpm --query python3-libdnf5 python3-dnf
+          register: dnf_bindings_installed
+          changed_when: false
+          failed_when: false
+
+        - name: Install dnf Python bindings
+          become: true
+          # TODO: https://github.com/ansible-collections/community.general/issues/12501
+          ansible.builtin.command: dnf install --assumeyes python3-libdnf5 python3-dnf
+          when: dnf_bindings_installed.rc != 0
+          changed_when: true
 
   tasks:
-    - name: Install server packages
-      become: true
-      ansible.builtin.dnf:
-        name:
-          - borgbackup
-          - git
-          - rsync
+    - name: Set up base system
+      ansible.builtin.import_tasks: tasks/base.yaml
 
-    - name: Setup docker
-      ansible.builtin.import_tasks: tasks/setup-docker.yaml
+    - name: Set up identity
+      ansible.builtin.import_tasks: tasks/identity.yaml
 
-    - name: Setup tailscale
-      ansible.builtin.import_tasks: tasks/setup-tailscale.yaml
+    - name: Set up services
+      ansible.builtin.import_tasks: tasks/services.yaml
 
-    - name: Setup ssh
-      ansible.builtin.import_tasks: tasks/setup-ssh.yaml
+    - name: Set up fjellheimen jobs
+      ansible.builtin.import_tasks: tasks/fjellheimen.yaml
 
-    - name: Setup tmux
-      ansible.builtin.import_tasks: tasks/setup-tmux.yaml
-
-    - name: Setup cronjobs
-      ansible.builtin.import_tasks: tasks/setup-cronjobs.yaml
-
-    - name: Setup skeleton
-      ansible.builtin.import_tasks: tasks/setup-skeleton.yaml
-
-    - name: Setup lifecycle notifications
-      ansible.builtin.import_tasks: tasks/setup-lifecycle.yaml
-
-    - name: Setup firewall
-      ansible.builtin.import_tasks: tasks/setup-firewall.yaml
-
-    - name: Setup samba
-      ansible.builtin.import_tasks: tasks/setup-samba.yaml
-
-    - name: Setup cockpit
-      ansible.builtin.import_tasks: tasks/setup-cockpit.yaml
+    - name: Set up sharing
+      ansible.builtin.import_tasks: tasks/sharing.yaml
 
   handlers:
-    - name: Reload ssh daemon
+    - name: Reload SSH daemon
       become: true
       ansible.builtin.service:
         name: sshd
         state: reloaded
 
-    - name: Restart samba daemon
+    - name: Restart Samba daemon
       become: true
       ansible.builtin.service:
         name: smb
         state: restarted
 
-    - name: Restart cockpit daemon
+    - name: Restart Cockpit daemon
       become: true
       ansible.builtin.service:
         name: cockpit

@@ -1,3 +1,14 @@
 ---
 target_user: "{{ ansible_facts['user_id'] }}"
 target_home: "{{ ansible_facts['user_dir'] }}"
+
+identity:
+  full_name: FjellOverflow
+  email: fjelloverflow@protonmail.com
+  signing_key: 1F460E4716149438
+
+timezone: Europe/Oslo
+default_locale: en_US.UTF-8
+regional_locale: nb_NO.UTF-8
+
+console_keymap: "no"

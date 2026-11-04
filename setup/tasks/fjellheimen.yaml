@@ -1,0 +1,49 @@
+---
+- name: Set up fjellheimen repository
+  block:
+    - name: Ensure fjellheimen repository exists # noqa: latest re-runs don't refetch
+      ansible.builtin.git:
+        repo: https://github.com/FjellOverflow/fjellheimen.git
+        dest: "{{ target_home }}/fjellheimen"
+        update: false
+
+    - name: Ensure /fjellheimen link exists
+      become: true
+      ansible.builtin.file:
+        src: "{{ target_home }}/fjellheimen"
+        dest: /fjellheimen
+        state: link
+
+- name: Set up backup cronjobs
+  block:
+    - name: Write offsite backup cronjob
+      ansible.builtin.cron:
+        name: Run offsite-backup job
+        minute: "0"
+        hour: "4"
+        weekday: "4"
+        job: /fjellheimen/jobs/offsite_backup
+
+    - name: Write backup cronjob
+      ansible.builtin.cron:
+        name: Run backup job
+        minute: "0"
+        hour: "4"
+        weekday: "5"
+        job: /fjellheimen/jobs/backup
+
+- name: Set up lifecycle service
+  become: true
+  block:
+    - name: Write lifecycle service
+      ansible.builtin.template:
+        src: fjellheimen-lifecycle.service
+        dest: /etc/systemd/system/fjellheimen-lifecycle.service
+        mode: "0644"
+
+    - name: Enable and start lifecycle service
+      ansible.builtin.systemd_service:
+        name: fjellheimen-lifecycle.service
+        daemon_reload: true
+        enabled: true
+        state: started
