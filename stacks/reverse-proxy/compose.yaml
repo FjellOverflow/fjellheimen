@@ -41,7 +41,9 @@ services:
       - --certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}
       - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
       - --log.level=INFO
+      - --log.format=json
       - --accesslog=true
+      - --accesslog.format=json
       - --global.sendAnonymousUsage=false
       - --ping=true
     labels:

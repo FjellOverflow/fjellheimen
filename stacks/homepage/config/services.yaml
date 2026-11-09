@@ -120,6 +120,11 @@
         href: https://containers.fjellhei.men
         description: Container management
         container: dockge
+    - Dozzle:
+        icon: sh-dozzle-light
+        href: https://logs.fjellhei.men
+        description: Container logs
+        container: dozzle
     - Traefik:
         icon: sh-traefik-light
         href: https://proxy.fjellhei.men

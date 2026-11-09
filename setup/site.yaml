@@ -34,6 +34,12 @@
       ansible.builtin.import_tasks: tasks/sharing.yaml
 
   handlers:
+    - name: Restart Docker daemon
+      become: true
+      ansible.builtin.service:
+        name: docker
+        state: restarted
+
     - name: Reload SSH daemon
       become: true
       ansible.builtin.service:

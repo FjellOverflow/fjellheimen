@@ -1,0 +1,32 @@
+name: dozzle
+services:
+  dozzle:
+    image: amir20/dozzle:v11.4.2
+    container_name: dozzle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - reverse-proxy
+    env_file:
+      - /fjellheimen/stacks/.env
+    environment:
+      DOZZLE_AUTH_PROVIDER: forward-proxy
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.dozzle.rule: Host(`logs.fjellhei.men`)
+      traefik.http.routers.dozzle.entrypoints: websecure
+      traefik.http.routers.dozzle.middlewares: voidauth@docker
+      traefik.http.services.dozzle.loadbalancer.server.port: "8080"
+    healthcheck:
+      test:
+        - CMD
+        - /dozzle
+        - healthcheck
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true

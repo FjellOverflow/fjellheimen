@@ -5,7 +5,6 @@ services:
     container_name: gickup
     volumes:
       - /fjellheimen/stacks/gickup/conf.yaml:/gickup/conf.yaml:ro
-      - /fjellheimen/data/gickup:/gickup/data
     networks:
       - reverse-proxy
     env_file:

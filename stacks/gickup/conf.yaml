@@ -16,9 +16,3 @@ destination:
         repositories: private
 
 cron: 0 4 * * sat
-
-log:
-  file-logging:
-    dir: /gickup/data/log
-    file: gickup.log
-    maxage: 30
