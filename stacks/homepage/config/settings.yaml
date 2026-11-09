@@ -33,7 +33,13 @@ layout:
     icon: mdi-view-dashboard
     style: row
     columns: 6
-  Infrastructure:
-    icon: mdi-account-wrench
+  Admin:
+    header: false
     style: row
-    columns: 6
+    columns: 2
+    Infrastructure:
+      icon: mdi-account-wrench
+      style: column
+    Monitoring:
+      icon: mdi-chart-line
+      style: column

@@ -105,38 +105,40 @@
         href: https://passwords.fjellhei.men
         description: Passwords
         container: vaultwarden
-- Infrastructure:
-    - Cockpit:
-        icon: sh-cockpit-light
-        href: https://cockpit.fjellhei.men
-        description: Admin interface
-    - Beszel:
-        icon: sh-beszel-light
-        href: https://dashboard.fjellhei.men
-        description: Monitoring
-        container: beszel
-    - Dockge:
-        icon: sh-dockge-light
-        href: https://containers.fjellhei.men
-        description: Container management
-        container: dockge
-    - Dozzle:
-        icon: sh-dozzle-light
-        href: https://logs.fjellhei.men
-        description: Container logs
-        container: dozzle
-    - Traefik:
-        icon: sh-traefik-light
-        href: https://proxy.fjellhei.men
-        description: Proxy traffic
-        container: traefik
-    - VoidAuth:
-        icon: sh-voidauth-light
-        href: https://auth.fjellhei.men
-        description: OIDC SSO portal
-        container: voidauth
-    - Apprise:
-        icon: sh-apprise-light
-        href: https://notifications.fjellhei.men
-        description: Notifications
-        container: apprise
+- Admin:
+    - Infrastructure:
+        - Cockpit:
+            icon: sh-cockpit-light
+            href: https://cockpit.fjellhei.men
+            description: Admin interface
+        - Dockge:
+            icon: sh-dockge-light
+            href: https://containers.fjellhei.men
+            description: Container management
+            container: dockge
+        - Traefik:
+            icon: sh-traefik-light
+            href: https://proxy.fjellhei.men
+            description: Proxy traffic
+            container: traefik
+        - VoidAuth:
+            icon: sh-voidauth-light
+            href: https://auth.fjellhei.men
+            description: OIDC SSO portal
+            container: voidauth
+    - Monitoring:
+        - Beszel:
+            icon: sh-beszel-light
+            href: https://dashboard.fjellhei.men
+            description: Monitoring
+            container: beszel
+        - Dozzle:
+            icon: sh-dozzle-light
+            href: https://logs.fjellhei.men
+            description: Container logs
+            container: dozzle
+        - Apprise:
+            icon: sh-apprise-light
+            href: https://notifications.fjellhei.men
+            description: Notifications
+            container: apprise
