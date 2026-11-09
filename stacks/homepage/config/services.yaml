@@ -1,19 +1,31 @@
-- Media:
-    - Plex:
-        icon: sh-plex-light
-        href: https://app.plex.tv
-        description: Movies, TV Shows & Music
-        container: plex
-    - Audiobookshelf:
-        icon: sh-audiobookshelf-light
-        href: https://audiobooks.fjellhei.men
-        description: Audiobooks & Podcasts
-        container: audiobookshelf
-    - Stump:
-        icon: sh-stump-light
-        href: https://books.fjellhei.men
-        description: Books
-        container: stump
+- Library:
+    - Media:
+        - Plex:
+            icon: sh-plex-light
+            href: https://app.plex.tv
+            description: Movies, TV Shows & Music
+            container: plex
+        - Audiobookshelf:
+            icon: sh-audiobookshelf-light
+            href: https://audiobooks.fjellhei.men
+            description: Audiobooks & Podcasts
+            container: audiobookshelf
+        - Stump:
+            icon: sh-stump-light
+            href: https://books.fjellhei.men
+            description: Books
+            container: stump
+    - Photos:
+        - Immich:
+            icon: sh-immich-light
+            href: https://photos.fjellhei.men
+            description: Photo management
+            container: immich-server
+        - Immich Kiosk:
+            icon: sh-immich-kiosk-light
+            href: https://kiosk.fjellhei.men
+            description: Photo gallery
+            container: immich-kiosk
 - Media Management:
     - Radarr:
         icon: sh-radarr-light
@@ -45,35 +57,6 @@
         href: https://subtitles.fjellhei.men
         description: Subtitles
         container: arr-bazarr
-- Personal:
-    - Photos:
-        - Immich:
-            icon: sh-immich-light
-            href: https://photos.fjellhei.men
-            description: Photo management
-            container: immich-server
-        - Immich Kiosk:
-            icon: sh-immich-kiosk-light
-            href: https://kiosk.fjellhei.men
-            description: Photo gallery
-            container: immich-kiosk
-    - Development:
-        - Forgejo:
-            icon: sh-forgejo-light
-            href: https://forge.fjellhei.men
-            description: Code
-            container: forgejo
-    - Files:
-        - Filebrowser Quantum:
-            icon: sh-filebrowser-quantum-light
-            href: https://files.fjellhei.men
-            description: File browser
-            container: filebrowser
-        - Syncthing:
-            icon: sh-syncthing-light
-            href: https://sync.fjellhei.men
-            description: Synchronization
-            container: syncthing
 - Organization:
     - FreshRSS:
         icon: sh-freshrss-light
@@ -105,7 +88,23 @@
         href: https://passwords.fjellhei.men
         description: Passwords
         container: vaultwarden
-- Admin:
+- Utilities:
+    - Files & Code:
+        - Filebrowser Quantum:
+            icon: sh-filebrowser-quantum-light
+            href: https://files.fjellhei.men
+            description: File browser
+            container: filebrowser
+        - Syncthing:
+            icon: sh-syncthing-light
+            href: https://sync.fjellhei.men
+            description: Synchronization
+            container: syncthing
+        - Forgejo:
+            icon: sh-forgejo-light
+            href: https://forge.fjellhei.men
+            description: Code
+            container: forgejo
     - Infrastructure:
         - Cockpit:
             icon: sh-cockpit-light

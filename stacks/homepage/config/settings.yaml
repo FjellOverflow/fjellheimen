@@ -7,39 +7,42 @@ hideErrors: true
 statusStyle: dot
 maxGroupColumns: 5
 disableCollapse: true
+bookmarksStyle: icons
+useEqualHeights: true
 layout:
-  Media:
-    icon: mdi-multimedia
+  Library:
+    header: false
     style: row
-    columns: 3
+    columns: 2
+    Media:
+      icon: mdi-multimedia
+      style: row
+      columns: 3
+    Photos:
+      icon: mdi-image-multiple
+      style: row
+      columns: 3
   Media Management:
     icon: mdi-download-box
     style: row
-    columns: 3
-  Personal:
-    header: false
-    style: row
-    columns: 3
-    Photos:
-      icon: mdi-image-multiple
-      style: column
-    Development:
-      icon: mdi-code-tags
-      style: column
-    Files:
-      icon: mdi-folder-multiple
-      style: column
+    columns: 6
   Organization:
     icon: mdi-view-dashboard
     style: row
     columns: 6
-  Admin:
+  Utilities:
     header: false
     style: row
-    columns: 2
+    columns: 3
+    Files & Code:
+      icon: mdi-folder-multiple
+      style: row
+      columns: 2
     Infrastructure:
       icon: mdi-account-wrench
-      style: column
+      style: row
+      columns: 2
     Monitoring:
       icon: mdi-chart-line
-      style: column
+      style: row
+      columns: 2
