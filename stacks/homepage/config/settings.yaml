@@ -5,6 +5,7 @@ background:
   opacity: 15
 hideErrors: true
 statusStyle: dot
+headerStyle: clean
 maxGroupColumns: 5
 disableCollapse: true
 bookmarksStyle: icons
