@@ -8,8 +8,6 @@ services:
       - /xdrive/Media/Books:/books:ro
     networks:
       - reverse-proxy
-    extra_hosts:
-      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/stump/.env

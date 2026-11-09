@@ -7,8 +7,6 @@ services:
       - /fjellheimen/data/actualbudget:/data
     networks:
       - reverse-proxy
-    extra_hosts:
-      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/actualbudget/.env

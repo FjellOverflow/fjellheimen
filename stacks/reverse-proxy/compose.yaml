@@ -12,7 +12,9 @@ services:
       - /fjellheimen/stacks/reverse-proxy/dynamic:/etc/traefik/dynamic:ro
     networks:
       reverse-proxy:
-        ipv4_address: 172.20.0.2
+        aliases:
+          - auth.fjellhei.men
+          - forge.fjellhei.men
     extra_hosts:
       - host.docker.internal:host-gateway
     env_file:

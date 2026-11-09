@@ -39,10 +39,7 @@
 
     - name: Ensure reverse-proxy Docker network exists
       ansible.builtin.command: >-
-        docker network create
-        --subnet 172.20.0.0/16
-        --ip-range 172.20.1.0/24
-        reverse-proxy
+        docker network create reverse-proxy
       when: docker_reverse_proxy_network.rc != 0
       changed_when: true
 

@@ -8,8 +8,6 @@ services:
       - /fjellheimen/data/gickup:/gickup/data
     networks:
       - reverse-proxy
-    extra_hosts:
-      - forge.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/gickup/.env

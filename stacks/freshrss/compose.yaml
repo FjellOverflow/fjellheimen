@@ -8,8 +8,6 @@ services:
       - /fjellheimen/data/freshrss/extensions:/var/www/FreshRSS/extensions
     networks:
       - reverse-proxy
-    extra_hosts:
-      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/freshrss/.env

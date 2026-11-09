@@ -30,9 +30,9 @@ The host can be set up through the idempotent [Ansible](https://docs.ansible.com
 
 ## Stacks
 
-Everything is served under `*.fjellhei.men`: with a single *wildcard DNS record* pointing at the public IP, [Traefik](https://traefik.io/) (the `reverse-proxy` stack) is the only entrypoint, and [VoidAuth](https://github.com/voidauth/voidauth) puts OIDC SSO in front of (almost) every service.
+Everything is served under `*.fjellhei.men`: with a single *wildcard DNS record* pointing at the server's Tailscale address, [Traefik](https://traefik.io/) (the `reverse-proxy` stack) is the only entrypoint, and [VoidAuth](https://github.com/voidauth/voidauth) puts OIDC SSO in front of (almost) every service.
 
-The `reverse-proxy` stack owns a bridge network (`subnet 172.20.0.0/16`); every other stack joins it with `external: true`. Traefik itself is pinned to the static IP `172.20.0.2` (load-bearing, see [_Adding a stack_](#adding-a-stack)).
+Every stack joins the `reverse-proxy` network (created by Ansible) as `external: true`.
 
 A few services use host networking and are also reachable directly on their own ports (opened in firewalld), bypassing Traefik and SSO.
 
@@ -51,12 +51,7 @@ Host-level routes can be declared with YAML files in `stacks/reverse-proxy/dynam
    traefik.http.routers.<name>.middlewares: voidauth@docker
    traefik.http.services.<name>.loadbalancer.server.port: "<container-port>"
    ```
-4. If the container calls a `*.fjellhei.men` URL itself (e.g. OIDC to `auth.`), add:
-   ```yaml
-   extra_hosts:
-     - auth.fjellhei.men:172.20.0.2
-   ```
-   A container resolving `auth.fjellhei.men` normally would route out of the Docker network, so pinning the hostname to Traefik's internal IP keeps it on the reverse-proxy network.
+4. If the container calls a `*.fjellhei.men` URL itself, add that hostname to Traefik's `aliases`
 
 ### Volumes
 

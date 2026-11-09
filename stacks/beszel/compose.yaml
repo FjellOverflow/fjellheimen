@@ -10,8 +10,6 @@ services:
       - /fjellheimen/data/beszel/socket:/beszel_socket
     networks:
       - reverse-proxy
-    extra_hosts:
-      - auth.fjellhei.men:172.20.0.2
     env_file:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/beszel/.env
