@@ -10,6 +10,12 @@
         gpgcheck: true
         gpgkey: https://download.docker.com/linux/fedora/gpg
 
+    - name: Create docker group with a fixed GID
+      ansible.builtin.group:
+        name: docker
+        gid: 987
+        system: true
+
     - name: Install Docker Engine
       ansible.builtin.dnf:
         name:

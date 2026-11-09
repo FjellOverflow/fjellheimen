@@ -47,7 +47,6 @@ Host-level routes can be declared with YAML files in `stacks/reverse-proxy/dynam
    traefik.enable: "true"
    traefik.http.routers.<name>.rule: Host(`<name>.fjellhei.men`)
    traefik.http.routers.<name>.entrypoints: websecure
-   traefik.http.routers.<name>.tls.certresolver: letsencrypt
    traefik.http.routers.<name>.middlewares: voidauth@docker
    traefik.http.services.<name>.loadbalancer.server.port: "<container-port>"
    ```

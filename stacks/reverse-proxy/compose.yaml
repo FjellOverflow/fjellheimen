@@ -50,7 +50,6 @@ services:
       traefik.http.routers.traefik.entrypoints: websecure
       traefik.http.routers.traefik.service: api@internal
       traefik.http.routers.traefik.middlewares: voidauth@docker
-      traefik.http.routers.traefik.tls.certresolver: letsencrypt
     healthcheck:
       test: traefik healthcheck --ping
       interval: 1m

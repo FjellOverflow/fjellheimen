@@ -15,4 +15,3 @@ services:
       LOG_LEVEL: info
       RENOVATE_CONFIG_FILE: /config.json
     restart: no
-networks: {}

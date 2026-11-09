@@ -9,4 +9,3 @@ services:
     env_file:
       - /fjellheimen/stacks/.env
     restart: unless-stopped
-networks: {}

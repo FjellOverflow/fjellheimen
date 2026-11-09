@@ -7,8 +7,6 @@ http:
       middlewares:
         - voidauth@docker
       service: cockpit
-      tls:
-        certresolver: letsencrypt
   services:
     cockpit:
       loadbalancer:
