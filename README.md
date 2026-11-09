@@ -108,3 +108,4 @@ Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run v
 | `backup`         | Fri 04:00 | Backs up data locally with `borg`                                |
 | `mirror`         | manual    | Mirrors data to local drive                                      |
 | `notify`         | manual    | Sends notification                                               |
+| `lib.sh`         | sourced   | Shared by the batch jobs: unmounts on exit, one notification per run |

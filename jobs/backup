@@ -2,20 +2,7 @@
 
 # called Friday, 4:00 AM
 
-set -euo pipefail
-
-# load ENV
-CURRENT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source $CURRENT_DIR/.env
-
-NOTIFY=$CURRENT_DIR/notify
-
-on_error() {
-    $NOTIFY "Backup FAILED (exit $?)."
-}
-trap on_error ERR
-
-$NOTIFY "Backing up $BACKUP_SOURCE to $BACKUP_DESTINATION."
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib.sh" || exit 1
 
 if [ -z "${BACKUP_EXCLUDES+x}" ]; then
     BACKUP_EXCLUDES=()
@@ -28,5 +15,3 @@ done
 
 sudo borg create --numeric-ids "${EXCLUDE_ARGS[@]}" $BACKUP_DESTINATION::{hostname}-{now} $BACKUP_SOURCE || [ $? -le 1 ]
 sudo chown -R $BACKUP_USER:$BACKUP_USER $BACKUP_DESTINATION/
-
-$NOTIFY "Backup finished."
