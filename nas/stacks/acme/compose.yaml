@@ -1,0 +1,27 @@
+name: acme
+services:
+  acme:
+    image: ghcr.io/acmesh-official/acme.sh:3.1.6
+    container_name: acme
+    volumes:
+      - /volume1/docker/acme/data:/acme.sh
+    network_mode: host
+    env_file:
+      - /volume1/docker/fjellheimen/nas/stacks/acme/.env
+    environment:
+      SYNO_USERNAME: acme-container
+      SYNO_DEVICE_NAME: acme-container
+      SYNO_CERTIFICATE: fjellsi.de
+    command: daemon
+    healthcheck:
+      test:
+        - CMD
+        - openssl
+        - x509
+        - -checkend
+        - "1209600"
+        - -noout
+        - -in
+        - /acme.sh/fjellsi.de_ecc/fjellsi.de.cer
+      interval: 1h
+    restart: unless-stopped

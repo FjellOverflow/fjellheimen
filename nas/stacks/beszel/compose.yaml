@@ -1,0 +1,25 @@
+name: beszel-agent
+services:
+  beszel-agent:
+    image: ghcr.io/henrygd/beszel/beszel-agent:0.21.1
+    container_name: beszel-agent
+    volumes:
+      - /volume1/docker/beszel-agent/data:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
+    network_mode: host
+    env_file:
+      - /volume1/docker/fjellheimen/nas/stacks/beszel/.env
+    environment:
+      EXCLUDE_CONTAINERS: acme
+      SKIP_SYSTEMD: "true"
+    healthcheck:
+      test:
+        - CMD
+        - /agent
+        - health
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
