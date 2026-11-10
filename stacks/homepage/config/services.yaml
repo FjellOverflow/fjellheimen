@@ -141,3 +141,7 @@
             href: https://notifications.fjellhei.men
             description: Notifications
             container: apprise
+        - Uptime Kuma:
+            icon: sh-uptime-kuma-light
+            href: https://status.fjellsi.de
+            description: Uptime checks
