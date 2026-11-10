@@ -1,0 +1,10 @@
+name: uptime-kuma
+services:
+  uptime-kuma:
+    image: ghcr.io/louislam/uptime-kuma:2.5.9
+    container_name: uptime-kuma
+    ports:
+      - 3001:3001
+    volumes:
+      - /volume1/docker/uptime-kuma/data:/app/data
+    restart: unless-stopped
