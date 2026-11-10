@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# call manually
+
+source "$(dirname -- "${BASH_SOURCE[0]}")/lib.sh" || exit 1
+
+mount_tmp -t cifs -o credentials="$NAS_SYNC_CREDENTIALS_FILE",vers=3.0 "$NAS_SYNC_DRIVE"
+sudo rsync -rlt --mkpath --stats "$JOBS_DIR/../nas/" "$MNT/fjellheimen/nas/"
