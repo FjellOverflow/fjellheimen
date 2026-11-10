@@ -4,7 +4,7 @@ services:
     image: ghcr.io/henrygd/beszel/beszel-agent:0.21.1
     container_name: beszel-agent
     volumes:
-      - /volume1/docker/beszel-agent/data:/var/lib/beszel-agent
+      - /volume1/docker/fjellheimen/nas/data/beszel:/var/lib/beszel-agent
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
     network_mode: host

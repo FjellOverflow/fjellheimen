@@ -2,3 +2,6 @@
 
 data/*
 !data/.gitkeep
+
+nas/data/*
+!nas/data/.gitkeep

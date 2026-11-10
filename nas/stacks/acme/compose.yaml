@@ -4,7 +4,7 @@ services:
     image: ghcr.io/acmesh-official/acme.sh:3.1.6
     container_name: acme
     volumes:
-      - /volume1/docker/acme/data:/acme.sh
+      - /volume1/docker/fjellheimen/nas/data/acme:/acme.sh
     network_mode: host
     env_file:
       - /volume1/docker/fjellheimen/nas/stacks/acme/.env

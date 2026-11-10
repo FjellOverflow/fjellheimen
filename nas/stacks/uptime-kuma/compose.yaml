@@ -6,5 +6,5 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - /volume1/docker/uptime-kuma/data:/app/data
+      - /volume1/docker/fjellheimen/nas/data/uptime-kuma:/app/data
     restart: unless-stopped
