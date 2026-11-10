@@ -32,6 +32,14 @@
         weekday: "5"
         job: /fjellheimen/jobs/backup
 
+- name: Set up heartbeat cronjob
+  block:
+    - name: Write heartbeat cronjob
+      ansible.builtin.cron:
+        name: Run heartbeat job
+        minute: "*/15"
+        job: /fjellheimen/jobs/heartbeat
+
 - name: Set up lifecycle service
   become: true
   block:

@@ -107,5 +107,6 @@ Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run v
 | `offsite_backup` | Thu 04:00 | Backs up data to remote with `rsync`                             |
 | `backup`         | Fri 04:00 | Backs up data locally with `borg`                                |
 | `mirror`         | manual    | Mirrors data to local drive                                      |
+| `heartbeat`      | every 15 min | Pings Uptime Kuma, notifies if it's unreachable               |
 | `notify`         | manual    | Sends notification                                               |
 | `lib.sh`         | sourced   | Shared by the batch jobs: unmounts on exit, one notification per run |

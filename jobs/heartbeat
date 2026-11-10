@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# called every 15 minutes
+
+set -euo pipefail
+
+JOBS_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source "$JOBS_DIR/.env"
+
+FAILING="${XDG_STATE_HOME:-$HOME/.local/state}/fjellheimen/heartbeat-failing"
+
+if curl -fsS -m 10 --retry 3 -o /dev/null "$HEARTBEAT_PUSH_URL"; then
+    if [ -e "$FAILING" ]; then
+        rm "$FAILING"
+        "$JOBS_DIR/notify" "Uptime Kuma is reachable again, fjellheimen is watched."
+    fi
+elif [ ! -e "$FAILING" ]; then
+    mkdir -p "$(dirname -- "$FAILING")"
+    touch "$FAILING"
+    "$JOBS_DIR/notify" "Uptime Kuma is unreachable, fjellheimen is NOT watched."
+fi
