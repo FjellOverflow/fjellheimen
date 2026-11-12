@@ -63,11 +63,11 @@
         href: https://feed.fjellhei.men
         description: RSS feed aggregator
         container: freshrss
-    - Vikunja:
-        icon: sh-vikunja-light
+    - Radicale:
+        icon: sh-radicale-light
         href: https://tasks.fjellhei.men
         description: Tasks
-        container: vikunja
+        container: radicale
     - Linkding:
         icon: sh-linkding-light
         href: https://bookmarks.fjellhei.men

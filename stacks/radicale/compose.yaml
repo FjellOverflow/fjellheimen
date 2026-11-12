@@ -1,0 +1,30 @@
+name: radicale
+services:
+  radicale:
+    image: ghcr.io/kozea/radicale:3.9.1
+    container_name: radicale
+    volumes:
+      - /fjellheimen/data/radicale:/var/lib/radicale
+    networks:
+      - reverse-proxy
+    env_file:
+      - /fjellheimen/stacks/.env
+    command:
+      - --hosts=0.0.0.0:5232
+      - --auth-type=htpasswd
+      - --auth-htpasswd-filename=/var/lib/radicale/users
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.radicale.rule: Host(`tasks.fjellhei.men`)
+      traefik.http.routers.radicale.entrypoints: websecure
+      traefik.http.services.radicale.loadbalancer.server.port: "5232"
+    healthcheck:
+      test: curl --fail http://localhost:5232 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
