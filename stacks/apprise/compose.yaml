@@ -1,7 +1,7 @@
 name: apprise
 services:
   apprise:
-    image: caronc/apprise:2.0.2
+    image: caronc/apprise:2.1.0
     container_name: apprise
     ports:
       - 8000:8000
