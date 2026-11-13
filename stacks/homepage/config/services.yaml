@@ -125,6 +125,11 @@
             href: https://auth.fjellhei.men
             description: OIDC SSO portal
             container: voidauth
+        - Backrest:
+            icon: sh-backrest-light
+            href: https://backups.fjellhei.men
+            description: Backups
+            container: backrest
     - Monitoring:
         - Beszel:
             icon: sh-beszel-light

@@ -1,0 +1,36 @@
+name: backrest
+services:
+  backrest:
+    image: ghcr.io/garethgeorge/backrest:v1.14.1
+    container_name: backrest
+    hostname: fjellheimen
+    volumes:
+      - /fjellheimen/data/backrest/data:/data
+      - /fjellheimen/data/backrest/config:/config
+      - /fjellheimen/data/backrest/cache:/cache
+      - /fjellheimen:/fjellheimen:ro
+      - /xdrive/Backups/restic:/xdrive/Backups/restic
+    networks:
+      - reverse-proxy
+    env_file:
+      - /fjellheimen/stacks/.env
+    environment:
+      BACKREST_DATA: /data
+      BACKREST_CONFIG: /config/config.json
+      XDG_CACHE_HOME: /cache
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.backrest.rule: Host(`backups.fjellhei.men`)
+      traefik.http.routers.backrest.entrypoints: websecure
+      traefik.http.routers.backrest.middlewares: voidauth@docker
+      traefik.http.services.backrest.loadbalancer.server.port: "9898"
+    healthcheck:
+      test: curl --fail http://localhost:9898 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
