@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# called Thursday, 4:00 AM
+# called Friday, 5:00 AM
 
 source "$(dirname -- "${BASH_SOURCE[0]}")/lib.sh" || exit 1
 

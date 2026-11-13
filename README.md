@@ -22,11 +22,11 @@
 | `setup/`  | Ansible playbook that provisions the host                                 |
 | `stacks/` | One directory per Docker Compose stack (`compose.yaml` + `.env`)          |
 | `data/`   | Git-ignored application data                                              |
-| `jobs/`   | Maintenance scripts, run on a cron schedule (backup, offsite, startup, …) |
+| `jobs/`   | Maintenance scripts, run on a cron schedule (offsite, heartbeat, boot, …) |
 
 ## Setup
 
-The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Borg](https://borgbackup.readthedocs.io/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, a [Samba](https://www.samba.org/) share, SSH auth, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
+The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, a [Samba](https://www.samba.org/) share, SSH auth, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
 
 ## Stacks
 
@@ -104,8 +104,7 @@ Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run v
 | ---------------- | --------- | ---------------------------------------------------------------- |
 | `on_startup`     | boot      | Notifies with container status once settled                      |
 | `on_shutdown`    | shutdown  | Notifies about shutdown/reboot                                   |
-| `offsite_backup` | Thu 04:00 | Backs up data to remote with `rsync`                             |
-| `backup`         | Fri 04:00 | Backs up data locally with `borg`                                |
+| `offsite_backup` | Fri 05:00 | Backs up data to remote with `rsync`                             |
 | `mirror`         | manual    | Mirrors data to local drive                                      |
 | `nas_sync`       | manual    | Copies `nas/` to the NAS                                         |
 | `heartbeat`      | every 15 min | Pings Uptime Kuma, notifies if it's unreachable               |

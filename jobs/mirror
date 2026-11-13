@@ -5,5 +5,7 @@
 source "$(dirname -- "${BASH_SOURCE[0]}")/lib.sh" || exit 1
 
 sudo blkid -U "$MIRROR_UUID" >/dev/null 2>&1 || fail "disk $MIRROR_UUID not found"
+LOCKS=$(sudo ls -A "$MIRROR_RESTIC_REPO/locks") || fail "restic repo $MIRROR_RESTIC_REPO not found"
+[ -z "$LOCKS" ] || fail "restic repo $MIRROR_RESTIC_REPO is locked"
 mount_tmp UUID="$MIRROR_UUID"
 sudo rsync -av --delete "$MIRROR_SOURCE/" "$MNT/"

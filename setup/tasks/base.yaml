@@ -6,7 +6,6 @@
       ansible.builtin.dnf:
         name:
           - bat
-          - borgbackup
           - curl
           - git
           - gnupg2
