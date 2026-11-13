@@ -1,0 +1,16 @@
+name: rest-server
+services:
+  rest-server:
+    image: restic/rest-server:0.14.0
+    container_name: rest-server
+    ports:
+      - 8000:8000
+    volumes:
+      - /volume1/docker/fjellheimen/nas/data/rest-server:/data
+    healthcheck:
+      test: nc -z localhost 8000 || exit 1
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
