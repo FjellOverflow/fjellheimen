@@ -9,6 +9,7 @@ services:
       - /fjellheimen/data/backrest/config:/config
       - /fjellheimen/data/backrest/cache:/cache
       - /fjellheimen:/fjellheimen:ro
+      - /xdrive/Data:/xdrive/Data:ro
       - /xdrive/Backups/restic:/xdrive/Backups/restic
     networks:
       - reverse-proxy
