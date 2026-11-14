@@ -14,16 +14,6 @@
         dest: /fjellheimen
         state: link
 
-- name: Set up backup cronjobs
-  block:
-    - name: Write offsite backup cronjob
-      ansible.builtin.cron:
-        name: Run offsite-backup job
-        minute: "0"
-        hour: "5"
-        weekday: "5"
-        job: /fjellheimen/jobs/offsite_backup
-
 - name: Set up heartbeat cronjob
   block:
     - name: Write heartbeat cronjob

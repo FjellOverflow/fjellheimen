@@ -22,7 +22,7 @@
 | `setup/`  | Ansible playbook that provisions the host                                 |
 | `stacks/` | One directory per Docker Compose stack (`compose.yaml` + `.env`)          |
 | `data/`   | Git-ignored application data                                              |
-| `jobs/`   | Maintenance scripts, run on a cron schedule (offsite, heartbeat, boot, …) |
+| `jobs/`   | Maintenance scripts, run on a cron schedule (heartbeat, mirror, boot, …)  |
 
 ## Setup
 
@@ -104,7 +104,6 @@ Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run v
 | ---------------- | --------- | ---------------------------------------------------------------- |
 | `on_startup`     | boot      | Notifies with container status once settled                      |
 | `on_shutdown`    | shutdown  | Notifies about shutdown/reboot                                   |
-| `offsite_backup` | Fri 05:00 | Backs up data to remote with `rsync`                             |
 | `mirror`         | manual    | Mirrors data to local drive                                      |
 | `nas_sync`       | manual    | Copies `nas/` to the NAS                                         |
 | `heartbeat`      | every 15 min | Pings Uptime Kuma, notifies if it's unreachable               |
