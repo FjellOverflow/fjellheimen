@@ -11,6 +11,7 @@ services:
       - /fjellheimen:/fjellheimen:ro
       - /xdrive/Data:/xdrive/Data:ro
       - /backups:/backups
+      - /fjellside/homes:/fjellside/homes:ro,rslave
     networks:
       - reverse-proxy
     env_file:
