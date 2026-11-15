@@ -8,6 +8,7 @@ services:
       - /xdrive/Syncthing:/xdrive/syncthing:ro
       - /xdrive/Syncthing/uploaded:/upload
       - /xdrive/Data/Documents:/xdrive/documents:ro
+      - /xdrive/Media/Books:/xdrive/books:ro
     networks:
       - reverse-proxy
     env_file:
