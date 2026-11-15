@@ -10,11 +10,6 @@
             href: https://audiobooks.fjellhei.men
             description: Audiobooks & Podcasts
             container: audiobookshelf
-        - Stump:
-            icon: sh-stump-light
-            href: https://books.fjellhei.men
-            description: Books
-            container: stump
     - Photos:
         - Immich:
             icon: sh-immich-light
