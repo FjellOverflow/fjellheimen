@@ -106,6 +106,6 @@ Maintenance scripts in `jobs/`, configured via `jobs/.env`. Scheduled ones run v
 | `on_shutdown`    | shutdown  | Notifies about shutdown/reboot                                   |
 | `mirror`         | manual    | Mirrors data to local drive                                      |
 | `nas_sync`       | manual    | Copies `nas/` to the NAS                                         |
-| `heartbeat`      | every 15 min | Pings Uptime Kuma, notifies if it's unreachable               |
+| `heartbeat`      | every 15 min | Pings Uptime Kuma on the NAS, notifies if it or the local one is down |
 | `notify`         | manual    | Sends notification                                               |
 | `lib.sh`         | sourced   | Shared by the batch jobs: unmounts on exit, one notification per run |

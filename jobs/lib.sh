@@ -21,15 +21,6 @@ mount_tmp() {
     sudo mount "$@" "$MNT"
 }
 
-push() {
-    local url_var="${JOB^^}_PUSH_URL"
-    [ -n "${!url_var:-}" ] || return 0
-    curl -fsS -m 10 --retry 3 -o /dev/null -G \
-         --data-urlencode "status=$1" \
-         --data-urlencode "msg=$2" \
-         "${!url_var}" || true
-}
-
 on_exit() {
     local code=$?
     set +e
@@ -48,11 +39,8 @@ on_exit() {
 
     if [ "$code" -eq 0 ]; then
         "$JOBS_DIR/notify" "$JOB finished in $took."
-        push up "finished in $took"
     else
-        local msg="$JOB FAILED${REASON:+: $REASON} (exit $code) after $took."
-        "$JOBS_DIR/notify" "$msg"
-        push down "$msg"
+        "$JOBS_DIR/notify" "$JOB FAILED${REASON:+: $REASON} (exit $code) after $took."
     fi
 
     exit "$code"
