@@ -54,11 +54,11 @@ Host-level routes can be declared with YAML files in `stacks/reverse-proxy/dynam
 
 ### Volumes
 
-| Mount          | Backup              | Content                                        |
-| -------------- | ------------------- | ---------------------------------------------- |
-| `/fjellheimen` | Automatic           | Server state: `data/`, `stacks/`, `jobs/`      |
-| `/xdrive`      | Automatic (`Data/`) | Personal data: `Media/`, `Data/`, `Syncthing/` |
-| `/backups`     | -                   | Backup drive: local restic repos               |
+| Mount          | Backup                            | Content                                        |
+| -------------- | --------------------------------- | ---------------------------------------------- |
+| `/fjellheimen` | Automatic                         | Server state: `data/`, `stacks/`, `jobs/`      |
+| `/xdrive`      | Automatic (`Data/`, `Syncthing/`) | Personal data: `Media/`, `Data/`, `Syncthing/` |
+| `/backups`     | -                                 | Backup drive: local restic repos               |
 
 While both storages are mounted to various containers, they fulfill different purposes: `/fjellheimen` is the data specific to the server and its applications, `/xdrive` is external data, such as media or personal data, that may be consumed by the server, but also exists independent of it, were the server to disappear.
 

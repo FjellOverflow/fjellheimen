@@ -10,6 +10,7 @@ services:
       - /fjellheimen/data/backrest/cache:/cache
       - /fjellheimen:/fjellheimen:ro
       - /xdrive/Data:/xdrive/Data:ro
+      - /xdrive/Syncthing:/xdrive/Syncthing:ro
       - /backups:/backups
       - /fjellside/homes:/fjellside/homes:ro,rslave
     networks:
