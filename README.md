@@ -26,7 +26,7 @@
 
 ## Setup
 
-The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, [Samba](https://www.samba.org/) shares, SSH auth, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
+The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, [Samba](https://www.samba.org/) shares, SSH auth, drive mounts, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
 
 ## Stacks
 

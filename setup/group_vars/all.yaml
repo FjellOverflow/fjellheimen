@@ -12,3 +12,7 @@ default_locale: en_US.UTF-8
 regional_locale: nb_NO.UTF-8
 
 console_keymap: "no"
+
+drives:
+  /xdrive: f008549c-df55-4ef2-bde7-02785893cd8e
+  /backups: d28190b0-733b-46cb-8372-8662db322869

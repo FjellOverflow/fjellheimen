@@ -14,7 +14,9 @@ The homeserver is intended to run on Fedora. Installing a fresh Fedora Server Ed
     git clone https://github.com/FjellOverflow/fjellheimen.git ~/fjellheimen
     ```
 
-3. Install collections and run playbook
+3. Set the drive UUIDs (`lsblk -f`) in `group_vars/all.yaml`
+
+4. Install collections and run playbook
 
     ```bash
     cd ~/fjellheimen/setup

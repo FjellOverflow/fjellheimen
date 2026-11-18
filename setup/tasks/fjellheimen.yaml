@@ -14,6 +14,19 @@
         dest: /fjellheimen
         state: link
 
+- name: Set up mounts
+  become: true
+  block:
+    - name: Mount drives
+      ansible.posix.mount:
+        path: "{{ item.key }}"
+        src: UUID={{ item.value }}
+        fstype: ext4
+        opts: defaults,nofail
+        passno: 2
+        state: mounted
+      loop: "{{ drives | dict2items }}"
+
 - name: Set up heartbeat cronjob
   block:
     - name: Write heartbeat cronjob
