@@ -26,7 +26,7 @@
 
 ## Setup
 
-The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, a [Samba](https://www.samba.org/) share, SSH auth, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
+The host can be set up through the idempotent [Ansible](https://docs.ansible.com/) playbook (`setup/`), installing [Docker](https://docs.docker.com/), [Tailscale](https://tailscale.com/), configuring [firewalld](https://firewalld.org/), cronjobs, [Samba](https://www.samba.org/) shares, SSH auth, and creating the `/fjellheimen` symlink. See [`setup/README.md`](setup/README.md) for usage.
 
 ## Stacks
 
@@ -54,14 +54,21 @@ Host-level routes can be declared with YAML files in `stacks/reverse-proxy/dynam
 
 ### Volumes
 
-| Mount          | Backup    | Content                                        |
-| -------------- | --------- | ---------------------------------------------- |
-| `/fjellheimen` | Automatic | Server state: `data/`, `stacks/`, `jobs/`      |
-| `/xdrive`      | Manual    | Personal data: `Media/`, `Data/`, `Syncthing/` |
+| Mount          | Backup              | Content                                        |
+| -------------- | ------------------- | ---------------------------------------------- |
+| `/fjellheimen` | Automatic           | Server state: `data/`, `stacks/`, `jobs/`      |
+| `/xdrive`      | Automatic (`Data/`) | Personal data: `Media/`, `Data/`, `Syncthing/` |
+| `/backups`     | -                   | Backup drive: local restic repos               |
 
 While both storages are mounted to various containers, they fulfill different purposes: `/fjellheimen` is the data specific to the server and its applications, `/xdrive` is external data, such as media or personal data, that may be consumed by the server, but also exists independent of it, were the server to disappear.
 
-`/fjellheimen` is also exposed as a *read-only Samba share*, for direct file access without SSH.
+All three are also exposed as *read-only Samba shares*, for direct file access without SSH.
+
+### Backups
+
+[Backrest](https://github.com/garethgeorge/backrest) (`stacks/backrest`), a web UI for [restic](https://restic.net/), backs up `/fjellheimen` and `/xdrive/Data` to local repos on `/backups` and to an offsite repo. Repos, plans, schedules and retention live in Backrest's own config and are set in its UI.
+
+Backrest hooks push the result of each run to [Uptime Kuma](https://github.com/louislam/uptime-kuma) (`stacks/uptime-kuma`), which alerts on failed or missed runs.
 
 ### Environment
 
