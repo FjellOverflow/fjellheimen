@@ -6,7 +6,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /volume1/docker/fjellheimen/nas/data/rest-server:/data
+      - /volume1/restic/rest-server:/data
     healthcheck:
       test: nc -z localhost 8000 || exit 1
       interval: 1m
