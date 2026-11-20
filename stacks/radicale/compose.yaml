@@ -1,7 +1,7 @@
 name: radicale
 services:
   radicale:
-    image: ghcr.io/kozea/radicale:3.9.1
+    image: ghcr.io/kozea/radicale:3.9.2
     container_name: radicale
     volumes:
       - /fjellheimen/data/radicale:/var/lib/radicale
