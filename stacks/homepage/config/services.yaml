@@ -105,11 +105,11 @@
             icon: sh-cockpit-light
             href: https://cockpit.fjellhei.men
             description: Admin interface
-        - Dockge:
-            icon: sh-dockge-light
+        - Arcane:
+            icon: sh-arcane-light
             href: https://containers.fjellhei.men
             description: Container management
-            container: dockge
+            container: arcane
         - Traefik:
             icon: sh-traefik-light
             href: https://proxy.fjellhei.men

@@ -1,0 +1,38 @@
+name: arcane
+services:
+  arcane:
+    image: getarcaneapp/manager:v3.1.1
+    container_name: arcane
+    volumes:
+      - /fjellheimen/data/arcane:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /fjellheimen/stacks:/fjellheimen/stacks
+    networks:
+      - reverse-proxy
+    env_file:
+      - /fjellheimen/stacks/.env
+      - /fjellheimen/stacks/arcane/.env
+    environment:
+      ARCANE_APP_URL: https://containers2.fjellhei.men
+      ARCANE_PROJECTS_DIRECTORY: /fjellheimen/stacks
+      ARCANE_TRUSTED_PROXIES: 172.20.0.2/32
+      ARCANE_ANALYTICS_ENABLED: "false"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.arcane.rule: Host(`containers.fjellhei.men`)
+      traefik.http.routers.arcane.entrypoints: websecure
+      traefik.http.routers.arcane.middlewares: voidauth@docker
+      traefik.http.services.arcane.loadbalancer.server.port: "3552"
+    healthcheck:
+      test:
+        - CMD
+        - /app/arcane
+        - health
+      interval: 1m
+      start_period: 20s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+networks:
+  reverse-proxy:
+    external: true
