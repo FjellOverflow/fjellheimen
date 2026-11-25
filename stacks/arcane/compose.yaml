@@ -13,7 +13,7 @@ services:
       - /fjellheimen/stacks/.env
       - /fjellheimen/stacks/arcane/.env
     environment:
-      ARCANE_APP_URL: https://containers2.fjellhei.men
+      ARCANE_APP_URL: https://containers.fjellhei.men
       ARCANE_PROJECTS_DIRECTORY: /fjellheimen/stacks
       ARCANE_TRUSTED_PROXIES: 172.20.0.2/32
       ARCANE_ANALYTICS_ENABLED: "false"
