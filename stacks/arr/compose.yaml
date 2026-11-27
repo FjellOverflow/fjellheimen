@@ -50,7 +50,7 @@ services:
       retries: 3
     restart: unless-stopped
   prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:3.0.2
+    image: ghcr.io/linuxserver/prowlarr:3.1.0
     container_name: arr-prowlarr
     volumes:
       - /fjellheimen/data/arr/prowlarr:/config
